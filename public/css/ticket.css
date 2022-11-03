@@ -1,0 +1,102 @@
+.ticket-div {
+    width: 100%; 
+    /* background-color:pink;  */
+    padding: 20px 50px 0px 50px; 
+    height:fit-content;
+    /* padding-bottom: 0px; */
+}
+
+.attribute {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.ticket-div p {
+    font-size: 15px;
+    display: flex;
+}
+
+.ticket-left {
+    width: 30%;
+    display:inline-block;
+    word-break: break-all;
+    top:0;
+    min-height: 200px; 
+    vertical-align: top;
+    padding-bottom: 20px;
+    /* top:0 */
+}
+
+.ticket-right { 
+    width: 50%;
+    display:inline-block;
+    margin-left: 3%;
+    min-height: 200px;
+    vertical-align: top;
+    padding-bottom: 20px;
+    /* top:0; */
+}
+
+#priority {
+    margin-top: 5px;
+    padding: 7px 20px 7px 5px;
+    border-radius: 6px;
+    border: 2px solid #cccc;
+}
+
+#transfer {
+    background-color: #FFFFFF; 
+    border: 2px solid#F8CA0A; 
+    border-radius: 0px; 
+    color:#F8CA0A;
+    float:right;
+    margin-top: 45px;
+    margin-right: 70px;
+    font-size: 17px;
+    position: absolute;
+    top:0;
+    right:0
+}
+
+#secondary-button {
+    background-color: #FFFFFF; 
+    border: 2px solid#F8CA0A; 
+    border-radius: 0px; 
+    color:#F8CA0A;
+    /* float:right; */
+    
+    /* align-self: baseline; */
+    font-size: 17px;
+    /* position: absolute;
+    right:0;
+    bottom: 0; */
+    display: block;
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+#primary-button {
+    background-color: #F8CA0A; 
+    border: 2px solid#F8CA0A; 
+    border-radius: 0px; 
+    color:#FFFFFF;
+    /* float:right; */
+    font-size: 17px;
+    display: block;
+    width: 200px;
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 70px; 
+    padding-bottom: 30px;
+}
+
+/* Mark as Ongoing
+Void Ticket 
+Mark as Resolved */

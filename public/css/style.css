@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Habibi&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap%27');
+
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+}
+/* 
+body{
+    background-color: pink;
+} */
+
+#systemName {
+    transform: translate(-50%, -50%);
+}
+
+#title, #title2{
+    /* padding: 0px;    */
+    /* margin: auto;  */
+    font-family: 'Habibi', serif;
+    font-size: 19px;
+    margin-top: 10px;
+    /* font-weight: 100; */
+}
+#title{
+    font-weight: bolder;
+}
+
+#bg{
+    background-image: url(../images/index-bg.jpg);
+    background-size: cover;     
+    background-repeat: no-repeat;     
+    background-blend-mode: multiply;
+    /* height:100vh; */
+    filter: brightness(93%);
+-webkit-filter: brightness(93%);
+-moz-filter: brightness(93%);
+}
+
+#bg-color{
+    background-color: #FFFBFB;
+}
+
+#header{
+    overflow: hidden;
+    position: sticky;
+    /* left: 78px; */
+    top: 0;
+    right:0;
+    z-index: 98;
+    /* overflow-x: scroll;
+    overflow-x: scroll; */
+    /* position: fixed; */
+    background-color: #FFD100;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    border: 1px;
+    /* filter: drop-shadow(5px 8px 4px rgba(0, 0, 0, 0.25)); */
+}
+
+/* Sticky Navbar */
+.content {
+    padding: 16px;
+  }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 60px;
+  }
+
+#parent{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    vertical-align: middle;
+}
+#ust-logo{
+    max-width: 70px;
+    margin-right: 40px;
+}
+#commerce-logo{
+    max-width: 60px;
+    margin-left: 40px;
+  
+}
+#body{
+  text-align: center;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 10%; */
+  background-image: url('../images/index-bg.jpg');
+  background-size: cover;     
+  background-repeat: no-repeat;     
+  background-blend-mode: multiply;
+  /* height:100vh; */
+  /* filter: brightness(93%);
+  -webkit-filter: brightness(93%);
+  -moz-filter: brightness(93%); */
+  /* height: 100%; */
+  width:100%;
+  position: absolute;
+  top:92.30px;
+  bottom:0px;
+  /* height: calc(100% - 92.28px); */
+  /* height: 100%; */
+  padding-top: 15%;
+  /* padding-bottom: 17.5%; */
+  box-shadow: inset 0px 8px 4px rgba(0, 0, 0, 0.25);
+}
+#body h1{
+    font-family: 'Cabin', sans-serif;
+    font-size: 45px;
+    font-weight: 100;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#body h1 span{
+    font-weight: bold;
+    color: #FFD100;
+}
+
+#navtitle, #navtitle2{
+    padding: 0px;   
+    margin: auto; 
+    font-family: 'Habibi', serif;
+    font-weight: 100;
+    font-size: 20px;
+}
+
+#button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+}
+.indexBtn{
+    font-family: 'Cabin', sans-serif;
+    font-size: large;
+    padding: 15px 50px;
+    border-radius: 10px;
+    /* opacity: 90%; */
+    margin: 50px;
+    margin-top: 80px;
+    width: 300px;
+    color: #ffffff;
+    border: #ECC72B 2px solid;
+    background: #ECC72B;
+    font-weight: 100;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    box-shadow: 10px 10px 48px -46px rgba(0,0,0,0.35) inset;
+-webkit-box-shadow: 10px 10px 48px -46px rgba(0,0,0,0.35) inset;
+-moz-box-shadow: 10px 10px 48px -46px rgba(0,0,0,0.35) inset;
+}
+.indexBtn hover{
+  cursor: pointer;
+}
+
+#login{
+    display: flex;
+    position:absolute;
+    border: none;
+    font-size: 14px;
+    background-color:#FFD100;
+    top: 5%; 
+    margin-left: 80%;
+    
+}
+#notif{
+    display: flex;
+    position:absolute;
+    border: none;
+    top: 5%; 
+    margin-left: 80%;
+    max-width: 60px;
+    margin-left: 40px;
+    margin-top: 1.5%;
+    right: 50px;
+    background-color: transparent;
+}
+#notif img{
+    width: 40px;
+}
+.content{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.left{
+    width: 6%;
+    background-color: #FFD90D;
+    height: 100%;
+}
+.right{
+    width: 94%;
+    height: 100%
+}
+.upper-items{
+    margin-bottom: 200px;
+    margin-top: 25px;
+}
+.lower-items{
+    margin-top: 200px;
+}
+.side-nav-items{
+text-align: center;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+font-weight:400;
+margin: 10px;
+margin-bottom: 30px;
+}
+.side-nav-logo{
+    width: 40px;
+    text-align: center;
+}
+
+.dashboard-content-container{
+    margin: 50px;
+    background: #FFFBFB;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 50px;
+    text-align: center;
+}
+.dashboard-content-container h1{
+    font-weight: 100;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+}
+
+/* css for email students*/
+/* Style the input fields */
+.form-inline input {
+    box-sizing: border-box;
+    position: relative;
+    left: 35.70%;
+    right: 35.56%;
+    top: 48.89%;
+    bottom: 52.15%;
+    background: #FEFEFE;
+    border: 1px solid #000000;
+    border-radius: 10px;   
+    width:416px;
+    height: 61px;
+    font-family: 'Cabin', sans-serif;
+    font-weight: 300;
+    font-size: 27px; 
+    color: #cbcbcb;
+}
+
+/* Style the submit button */
+.form-inline button {
+    position: absolute;
+    width: 416px;
+    height: 58px;
+    left: 35.56%;
+    right: 35.56%;
+    top: 53.10%;
+    bottom: 52.15%;
+    background: #F8CA0A;
+    border: 1px solid#F8CA0A;
+    border-radius: 5px;
+    font-family: 'Cabin';
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+/* css for verify */
+.form-inline1 input{
+    Width:403px;
+    Height:61px;
+    box-sizing: border-box;
+    position: relative;
+    left: 36.90%;
+    right: 35.56%;
+    margin-top: 2.5%;
+    bottom: 48.44%;
+    background: #FEFEFE;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    font-family: 'Cabin', sans-serif;
+    font-weight: 300;
+    font-size: 27px; 
+    color: #cbcbcb;
+}
+
+.form-inline1 button {
+    position: absolute;
+    width: 403px;
+    height: 58px;
+    left:36.90%;
+    right: 35.56%;
+    top: 59.10%;
+    bottom: 52.15%;
+    background: #F8CA0A;
+    border: 1px solid#F8CA0A;
+    border-radius: 5px;
+    font-family: 'Cabin';
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.form-inline2 button {
+    position: absolute;
+    width: 320px;
+    height: 55px;
+    left:39.2%;
+    right: 38.56%;
+    top: 59.10%;
+    bottom: 52.15%;
+    background: #ffffff;
+    border: 3px solid#F8CA0A;
+    border-radius: 5px;
+    font-family: 'Cabin';
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    color: #F8CA0A;
+}
+
+#bg-color1{
+    background-color: #CCCACA;
+    height: 653px;
+} 
+
+#container1{
+    display:flex;
+}
+#sidenav1{
+    background-color: #FFFCED;
+    margin-left: 2%;
+    width: 400px;
+    height: 653px;
+    border-right: 2px solid#AAA2A2;
+}
+
+#sidenav2{
+    background-color: #FFFFFF;
+    width: 100%;
+    /* height: 653px; */
+    border-right: 2px solid#AAA2A2;
+    padding-top: 10px
+}
+
+.form-inline3 button {
+    position: absolute;
+    width: 320px;
+    height: 55px;
+    left:39.2%;
+    right: 38.56%;
+    top: 59.10%;
+    bottom: 52.15%;
+    background: #ffffff;
+    border: 3px solid#F8CA0A;
+    border-radius: 5px;
+    font-family: 'Cabin';
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    color: #F8CA0A;
+}

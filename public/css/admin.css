@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Habibi&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap%27');
+*{
+    margin: 0;
+    padding:0;
+} 
+
+#parent{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+#ust-logo{
+    max-width: 70px;
+    margin-right: 40px;
+}
+#commerce-logo{
+    max-width: 60px;
+    margin-left: 40px;
+}
+#title, #title2{
+    padding: 0px;   
+    margin: auto; 
+    font-family: 'Habibi', serif;
+    font-weight: 100;
+}
+#title{
+    font-weight: bolder;
+}
+#notif{
+    display: flex;
+    position:absolute;
+    border: none;
+    top: 5%; 
+    margin-left: 80%;
+    max-width: 60px;
+    margin-left: 40px;
+    margin-top: 1.5%;
+    right: 50px;
+    background-color: transparent;
+}
+#notif img{
+    width: 40px;
+}
+.form-inline input {
+    box-sizing: border-box;
+    position: relative;
+    left: 35.56%;
+    right: 35.56%;
+    top: 48.89%;
+    bottom: 52.15%;
+    background: #FEFEFE;
+    border: 1px solid #000000;
+    border-radius: 10px;   
+    width:410px;
+    height: 61px;
+    font-family: 'Cabin', sans-serif;
+    font-weight: 300;
+    font-size: 27px; 
+    /* color: #cbcbcb; */
+}
+
+/* Style the submit button */
+.form-inline button {
+    position: absolute;
+    width: 410px;
+    height: 58px;
+    left: 35.56%;
+    right: 35.56%;
+    top: 53.10%;
+    bottom: 52.15%;
+    background: #F8CA0A;
+    border: 1px solid#F8CA0A;
+    border-radius: 5px;
+    font-family: 'Cabin';
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.content{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.left{
+    width: 6%;
+    background-color: #FFD90D;
+    height:653px;
+}
+.right{
+    width: 94%;
+    height: 100%
+}
+.upper-items{
+    margin-bottom: 200px;
+    margin-top: 25px;
+}
+.lower-items{
+    margin-top: 200px;
+}
+.side-nav-items{
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    font-weight:400;
+    margin: 10px;
+    margin-bottom: 30px;
+}
+.side-nav-logo{
+    width: 40px;
+    text-align: center;
+}
+
+#bg-color1{
+    background-color: #CCCACA;
+    height: 635px;
+} 
+
+#container1{
+    display:flex;
+}
+#sidenav1{
+    background-color: #FFFCED;
+
+    width: 400px;
+    height: 653px;
+    border-right: 2px solid#AAA2A2;
+}
+
+#sidenav2{
+    background-color: #FFFFFF;
+    width: 930px;
+    height: fit-content;
+}
+#search-bar{
+    padding-left: 10px;
+    height: 40px;
+    width: 100%;
+    border-color: #AAA2A2;
+}
+
+#search-div {
+    margin-bottom: 10px;
+    width: 40%;
+}
+
+#search-submit {
+    padding: 5px;
+    background-color: #5f5f5e;
+    height: fit-content;
+    /* margin: auto; */
+    /* top: 50%; */
+}
+
+#Categ{
+    margin-left: 5%;
+    width: 211px;
+    height: 34px;
+    border-radius: 4px;
+}
+
+#Prio{
+    /* margin-left: 5%; */
+    width: 211px;
+    height: 34px;
+    border-radius: 4px;
+}
+
+.btnticket {  
+    margin-left: 121px;
+    margin-top: 1px;
+    width: 84px;
+    height: 45px;   
+    background: transparent;
+    border: none;
+    color: white;   
+    font-size:14px;
+    font-weight:700;
+}
+
+#box1 {
+    background-color: #B8B5B5;
+    width: 690px;
+    Height: 300px;
+    margin-top: 1%;
+    margin-left: 27.2%;
+    background: rgba(184, 181, 181, 0.38);
+}
