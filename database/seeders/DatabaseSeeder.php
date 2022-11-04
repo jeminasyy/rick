@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'dj@meow.com',
             'password' => $password,
             'role' => 'FDO',
-            'categ_id' => 1,
+            // 'categ_id' => 1,
             'verified' => false,
         ]);
 
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'john@meow.com',
             'password' => $password,
             'role' => 'Admin',
-            'categ_id' => 2,
+            // 'categ_id' => 2,
             'verified' => true,
             'email_verified_at' => now(),
         ]);
