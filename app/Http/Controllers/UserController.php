@@ -56,6 +56,8 @@ class UserController extends Controller
             $categs[$x] = $categ;
         }
 
+        $categString = strval($categs);
+
         $formFields = $request->validate([
             'firstName' => ['required', 'min:2'],
             'lastName' => ['required', 'min:2'],
@@ -69,7 +71,7 @@ class UserController extends Controller
 
         $formFields['verified'] = false;
 
-        $formFields['categ_id'] = $categs;
+        $formFields['categ_id'] = $categString;
 
         // dd($formFields);
 
