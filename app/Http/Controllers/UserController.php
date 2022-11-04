@@ -61,7 +61,7 @@ class UserController extends Controller
         $categs = "|";
         for($x=0; $x<count($request->categ_id); $x++){
             $categ = strval($request->categ_id[$x]);
-            $categs = $categs + $categ +"|";
+            $categs = $categs . $categ . "|";
         }
 
         $formFields = $request->validate([
