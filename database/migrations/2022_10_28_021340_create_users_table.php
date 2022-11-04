@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('categ_id')->constrained('categs');
             $table->json('categ_id')->foreign()->constrained('categs')->nullable()->default(null)->change();
             $table->string('email')->unique();
             $table->string('firstName');
@@ -24,7 +25,6 @@ return new class extends Migration
             $table->boolean('verified');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            // $table->foreignId('categ_id')->constrained('categs');
             $table->rememberToken();
             $table->timestamps();
         });
