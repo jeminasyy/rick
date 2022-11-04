@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'password' => $password, // password
             // 'remember_token' => Str::random(10),
             'register_token' => "meow",
-            'categ_id' => 1
+            // 'categ_id' => 1
         ];
     }
 
