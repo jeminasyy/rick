@@ -50,13 +50,18 @@ class UserController extends Controller
             abort(403, 'Unauthorized Access');
         }
 
-        $categs = [];
-        for($x=0; $x<count($request->categ_id); $x++){
-            $categ = (int)$request->categ_id[$x];
-            $categs[$x] = $categ;
-        }
+        // $categs = [];
+        // for($x=0; $x<count($request->categ_id); $x++){
+        //     $categ = (int)$request->categ_id[$x];
+        //     $categs[$x] = $categ;
+        // }
 
-        $categString = strval($categs);
+        // $categString = strval($categs);
+
+        $categs = "|";
+        for($x=0; $x<count($request->categ_id); $x++){
+            $categs = $categs + $request->categ_id[$x] +"|";
+        }
 
         $formFields = $request->validate([
             'firstName' => ['required', 'min:2'],
@@ -71,7 +76,8 @@ class UserController extends Controller
 
         $formFields['verified'] = false;
 
-        $formFields['categ_id'] = $categString;
+        // $formFields['categ_id'] = $categString;
+        $formFields['categ_id'] = $categs;
 
         // dd($formFields);
 
