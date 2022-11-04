@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             // $table->foreignId('categ_id')->constrained('categs');
-            $table->jsonb('categ_id')->foreign()->constrained('categs');
+            $table->jsonb('categ_id')->foreign()->constrained('categs')->nullable()->default(null)->change();
             $table->rememberToken();
             $table->timestamps();
         });
