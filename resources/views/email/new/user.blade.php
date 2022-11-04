@@ -2,7 +2,7 @@
 <p>Welcome to RICK Ticketing System.</p>
 <p>Please create a password to proceed with registration.</p>
 <a 
-    href="http://127.0.0.1:8000/{{$id}}/{{$register_token}}/register"
+    href="https://vast-headland-55467.herokuapp.com/{{$id}}/{{$register_token}}/register"
     style="background-color: #EDC304; 
         border: none;
         color: white;
