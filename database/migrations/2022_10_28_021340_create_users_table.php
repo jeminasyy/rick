@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('categ_id')->constrained('categs');
+            $table->foreignId('categ_id')->constrained('categs')->default(1);
             // $table->string('categ_id')->foreign()->constrained('categs')->nullable()->default(null)->change();
             // $table->string('year');
             $table->string('email')->unique();
