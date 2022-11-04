@@ -15,7 +15,7 @@
 
     <p style="font-weight: bold; margin-top: 10px;">Tell us your experience!</p>
     <a 
-        href="http://vast-headland-55467.herokuapp.com/{{$Ticket_id}}/{{$Student_id}}/feedback"
+        href="http://vast-headland-55467.herokuapp.com{{$Ticket_id}}/{{$Student_id}}/feedback"
         style="background-color: #EDC304; 
             border: none;
             color: white;
