@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             // $table->foreignId('categ_id')->constrained('categs');
             $table->json('categ_id')->foreign()->constrained('categs')->nullable()->default(null)->change();
+            $table->string('year');
             $table->string('email')->unique();
             $table->string('firstName');
             $table->string('lastName');
