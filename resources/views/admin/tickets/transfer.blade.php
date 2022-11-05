@@ -19,6 +19,9 @@
 
                     <p class="attribute">Description</p>
                     <p>{{$ticket->description}}</p>
+
+                    <p class="attribute">Assignee</p>
+                    <p>{{$ticket->user->email}}</p>
                 </div>
 
                 <div class="mb-6">
