@@ -6,7 +6,7 @@
             </a>
             <p style="font-size: 17px; font-weight:bold">Ticket# {{$ticket->id}}</p>
             
-            @if ($ticket->user_id == auth()->id() || auth()->user()->role == "Admin")
+            @if ($ticket->user_id == auth()->id())
                 <button 
                     type="button" 
                     class="btn btn-secondary btn-lg"

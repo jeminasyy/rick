@@ -298,7 +298,7 @@ class TicketController extends Controller
 
     // Show transfer ticket form
     public function transfer(Ticket $ticket) {
-        if (auth()->user()->role == "Admin" || $ticket->user_id == auth()->id()) {
+        if ($ticket->user_id == auth()->id()) {
             return view('admin.tickets.transfer', [
                 'ticket' => $ticket,
                 'categs' => Categ::all(),
@@ -310,7 +310,7 @@ class TicketController extends Controller
 
     // Transfer Ticket
     public function setTransfer(Request $request, Ticket $ticket) {
-        if (auth()->user()->role == "Admin" || $ticket->user_id == auth()->id()) {
+        if ($ticket->user_id == auth()->id()) {
             if (!$request->categ_id && !$request->user_id){
                 return back()->withErrors(['categ_id' => 'Form is empty'])->onlyInput('categ_id');
             }
