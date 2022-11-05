@@ -314,7 +314,7 @@ class TicketController extends Controller
             }
     
             if ($request->categ_id) {
-                $formFields['categ_ig'] = $request->categ_id;
+                $formFields['categ_id'] = $request->categ_id;
             }
     
             if ($request->user_id) {
