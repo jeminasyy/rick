@@ -121,7 +121,7 @@ class TicketController extends Controller
             'year' => 'required'
         ]);
 
-        $categ_id = "|" . $request->categ->id . "|";
+        $categ_id = "|" . $request->categ_id . "|";
 
         $formFields['student_id'] = (string)$student->id;
         $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
