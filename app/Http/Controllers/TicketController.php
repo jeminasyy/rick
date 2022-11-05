@@ -121,17 +121,19 @@ class TicketController extends Controller
             'year' => 'required'
         ]);
 
+        $categ_id = "|" . $request->categ->id . "|";
+
         $formFields['student_id'] = (string)$student->id;
-        $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
+        $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
 
         if (count($users) == 0) {
             $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
 
-            $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->count();
+            $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
             $min_id = $admins[0]->id;
 
             for($x=1; $x<count($users); $x++){
-                $a = DB::table('tickets')->where('user_id', $admins[$x]->id)->whereNot('status', 'Resolved')->count();
+                $a = DB::table('tickets')->where('user_id', $admins[$x]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
                 if($min > $a) {
                     $min = $a;
                     $min_id = $admins[$x]->id;
