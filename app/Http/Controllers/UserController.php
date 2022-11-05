@@ -152,7 +152,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             // auth()->login();
 
-            return redirect('/tickets')->with('message', 'You are now logged in!');
+            return redirect('/dashboard')->with('message', 'You are now logged in!');
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
