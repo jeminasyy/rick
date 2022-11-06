@@ -16,10 +16,10 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->uuid('id');
-            $table->foreignId('categ_id')->constrained('categs');
-            $table->foreignId('user_id')->constrained('users');
-            // $table->string('categ_id')->foreign()->references('id')->on('categs');
-            // $table->string('user_id')->foreign()->references('id')->on('users');
+            // $table->foreignId('categ_id')->constrained('categs');
+            // $table->foreignId('user_id')->constrained('users');
+            $table->uuid('categ_id')->foreign()->references('id')->on('categs');
+            $table->uuid('user_id')->foreign()->references('id')->on('users');
             $table->char('student_id')->foreign()->references('id')->on('students');
             $table->string('year');
             $table->string('department');
