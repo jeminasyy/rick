@@ -31,7 +31,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            DB::statement("ALTER TABLE books AUTO_INCREMENT = 1;");
+            DB::statement("ALTER TABLE users AUTO_INCREMENT = 1;");
         });
     }
 

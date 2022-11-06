@@ -22,7 +22,7 @@ return new class extends Migration
             $table->longText('comments')->nullable();
             $table->timestamps();
 
-            DB::statement("ALTER TABLE books AUTO_INCREMENT = 1000;");
+            DB::statement("ALTER TABLE ratings AUTO_INCREMENT = 1000;");
         });
     }
 
