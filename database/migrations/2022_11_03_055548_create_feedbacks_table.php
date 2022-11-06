@@ -21,9 +21,8 @@ return new class extends Migration
             $table->integer('rating');
             $table->longText('comments')->nullable();
             $table->timestamps();
-
-            DB::statement("ALTER TABLE feedbacks AUTO_INCREMENT = 1000;");
         });
+        DB::statement("ALTER TABLE feedbacks AUTO_INCREMENT = 1000;");
     }
 
     /**

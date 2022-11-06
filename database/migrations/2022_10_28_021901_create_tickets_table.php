@@ -30,9 +30,8 @@ return new class extends Migration
             $table->dateTime('dateResponded')->nullable();
             $table->dateTime('dateResolved')->nullable();
             $table->timestamps();
-
-            DB::statement("ALTER TABLE tickets AUTO_INCREMENT = 1000;");
         });
+        DB::statement("ALTER TABLE tickets AUTO_INCREMENT = 1000;");
     }
 
     /**

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('type');
             $table->longText('description')->nullable();
             $table->timestamps();
-
-            DB::statement("ALTER TABLE categs AUTO_INCREMENT = 1;");
         });
+
+        DB::statement("ALTER TABLE categs AUTO_INCREMENT = 1;");
     }
 
     /**

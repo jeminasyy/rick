@@ -20,9 +20,8 @@ return new class extends Migration
             $table->date('startDate');
             $table->date('endDate');
             $table->timestamps();
-            
-            DB::statement("ALTER TABLE schoolterms AUTO_INCREMENT = 1;");
         });
+        DB::statement("ALTER TABLE schoolterms AUTO_INCREMENT = 1;");
     }
 
     /**
