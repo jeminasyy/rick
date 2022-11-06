@@ -17,7 +17,8 @@ return new class extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->char('student_id')->foreign()->references('id')->on('students');
-            $table->foreignId('ticket_id')->constrained('tickets');
+            $table->string('ticket_id')->foreign()->references('id')->on('tickets');
+            // $table->foreignId('ticket_id')->constrained('tickets');
             $table->integer('rating');
             $table->longText('comments')->nullable();
             $table->timestamps();
