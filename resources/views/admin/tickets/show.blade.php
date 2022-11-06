@@ -99,7 +99,7 @@
                     <p>{{$ticket->priority}}</p>
                 @endif
 
-                @if ($ticket->status == "Resolved")
+                @if ($ticket->status == "Resolved" || $ticket->status == "Pending")
                     <p class="attribute">Date Responded</p>
                     <p>{{$ticket->dateResponded}}</p>
 
