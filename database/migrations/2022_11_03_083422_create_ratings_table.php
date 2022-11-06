@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ratings', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->char('student_id')->foreign()->references('id')->on('students');
             $table->string('ticket_id')->foreign()->references('id')->on('tickets');
             // $table->foreignId('ticket_id')->constrained('tickets');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->longText('comments')->nullable();
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE ratings AUTO_INCREMENT = 1000;");
+        // DB::statement("ALTER TABLE ratings AUTO_INCREMENT = 1000;");
     }
 
     /**

@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tickets', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             // $table->foreignId('categ_id')->constrained('categs');
             // $table->foreignId('user_id')->constrained('users');
             $table->string('categ_id')->foreign()->references('id')->on('categs');
@@ -33,7 +33,7 @@ return new class extends Migration
             $table->dateTime('dateResolved')->nullable();
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE tickets AUTO_INCREMENT = 1000;");
+        // DB::statement("ALTER TABLE tickets AUTO_INCREMENT = 1000;");
     }
 
     /**

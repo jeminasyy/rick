@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             // $table->foreignId('categ_id')->constrained('categs')->default(1);
             // $table->string('categ_id')->foreign()->constrained('categs')->nullable()->default(null)->change();
             // $table->string('year');
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE users AUTO_INCREMENT = 1;");
+        // DB::statement("ALTER TABLE users AUTO_INCREMENT = 1;");
     }
 
     /**
