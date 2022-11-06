@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categs', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id');
             $table->string('name');
             $table->string('type');
             $table->longText('description')->nullable();

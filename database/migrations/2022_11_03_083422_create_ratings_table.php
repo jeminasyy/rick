@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ratings', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id');
             $table->char('student_id')->foreign()->references('id')->on('students');
             $table->string('ticket_id')->foreign()->references('id')->on('tickets');
             // $table->foreignId('ticket_id')->constrained('tickets');

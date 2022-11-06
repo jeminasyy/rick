@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id');
             // $table->foreignId('categ_id')->constrained('categs')->default(1);
             // $table->string('categ_id')->foreign()->constrained('categs')->nullable()->default(null)->change();
             // $table->string('year');

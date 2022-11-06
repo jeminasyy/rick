@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('schoolterms', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id');
             $table->string('term');
             $table->date('startDate');
             $table->date('endDate');
