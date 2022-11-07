@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ReopenController;
 use App\Http\Controllers\TicketController;
 /*
 |--------------------------------------------------------------------------
@@ -22,23 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
 
-// // ----STUDENTS----
-// //reopen ticket verify email
-// Route::get('/reopen/email', function(){
-//     return view('/reopen/email');
-// })->middleware('guest');
-// //reopen ticket enter code
-
-// //reopen ticket
-// Route::get('/reopen', function() {
-//     return view('reopen.create');
-// })->middleware('guest');
-// //submit ticket verify email
-// Route::get('/submit/email', function(){
-//     return view('/submit/email');
-// })->middleware('guest');
-
-
 // Show Dashboard
 Route::get('/dashboard', function(){
     return view('dashboard.index');
@@ -53,17 +37,14 @@ Route::get('/security', [UserController::class, 'changePassword'])->middleware('
 // ----CATEGORIES----
 // Show Categories List
 Route::get('/categories', [CategController::class, 'index'])->middleware('auth');
-
 // Show Create Category Form
 Route::get('/categories/create', [CategController::class, 'create'])->middleware('auth');
-
 // Create New Category
 Route::post('/categories', [CategController::class, 'store'])->middleware('auth');
-
 // Update Category
 
-
 // Delete Category
+
 
 
 // ----TICKETS----
@@ -73,11 +54,11 @@ Route::post('/categories', [CategController::class, 'store'])->middleware('auth'
 // Show Input Email Form
 Route::get('/new/verify-email', [TicketController::class, 'inputNew'])->middleware('guest');
 // Send Email
-Route::put('/sendmail', [TicketController:: class, 'emailNew'])->middleware('guest');
+Route::put('/new/email', [TicketController:: class, 'emailNew'])->middleware('guest');
 // Show Input Code Form
-Route::get('/new/verify-code', [TicketController::class, 'codeNew'])->middleware('guest');
+Route::get('/new/code', [TicketController::class, 'codeNew'])->middleware('guest');
 // Verify Code
-Route::put('/verifyNew', [TicketController::class, 'verifyNew'])->middleware('guest');
+Route::put('/new/verify', [TicketController::class, 'verifyNew'])->middleware('guest');
 // Show Complete Student Information Form
 Route::get('/student-information/{student}', [TicketController::class, 'completeInfo'])->middleware('guest')->name('completeInfo');
 // Show Update Student Information 
@@ -90,12 +71,16 @@ Route::put('/tickets/{student}', [TicketController::class, 'store'])->middleware
 Route::get('/new/submitted', [TicketController::class, 'newSuccess'])->middleware('guest');
 
 // 2. Reopen Tickets
-// Show Reopen Ticket Form
-Route::get('/tickets/reopen', [TicketController::class, 'reopen'])->middleware('guest');
-//Verify email first
-Route::get('/reopen/verify-email', [TicketController::class, 'verifyReopen'])->middleware('guest');
+// Show Input Email Form
+Route::get('/reopen/verify-email', [ReopenController::class, 'inputReopen'])->middleware('guest');
+// Send Code to Email
+Route::put('/reopen/email', [ReopenController:: class, 'emailReopen'])->middleware('guest');
 // Show Input Code Form 
+Route::get('/reopen/code', [ReopenController::class, 'codeReopen'])->middleware('guest');
 // Verify the code
+Route::put('/reopen/verify', [ReopenController::class, 'verifyReopen'])->middleware('guest');
+// Display Student's Finished Tickets
+Route::get('reopen/view', [ReopenController::class, 'viewReopen'])->middleware('guest');
 // Show Reopen Ticket Form **PUT method
 
 
@@ -104,40 +89,28 @@ Route::get('/reopen/verify-email', [TicketController::class, 'verifyReopen'])->m
 
 // Show Tickets list
 Route::get('/tickets', [TicketController::class,'index'])->middleware('auth');
-
 // Update Ticket Priority
 Route::put('/{ticket}/ticket/updatePriority', [TicketController::class, 'updatePriority'])->middleware('auth');
-
 // Mark as Ongoing
 Route::put('/{ticket}/ticket/setOngoing', [TicketController::class, 'setOngoing'])->middleware('auth');
-
 // Display Void Ticket Form
 Route::get('/{ticket}/ticket/void', [TicketController::class, 'void'])->middleware('auth');
-
 // Void Ticket
 Route::put('/{ticket}/ticket/setVoided', [TicketController::class, 'setVoided'])->middleware('auth');
-
 // Display Void Ticket Form
 Route::get('/{ticket}/ticket/resolve', [TicketController::class, 'resolve'])->middleware('auth');
-
 // Set Ticket as Pending Before Resolving
 Route::put('/{ticket}/ticket/setPending', [TicketController::class, 'setPending'])->middleware('auth');
-
-// Feedback Form
+// Feedback Form --- STUDENTS ONLY
 Route::get('/{ticket}/{student}/feedback', [FeedbackController::class, 'feedback'])->middleware('guest');
-
 // Resolve Ticket
 Route::put('/{ticket}/ticket/setResolved', [FeedbackController::class, 'setResolved'])->middleware('guest');
-
 // Display Feedback Submitted Page
 Route::get('/feedback/submitted', [FeedbackController::class, 'submitted'])->middleware('guest');
-
 // View Single Ticket
 Route::get('/tickets/{id}', [TicketController::class, 'show'])->middleware('auth')->name('ticket');
-
 // Display Transfer Ticket Form
 Route::get('/{ticket}/ticket/transfer', [TicketController::class, 'transfer'])->middleware('auth');
-
 // Transfer Ticket
 Route::put('/{ticket}/ticket/setTransfer', [TicketController::class, 'setTransfer'])->middleware('auth');
 
@@ -145,16 +118,12 @@ Route::put('/{ticket}/ticket/setTransfer', [TicketController::class, 'setTransfe
 // ----USERS----
 // View User Profile
 Route::get('profile', [UserController::class, 'profile'])->middleware('auth');
-
 // View Users List
 Route::get('/users', [UserController::class, 'index'])->middleware('auth');
-
 // Show Create User Form
 Route::get('/users/create', [UserController::class, 'create'])->middleware('auth');
-
 // Create New Account
 Route::post('/users', [UserController::class, 'store'])->middleware('auth');
-
 // Verify User Email
 Route::get('/users/verify', [UserController::class, 'verify'])->middleware('auth')->name('verification.notice');
 

@@ -42,7 +42,7 @@ class TicketController extends Controller
             $formFields['code'] = $code;
             $student->update($formFields);
             Mail::to($student->email)->send(new VerifyNew($student, $code));
-            return redirect('/new/verify-code');
+            return redirect('/new/code');
         }
 
         $formFields = $request->validate([
@@ -59,7 +59,7 @@ class TicketController extends Controller
         
         Mail::to($student->email)->send(new VerifyNew($student, $code));
 
-        return redirect('/new/verify-code');
+        return redirect('/new/code');
     }
 
     // Show verify code form

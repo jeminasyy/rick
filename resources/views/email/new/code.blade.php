@@ -1,5 +1,5 @@
 <x-layout>
-    <form method="POST" action="/verifyNew" class="form-inline1">
+    <form method="POST" action="/new/verify" class="form-inline1">
         @csrf
         @method('PUT')
         <h1 style="color:black; font-family: 'Cabin', sans-serif; font-size: 29;text-align: center; margin-top: 8%; position: relative;">Verify Email Address</h1>
