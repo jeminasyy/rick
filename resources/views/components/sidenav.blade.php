@@ -36,7 +36,7 @@
             <div class="profile-details">
                 <div class="name_job">
                     <div class="name">Team Effica</div>
-                    <div class="job">Developers</div>
+                    <div class="job">&#169; 2022</div>
                 </div>
             </div>
             <form class="inline" method="POST" action="/logout">
