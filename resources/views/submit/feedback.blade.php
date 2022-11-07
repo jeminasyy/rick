@@ -32,7 +32,17 @@
             </div>
 
             <div class="mb-6">
+                <label>Did we solved the problem?</label>
+                
+                <input type="radio" id="yes" name="solved" value=true>
+                <label for="yes">Yes</label><br>
+                <input type="radio" id="no" name="solved" value=false>
+                <label for="no">No</label>
+            </div>
+
+            <div class="mb-6">
                 <label for="comments">Comments:</label>
+                <p>Please tell us how we can improve</p>
                 <textarea 
                     name="comments" 
                     class="form-control" 

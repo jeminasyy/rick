@@ -25,7 +25,15 @@ class FeedbackController extends Controller
     public function setResolved(Request $request, Ticket $ticket) {
         $feedbackFields = $request->validate([
             'rating' => 'required',
+            'solved' => 'required'
         ]);
+
+        if ($request->solved == false) {
+            $feedbackFields['student_id'] = $ticket->student->id;
+            $feedbackFields['ticket_id'] = $ticket->id;
+
+            $formFields['status'] = "New";
+        }
 
         if ($request->comments) {
             $feedbackFields['comments'] = $request->comments;

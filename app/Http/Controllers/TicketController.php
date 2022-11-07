@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Mail;
 
 // -------------------------------------------
 // ** CONTROLLER FOR SUBMITTING NEW TICKETS **
+// ** AND UPDATING TICKET STATUS **
 // -------------------------------------------
 
 class TicketController extends Controller
@@ -176,16 +177,6 @@ class TicketController extends Controller
         return view('admin.tickets.submitted');
     }
 
-    // Reopen existing ticket
-    // Verify email first
-    public function verifyReopen() {
-        return view('admin.tickets.reopen.email');
-    }
-    // Show verify code form
-
-    // Verify email with code
-
-    
 
     // ---- ADMIN/FDO VIEW ----
     // Show all tickets
