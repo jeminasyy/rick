@@ -33,7 +33,7 @@
 
             <div class="mb-6">
                 <label>Did we solved the problem?</label>
-                
+                <br>
                 <input type="radio" id="yes" name="solved" value=true>
                 <label for="yes">Yes</label><br>
                 <input type="radio" id="no" name="solved" value=false>
