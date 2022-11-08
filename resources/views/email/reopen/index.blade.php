@@ -1,5 +1,5 @@
 <x-layout>
-    <form method="POST" action="/emailReopen" class="form-inline">
+    <form method="POST" action="/reopen/email" class="form-inline">
         @csrf
         @method('PUT')
         <h1 style="color:black; font-family: 'Cabin', sans-serif; font-size: 29;text-align: center; margin-top: 10%; position: relative;">Please enter 

@@ -125,9 +125,9 @@
                 <button  
                     class="btn btn-secondary btn-lg"
                     id="secondary-button"
-                    onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                    onclick="location.href='/;"
                 >
-                    View Rating
+                    View Feedback
                 </button>
             </div>
             @endif
