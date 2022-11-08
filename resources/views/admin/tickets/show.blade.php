@@ -58,9 +58,6 @@
                 @if ($ticket->status == "Pending")
                     <p class="attribute">Status</p>
                     <p>Ongoing - Waiting for Student's Feedback</p>
-                @elseif ($ticket->status == "Resolved")
-                    <p class="attribute">Status</p>
-                    <p>{{$ticket->status}} <a href="/tickets/{{$ticket->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View Rating</a></p>
                 @else
                     <p class="attribute">Status</p>
                     <p>{{$ticket->status}}</p>
@@ -122,6 +119,18 @@
                     <a>View Ticket </a>
                 @endif --}}
             </div>
+
+            @if ($ticket->status == "Resolved")
+            <div class="bottom">
+                <button  
+                    class="btn btn-secondary btn-lg"
+                    id="secondary-button"
+                    onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                >
+                    View Rating
+                </button>
+            </div>
+            @endif
 
             @if ($ticket->user_id == auth()->id())
                 @if ($ticket->status == "New")
