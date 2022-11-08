@@ -24,7 +24,7 @@ class FeedbackController extends Controller
     // Submit Feedback and Mark as Resolved
     public function setResolved(Request $request, Ticket $ticket) {
 
-        dd($request);
+        // dd($request);
         $feedbackFields = $request->validate([
             'rating' => 'required',
             'satisfied' => 'required'
@@ -36,11 +36,11 @@ class FeedbackController extends Controller
             $feedbackFields['comments'] = $request->comments;
         }
 
-        if ($feedbackFields['satisfied'] == "true") {
-            $feedback['satisfied'] = true;
-        } else {
-            $feedbackFields['satisfied'] = false;
-        }
+        // if ($feedbackFields['satisfied'] == "true") {
+        //     $feedback['satisfied'] = true;
+        // } else {
+        //     $feedbackFields['satisfied'] = false;
+        // }
 
         $feedbackFields['student_id'] = $ticket->student->id;
         $feedbackFields['ticket_id'] = $ticket->id;
