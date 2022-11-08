@@ -24,13 +24,13 @@ class FeedbackController extends Controller
     // Submit Feedback and Mark as Resolved
     public function setResolved(Request $request, Ticket $ticket) {
 
-        // dd($request);
+        dd($request);
         $feedbackFields = $request->validate([
             'rating' => 'required',
             'satisfied' => 'required'
         ]);
 
-        dd($feedbackFields);
+        // dd($feedbackFields);
 
         if ($request->comments) {
             $feedbackFields['comments'] = $request->comments;
