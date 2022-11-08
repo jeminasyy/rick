@@ -23,6 +23,8 @@ class FeedbackController extends Controller
 
     // Submit Feedback and Mark as Resolved
     public function setResolved(Request $request, Ticket $ticket) {
+
+        dd($request);
         $feedbackFields = $request->validate([
             'rating' => 'required',
             'solved' => 'required',
@@ -41,13 +43,13 @@ class FeedbackController extends Controller
         $student = Student::find($ticket->student_id);        
         $studentFields['ongoingTickets'] = $student->ongoingTickets - 1;
 
-        Rating::create($feedbackFields);
+        $feedback = Rating::create($feedbackFields);
         $ticket->update($formFields);
         $student->update($studentFields);
 
         // dd($feedback);
 
-        if ($request->solved == false) {
+        if ($feedback->satisfied == false) {
             return redirect()->route('reopenUnsolved', [$ticket, $student]);
         }
 
