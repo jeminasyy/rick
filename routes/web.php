@@ -109,7 +109,7 @@ Route::get('/{ticket}/ticket/resolve', [TicketController::class, 'resolve'])->mi
 Route::put('/{ticket}/ticket/setPending', [TicketController::class, 'setPending'])->middleware('auth');
 // Feedback Form --- STUDENTS ONLY
 Route::get('/{ticket}/{student}/feedback', [FeedbackController::class, 'feedback'])->middleware('guest');
-// Resolve Ticket
+// Resolve Ticket -- AFTER SUBMITTING FEEDBACK
 Route::put('/{ticket}/{student}/setResolved', [FeedbackController::class, 'setResolved'])->middleware('guest');
 // Display Feedback Submitted Page
 Route::get('/feedback/submitted', [FeedbackController::class, 'submitted'])->middleware('guest');

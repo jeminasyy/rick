@@ -34,10 +34,10 @@
             <div class="mb-6">
                 <label>Was the problem resolved?<span style="font-weight: bold; color:red">*</span></label>
                 <br>
-                <input type="radio" id="yes" name="solved" value=true>
-                <label for="yes">Yes</label><br>
-                <input type="radio" id="no" name="solved" value=false>
-                <label for="no">No</label>
+                <input type="radio" id="solved" name="solved" value=true>
+                <label for="solved">Yes</label><br>
+                <input type="radio" id="solved" name="solved" value=false>
+                <label for="solved">No</label>
                 @error('solved')
                 <p class="text-red-500 text-md mt-1">{{$message}}</p>
                 @enderror
