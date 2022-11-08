@@ -114,6 +114,10 @@
                     <p class="attribute">Reason</p>
                     <p>{{$ticket->response}}</p>
                 @endif
+
+                {{-- @if(count($feedbacks) != 0) 
+                    <a>View Ticket </a>
+                @endif --}}
             </div>
 
             @if ($ticket->user_id == auth()->id())

@@ -80,8 +80,14 @@ Route::get('/reopen/code', [ReopenController::class, 'codeReopen'])->middleware(
 // Verify the code
 Route::put('/reopen/verify', [ReopenController::class, 'verifyReopen'])->middleware('guest');
 // Display Student's Finished Tickets
-Route::get('reopen/view', [ReopenController::class, 'viewReopen'])->middleware('guest');
+Route::get('/reopen/view/{student}', [ReopenController::class, 'viewReopen'])->middleware('guest');
 // Show Reopen Ticket Form **PUT method
+Route::put('/reopen/{ticket}/{student}', [ReopenController::class, 'reopen'])->middleware('guest');
+
+// When Student is unsatisfied with the solution
+// They can re-open the ticket
+Route::get('/reopenConfirm/{ticket}/{student}', [FeedbackController::class, 'reopenUnsolved'])->middleware('guest');
+// If Yes - Redirect to /reopen/ticket/student
 
 
 // ----TICKETS----
@@ -104,7 +110,7 @@ Route::put('/{ticket}/ticket/setPending', [TicketController::class, 'setPending'
 // Feedback Form --- STUDENTS ONLY
 Route::get('/{ticket}/{student}/feedback', [FeedbackController::class, 'feedback'])->middleware('guest');
 // Resolve Ticket
-Route::put('/{ticket}/ticket/setResolved', [FeedbackController::class, 'setResolved'])->middleware('guest');
+Route::put('/{ticket}/{student}/setResolved', [FeedbackController::class, 'setResolved'])->middleware('guest');
 // Display Feedback Submitted Page
 Route::get('/feedback/submitted', [FeedbackController::class, 'submitted'])->middleware('guest');
 // View Single Ticket

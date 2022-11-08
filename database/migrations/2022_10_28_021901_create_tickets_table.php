@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('status')->default('New');
             $table->string('priority')->default('Unset');
             $table->string('response')->nullable();
-            $table->integer('timesReopened')->default(0);
+            // $table->integer('timesReopened')->default(0);
             $table->dateTime('dateSubmitted');
             $table->dateTime('dateResponded')->nullable();
             $table->dateTime('dateResolved')->nullable();

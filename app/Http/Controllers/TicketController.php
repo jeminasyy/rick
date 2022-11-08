@@ -190,7 +190,8 @@ class TicketController extends Controller
     // Show single ticket
     public function show($id){
         return view('admin.tickets.show', [
-            'ticket' => Ticket::find($id)
+            'ticket' => Ticket::find($id),
+            // 'feedbacks' => DB::table('feedbacks')->where('ticket_id', $id)->get()
         ]);
     } 
 
@@ -268,6 +269,10 @@ class TicketController extends Controller
             'ticket' => $ticket
         ]);
     }
+
+    // --------------------------------------------------
+    // ** RESOLVING TICKETS IS AT FEEDBACK CONTROLLER **
+    // --------------------------------------------------
 
     // Mark as Pending
     public function setPending(Request $request, Ticket $ticket) {

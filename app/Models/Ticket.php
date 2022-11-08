@@ -63,8 +63,13 @@ class Ticket extends Model
         return $this->belongsTo(Student::class, 'student_id');
     }
 
-    // Relationship to Feedback
-    public function feedback(){
-        return $this->hasOne(Feedback::class, 'ticket_id');
+    // Relationship to Rating
+    public function rating(){
+        return $this->hasOne(Rating::class, 'ticket_id');
+    }
+
+    // Relationship to Reopen
+    public function reopens() {
+        return $this->hasMany(Reopen::class, 'ticket_id');
     }
 }

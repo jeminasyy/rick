@@ -28,13 +28,6 @@ class FeedbackController extends Controller
             'solved' => 'required'
         ]);
 
-        if ($request->solved == false) {
-            $feedbackFields['student_id'] = $ticket->student->id;
-            $feedbackFields['ticket_id'] = $ticket->id;
-
-            $formFields['status'] = "New";
-        }
-
         if ($request->comments) {
             $feedbackFields['comments'] = $request->comments;
         }
@@ -47,11 +40,15 @@ class FeedbackController extends Controller
         $student = Student::find($ticket->student_id);        
         $studentFields['ongoingTickets'] = $student->ongoingTickets - 1;
 
-        $feedback = Rating::create($feedbackFields);
+        Rating::create($feedbackFields);
         $ticket->update($formFields);
         $student->update($studentFields);
 
         // dd($feedback);
+
+        if ($request->solved == false) {
+            return redirect()->route('reopenUnsolved', [$ticket, $student]);
+        }
 
         return redirect('/feedback/submitted');
     }
@@ -59,5 +56,10 @@ class FeedbackController extends Controller
     // Display Submitted Page
     public function submitted(){
         return view('submit.feedback-submitted');
+    }
+
+    // Reopen Unresolved Ticket
+    public function reopenUnsolved(Ticket $ticket, Student $student){
+        return view();
     }
 }

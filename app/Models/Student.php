@@ -45,8 +45,13 @@ class Student extends Model
         return $this->hasMany(Ticket::class, 'student_id');
     }
 
-    // Relationship with Students
-    public function feedback() {
-        return $this->hasOne(Feedback::class, 'student_id');
+    // Relationship with Ratings
+    public function rating() {
+        return $this->hasMany(Rating::class, 'student_id');
+    }
+
+    // Relationship with Reopenratings
+    public function reopenrating() {
+        return $this->hasMany(Reopenrating::class, 'student_id');
     }
 }

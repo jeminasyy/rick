@@ -69,4 +69,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function categs() {
         return $this->hasManyThrough(Categ::class, 'categ_id');
     }
+
+    // Relationship to Reopen
+    public function reopens() {
+        return $this->hasMany(Reopen::class, 'user_id');
+    }
 }

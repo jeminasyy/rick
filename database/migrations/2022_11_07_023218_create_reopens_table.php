@@ -19,8 +19,13 @@ return new class extends Migration
             $table->foreignId('ticket_id')->constrained('tickets');
             $table->foreignId('user_id')->constrained('users');
             $table->longText('reason');
-            $table->longText('solution')->nullable();
-            $table->string('status');
+
+            $table->string('status')->default('New');
+            $table->string('priority')->default('Unset');
+            $table->string('response')->nullable();
+            $table->dateTime('dateSubmitted');
+            $table->dateTime('dateResponded')->nullable();
+            $table->dateTime('dateResolved')->nullable();
             $table->timestamps();
         });
     }
