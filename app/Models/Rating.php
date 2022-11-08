@@ -13,6 +13,7 @@ class Rating extends Model
         'student_id',
         'ticket_id',
         'rating',
+        'satisfied',
         'comments'
     ];
 

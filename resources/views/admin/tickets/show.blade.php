@@ -58,6 +58,9 @@
                 @if ($ticket->status == "Pending")
                     <p class="attribute">Status</p>
                     <p>Ongoing - Waiting for Student's Feedback</p>
+                @elseif ($ticket->status == "Resolved")
+                    <p class="attribute">Status</p>
+                    <p>{{$ticket->status}} <a href="/tickets/{{$ticket->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View Student's Rating</a></p>
                 @else
                     <p class="attribute">Status</p>
                     <p>{{$ticket->status}}</p>

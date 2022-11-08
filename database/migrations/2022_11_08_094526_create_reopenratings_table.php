@@ -18,6 +18,7 @@ return new class extends Migration
             $table->char('student_id')->foreign()->references('id')->on('students');
             $table->foreignId('reopen_id')->constrained('reopens');
             $table->integer('rating');
+            $table->boolean('satisfied');
             $table->longText('comments')->nullable();
             $table->timestamps();
         });

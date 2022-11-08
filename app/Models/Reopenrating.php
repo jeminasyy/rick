@@ -13,6 +13,7 @@ class Reopenrating extends Model
         'student_id',
         'reopen_id',
         'rating',
+        'satisfied',
         'comments'
     ];
 
