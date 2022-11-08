@@ -27,7 +27,6 @@ class FeedbackController extends Controller
         // dd($request);
         $feedbackFields = $request->validate([
             'rating' => 'required',
-            'solved' => 'required',
             'satisfied' => 'required'
         ]);
 
