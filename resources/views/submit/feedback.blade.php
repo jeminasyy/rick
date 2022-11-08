@@ -34,9 +34,9 @@
             <div class="mb-6">
                 <label>Was the problem resolved?<span style="font-weight: bold; color:red">*</span></label>
                 <br>
-                <input type="radio" id="solved" name="satisfied" value="true">
+                <input type="radio" id="solved" name="satisfied" value=1>
                 <label for="satisfied">Yes</label><br>
-                <input type="radio" id="solved" name="satisfied" value="false">
+                <input type="radio" id="solved" name="satisfied" value=0>
                 <label for="satisfied">No</label>
                 @error('solved')
                 <p class="text-red-500 text-md mt-1">{{$message}}</p>
