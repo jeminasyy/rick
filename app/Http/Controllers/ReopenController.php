@@ -63,7 +63,7 @@ class ReopenController extends Controller
         ]);
     }
 
-    public function reopen(Ticket $ticket) {
+    public function reopen(){
         return view('email.reopen.code');
     }
 
