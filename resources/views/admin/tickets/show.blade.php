@@ -177,21 +177,38 @@
 
         @if ($ticket->rating)
             <div class="ticket-div">
-                <p style="font-size: 17px; font-weight:bold">Feedback submitted on {{$ticket->rating->created_at}}</p>
+                <p style="font-size: 17px; font-weight:bold">{{$ticket->rating->created_at}} - Feedback submitted</p>
                 <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                 transform: rotate(0.08deg); ">
-                <p class="attribute">Rating</p>
-                <p>{{$ticket->rating->rating}}</p>
+                <p>
+                    <span class="attribute">Rating: </span>
+                    {{$ticket->rating->rating}}
+                </p>
 
-                <p class="attribute">Solution Accepted</p>
                 @if ($ticket->rating->satisfied == 1)
-                    <p>Yes</p>
+                    <p>
+                        <span class="attribute">Solution Accepted: </span>
+                        Yes
+                    </p>
                 @else
-                    <p>No</p>
+                    <p>
+                        <span class="attribute">Solution Accepted: </span>
+                        No
+                    </p>
                 @endif
 
                 <p class="attribute">Comments</p>
                 <p>{{$ticket->rating->comments}}</p>
+            </div>
+        @endif
+
+        @if ($ticket->reopens)
+            <div class="ticket-div">
+                @foreach($ticket->reopens as $reopen)
+                    <p style="font-size: 17px; font-weight:bold">{{$reopen->created_at}} - Ticket Reopened</p>
+                    <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
+                    transform: rotate(0.08deg); ">
+                @endforeach
             </div>
         @endif
     </x-sidenav>
