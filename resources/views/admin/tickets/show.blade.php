@@ -115,10 +115,6 @@
                     <p>{{$ticket->response}}</p>
                 @endif
 
-                {{-- @if(count($feedbacks) != 0) 
-                    <a>View Ticket </a>
-                @endif --}}
-
                 @if (!$ticket->reopens)
                     @if ($ticket->user_id == auth()->id())
                         @if ($ticket->status == "New")
