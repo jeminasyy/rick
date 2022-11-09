@@ -105,6 +105,8 @@ class ReopenController extends Controller
                 }
             }
             $formFields['user_id'] = $min_id;
+        } else {
+            $formFields['user_id'] = $ticket->user->id;
         }
 
         $formFields['ticket_id'] = $ticket->id;
