@@ -43,7 +43,7 @@
                     @endif
                     <td style="word-break: break-all;">{{$ticket->user->email}}</td>
                     <td>
-                      <a class="" href="/tickets/{{$ticket->id}}">Reopen</a>
+                      <a class="reopen-button" href="/tickets/{{$ticket->id}}">Reopen</a>
                     </td>
                   </tr>
     
