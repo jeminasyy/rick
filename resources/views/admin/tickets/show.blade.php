@@ -175,7 +175,7 @@
 
         </div>
 
-        @if ($ticket->status == "Resolved")
+        @if ($ticket->rating)
             <div class="ticket-div">
                 <p style="font-size: 17px; font-weight:bold">Feedback submitted on {{$ticket->rating->created_at}}</p>
                 
@@ -188,6 +188,9 @@
                 @else
                     <p>No</p>
                 @endif
+
+                <p class="attribute">Comments</p>
+                <p>{{$ticket->rating->comments}}</p>
             </div>
         @endif
     </x-sidenav>
