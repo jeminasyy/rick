@@ -1,12 +1,12 @@
 <x-layout>
     <div id="reopen">
-        <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
-            Reopen Ticket#{{$ticket->id}}
-        </h2>
-
         <form method="POST" action="/reopen/store/{{$ticket->id}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+
+            <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
+                Reopen Ticket#{{$ticket->id}}
+            </h2>
             <div class="mb-6">
                 <p class="attribute">Type</p>
                 <p>{{$ticket->categ->type}}</p>
