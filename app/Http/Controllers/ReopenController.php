@@ -92,19 +92,19 @@ class ReopenController extends Controller
                 }
     
                 $formFields['user_id'] = $min_id;
-            }
-
-            $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
-            $min_id = $users[0]->id;
-            
-            for($x=1; $x<count($users); $x++){
-                $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
-                if($min > $a) {
-                    $min = $a;
-                    $min_id = $users[$x]->id;
+            } else {
+                $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
+                $min_id = $users[0]->id;
+                
+                for($x=1; $x<count($users); $x++){
+                    $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
+                    if($min > $a) {
+                        $min = $a;
+                        $min_id = $users[$x]->id;
+                    }
                 }
+                $formFields['user_id'] = $min_id;
             }
-            $formFields['user_id'] = $min_id;
         } else {
             $formFields['user_id'] = $ticket->user->id;
         }
