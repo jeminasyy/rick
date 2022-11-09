@@ -38,7 +38,7 @@
                 <label for="satisfied">Yes</label><br>
                 <input type="radio" id="solved" name="satisfied" value=0>
                 <label for="satisfied">No</label>
-                @error('solved')
+                @error('satisfied')
                 <p class="text-red-500 text-md mt-1">{{$message}}</p>
                 @enderror
             </div>

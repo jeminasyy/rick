@@ -3,7 +3,7 @@
         <a href="/reopen/view/{{$ticket->student->id}}">
             <i class='bx bx-left-arrow-alt bx-md'></i>
         </a>
-        <p style="font-size: 17px; font-weight:bold">Ticket# {{$ticket->id}}</p>
+        <p style="font-size: 17px; font-weight:bold">Reopen Ticket# {{$ticket->id}}</p>
         <br>
         <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
         transform: rotate(0.08deg); ">
@@ -25,6 +25,18 @@
             </div>
 
             <div class="mb-6">
+                <label>Re-assign Front Desk Officer?<span style="font-weight: bold; color:red">*</span></label>
+                <br>
+                <input type="radio" id="solved" name="reassign" value=1>
+                <label for="reassign">Yes</label><br>
+                <input type="radio" id="solved" name="reassign" value=0>
+                <label for="reassign">No</label>
+                @error('reassign')
+                <p class="text-red-500 text-md mt-1">{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
                 <button 
                     type="submit" 
                     class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
@@ -34,8 +46,6 @@
                 >
                     Submit
                 </button>
-
-                {{-- <a href="/reopen/view/{{$ticket->student->id}}" class="text-black ml-4"> Back </a> --}}
             </div>
         </form>
     </div>

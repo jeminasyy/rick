@@ -69,6 +69,13 @@ class ReopenController extends Controller
     }
 
     public function storeReopen(Request $request, Ticket $ticket) {
+        $formFields = $request->validate([
+            'reason' => 'required'
+        ]);
+        $reassign = $request->validate([
+            'reassign' => 'required'
+        ]);
 
+        $formFields['ticket_id'] = $ticket->id;
     }
 }
