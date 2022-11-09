@@ -55,8 +55,4 @@
         </table>
       </div>
 
-      <div class="paginate">
-        {{ $tickets->links('pagination::bootstrap-5') }}
-      </div>
-    </div>
 </x-layout>
