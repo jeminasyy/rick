@@ -72,9 +72,39 @@ class ReopenController extends Controller
         $formFields = $request->validate([
             'reason' => 'required'
         ]);
-        $reassign = $request->validate([
-            'reassign' => 'required'
-        ]);
+        
+        if($request->reassign == 1) {
+            $users = DB::table('users')->whereNot('user_id', $ticket->user->id)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
+
+            if (count($users) == 0) {
+                $admins = DB::table('users')->whereNot('user_id', $ticket->user->id)->where('verified', true)->where('role', 'Admin')->get()->toArray();
+    
+                $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
+                $min_id = $admins[0]->id;
+    
+                for($x=1; $x<count($users); $x++){
+                    $a = DB::table('tickets')->where('user_id', $admins[$x]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
+                    if($min > $a) {
+                        $min = $a;
+                        $min_id = $admins[$x]->id;
+                    }
+                }
+    
+                $formFields['user_id'] = $min_id;
+            }
+            
+            $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
+            $min_id = $users[0]->id;
+            
+            for($x=1; $x<count($users); $x++){
+                $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
+                if($min > $a) {
+                    $min = $a;
+                    $min_id = $users[$x]->id;
+                }
+            }
+            $formFields['user_id'] = $min_id;
+        }
 
         $formFields['ticket_id'] = $ticket->id;
     }
