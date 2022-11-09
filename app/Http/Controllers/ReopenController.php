@@ -78,7 +78,7 @@ class ReopenController extends Controller
             $users = DB::table('users')->whereNot('id', $ticket->user->id)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
 
             if (count($users) == 0) {
-                $admins = DB::table('users')->whereNot('id', $ticket->user->id)->where('verified', true)->where('role', 'Admin')->get()->toArray();
+                $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
     
                 $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
                 $min_id = $admins[0]->id;
