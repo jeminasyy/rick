@@ -107,7 +107,8 @@
 
 #reopen {
     background-color: #f7f2e4;
-    padding: 30px 20px 20px 20px;
+    padding: 50px 30px 30px 30px;
+    min-height: 653px;
 }
 
 /* Mark as Ongoing
