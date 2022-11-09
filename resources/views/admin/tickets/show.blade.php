@@ -181,24 +181,24 @@
                 <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                 transform: rotate(0.08deg); ">
                 <p class="reopen-p">
-                    <span class="reopen-span">Rating: </span>
+                    <span style="font-weight: bold">Rating:  </span>
                     {{$ticket->rating->rating}}
                 </p>
 
                 @if ($ticket->rating->satisfied == 1)
                     <p class="reopen-p">
-                        <span class="reopen-span">Solution Accepted: </span>
+                        <span style="font-weight: bold">Solution Accepted:  </span>
                         Yes
                     </p>
                 @else
                     <p class="reopen-p">
-                        <span class="reopen-span">Solution Accepted: </span>
+                        <span style="font-weight: bold">Solution Accepted:  </span>
                         No
                     </p>
                 @endif
 
                 <p class="reopen-p">
-                    <span class="reopen-span">Comments: </span>
+                    <span style="font-weight: bold">Comments:  </span>
                     {{$ticket->rating->comments}}
                 </p>
             </div>
