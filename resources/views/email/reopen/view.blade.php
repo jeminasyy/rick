@@ -27,26 +27,27 @@
                 @unless(count($tickets) == 0)
     
                 @foreach($tickets as $ticket)
-                  <tr>
-                    <td>{{$ticket->id}}</td>
-                    <td>{{$ticket->categ->name}}</td>
-                    <td scope="row" style="word-break: break-all;">
-                      <b>{{$ticket->student->LName}}, {{$ticket->student->FName}}</b>
-                      <br>{{$ticket->student->email}}
-                    </td>
-                    <td>{{$ticket->description}}</td>
-                    <td>{{$ticket->dateSubmitted}}</td>
-                    @if($ticket->status == "Pending")
-                      <td>Ongoing</td>
-                    @else
-                      <td>{{$ticket->status}}</td>
-                    @endif
-                    <td style="word-break: break-all;">{{$ticket->user->email}}</td>
-                    <td>
-                      <button class="reopen-button" onclick="location.href='/reopen/create/{{$ticket->id}}/{{$ticket->student->id}}';">Reopen</button>
-                    </td>
-                  </tr>
-    
+                  @if ($ticket->status == "Resolved" || $ticket->status == "Inactive")
+                    <tr>
+                      <td>{{$ticket->id}}</td>
+                      <td>{{$ticket->categ->name}}</td>
+                      <td scope="row" style="word-break: break-all;">
+                        <b>{{$ticket->student->LName}}, {{$ticket->student->FName}}</b>
+                        <br>{{$ticket->student->email}}
+                      </td>
+                      <td>{{$ticket->description}}</td>
+                      <td>{{$ticket->dateSubmitted}}</td>
+                      @if($ticket->status == "Pending")
+                        <td>Ongoing</td>
+                      @else
+                        <td>{{$ticket->status}}</td>
+                      @endif
+                      <td style="word-break: break-all;">{{$ticket->user->email}}</td>
+                      <td>
+                        <button class="reopen-button" onclick="location.href='/reopen/create/{{$ticket->id}}/{{$ticket->student->id}}';">Reopen</button>
+                      </td>
+                    </tr>
+                  @endif
                   
                 @endforeach
     
