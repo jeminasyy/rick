@@ -27,15 +27,15 @@
             </div>
 
             <div class="mb-6">
-                <label>Re-assign Front Desk Officer?<span style="font-weight: bold; color:red">*</span></label>
-                <br>
-                <input type="radio" id="solved" name="reassign" value=1>
-                <label for="reassign">Yes</label><br>
-                <input type="radio" id="solved" name="reassign" value=0>
-                <label for="reassign">No</label>
-                @error('reassign')
+                {{-- <label>Re-assign Front Desk Officer?<span style="font-weight: bold; color:red">*</span></label>
+                <br> --}}
+                <input type="checkbox" id="solved" name="reassign" value=1>
+                <label for="reassign">Re-assign Front Desk Officer</label><br>
+                {{-- <input type="radio" id="solved" name="reassign" value=0>
+                <label for="reassign">No</label> --}}
+                {{-- @error('reassign')
                 <p class="text-red-500 text-md mt-1">{{$message}}</p>
-                @enderror
+                @enderror --}}
             </div>
 
             <div class="mb-6">
