@@ -84,7 +84,7 @@ Route::get('/reopen/view/{student}', [ReopenController::class, 'viewReopen'])->m
 // Show Reopen Ticket Form **PUT method
 Route::get('/reopen/create/{ticket}/{student}', [ReopenController::class, 'createReopen'])->middleware('guest');
 // Reopen Ticket
-Route::put('/reopen/store/{ticket}', [ReopenController::class, 'storeReopen'])->middleware('guest');
+Route::put('/reopen/store/{ticket}/{student}', [ReopenController::class, 'storeReopen'])->middleware('guest');
 
 // When Student is unsatisfied with the solution
 // They can re-open the ticket
