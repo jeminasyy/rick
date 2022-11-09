@@ -4,6 +4,9 @@
         <p>Eyyyy</p>
     @endif --}}
     <div id="reopen">
+        <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
+            Reopen Ticket
+        </h2>
         <div id="sidenav2">
             <hr style="width: 100%; margin-bottom: 0; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
             transform: rotate(0.08deg); ">
@@ -40,7 +43,7 @@
                     @endif
                     <td style="word-break: break-all;">{{$ticket->user->email}}</td>
                     <td>
-                      <a href="/tickets/{{$ticket->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View</a>
+                      <a class="" href="/tickets/{{$ticket->id}}">Reopen</a>
                     </td>
                   </tr>
     

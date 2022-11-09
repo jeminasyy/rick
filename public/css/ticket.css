@@ -107,8 +107,16 @@
 
 #reopen {
     background-color: #f7f2e4;
-    padding: 50px 200px 30px 200px;
+    padding: 50px 150px 30px 150px;
     min-height: 653px;
+}
+
+.reopen-button {
+    background-color: #F8CA0A;
+    border: 2px solid#F8CA0A; 
+    border-radius: 20px; 
+    color:#FFFFFF;
+    padding: 3px 5px 3px 5px;
 }
 
 /* Mark as Ongoing
