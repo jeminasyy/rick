@@ -68,7 +68,7 @@ class ReopenController extends Controller
         ]);
     }
 
-    public function storeReopen(Request $request, Ticket $ticket, Student $student) {
+    public function storeReopen(Request $request, Ticket $ticket) {
 
     }
 }
