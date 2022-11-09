@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reopen;
 use App\Models\Ticket;
 use App\Mail\VerifyNew;
 use App\Models\Student;
@@ -92,7 +93,7 @@ class ReopenController extends Controller
     
                 $formFields['user_id'] = $min_id;
             }
-            
+
             $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
             $min_id = $users[0]->id;
             
@@ -107,5 +108,9 @@ class ReopenController extends Controller
         }
 
         $formFields['ticket_id'] = $ticket->id;
+
+        Reopen::create($formFields);
+        $ticketField['status'] = "Opened";
+        $ticket->update($ticketField);
     }
 }
