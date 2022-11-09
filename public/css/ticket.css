@@ -112,11 +112,12 @@
 }
 
 .reopen-button {
+    margin-top:10px;
     background-color: #F8CA0A;
     border: 2px solid#F8CA0A; 
     border-radius: 20px; 
     color:#FFFFFF;
-    padding: 3px 5px 3px 5px;
+    padding: 3px 15px 3px 15px;
 }
 
 /* Mark as Ongoing
