@@ -4,7 +4,7 @@
             Reopen Ticket#{{$ticket->id}}
         </h2>
 
-        <form method="POST" action="/reopen/store/{{$ticket->id}}/{{$ticket->student->id}}" enctype="multipart/form-data">
+        <form method="POST" action="/reopen/store/{{$ticket->id}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-6">
