@@ -123,10 +123,10 @@
 
         @if ($ticket->rating)
             <div class="ticket-div">
-                <p style="font-size: 17px; font-weight:bold">Student Feedback {{$ticket->rating->created_at}}</p>
+                <p style="font-size: 17px; font-weight:bold">Student Feedback</p>
                 <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                 transform: rotate(0.08deg); ">
-
+                <h1 style="font-size:12px; font-weight:bold; float:right "> Date: {{$ticket->rating->created_at}}</h1>
                 <p class="reopen-p">
                     <span style="font-weight: bold">Rating:&nbsp;</span>
                     {{$ticket->rating->rating}}
@@ -154,9 +154,10 @@
         @if ($ticket->reopens)
             <div class="ticket-div">
                 @foreach($ticket->reopens as $reopen)
-                    <p style="font-size: 17px; font-weight:bold">Ticket Reopened {{$reopen->created_at}}</p>
+                    <p style="font-size: 17px; font-weight:bold">Ticket Reopened</p>
                     <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                     transform: rotate(0.08deg); ">
+                    <h1 style="font-size:12px; font-weight:bold; float:right "> Date: {{$reopen->created_at}}</h1>
 
                     <p class="reopen-p">
                         <span style="font-weight: bold">Reason:&nbsp;</span>
