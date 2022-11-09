@@ -178,7 +178,8 @@
         @if ($ticket->rating)
             <div class="ticket-div">
                 <p style="font-size: 17px; font-weight:bold">Feedback submitted on {{$ticket->rating->created_at}}</p>
-                
+                <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
+                transform: rotate(0.08deg); ">
                 <p class="attribute">Rating</p>
                 <p>{{$ticket->rating->rating}}</p>
 
