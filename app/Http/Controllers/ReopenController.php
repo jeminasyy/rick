@@ -69,7 +69,7 @@ class ReopenController extends Controller
         ]);
     }
 
-    public function storeReopen(Request $request, Ticket $ticket) {
+    public function storeReopen(Request $request, Ticket $ticket, Student $student) {
         $formFields = $request->validate([
             'reason' => 'required'
         ]);
@@ -111,8 +111,11 @@ class ReopenController extends Controller
 
         $formFields['ticket_id'] = $ticket->id;
 
+        $studentField['ongoingTickets'] = $student->ongoingTickets + 1;
+
         Reopen::create($formFields);
         $ticketField['status'] = "Opened";
+        $student->update($studentField);
         $ticket->update($ticketField);
     }
 }
