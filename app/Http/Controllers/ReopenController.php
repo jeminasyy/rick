@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Mail\VerifyNew;
 use App\Models\Student;
 use Illuminate\Support\Str;
@@ -57,7 +58,7 @@ class ReopenController extends Controller
 
     public function viewReopen(Student $student) {
         return view('email.reopen.view', [
-            'tickets' => $student->tickets
+            'tickets' => DB::table('tickets')->where('student_id', $student->id)->where('status', 'Resolved')->where('status', 'Inactive')->get()->toArray()
         ]);
     }
 }
