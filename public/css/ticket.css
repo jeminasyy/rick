@@ -105,6 +105,11 @@
     padding-bottom: 30px;
 }
 
+#reopen {
+    background-color: #f7f2e4;
+    padding: 30px 20px 20px 20px;
+}
+
 /* Mark as Ongoing
 Void Ticket 
 Mark as Resolved */
