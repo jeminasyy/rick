@@ -180,7 +180,6 @@
                 <p style="font-size: 17px; font-weight:bold">Student Feedback {{$ticket->rating->created_at}}</p>
                 <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                 transform: rotate(0.08deg); ">
-                <br>
 
                 <p class="reopen-p">
                     <span style="font-weight: bold">Rating:&nbsp;</span>

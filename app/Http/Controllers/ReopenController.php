@@ -63,7 +63,9 @@ class ReopenController extends Controller
     }
 
     public function createReopen(Ticket $ticket){
-        return view('email.reopen.create');
+        return view('email.reopen.create', [
+            'ticket' => $ticket
+        ]);
     }
 
     public function storeReopen(Request $request, Ticket $ticket, Student $student) {
