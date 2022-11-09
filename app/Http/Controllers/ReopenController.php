@@ -61,4 +61,14 @@ class ReopenController extends Controller
             'tickets' => $student->tickets()->get()
         ]);
     }
+
+    public function reopen(Ticket $ticket) {
+        return view('email.reopen.create', [
+            'ticket' => $ticket
+        ]);
+    }
+
+    public function createReopen(Request $request, Ticket $ticket, Student $student) {
+
+    }
 }
