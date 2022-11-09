@@ -118,6 +118,61 @@
                 {{-- @if(count($feedbacks) != 0) 
                     <a>View Ticket </a>
                 @endif --}}
+
+                @if (!$ticket->reopens)
+                    @if ($ticket->user_id == auth()->id())
+                        @if ($ticket->status == "New")
+                            <div class="bottom">
+                                <button type="submit" 
+                                    class="btn btn-secondary btn-lg"
+                                    id="secondary-button"
+                                    onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                                >
+                                    Void Ticket
+                                </button>
+                            </div>
+                        @elseif ($ticket->status == "Opened")
+                            <div class="bottom">
+                                <form method="POST" action="/{{$ticket->id}}/ticket/setOngoing">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" 
+                                        class="btn btn-secondary btn-lg"
+                                        id="primary-button"
+                                    >
+                                        Mark as Ongoing
+                                    </button>
+                                </form>
+
+                                <button 
+                                    class="btn btn-secondary btn-lg"
+                                    id="secondary-button"
+                                    onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                                >
+                                    Void Ticket
+                                </button>
+                            </div>
+                        @elseif ($ticket->status == "Ongoing")
+                            <div class="bottom">
+                                <button
+                                    class="btn btn-secondary btn-lg"
+                                    id="primary-button"
+                                    onclick="location.href='/{{$ticket->id}}/ticket/resolve';"
+                                >
+                                    Mark as Resolved
+                                </button>
+
+                                <button
+                                    class="btn btn-secondary btn-lg"
+                                    id="secondary-button"
+                                    onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                                >
+                                    Void Ticket
+                                </button>
+                            </div>
+                        @endif
+                    @endif
+                @endif
             </div>
         </div>
 
@@ -174,59 +229,61 @@
             </div>
         @endif
 
-        <div class="ticket-div" style="margin-top:50px">
-            @if ($ticket->user_id == auth()->id())
-                @if ($ticket->status == "New")
-                    <div class="bottom">
-                        <button type="submit" 
-                            class="btn btn-secondary btn-lg"
-                            id="secondary-button"
-                            onclick="location.href='/{{$ticket->id}}/ticket/void';"
-                        >
-                            Void Ticket
-                        </button>
-                    </div>
-                @elseif ($ticket->status == "Opened")
-                    <div class="bottom">
-                        <form method="POST" action="/{{$ticket->id}}/ticket/setOngoing">
-                            @csrf
-                            @method('PUT')
+        @if ($ticket->reopens)
+            <div class="ticket-div" style="margin-top:150px">
+                @if ($ticket->user_id == auth()->id())
+                    @if ($ticket->status == "New")
+                        <div class="bottom">
                             <button type="submit" 
                                 class="btn btn-secondary btn-lg"
-                                id="primary-button"
+                                id="secondary-button"
+                                onclick="location.href='/{{$ticket->id}}/ticket/void';"
                             >
-                                Mark as Ongoing
+                                Void Ticket
                             </button>
-                        </form>
+                        </div>
+                    @elseif ($ticket->status == "Opened")
+                        <div class="bottom">
+                            <form method="POST" action="/{{$ticket->id}}/ticket/setOngoing">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" 
+                                    class="btn btn-secondary btn-lg"
+                                    id="primary-button"
+                                >
+                                    Mark as Ongoing
+                                </button>
+                            </form>
 
-                        <button 
-                            class="btn btn-secondary btn-lg"
-                            id="secondary-button"
-                            onclick="location.href='/{{$ticket->id}}/ticket/void';"
-                        >
-                            Void Ticket
-                        </button>
-                    </div>
-                @elseif ($ticket->status == "Ongoing")
-                    <div class="bottom">
-                        <button
-                            class="btn btn-secondary btn-lg"
-                            id="primary-button"
-                            onclick="location.href='/{{$ticket->id}}/ticket/resolve';"
-                        >
-                            Mark as Resolved
-                        </button>
+                            <button 
+                                class="btn btn-secondary btn-lg"
+                                id="secondary-button"
+                                onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                            >
+                                Void Ticket
+                            </button>
+                        </div>
+                    @elseif ($ticket->status == "Ongoing")
+                        <div class="bottom">
+                            <button
+                                class="btn btn-secondary btn-lg"
+                                id="primary-button"
+                                onclick="location.href='/{{$ticket->id}}/ticket/resolve';"
+                            >
+                                Mark as Resolved
+                            </button>
 
-                        <button
-                            class="btn btn-secondary btn-lg"
-                            id="secondary-button"
-                            onclick="location.href='/{{$ticket->id}}/ticket/void';"
-                        >
-                            Void Ticket
-                        </button>
-                    </div>
+                            <button
+                                class="btn btn-secondary btn-lg"
+                                id="secondary-button"
+                                onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                            >
+                                Void Ticket
+                            </button>
+                        </div>
+                    @endif
                 @endif
-            @endif
-        </div>
+            </div>
+        @endif
     </x-sidenav>
 </x-layout>
