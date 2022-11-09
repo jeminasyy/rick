@@ -174,6 +174,7 @@
 
         @if ($ticket->rating)
             <div class="ticket-div">
+                <br>
                 <p style="font-size: 17px; font-weight:bold">Student Feedback</p>
                 <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                 transform: rotate(0.08deg); ">
@@ -206,6 +207,7 @@
         @if ($ticket->reopens)
             <div class="ticket-div">
                 @foreach($ticket->reopens as $reopen)
+                    <br>
                     <p style="font-size: 17px; font-weight:bold">Ticket Reopened</p>
                     <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                     transform: rotate(0.08deg); ">
