@@ -172,9 +172,8 @@
             </div>
         </div>
 
-        @if ($ticket->rating)
+        @if (count($ticket->rating) != 0)
             <div class="ticket-div">
-                <br>
                 <p style="font-size: 17px; font-weight:bold">Student Feedback</p>
                 <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                 transform: rotate(0.08deg); ">
@@ -204,7 +203,7 @@
             </div>
         @endif
 
-        @if ($ticket->reopens)
+        @if (count($ticket->reopens) != 0)
             <div class="ticket-div">
                 @foreach($ticket->reopens as $reopen)
                     <br>
@@ -225,11 +224,10 @@
                     </p>
                 @endforeach
             </div>
-        @endif
 
-        @if (count($ticket->reopens) != 0)
+            {{-- Action Buttons --}}
             <div class="ticket-div" style="margin-top:150px">
-                @if ($ticket->user_id == auth()->id())
+                @if ($rating->user_id == auth()->id())
                     @if ($ticket->status == "New")
                         <div class="bottom">
                             <button type="submit" 
