@@ -1,5 +1,5 @@
 <x-layout>
-    <div id="reopen">
+    <div id="reopen" style="padding-left: 300px">
         <header>
             <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
                 Reopen Ticket# {{$ticket->id}}
