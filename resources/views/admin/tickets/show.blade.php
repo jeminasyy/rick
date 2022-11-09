@@ -115,7 +115,7 @@
                     <p>{{$ticket->response}}</p>
                 @endif
 
-                @if (!$ticket->reopens)
+                @if (count($ticket->reopens) == 0)
                     @if ($ticket->user_id == auth()->id())
                         @if ($ticket->status == "New")
                             <div class="bottom">
@@ -225,7 +225,7 @@
             </div>
         @endif
 
-        @if ($ticket->reopens)
+        @if (count($ticket->reopens) != 0)
             <div class="ticket-div" style="margin-top:150px">
                 @if ($ticket->user_id == auth()->id())
                     @if ($ticket->status == "New")
