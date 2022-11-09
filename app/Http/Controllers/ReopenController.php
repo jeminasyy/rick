@@ -45,16 +45,17 @@ class ReopenController extends Controller
     }
 
     // Verify email with code
-    public function verifyNew(Request $request){
+    public function verifyReopen(Request $request){
         $find = DB::table('students')->where('code', $request->code)->first();
         if (! $find){
             abort(404, 'Not Found');
         }
         $student = Student::find($find->id);
-        if(!$student->FName || !$student->LName || !$student->studNumber){
-            return redirect()->route('completeInfo', [$student]);
-        }
+        // return view();
+        return redirect()->route('viewReopen', [$student]);
+    }
 
-        return redirect()->route('createTicket', [$student]);
+    public function viewReopen(Student $student) {
+        return view('email.reopen.view');
     }
 }
