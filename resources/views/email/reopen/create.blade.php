@@ -1,42 +1,11 @@
 <x-layout>
-    <div id="reopen">
-        <form method="POST" action="/reopen/store/{{$ticket->id}}" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-
-            <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
-                Reopen Ticket#{{$ticket->id}}
-            </h2>
-            <div class="mb-6">
-                <p class="attribute">Type</p>
-                <p>{{$ticket->categ->type}}</p>
-
-                <p class="attribute">Category</p>
-                <p>{{$ticket->categ->name}}</p>
-
-                <p class="attribute">Description</p>
-                <p>{{$ticket->description}}</p>
-
-                <p class="attribute">Priority</p>
-                <p>{{$ticket->priority}}</p>
-
-                <p class="attribute">Assignee</p>
-                <p>{{$ticket->user->email}}</p>
-            </div> 
-
-            <div class="mb-6">
-                <label for="response">Reason for Re-opening:</label>
-                <textarea 
-                    name="reason" 
-                    class="form-control" 
-                    id="exampleFormControlTextarea1" 
-                    rows="10"
-                    value="{{old('reason')}}"
-                ></textarea>
-                @error('reason')
-                    <p class="text-red-500 text-md mt-1">{{$message}}</p>
-                @enderror
-            </div>
-        </form>
-    </div>
+    <form method="POST" action="/reopen/verify" class="form-inline1">
+        @csrf
+        @method('PUT')
+        <h1 style="color:black; font-family: 'Cabin', sans-serif; font-size: 29;text-align: center; margin-top: 8%; position: relative;">Verify Email Address</h1>
+        <h3 style="font-family: 'Roboto', sans-serif;font-size: 20; font-weight: lighter;text-align: center;margin-top: 1%">Enter the verification that was sent to your email</h3>
+        <input type="text" id="code" placeholder="  code" name="code">
+        <button type="submit">Submit</button>
+            {{-- <h3 style="font-family: 'Roboto', sans-serif;font-size: 20; font-weight: lighter;text-align: center;margin-top: 8%">Resend code</h3> --}}
+    </form>
 </x-layout>
