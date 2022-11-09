@@ -3,7 +3,7 @@
         <a href="/reopen/view/{{$ticket->student->id}}">
             <i class='bx bx-left-arrow-alt bx-md'></i>
         </a>
-        <p style="font-size: 17px; font-weight:bold">Reopen Ticket# {{$ticket->id}}</p>
+        <p style="font-size: 17px; font-weight:bold">Request to Reopen Ticket# {{$ticket->id}}</p>
         <br>
         <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
         transform: rotate(0.08deg); ">
