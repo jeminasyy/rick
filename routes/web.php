@@ -80,7 +80,7 @@ Route::get('/reopen/code', [ReopenController::class, 'codeReopen'])->middleware(
 // Verify the code
 Route::put('/reopen/verify', [ReopenController::class, 'verifyReopen'])->middleware('guest');
 // Display Student's Finished Tickets
-Route::get('/reopen/view/{student}', [ReopenController::class, 'viewReopen'])->middleware('guest');
+Route::get('/reopen/view/{student}', [ReopenController::class, 'viewReopen'])->middleware('guest')->name('viewReopen');
 // Show Reopen Ticket Form **PUT method
 Route::put('/reopen/{ticket}/{student}', [ReopenController::class, 'reopen'])->middleware('guest');
 
