@@ -43,7 +43,7 @@
                     @endif
                     <td style="word-break: break-all;">{{$ticket->user->email}}</td>
                     <td>
-                      <button class="reopen-button" onclick="location.href='/';">Reopen</button>
+                      <button class="reopen-button" onclick="location.href='/reopen/create/{{$ticket->id}}/{{$ticket->student->id}}';">Reopen</button>
                     </td>
                   </tr>
     
