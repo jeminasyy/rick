@@ -1,6 +1,6 @@
 <x-layout>
     <h1>Meow></h1>
-    @foreach ($tickets as $ticket)
-        <p>{{$ticket['id']}}</p>
-    @endforeach
+    @for ($x=0; $x<count($tickets); $x++)
+        <p>{{$tickets[$x]->id}}</p>
+    @endfor
 </x-layout>
