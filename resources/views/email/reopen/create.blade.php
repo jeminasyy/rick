@@ -1,6 +1,9 @@
 <x-layout>
     <div id="reopen" style="padding-right: 300px">
         <header>
+            <a href="/reopen/view/{{$ticket->student->id}}">
+                <i class='bx bx-left-arrow-alt bx-md'></i>
+            </a>
             <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
                 Reopen Ticket# {{$ticket->id}}
             </h2>
@@ -31,7 +34,7 @@
                     Submit
                 </button>
 
-                <a href="/reopen/view/{{$ticket->student->id}}" class="text-black ml-4"> Back </a>
+                {{-- <a href="/reopen/view/{{$ticket->student->id}}" class="text-black ml-4"> Back </a> --}}
             </div>
         </form>
     </div>
