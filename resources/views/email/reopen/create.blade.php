@@ -4,7 +4,7 @@
             Reopen Ticket#{{$ticket->id}}
         </h2>
 
-        <form method="POST" action="/reopen/create/{{$ticket->id}}/{{$ticket->student->id}}" enctype="multipart/form-data">
+        <form method="POST" action="/reopen/store/{{$ticket->id}}/{{$ticket->student->id}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-6">
@@ -16,7 +16,7 @@
 
                 <p class="attribute">Description</p>
                 <p>{{$ticket->description}}</p>
-                
+
                 <p class="attribute">Priority</p>
                 <p>{{$ticket->priority}}</p>
 

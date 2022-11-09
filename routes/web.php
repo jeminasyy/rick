@@ -82,9 +82,9 @@ Route::put('/reopen/verify', [ReopenController::class, 'verifyReopen'])->middlew
 // Display Student's Finished Tickets
 Route::get('/reopen/view/{student}', [ReopenController::class, 'viewReopen'])->middleware('guest')->name('viewReopen');
 // Show Reopen Ticket Form **PUT method
-Route::view('/reopen/{ticket}/{student}', [ReopenController::class, 'reopen'])->middleware('guest');
+Route::view('/reopen/create/{ticket}/{student}', [ReopenController::class, 'reopen'])->middleware('guest');
 // Reopen Ticket
-Route::put('/reopen/create/{ticket}/{student}', [ReopenController::class, 'createReopen'])->middleware('guest');
+Route::put('/reopen/store/{ticket}/{student}', [ReopenController::class, 'createReopen'])->middleware('guest');
 
 // When Student is unsatisfied with the solution
 // They can re-open the ticket
