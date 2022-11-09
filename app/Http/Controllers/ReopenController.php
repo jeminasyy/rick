@@ -62,10 +62,10 @@ class ReopenController extends Controller
         ]);
     }
 
-    public function reopen($ticket, $student) {
+    public function reopen($ticket_id, $student_id) {
         return view('email.reopen.create', [
-            'ticket' => Ticket::find($ticket),
-            'student' => Student::find($student),
+            'ticket' => Ticket::find($ticket_id),
+            'student' => Student::find($student_id),
         ]);
     }
 
