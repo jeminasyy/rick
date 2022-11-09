@@ -187,18 +187,18 @@
 
                 @if ($ticket->rating->satisfied == 1)
                     <p class="reopen-p">
-                        <span style="font-weight: bold">Solution Accepted:  </span>
+                        <span style="font-weight: bold">Solution Accepted:&nbsp;</span>
                         Yes
                     </p>
                 @else
                     <p class="reopen-p">
-                        <span style="font-weight: bold">Solution Accepted:  </span>
+                        <span style="font-weight: bold">Solution Accepted:&nbsp;</span>
                         No
                     </p>
                 @endif
 
                 <p class="reopen-p">
-                    <span style="font-weight: bold">Comments:  </span>
+                    <span style="font-weight: bold">Comments:&nbsp;</span>
                     {{$ticket->rating->comments}}
                 </p>
             </div>
