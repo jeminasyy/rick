@@ -119,7 +119,59 @@
                     <a>View Ticket </a>
                 @endif --}}
             </div>
+        </div>
 
+        @if ($ticket->rating)
+            <div class="ticket-div">
+                <p style="font-size: 17px; font-weight:bold">Student Feedback {{$ticket->rating->created_at}}</p>
+                <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
+                transform: rotate(0.08deg); ">
+
+                <p class="reopen-p">
+                    <span style="font-weight: bold">Rating:&nbsp;</span>
+                    {{$ticket->rating->rating}}
+                </p>
+
+                @if ($ticket->rating->satisfied == 1)
+                    <p class="reopen-p">
+                        <span style="font-weight: bold">Solution Accepted:&nbsp;</span>
+                        Yes
+                    </p>
+                @else
+                    <p class="reopen-p">
+                        <span style="font-weight: bold">Solution Accepted:&nbsp;</span>
+                        No
+                    </p>
+                @endif
+
+                <p class="reopen-p">
+                    <span style="font-weight: bold">Comments:&nbsp;</span>
+                    {{$ticket->rating->comments}}
+                </p>
+            </div>
+        @endif
+
+        @if ($ticket->reopens)
+            <div class="ticket-div">
+                @foreach($ticket->reopens as $reopen)
+                    <p style="font-size: 17px; font-weight:bold">Ticket Reopened {{$reopen->created_at}}</p>
+                    <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
+                    transform: rotate(0.08deg); ">
+
+                    <p class="reopen-p">
+                        <span style="font-weight: bold">Reason:&nbsp;</span>
+                        {{$reopen->reason}}
+                    </p>
+
+                    <p class="reopen-p">
+                        <span style="font-weight: bold">Assignee:&nbsp;</span>
+                        {{$reopen->user->email}}
+                    </p>
+                @endforeach
+            </div>
+        @endif
+
+        <div class="ticket-div">
             @if ($ticket->user_id == auth()->id())
                 @if ($ticket->status == "New")
                     <div class="bottom">
@@ -172,47 +224,6 @@
                     </div>
                 @endif
             @endif
-
         </div>
-
-        @if ($ticket->rating)
-            <div class="ticket-div">
-                <p style="font-size: 17px; font-weight:bold">Student Feedback {{$ticket->rating->created_at}}</p>
-                <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
-                transform: rotate(0.08deg); ">
-
-                <p class="reopen-p">
-                    <span style="font-weight: bold">Rating:&nbsp;</span>
-                    {{$ticket->rating->rating}}
-                </p>
-
-                @if ($ticket->rating->satisfied == 1)
-                    <p class="reopen-p">
-                        <span style="font-weight: bold">Solution Accepted:&nbsp;</span>
-                        Yes
-                    </p>
-                @else
-                    <p class="reopen-p">
-                        <span style="font-weight: bold">Solution Accepted:&nbsp;</span>
-                        No
-                    </p>
-                @endif
-
-                <p class="reopen-p">
-                    <span style="font-weight: bold">Comments:&nbsp;</span>
-                    {{$ticket->rating->comments}}
-                </p>
-            </div>
-        @endif
-
-        @if ($ticket->reopens)
-            <div class="ticket-div">
-                @foreach($ticket->reopens as $reopen)
-                    <p style="font-size: 17px; font-weight:bold">Ticket Reopened {{$reopen->created_at}}</p>
-                    <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
-                    transform: rotate(0.08deg); ">
-                @endforeach
-            </div>
-        @endif
     </x-sidenav>
 </x-layout>
