@@ -191,7 +191,8 @@ class TicketController extends Controller
     public function show($id){
         return view('admin.tickets.show', [
             'ticket' => Ticket::find($id),
-            // 'feedbacks' => DB::table('feedbacks')->where('ticket_id', $id)->get()
+            // 'rating' => DB::table('ratings')->where('ticket_id', $id)->get(),
+            // 'reopenratings' => DB::table('reopenratings')->where
         ]);
     } 
 

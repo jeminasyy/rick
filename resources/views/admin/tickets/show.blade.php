@@ -121,15 +121,10 @@
             </div>
 
             @if ($ticket->status == "Resolved")
-            <div class="bottom">
-                <button  
-                    class="btn btn-secondary btn-lg"
-                    id="secondary-button"
-                    onclick="location.href='/;"
-                >
-                    View Feedback
-                </button>
-            </div>
+                <div class="ticket-div">
+                    <p>Rating</p>
+                    <p>{{$ticket->rating->rating}}</p>
+                </div>
             @endif
 
             @if ($ticket->user_id == auth()->id())
