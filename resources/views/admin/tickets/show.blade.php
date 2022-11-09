@@ -120,13 +120,6 @@
                 @endif --}}
             </div>
 
-            @if ($ticket->status == "Resolved")
-                <div class="ticket-div">
-                    <p>Rating</p>
-                    <p>{{$ticket->rating->rating}}</p>
-                </div>
-            @endif
-
             @if ($ticket->user_id == auth()->id())
                 @if ($ticket->status == "New")
                     <div class="bottom">
@@ -181,5 +174,21 @@
             @endif
 
         </div>
+
+        @if ($ticket->status == "Resolved")
+            <div class="ticket-div">
+                <p style="font-size: 17px; font-weight:bold">Feedback submitted on {{$ticket->rating->created_at}}</p>
+                
+                <p class="attribute">Rating</p>
+                <p>{{$ticket->rating->rating}}</p>
+
+                <p class="attribute">Solution Accepted</p>
+                @if ($ticket->rating->satisfied == 1)
+                    <p>Yes</p>
+                @else
+                    <p>No</p>
+                @endif
+            </div>
+        @endif
     </x-sidenav>
 </x-layout>
