@@ -56,6 +56,8 @@ class ReopenController extends Controller
     }
 
     public function viewReopen(Student $student) {
-        return view('email.reopen.view');
+        return view('email.reopen.view', [
+            'tickets' => $student->tickets
+        ]);
     }
 }
