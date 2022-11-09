@@ -1,13 +1,14 @@
 <x-layout>
     <div id="reopen" style="padding-right: 300px">
-        <header>
-            <a href="/reopen/view/{{$ticket->student->id}}">
-                <i class='bx bx-left-arrow-alt bx-md'></i>
-            </a>
-            <p class="text-2xl font-bold uppercase mb-1 mb-8">
-                Reopen Ticket# {{$ticket->id}}
-            </p>
-        </header>
+        <a href="/reopen/view/{{$ticket->student->id}}">
+            <i class='bx bx-left-arrow-alt bx-md'></i>
+        </a>
+        <p style="font-size: 17px; font-weight:bold">Ticket# {{$ticket->id}}</p>
+        <br>
+        <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
+        transform: rotate(0.08deg); ">
+        <br>
+
         <form method="POST" action="/reopen/store/{{$ticket->id}}/{{$ticket->student->id}}">
             <div class="mb-6">
                 <label for="response">Reason for Reopening</label>
