@@ -13,10 +13,8 @@ class Reopen extends Model
         'ticket_id',
         'user_id',
         'reason',
-        'priority',
-        'status',
         'response',
-        'dateSubmitted',
+        'dateReopened',
         'dateResponded',
         'dateResolved'
     ];
