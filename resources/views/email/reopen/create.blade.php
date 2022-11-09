@@ -10,6 +10,8 @@
         <br>
 
         <form method="POST" action="/reopen/store/{{$ticket->id}}/{{$ticket->student->id}}">
+            @csrf
+            @method('PUT')
             <div class="mb-6">
                 <label for="response">Reason for Reopening</label>
                 <textarea 
