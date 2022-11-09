@@ -4,9 +4,9 @@
             <a href="/reopen/view/{{$ticket->student->id}}">
                 <i class='bx bx-left-arrow-alt bx-md'></i>
             </a>
-            <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
+            <p class="text-2xl font-bold uppercase mb-1 mb-8">
                 Reopen Ticket# {{$ticket->id}}
-            </h2>
+            </p>
         </header>
         <form method="POST" action="/reopen/store/{{$ticket->id}}/{{$ticket->student->id}}">
             <div class="mb-6">
