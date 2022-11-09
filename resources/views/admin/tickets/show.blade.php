@@ -180,25 +180,27 @@
                 <p style="font-size: 17px; font-weight:bold">{{$ticket->rating->created_at}} - Feedback submitted</p>
                 <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                 transform: rotate(0.08deg); ">
-                <p>
-                    <span class="attribute">Rating: </span>
+                <p class="reopen-p">
+                    <span class="reopen-span">Rating: </span>
                     {{$ticket->rating->rating}}
                 </p>
 
                 @if ($ticket->rating->satisfied == 1)
-                    <p>
-                        <span class="attribute">Solution Accepted: </span>
+                    <p class="reopen-p">
+                        <span class="reopen-span">Solution Accepted: </span>
                         Yes
                     </p>
                 @else
-                    <p>
-                        <span class="attribute">Solution Accepted: </span>
+                    <p class="reopen-p">
+                        <span class="reopen-span">Solution Accepted: </span>
                         No
                     </p>
                 @endif
 
-                <p class="attribute">Comments</p>
-                <p>{{$ticket->rating->comments}}</p>
+                <p class="reopen-p">
+                    <span class="reopen-span">Comments: </span>
+                    {{$ticket->rating->comments}}
+                </p>
             </div>
         @endif
 

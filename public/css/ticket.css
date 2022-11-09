@@ -11,6 +11,14 @@
     margin-top: 10px;
 }
 
+.reopen-p {
+    margin-top: 10px;
+}
+
+.reopen-span {
+    font-weight: bold;
+}
+
 .ticket-div p {
     font-size: 15px;
     display: flex;
