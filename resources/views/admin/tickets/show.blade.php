@@ -126,6 +126,7 @@
                 <p style="font-size: 17px; font-weight:bold">Student Feedback</p>
                 <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                 transform: rotate(0.08deg); ">
+                <br>
                 <h1 style="font-size:12px; font-weight:bold; float:right "> Date: {{$ticket->rating->created_at}}</h1>
                 <p class="reopen-p">
                     <span style="font-weight: bold">Rating:&nbsp;</span>
@@ -157,6 +158,7 @@
                     <p style="font-size: 17px; font-weight:bold">Ticket Reopened</p>
                     <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                     transform: rotate(0.08deg); ">
+                    <br>
                     <h1 style="font-size:12px; font-weight:bold; float:right "> Date: {{$reopen->created_at}}</h1>
 
                     <p class="reopen-p">
@@ -172,7 +174,7 @@
             </div>
         @endif
 
-        <div class="ticket-div">
+        <div class="ticket-div" style="margin-top:50px">
             @if ($ticket->user_id == auth()->id())
                 @if ($ticket->status == "New")
                     <div class="bottom">
