@@ -6,15 +6,30 @@
             </a>
             <p style="font-size: 17px; font-weight:bold">Ticket# {{$ticket->id}}</p>
             
-            @if ($ticket->user_id == auth()->id())
-                <button 
-                    type="button" 
-                    class="btn btn-secondary btn-lg"
-                    id="transfer"
-                    onclick="location.href='/{{$ticket->id}}/ticket/transfer';"
-                >
-                    Transfer Ticket
-                </button>
+            @if (count($ticket->reopens) == 0)
+                @if ($ticket->user_id == auth()->id())
+                    <button 
+                        type="button" 
+                        class="btn btn-secondary btn-lg"
+                        id="transfer"
+                        onclick="location.href='/{{$ticket->id}}/ticket/transfer';"
+                    >
+                        Transfer Ticket
+                    </button>
+                @endif
+            @endif
+
+            @if (count($ticket->reopens) != 0)
+                @if ($reopen->user_id == auth()->id())
+                    <button 
+                        type="button" 
+                        class="btn btn-secondary btn-lg"
+                        id="transfer"
+                        onclick="location.href='/{{$ticket->id}}/ticket/transfer';"
+                    >
+                        Transfer Ticket
+                    </button>
+                @endif
             @endif
 
             <br>
