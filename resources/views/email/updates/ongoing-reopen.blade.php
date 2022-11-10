@@ -23,8 +23,8 @@
     <p>{{$Response}}</p>
 
     <p style="font-weight: bold; margin-top: 10px;">Reason for Reopening</p>
-    <p>{{$reopen->reason}}</p>
+    <p>{{$Reason}}</p>
 
     <p style="font-weight: bold; margin-top: 10px;">Assignee</p>
-    <p>{{$reopen->user->email}}</p>
+    <p>{{$Assignee}}, {{$AssigneeFName}} {{$AssigneeLName}}</p>
 </div>
