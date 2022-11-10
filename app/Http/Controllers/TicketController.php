@@ -40,9 +40,10 @@ class TicketController extends Controller
     }
 
     // Show Single Student Ticket
-    public function studentShow(Ticket $ticket){
+    public function studentShow(Student $student, Ticket $ticket){
         return view('admin.tickets.student-show', [
-            'ticket' => $ticket
+            'ticket' => $ticket,
+            'student' => $student
         ]);
     }
 
