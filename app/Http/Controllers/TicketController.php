@@ -14,6 +14,7 @@ use App\Mail\ResolvedTicket;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Mail\NewTicketSubmitted;
+use App\Models\Reopen;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -191,6 +192,7 @@ class TicketController extends Controller
     public function show($id){
         return view('admin.tickets.show', [
             'ticket' => Ticket::find($id),
+            'reopen' => DB::table('reopens')->where('ticket_id', $id)->latest()->first(),
             // 'rating' => DB::table('ratings')->where('ticket_id', $id)->get(),
             // 'reopenratings' => DB::table('reopenratings')->where
         ]);

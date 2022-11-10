@@ -228,7 +228,7 @@
 
         @if (count($ticket->reopens) != 0)
             <div class="ticket-div" style="margin-top:150px">
-                @if ($ticket->user_id == auth()->id())
+                @if ($reopen->user_id == auth()->id())
                     @if ($ticket->status == "New")
                         <div class="bottom">
                             <button type="submit" 
