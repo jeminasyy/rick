@@ -235,24 +235,24 @@
                 <br>
                 <h1 style="font-size:12px; font-weight:bold; float:right "> Date: {{$ticket->rating->created_at}}</h1>
                 <p class="reopen-p">
-                    <span style="font-weight: bold">Rating:&nbsp;</span>
+                    <span style="font-weight: bold">Rating:&nbsp;&nbsp;</span>
                     {{$ticket->rating->rating}}
                 </p>
 
                 @if ($ticket->rating->satisfied == 1)
                     <p class="reopen-p">
-                        <span style="font-weight: bold">Solution Accepted:&nbsp;</span>
+                        <span style="font-weight: bold">Solution Accepted:&nbsp;&nbsp;</span>
                         Yes
                     </p>
                 @else
                     <p class="reopen-p">
-                        <span style="font-weight: bold">Solution Accepted:&nbsp;</span>
+                        <span style="font-weight: bold">Solution Accepted:&nbsp;&nbsp;</span>
                         No
                     </p>
                 @endif
 
                 <p class="reopen-p">
-                    <span style="font-weight: bold">Comments:&nbsp;</span>
+                    <span style="font-weight: bold">Comments:&nbsp;&nbsp;</span>
                     {{$ticket->rating->comments}}
                 </p>
             </div>
@@ -269,12 +269,12 @@
                     <h1 style="font-size:12px; font-weight:bold; float:right "> Date: {{$reopen->created_at}}</h1>
 
                     <p class="reopen-p">
-                        <span style="font-weight: bold">Reason:&nbsp;</span>
+                        <span style="font-weight: bold">Reason:&nbsp;&nbsp;</span>
                         {{$reopen->reason}}
                     </p>
 
                     <p class="reopen-p">
-                        <span style="font-weight: bold">Assignee:&nbsp;</span>
+                        <span style="font-weight: bold">Assignee:&nbsp;&nbsp;</span>
                         {{$reopen->user->email}}
                     </p>
                 @endforeach
@@ -289,14 +289,14 @@
                             <button type="submit" 
                                 class="btn btn-secondary btn-lg"
                                 id="secondary-button"
-                                onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                                onclick="location.href='/{{$reopen->id}}/reopen/void';"
                             >
                                 Void Ticket
                             </button>
                         </div>
                     @elseif ($ticket->status == "Opened")
                         <div class="bottom">
-                            <form method="POST" action="/{{$ticket->id}}/ticket/setOngoing">
+                            <form method="POST" action="/{{$reopen->id}}/reopen/setOngoing">
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" 
@@ -310,7 +310,7 @@
                             <button 
                                 class="btn btn-secondary btn-lg"
                                 id="secondary-button"
-                                onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                                onclick="location.href='/{{$reopen->id}}/reopen/void';"
                             >
                                 Void Ticket
                             </button>
@@ -320,7 +320,7 @@
                             <button
                                 class="btn btn-secondary btn-lg"
                                 id="primary-button"
-                                onclick="location.href='/{{$ticket->id}}/ticket/resolve';"
+                                onclick="location.href='/{{$reopen->id}}/reopen/resolve';"
                             >
                                 Mark as Resolved
                             </button>
@@ -328,7 +328,7 @@
                             <button
                                 class="btn btn-secondary btn-lg"
                                 id="secondary-button"
-                                onclick="location.href='/{{$ticket->id}}/ticket/void';"
+                                onclick="location.href='/{{$reopen->id}}/reopen/void';"
                             >
                                 Void Ticket
                             </button>
