@@ -296,7 +296,7 @@
             </div>
         @endif
 
-        @if (count($reopen) != 0)
+        @if ($reopen)
             <div class="ticket-div" style="margin-top:150px">
                 @if ($reopen->user_id == auth()->id())
                     @if ($ticket->status == "New")
