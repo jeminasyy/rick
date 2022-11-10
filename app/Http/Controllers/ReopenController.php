@@ -59,18 +59,21 @@ class ReopenController extends Controller
         return redirect()->route('viewReopen', [$student]);
     }
 
+    // Display Student's Resolved and Inactive Tickets
     public function viewReopen(Student $student) {
         return view('email.reopen.view', [
             'tickets' => $student->tickets()->get()
         ]);
     }
 
+    // View Reopen ticket form
     public function createReopen(Ticket $ticket){
         return view('email.reopen.create', [
             'ticket' => $ticket,
         ]);
     }
 
+    // Reopen ticket
     public function storeReopen(Request $request, Ticket $ticket, Student $student) {
         $formFields = $request->validate([
             'reason' => 'required'
@@ -120,4 +123,53 @@ class ReopenController extends Controller
         $student->update($studentField);
         $ticket->update($ticketField);
     }
+
+    // Update Ticket Priority
+    public function updatePriority(Request $request, Reopen $reopen) {
+        if ($reopen->user->id != auth()->id()){
+            abort(403, 'Unauthorized Action');
+        }
+
+        $formFields = $request->validate([
+            'priority' => 'required'
+        ]);
+
+        $ticket = Ticket::find($reopen->ticket->id);
+
+        if ($request->priority == "High" || $request->priority == "Medium" || $request->priority == "Low"){
+            if($ticket->status == "New"){
+                $formFields['status'] = "Opened"; 
+            }
+            $ticket->update($formFields);
+            return redirect()->route('ticket', [$ticket]);
+        } else {
+            auth()->logout();
+        }
+    }
+
+    // Mark as ongoing
+    public function setOngoing() {
+
+    }
+
+    // Display Void Ticket Form
+    public function void() {
+
+    }
+
+    // Set Ticket as Voided
+    public function setVoided() {
+
+    }
+
+    // Display resolve ticket form
+    public function resolve() {
+
+    }
+
+    // Set status as pending while waiting for student's feedback
+    public function setPending() {
+
+    }
+
 }

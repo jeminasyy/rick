@@ -122,7 +122,7 @@
                             <p class="attribute">Priority</p>
                             <p>{{$ticket->priority}}</p>
                         @else
-                            <form method="POST" action="/{{$ticket->id}}/ticket/updatePriority">
+                            <form method="POST" action="/{{$reopen->id}}/reopen/updatePriority">
                                 @csrf
                                 @method('PUT')
                                 <p class="attribute">Priority</p>

@@ -100,6 +100,7 @@ Route::get('/reopenConfirm/{ticket}/{student}', [FeedbackController::class, 'reo
 // ----TICKETS----
 // **Admin/FDO Only
 
+// 1. Submit New Ticket
 // Show Tickets list
 Route::get('/tickets', [TicketController::class,'index'])->middleware('auth');
 // Update Ticket Priority
@@ -126,6 +127,25 @@ Route::get('/tickets/{id}', [TicketController::class, 'show'])->middleware('auth
 Route::get('/{ticket}/ticket/transfer', [TicketController::class, 'transfer'])->middleware('auth');
 // Transfer Ticket
 Route::put('/{ticket}/ticket/setTransfer', [TicketController::class, 'setTransfer'])->middleware('auth');
+
+// 2. Reopen Tickets
+// Update ticket priority
+Route::put('/{reopen}/reopen/updatePriority', [ReopenController::class, 'updatePriority'])->middleware('auth');
+// Mark as Ongoing
+Route::put('/{reopen}/reopen/setOngoing', [ReopenController::class, 'setOngoing'])->middleware('auth');
+// Display Void Ticket Form
+Route::get('/{reopen}/reopen/void', [ReopenController::class, 'void'])->middleware('auth');
+// Void Ticket
+Route::put('/{reopen}/reopen/setVoided', [ReopenController::class, 'setVoided'])->middleware('auth');
+// Display Resolve Ticket Form
+Route::get('/{reopen}/reopen/resolve', [ReopenController::class, 'resolve'])->middleware('auth');
+// Set Ticket as Pending Before Resolving
+Route::put('/{reopen}/reopen/setPending', [ReopenController::class, 'setPending'])->middleware('auth');
+// Feedback Form --- STUDENTS ONLY
+Route::get('/{reopen}/{student}/feedback', [FeedbackController::class, 'feedbackReopen'])->middleware('guest');
+// Resolve Ticket -- AFTER SUBMITTING FEEDBACK
+Route::put('/{reopen}/{student}/setResolved', [FeedbackController::class, 'setResolvedReopen'])->middleware('guest');
+
 
 
 // ----USERS----
