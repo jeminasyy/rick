@@ -123,6 +123,8 @@ class ReopenController extends Controller
         $ticketField['status'] = "Opened";
         $student->update($studentField);
         $ticket->update($ticketField);
+
+        return view('email.reopen.submitted');
     }
 
     // Update Ticket Priority

@@ -49,6 +49,20 @@ class OngoingReopenedTicket extends Mailable
     {
         return new Content(
             view: 'email.updates.ongoing-reopen',
+            with: [
+                'Number' => $this->ticket->id,
+                'FName' => $this->ticket->student->FName,
+                'LName' => $this->ticket->student->LName,
+                'Type' => $this->ticket->categ->type,
+                'Category' => $this->ticket->categ->name,
+                'Description' => $this->ticket->description,
+                'Priority' => $this->ticket->priority,
+                'Response' => $this->ticket->response,
+                'Assignee' => $this->reopen->user->email,
+                'AssigneeFName' => $this->reopen->user->firstName,
+                'AssigneeLName' => $this->reopen->user->lastName,
+                'Reason' => $this->reopen->reason
+            ]
         );
     }
 
