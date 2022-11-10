@@ -6,7 +6,7 @@
             </a>
             <p style="font-size: 17px; font-weight:bold">Ticket# {{$ticket->id}}</p>
             
-            @if (count($ticket->reopens) == 0)
+            @if (count($reopen) == 0)
                 @if ($ticket->user_id == auth()->id())
                     <button 
                         type="button" 
@@ -19,7 +19,7 @@
                 @endif
             @endif
 
-            @if (count($ticket->reopens) != 0)
+            @if (count($reopen) != 0)
                 @if ($reopen->user_id == auth()->id())
                     <button 
                         type="button" 
