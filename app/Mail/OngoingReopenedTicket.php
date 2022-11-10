@@ -3,10 +3,11 @@
 namespace App\Mail;
 
 use App\Models\Reopen;
+use App\Models\Ticket;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,10 +21,10 @@ class OngoingReopenedTicket extends Mailable
      *
      * @return void
      */
-    public function __construct(Reopen $reopen)
+    public function __construct(Reopen $reopen, Ticket $ticket)
     {
         $this->reopen = $reopen;
-        $this->ticket = $reopen->ticket;
+        $this->ticket = $ticket;
     }
 
     /**

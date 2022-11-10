@@ -159,7 +159,7 @@ class ReopenController extends Controller
         $formFields['status'] = "Ongoing";
         $ticket->update($formFields);
 
-        Mail::to($ticket->student->email)->send(new OngoingReopenedTicket($reopen));
+        Mail::to($ticket->student->email)->send(new OngoingReopenedTicket($reopen, $ticket));
         
         return redirect()->route('ticket', [$ticket]);
     }
