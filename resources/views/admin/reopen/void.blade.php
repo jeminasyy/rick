@@ -51,7 +51,7 @@
                         Confirm
                     </button>
     
-                    <a href="/tickets/{{$ticket->id}}" class="text-black ml-4"> Cancel </a>
+                    <a href="/tickets/{{$reopen->ticket->id}}" class="text-black ml-4"> Cancel </a>
                 </div>
             </form>
         </div>
