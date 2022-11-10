@@ -8,6 +8,7 @@ use App\Mail\VerifyNew;
 use App\Models\Student;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\VoidedReopenedTicket;
 use Illuminate\Support\Facades\DB;
 use App\Mail\OngoingReopenedTicket;
 use Illuminate\Support\Facades\Mail;
@@ -175,8 +176,31 @@ class ReopenController extends Controller
     }
 
     // Set Ticket as Voided
-    public function setVoided() {
+    public function setVoided(Request $request, Reopen $reopen) {
+        if ($reopen->user->id != auth()->id()){
+            abort(403, 'Unauthorized Action');
+        }
 
+        $formFields = $request->validate([
+            'response' => 'required'
+        ]);
+
+        $formFields['status'] = "Void";
+        $formFields['dateResponded'] = now();
+
+        $ticket = Ticket::find($reopen->ticket->id);
+        $ticketField['status'] = "Voided";
+
+        $student = Student::find($ticket->student_id);
+        $studentField['ongoingTickets'] = $student->ongoingTickets - 1;
+
+        $ticket->update($ticketField);
+        $student->update($studentField);
+        $reopen->update($formFields);
+
+        Mail::to($ticket->student->email)->send(new VoidedReopenedTicket($reopen, $ticket));
+
+        return redirect()->route('ticket', [$ticket]);
     }
 
     // Display resolve ticket form
