@@ -9,6 +9,7 @@ use App\Models\Student;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mail\OngoingReopenedTicket;
 use Illuminate\Support\Facades\Mail;
 
 class ReopenController extends Controller
@@ -148,8 +149,19 @@ class ReopenController extends Controller
     }
 
     // Mark as ongoing
-    public function setOngoing() {
+    public function setOngoing(Ticket $ticket, Reopen $reopen) {
+        if ($reopen->user->id != auth()->id()){
+            abort(403, 'Unauthorized Action');
+        }
 
+        $ticket = Ticket::find($reopen->ticket->id);
+
+        $formFields['status'] = "Ongoing";
+        $ticket->update($formFields);
+
+        Mail::to($ticket->student->email)->send(new OngoingReopenedTicket($reopen));
+        
+        return redirect()->route('ticket', [$ticket]);
     }
 
     // Display Void Ticket Form
