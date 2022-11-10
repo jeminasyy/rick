@@ -1,4 +1,6 @@
 <x-layout>
-    <h1>You have reached the limitiation for ongoing tickets!</h1>
-    <a style="color: blue; text-decoration:underline; cursor:pointer"><h1>View Tickets</h1></a>
+    <div class="form-inline3">
+        <h1 style="color:black; font-family: 'Cabin', sans-serif; font-size: 29;text-align: center; margin-top: 13%; position: relative;">You have reached the limitiation for ongoing tickets!</h1>
+        <button onclick="location.href='/tickets/{{$student->id}}';">View Tickets</button>
+    </div>
 </x-layout>

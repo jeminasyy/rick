@@ -31,6 +31,21 @@ class TicketController extends Controller
     public function inputNew() {
         return view('email.new.index');
     }
+
+    // View Student Tickets
+    public function studentView(Student $student){
+        return view('admin.tickets.student-view', [
+            'tickets' => $student->tickets()->get()
+        ]);
+    }
+
+    // Show Single Student Ticket
+    public function studentShow(Ticket $ticket){
+        return view('admin.tickets.student-show', [
+            'ticket' => $ticket
+        ]);
+    }
+
     // Send code
     public function emailNew(Request $request) {
         $code = Str::random(6);
@@ -39,7 +54,9 @@ class TicketController extends Controller
         if ($find) {
             $student = Student::find($find->id);
             if($student->ongoingTickets >= 3){
-                return view('admin.tickets.limit-reached');
+                return view('admin.tickets.limit-reached', [
+                    'student' => $student
+                ]);
             }
             $formFields['code'] = $code;
             $student->update($formFields);
@@ -177,6 +194,9 @@ class TicketController extends Controller
     public function newSuccess(){
         return view('admin.tickets.submitted');
     }
+
+    // Show student's tickets
+
 
 
     // ---- ADMIN/FDO VIEW ----
