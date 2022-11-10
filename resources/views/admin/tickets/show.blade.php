@@ -116,7 +116,7 @@
                     @endif
                 @endif
 
-                @if (count($ticket->reopens) != 0)
+                @if (!$reopen)
                     @if ($reopen->user_id == auth()->id())
                         @if($ticket->status == "Pending" || $ticket->status == "Resolved" || $ticket->status == "Voided")
                             <p class="attribute">Priority</p>
