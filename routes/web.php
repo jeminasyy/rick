@@ -71,9 +71,9 @@ Route::put('/tickets/{student}', [TicketController::class, 'store'])->middleware
 Route::get('/new/submitted', [TicketController::class, 'newSuccess'])->middleware('guest');
 
 // Display Student's Tickets
-Route::get('/tickets/{student}', [TicketController::class, 'studentView'])->middleware('guest');
+Route::get('/tickets/student/{student}', [TicketController::class, 'studentView'])->middleware('guest');
 // Show Single Ticket
-Route::get('/ticket/{student}/{ticket}', [TicketController::class, 'studentShow'])->middleware('guest');
+Route::get('/ticket/student/{student}/{ticket}', [TicketController::class, 'studentShow'])->middleware('guest');
 
 // 2. Reopen Tickets
 // Show Input Email Form

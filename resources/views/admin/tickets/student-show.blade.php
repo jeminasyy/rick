@@ -1,7 +1,7 @@
 <x-layout>
     <div id="reopen">
         <div class="ticket-div">
-            <a href="/tickets/{{$student->id}}">
+            <a href="/tickets/student/{{$student->id}}">
                 <i class='bx bx-left-arrow-alt bx-md'></i>
             </a>
             <p style="font-size: 17px; font-weight:bold">Ticket# {{$ticket->id}}</p>
