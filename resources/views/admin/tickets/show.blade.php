@@ -154,21 +154,21 @@
                     @endif
                 @endif
 
-                @if ($ticket->status == "Resolved" || $ticket->status == "Pending")
+                @if ($ticket->response)
                     <p class="attribute">Date Responded</p>
                     <p>{{$ticket->dateResponded}}</p>
 
-                    <p class="attribute">Solution</p>
+                    <p class="attribute">Response/Solution</p>
                     <p>{{$ticket->response}}</p>
                 @endif
 
-                @if ($ticket->status == "Voided")
+                {{-- @if ($ticket->status == "Voided")
                     <p class="attribute">Date Responded</p>
                     <p>{{$ticket->dateResponded}}</p>
 
                     <p class="attribute">Reason</p>
                     <p>{{$ticket->response}}</p>
-                @endif
+                @endif --}}
 
                 @if (count($ticket->reopens) == 0)
                     @if ($ticket->user_id == auth()->id())
