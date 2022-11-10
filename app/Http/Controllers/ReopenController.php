@@ -28,7 +28,9 @@ class ReopenController extends Controller
         if ($find) {
             $student = Student::find($find->id);
             if ($student->ongoingTickets >= 3) {
-                return view('admin.tickets.limit-reached');
+                return view('admin.tickets.limit-reached', [
+                    'student' => $student
+                ]);
             }
             if($student->tickets > $student->ongoingTickets) {
                 $formFields['code'] = $code;
