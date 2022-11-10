@@ -168,8 +168,10 @@ class ReopenController extends Controller
     }
 
     // Display Void Ticket Form
-    public function void() {
-        return view();
+    public function void(Reopen $reopen) {
+        return view('admin.reopen.void', [
+            'reopen' => $reopen
+        ]);
     }
 
     // Set Ticket as Voided
