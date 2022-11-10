@@ -1,5 +1,5 @@
 <div style="width: 100%; padding: 20px 50px 0px 50px; height:fit-content;">
-    <p style="font-size: 17px; font-weight:bold">Hi {{$ticket->student->FName}} {{$ticket->student->LName}}!</p>
+    <p style="font-size: 17px; font-weight:bold">Hi {{$reopen->ticket->student->FName}} {{$ticket->student->LName}}!</p>
     <p style="font-weight: bold; margin-top: 10px;">Your ticket is ongoing</p>
     <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
     transform: rotate(0.08deg); ">
