@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->longText('reason');
 
-            // $table->string('status')->default('New');
+            $table->string('status')->nullable();
             // $table->string('priority')->default('Unset');
             $table->string('response')->nullable();
             // $table->dateTime('dateReopened');

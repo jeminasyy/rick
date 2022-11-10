@@ -277,6 +277,21 @@
                         <span style="font-weight: bold">Assignee:&nbsp;&nbsp;</span>
                         {{$reopen->user->email}}
                     </p>
+
+                    @if ($reopen->response != null)
+                        <p class="reopen-p">
+                            <span style="font-weight: bold">Action Taken:&nbsp;&nbsp;</span>
+                            {{$reopen->status}}
+                        </p>
+                        <p class="reopen-p">
+                            <span style="font-weight: bold">Response/Solution:&nbsp;&nbsp;</span>
+                            {{$reopen->response}}
+                        </p>
+                        <p class="reopen-p">
+                            <span style="font-weight: bold">Date Responded:&nbsp;&nbsp;</span>
+                            {{$reopen->dateResponded}}
+                        </p>
+                    @endif
                 @endforeach
             </div>
         @endif

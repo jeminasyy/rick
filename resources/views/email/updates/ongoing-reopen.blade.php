@@ -26,5 +26,6 @@
     <p>{{$Reason}}</p>
 
     <p style="font-weight: bold; margin-top: 10px;">Assignee</p>
-    <p>{{$Assignee}}, {{$AssigneeFName}} {{$AssigneeLName}}</p>
+    <p>{{$AssigneeFName}} {{$AssigneeLName}}</p>
+    <p>{{$Assignee}}</p>
 </div>

@@ -169,7 +169,7 @@ class ReopenController extends Controller
 
     // Display Void Ticket Form
     public function void() {
-
+        return view();
     }
 
     // Set Ticket as Voided
