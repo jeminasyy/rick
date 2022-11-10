@@ -78,40 +78,80 @@
                     <p>{{$ticket->status}}</p>
                 @endif
 
-                @if ($ticket->user_id == auth()->id())
-                    @if($ticket->status == "Pending" || $ticket->status == "Resolved" || $ticket->status == "Voided")
+                @if (count($ticket->reopens) == 0)
+                    @if ($ticket->user_id == auth()->id())
+                        @if($ticket->status == "Pending" || $ticket->status == "Resolved" || $ticket->status == "Voided")
+                            <p class="attribute">Priority</p>
+                            <p>{{$ticket->priority}}</p>
+                        @else
+                            <form method="POST" action="/{{$ticket->id}}/ticket/updatePriority">
+                                @csrf
+                                @method('PUT')
+                                <p class="attribute">Priority</p>
+                                <select name="priority" id="priority" onchange="this.form.submit()">
+                                    @if ($ticket->priority == "High")
+                                        <option value="High" selected>High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                    @elseif ($ticket->priority == "Medium")
+                                        <option value="High">High</option>
+                                        <option value="Medium" selected>Medium</option>
+                                        <option value="Low">Low</option>
+                                    @elseif ($ticket->priority == "Low")
+                                        <option value="High">High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low" selected>Low</option>
+                                    @else 
+                                        <option value="" font color="#gray">--Select--</option>
+                                        <option value="High">High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                    @endif
+                                </select>
+                            </form>
+                        @endif
+                    @else
                         <p class="attribute">Priority</p>
                         <p>{{$ticket->priority}}</p>
-                    @else
-                        <form method="POST" action="/{{$ticket->id}}/ticket/updatePriority">
-                            @csrf
-                            @method('PUT')
-                            <p class="attribute">Priority</p>
-                            <select name="priority" id="priority" onchange="this.form.submit()">
-                                @if ($ticket->priority == "High")
-                                    <option value="High" selected>High</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="Low">Low</option>
-                                @elseif ($ticket->priority == "Medium")
-                                    <option value="High">High</option>
-                                    <option value="Medium" selected>Medium</option>
-                                    <option value="Low">Low</option>
-                                @elseif ($ticket->priority == "Low")
-                                    <option value="High">High</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="Low" selected>Low</option>
-                                @else 
-                                    <option value="" font color="#gray">--Select--</option>
-                                    <option value="High">High</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="Low">Low</option>
-                                @endif
-                            </select>
-                        </form>
                     @endif
-                @else
-                    <p class="attribute">Priority</p>
-                    <p>{{$ticket->priority}}</p>
+                @endif
+
+                @if (count($ticket->reopens) != 0)
+                    @if ($reopen->user_id == auth()->id())
+                        @if($ticket->status == "Pending" || $ticket->status == "Resolved" || $ticket->status == "Voided")
+                            <p class="attribute">Priority</p>
+                            <p>{{$ticket->priority}}</p>
+                        @else
+                            <form method="POST" action="/{{$ticket->id}}/ticket/updatePriority">
+                                @csrf
+                                @method('PUT')
+                                <p class="attribute">Priority</p>
+                                <select name="priority" id="priority" onchange="this.form.submit()">
+                                    @if ($ticket->priority == "High")
+                                        <option value="High" selected>High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                    @elseif ($ticket->priority == "Medium")
+                                        <option value="High">High</option>
+                                        <option value="Medium" selected>Medium</option>
+                                        <option value="Low">Low</option>
+                                    @elseif ($ticket->priority == "Low")
+                                        <option value="High">High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low" selected>Low</option>
+                                    @else 
+                                        <option value="" font color="#gray">--Select--</option>
+                                        <option value="High">High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                    @endif
+                                </select>
+                            </form>
+                        @endif
+                    @else
+                        <p class="attribute">Priority</p>
+                        <p>{{$ticket->priority}}</p>
+                    @endif
                 @endif
 
                 @if ($ticket->status == "Resolved" || $ticket->status == "Pending")
