@@ -6,7 +6,6 @@ use App\Models\Reopen;
 use App\Models\Ticket;
 use App\Mail\VerifyNew;
 use App\Models\Student;
-use App\Mail\OngoingTicket;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -159,10 +158,10 @@ class ReopenController extends Controller
 
         $formFields['status'] = "Ongoing";
 
-        Mail::to($ticket->student->email)->send(new OngoingTicket($ticket));
+        Mail::to($ticket->student->email)->send(new OngoingReopenedTicket($reopen, $ticket));
         
         $ticket->update($formFields);
-
+        
         return redirect()->route('ticket', [$ticket]);
     }
 
