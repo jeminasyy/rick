@@ -37,11 +37,12 @@
                   <td>{{$ticket->status}}</td>
                 @endif
                 @if (count($ticket->reopens) != 0)
-                  {{$findReopen = DB::table('reopens')->where('response', null)->where('ticket_id', $ticket->id)->latest()->first()}}
-                  {{$reopen = Reopen::find($findReopen->id)}}
-                  <td style="word-break: break-all;">{{$reopen->user->email}}</td>
+                  <td style="word-break: break-all;">{{$ticket->user->email}}</td>
+                  @foreach($ticket->reopens as $reopen)
+                    <td style="word-break: break-all;">{{$reopen->user->email}}</td>
+                  @endforeach
                 @else
-                <td style="word-break: break-all;">{{$ticket->user->email}}</td>
+                  <td style="word-break: break-all;">{{$ticket->user->email}}</td>
                 @endif
                 <td>
                   <a href="/tickets/{{$ticket->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View</a>
