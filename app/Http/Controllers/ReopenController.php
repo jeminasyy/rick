@@ -85,7 +85,7 @@ class ReopenController extends Controller
         ]);
         
         if($request->reassign == 1) {
-            dd($ticket->reopens);
+            dd($ticket->reopens != null);
             if($ticket->reopens) {
                 $reopen = DB::table('reopens')->where('ticket_id', $ticket->id)->latest()->first();
                 dd($reopen->user_id);
