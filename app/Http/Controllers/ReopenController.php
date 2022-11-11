@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Categ;
 use App\Models\Reopen;
 use App\Models\Ticket;
 use App\Mail\VerifyNew;
@@ -251,4 +253,16 @@ class ReopenController extends Controller
         return redirect()->route('ticket', [$ticket]);
     }
 
+    // Show transfer ticket form
+    public function transfer(Reopen $reopen) {
+        if ($reopen->user->id != auth()->id()){
+            abort(403, 'Unauthorized Action');
+        }
+        return view('admin.reopen.transfer', [
+            'reopen' => $reopen,
+            'ticket' => $reopen->ticket()->get(),
+            'categs' => Categ::all(),
+            'users' => User::all()
+        ]);
+    }
 }

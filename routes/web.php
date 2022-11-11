@@ -145,6 +145,10 @@ Route::put('/{reopen}/reopen/setPending', [ReopenController::class, 'setPending'
 Route::get('/{reopen}/{ticket}/{student}/feedback/reopen', [FeedbackController::class, 'feedbackReopen'])->middleware('guest');
 // Resolve Ticket -- AFTER SUBMITTING FEEDBACK
 Route::put('/{reopen}/{ticket}/{student}/reopen/setResolved', [FeedbackController::class, 'setResolvedReopen'])->middleware('guest');
+// Display Transfer Ticket Form
+Route::get('/{reopen}/reopen/transfer', [ReopenController::class, 'transfer'])->middleware('auth');
+// Transfer Ticket
+Route::put('/{reopen}/reopen/setTransfer', [ReopenController::class, 'setTransfer'])->middleware('auth');
 
 
 

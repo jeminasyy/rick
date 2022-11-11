@@ -25,7 +25,7 @@
                         type="button" 
                         class="btn btn-secondary btn-lg"
                         id="transfer"
-                        onclick="location.href='/{{$ticket->id}}/ticket/transfer';"
+                        onclick="location.href='/{{$reopen->id}}/reopen/transfer';"
                     >
                         Transfer Ticket
                     </button>
