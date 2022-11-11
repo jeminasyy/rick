@@ -75,9 +75,13 @@ class FeedbackController extends Controller
         return view('submit.feedback-submitted');
     }
 
+    // When Student is unsatisfied with solution
     // Reopen Unresolved Ticket
     public function reopenUnsolved(Ticket $ticket, Student $student){
-        return view();
+        return view('submit.reopen-unsatisfied', [
+            'ticket' => $ticket,
+            'student' => $student
+        ]);
     }
 
     // --------------------
