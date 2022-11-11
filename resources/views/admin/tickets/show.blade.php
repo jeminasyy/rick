@@ -322,6 +322,7 @@
                             <span style="font-weight: bold">Comments:&nbsp;&nbsp;</span>
                             {{$reopen->reopenrating->comments}}
                         </p>
+                        <br>
                     </div>
                 @endif
             @endforeach
