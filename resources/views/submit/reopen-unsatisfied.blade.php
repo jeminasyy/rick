@@ -18,7 +18,7 @@
             id="secondary-button"
             onclick="location.href='/';"
         >
-            No, return home
+            Yes, reopen ticket
         </button>    
         <button 
             class="btn btn-secondary btn-lg"
