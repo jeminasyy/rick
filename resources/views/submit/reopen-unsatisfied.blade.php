@@ -20,7 +20,7 @@
         <button 
             class="btn btn-secondary btn-lg"
             id="primary-button2"
-            onclick="location.href='/';"
+            onclick="location.href='/reopen/create/{{$ticket->id}}/{{$student->id}}';"
         >
             Yes, reopen ticket
         </button> 
