@@ -24,14 +24,16 @@
         >
             Yes, reopen ticket
         </button> 
-    </div>
-    <div class="ticket-div">
+
         <button 
             class="btn btn-secondary btn-lg"
             id="secondary-button2"
             onclick="location.href='/';"
         >
-            Oh no, return home
+            No, return home
         </button>
+    </div>
+    <div class="ticket-div">
+        
     </div>
 </x-layout>
