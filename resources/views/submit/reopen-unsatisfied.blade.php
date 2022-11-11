@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="form-inline3">
+    <div class="ticket-div">
         <h1 style="color:black; font-family: 'Cabin', sans-serif; font-size: 29;text-align: center; margin-top: 13%; position: relative;">
             You answered No.
         </h1>
@@ -16,7 +16,7 @@
            
           
     </div>
-    <div class="form-inline3">
+    <div class="ticket-div">
         <button 
             class="btn btn-secondary btn-lg"
             id="secondary-button2"
@@ -25,7 +25,7 @@
             Yes, reopen ticket
         </button> 
     </div>
-    <div class="form-inline3">
+    <div class="ticket-div">
         <button 
             class="btn btn-secondary btn-lg"
             id="secondary-button2"
