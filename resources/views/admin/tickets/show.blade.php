@@ -41,10 +41,10 @@
 
         <div class="ticket-div" style="padding-top:10px; padding-bottom:30px">
             <div class="ticket-left">
-                <p class="attribute">Name</p>
+                <p class="attribute">Student Name</p>
                 <p>{{$ticket->student->LName}}, {{$ticket->student->FName}}</p>
                 
-                <p class="attribute">Email</p>
+                <p class="attribute">Student Email</p>
                 <p>{{$ticket->student->email}}</p>
 
                 <p class="attribute">Student Number</p>

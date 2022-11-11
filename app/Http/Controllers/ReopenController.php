@@ -265,4 +265,28 @@ class ReopenController extends Controller
             'users' => User::all()
         ]);
     }
+
+    // Transfer Ticket
+    public function setTransfer(Request $request, Reopen $reopen) {
+        if ($reopen->user->id != auth()->id()){
+            abort(403, 'Unauthorized Action');
+        }
+
+        if (!$request->categ_id && !$request->user_id){
+            return back()->withErrors(['categ_id' => 'Form is empty'])->onlyInput('categ_id');
+        }
+
+        if ($request->categ_id) {
+            $formFields['categ_id'] = $request->categ_id;
+        }
+
+        if ($request->user_id) {
+            $formFields['user_id'] = $request->user_id;
+        }
+
+        $ticket = Ticket::find($reopen->ticket->id);
+
+        $ticket->update($formFields);
+        return redirect()->route('ticket', [$ticket]);
+    }
 }
