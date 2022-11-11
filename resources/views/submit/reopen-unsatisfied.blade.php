@@ -16,7 +16,7 @@
            
           
     </div>
-    <div class="ticket-div2">
+    <div class="button-div">
         <button 
             class="btn btn-secondary btn-lg"
             id="primary-button2"
