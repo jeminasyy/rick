@@ -123,3 +123,21 @@
 /* Mark as Ongoing
 Void Ticket 
 Mark as Resolved */
+
+#secondary-button2 {
+    background-color: #FFFFFF; 
+    border: 2px solid#F8CA0A; 
+    border-radius: 0px; 
+    color:#F8CA0A;
+    /* float:right; */
+    
+    /* align-self: baseline; */
+    font-size: 17px;
+    /* position: absolute;
+    right:0;
+    bottom: 0; */
+    /* display: block;
+    margin-bottom: 10px;
+    margin-bottom: 10px; */
+    width: 200px;
+}

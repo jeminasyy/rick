@@ -15,14 +15,14 @@
         </button> --}}
         <button 
             class="btn btn-secondary btn-lg"
-            id="secondary-button"
+            id="secondary-button2"
             onclick="location.href='/';"
         >
             Yes, reopen ticket
         </button>    
         <button 
             class="btn btn-secondary btn-lg"
-            id="secondary-button"
+            id="secondary-button2"
             onclick="location.href='/';"
         >
             Oh no, return home
