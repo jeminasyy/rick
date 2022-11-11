@@ -272,6 +272,8 @@ class ReopenController extends Controller
             abort(403, 'Unauthorized Action');
         }
 
+        $ticket = Ticket::find($reopen->ticket->id);
+
         if (!$request->categ_id && !$request->user_id){
             return back()->withErrors(['categ_id' => 'Form is empty'])->onlyInput('categ_id');
         }
@@ -282,9 +284,39 @@ class ReopenController extends Controller
 
         if ($request->user_id) {
             $formFields['user_id'] = $request->user_id;
-        }
+        } else {
+            if ($ticket->status != "Resolved" && $ticket->status != "Voided") {
+                $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
 
-        $ticket = Ticket::find($reopen->ticket->id);
+                if (count($users) == 0) {
+                    $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
+    
+                    $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->count();
+                    $min_id = $admins[0]->id;
+    
+                    for($x=1; $x<count($users); $x++){
+                        $a = DB::table('tickets')->where('user_id', $admins[$x]->id)->whereNot('status', 'Resolved')->count();
+                        if($min > $a) {
+                            $min = $a;
+                            $min_id = $admins[$x]->id;
+                        }
+                    }
+                    $formFields['user_id'] = $min_id;
+                } else {
+                    $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
+                    $min_id = $users[0]->id;
+                    
+                    for($x=1; $x<count($users); $x++){
+                        $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
+                        if($min > $a) {
+                            $min = $a;
+                            $min_id = $users[$x]->id;
+                        }
+                    }
+                    $formFields['user_id'] = $min_id;
+                }
+            }
+        }
 
         $ticket->update($formFields);
         return redirect()->route('ticket', [$ticket]);
