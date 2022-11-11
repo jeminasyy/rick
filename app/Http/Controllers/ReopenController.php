@@ -85,7 +85,7 @@ class ReopenController extends Controller
         if($request->reassign == 1) {
             if($ticket->reopens) {
                 $reopen = DB::table('reopens')->where('ticket_id', $ticket->id)->latest()->first();
-                dd($reopen->id);
+                dd($reopen->user_id);
                 $currentUser = $reopen->id;
                 $users = DB::table('users')->whereNot('id', $currentUser)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
             } else {
@@ -122,7 +122,7 @@ class ReopenController extends Controller
             }
         } else {
             if ($ticket->reopens){
-                $reopen = DB::table('reopens')->where('response', null)->where('ticket_id', $ticket->id)->latest()->first();
+                $reopen = DB::table('reopens')->where('ticket_id', $ticket->id)->latest()->first();
                 $reopenUser = $reopen->user_id;
                 $formFields['user_id'] = $reopenUser;
             }else {
