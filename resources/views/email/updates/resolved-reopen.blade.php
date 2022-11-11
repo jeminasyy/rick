@@ -2,7 +2,7 @@
     <p style="font-size: 17px; font-weight:bold">Hi {{$FName}} {{$LName}}!</p>
     <p style="font-weight: bold; margin-top: 10px;">Your ticket has been resolved.</p>
     <p style="font-weight: bold; margin-top: 10px;">Please provide your feedback through the link at the end of this email.</p>
-    <p style="font-weight: bold; margin-top: 10px;">Ticket# {{$Number}}</p>
+    <p style="font-weight: bold; margin-top: 10px;">Ticket# {{$Ticket_id}}</p>
     <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
     transform: rotate(0.08deg); ">
     <br>
@@ -19,7 +19,7 @@
 
     <p style="font-weight: bold; margin-top: 10px;">Tell us your experience!</p>
     <a 
-        href="http://vast-headland-55467.herokuapp.com/{{$Reopen_id}}/{{$Student_id}}/feedback/reopen"
+        href="http://vast-headland-55467.herokuapp.com/{{$Reopen_id}}/{{$Ticket_id}}/{{$Student_id}}/feedback/reopen"
         style="background-color: #EDC304; 
             border: none;
             color: white;

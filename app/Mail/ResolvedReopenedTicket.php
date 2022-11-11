@@ -50,7 +50,7 @@ class ResolvedReopenedTicket extends Mailable
         return new Content(
             view: 'email.updates.resolved-reopen',
             with: [
-                'Number' => $this->ticket->id,
+                'Ticket_id' => $this->ticket->id,
                 'FName' => $this->ticket->student->FName,
                 'LName' => $this->ticket->student->LName,
                 'Assignee' => $this->reopen->user->email,

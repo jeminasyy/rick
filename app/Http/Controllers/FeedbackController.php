@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rating;
+use App\Models\Reopen;
 use App\Models\Ticket;
 use App\Models\Student;
 use App\Models\Feedback;
@@ -14,6 +15,10 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
+    // -------------
+    // ** TICKETS **
+    // -------------
+
     // Show Feedback Form
     public function feedback(Ticket $ticket){
         return view('submit.feedback', [
@@ -72,5 +77,17 @@ class FeedbackController extends Controller
     // Reopen Unresolved Ticket
     public function reopenUnsolved(Ticket $ticket, Student $student){
         return view();
+    }
+
+    // --------------------
+    // ** REOPEN TICKETS **
+    // --------------------
+
+    // Show Feedback Form for Reopen Ticket
+    public function feedbackReopen(Reopen $reopen, Ticket $ticket) {
+        return view('submit.feedback', [
+            'reopen' => $reopen,
+            'ticket' => $ticket
+        ]);
     }
 }
