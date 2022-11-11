@@ -93,7 +93,7 @@ Route::put('/reopen/store/{ticket}/{student}', [ReopenController::class, 'storeR
 
 // When Student is unsatisfied with the solution
 // They can re-open the ticket
-Route::get('/reopenConfirm/{ticket}/{student}', [FeedbackController::class, 'reopenUnsolved'])->middleware('guest');
+Route::get('/reopenConfirm/{ticket}/{student}', [FeedbackController::class, 'reopenUnsolved'])->middleware('guest')->name('reopenUnsolved');
 // If Yes - Redirect to /reopen/ticket/student
 
 
