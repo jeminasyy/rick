@@ -25,7 +25,7 @@
             id="secondary-button"
             onclick="location.href='/';"
         >
-            No, return home
+            Oh no, return home
         </button>  
     </div>
 </x-layout>
