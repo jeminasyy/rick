@@ -16,10 +16,10 @@
            
           
     </div>
-    <div class="ticket-div">
+    <div class="ticket-div2">
         <button 
             class="btn btn-secondary btn-lg"
-            id="secondary-button2"
+            id="primary-button2"
             onclick="location.href='/';"
         >
             Yes, reopen ticket
