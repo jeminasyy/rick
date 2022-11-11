@@ -36,7 +36,12 @@
                 @else
                   <td>{{$ticket->status}}</td>
                 @endif
+                @if (count($ticket->reopens) != 0)
+                  {{$reopen = 'reopen' => DB::table('reopens')->where('response', null)->where('ticket_id', $id)->latest()->first()}}
+                  <td style="word-break: break-all;">{{$reopen->user->email}}</td>
+                @else
                 <td style="word-break: break-all;">{{$ticket->user->email}}</td>
+                @endif
                 <td>
                   <a href="/tickets/{{$ticket->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View</a>
                 </td>
