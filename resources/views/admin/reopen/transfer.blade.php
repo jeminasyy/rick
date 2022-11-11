@@ -20,9 +20,9 @@
                     <p class="attribute">Description</p>
                     <p>{{$ticket->description}}</p>
 
-                    {{-- {{$find = Reopen::find($reopen->user_id)}} --}}
+                    {{$find = User::find($reopen->user_id)}}
                     <p class="attribute">Assignee</p>
-                    <p>{{$find->user->id}}</p>
+                    <p>{{$find}}</p>
                 </div>
 
                 <div class="mb-6">
