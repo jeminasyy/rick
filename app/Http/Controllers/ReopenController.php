@@ -84,7 +84,7 @@ class ReopenController extends Controller
         
         if($request->reassign == 1) {
             if($ticket->reopens) {
-                $reopen = DB::table('reopens')->where('response', null)->where('ticket_id', $ticket->id)->latest()->first();
+                $reopen = DB::table('reopens')->where('ticket_id', $ticket->id)->latest()->first();
                 dd($reopen->id);
                 $currentUser = $reopen->id;
                 $users = DB::table('users')->whereNot('id', $currentUser)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
