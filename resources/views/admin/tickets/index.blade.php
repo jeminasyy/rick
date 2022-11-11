@@ -37,7 +37,7 @@
                   <td>{{$ticket->status}}</td>
                 @endif
                 @if (count($ticket->reopens) != 0)
-                  {{$reopen = 'reopen' => DB::table('reopens')->where('response', null)->where('ticket_id', $id)->latest()->first()}}
+                  {{$reopen = DB::table('reopens')->where('response', null)->where('ticket_id', $id)->latest()->first()}}
                   <td style="word-break: break-all;">{{$reopen->user->email}}</td>
                 @else
                 <td style="word-break: break-all;">{{$ticket->user->email}}</td>
