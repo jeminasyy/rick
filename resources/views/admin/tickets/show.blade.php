@@ -259,8 +259,8 @@
         @endif
 
         @if (count($ticket->reopens) != 0)
-            <div class="ticket-div">
-                @foreach($ticket->reopens as $reopen)
+            @foreach($ticket->reopens as $reopen)
+                <div class="ticket-div">
                     <br>
                     <p style="font-size: 17px; font-weight:bold">Ticket Reopened</p>
                     <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
@@ -292,8 +292,38 @@
                             {{$reopen->dateResponded}}
                         </p>
                     @endif
-                @endforeach
-            </div>
+                </div>
+                @if($reopen->reopenrating)
+                    <div class="ticket-div">
+                        <p style="font-size: 17px; font-weight:bold">Student Feedback</p>
+                        <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
+                        transform: rotate(0.08deg); ">
+                        <br>
+                        <h1 style="font-size:12px; font-weight:bold; float:right "> Date: {{$reopen->reopenrating->created_at}}</h1>
+                        <p class="reopen-p">
+                            <span style="font-weight: bold">Rating:&nbsp;&nbsp;</span>
+                            {{$reopen->reopenrating->rating}}
+                        </p>
+        
+                        @if ($reopen->reopenrating->satisfied == 1)
+                            <p class="reopen-p">
+                                <span style="font-weight: bold">Solution Accepted:&nbsp;&nbsp;</span>
+                                Yes
+                            </p>
+                        @else
+                            <p class="reopen-p">
+                                <span style="font-weight: bold">Solution Accepted:&nbsp;&nbsp;</span>
+                                No
+                            </p>
+                        @endif
+        
+                        <p class="reopen-p">
+                            <span style="font-weight: bold">Comments:&nbsp;&nbsp;</span>
+                            {{$reopen->reopenrating->comments}}
+                        </p>
+                    </div>
+                @endif
+            @endforeach
         @endif
 
         @if ($reopen)
