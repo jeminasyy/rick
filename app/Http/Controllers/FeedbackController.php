@@ -7,6 +7,7 @@ use App\Models\Reopen;
 use App\Models\Ticket;
 use App\Models\Student;
 use App\Models\Feedback;
+use App\Models\Reopenrating;
 use Illuminate\Http\Request;
 
 // --------------------------------------------------------------
@@ -85,9 +86,39 @@ class FeedbackController extends Controller
 
     // Show Feedback Form for Reopen Ticket
     public function feedbackReopen(Reopen $reopen, Ticket $ticket) {
-        return view('submit.feedback', [
+        return view('submit.feedback-reopen', [
             'reopen' => $reopen,
             'ticket' => $ticket
         ]);
+    }
+
+    // Submit Feedback and Mark as Resolved
+    public function setResolvedReopen(Request $request, Reopen $reopen, Ticket $ticket, Student $student){
+        $feedbackFields = $request->validate([
+            'rating' => 'required',
+            'satisfied' => 'required'
+        ]);
+
+        if ($request->comments) {
+            $feedbackFields['comments'] = $request->comments;
+        }
+
+        $feedbackFields['student_id'] = $student->id;
+        $feedbackFields['reopen_id'] = $reopen->id;
+
+        $TicketFields['status'] = "Resolved";
+        $TicketFields['dateResolved'] = now();
+
+        $StudentFields['ongoingTickets'] = $student->ongoingTickets - 1;
+
+        $feedbackReopen = Reopenrating::create($feedbackFields);
+        $ticket->update($TicketFields);
+        $student->update($StudentFields);
+
+        if ($feedbackReopen->satisfied == false) {
+            return redirect()->route('reopenUnsolved', [$ticket, $student]);
+        }
+
+        return redirect('/feedback/submitted');
     }
 }
