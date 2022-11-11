@@ -60,7 +60,7 @@ class ResolvedReopenedTicket extends Mailable
                 'Status' => $this->reopen->status,
                 'Response' => $this->reopen->response,
                 'Reopen_id' => $this->reopen->id,
-                'Student_id' => $this->reopen->student->id
+                'Student_id' => $this->ticket->student->id
             ],
         );
     }
