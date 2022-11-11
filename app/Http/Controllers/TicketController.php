@@ -295,7 +295,7 @@ class TicketController extends Controller
     // ** RESOLVING TICKETS IS AT FEEDBACK CONTROLLER **
     // --------------------------------------------------
 
-    // Mark as Pending
+    // Mark as Pending while waiting for student's feedback
     public function setPending(Request $request, Ticket $ticket) {
         if ($ticket->user_id != auth()->id()){
             abort(403, 'Unauthorized Action');

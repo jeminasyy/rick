@@ -2,12 +2,15 @@
 
 namespace App\Mail;
 
+use App\Models\Reopen;
+use App\Models\Ticket;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ResolvedReopenedTicket extends Mailable
 {
@@ -18,9 +21,10 @@ class ResolvedReopenedTicket extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Reopen $reopen, Ticket $ticket)
     {
-        //
+        $this->reopen = $reopen;
+        $this->ticket = $ticket;
     }
 
     /**
@@ -32,6 +36,7 @@ class ResolvedReopenedTicket extends Mailable
     {
         return new Envelope(
             subject: 'Resolved Reopened Ticket',
+            from: new Address('rick.noreply@gmail.com', 'RICK Ticketing'),
         );
     }
 
@@ -43,7 +48,20 @@ class ResolvedReopenedTicket extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'email.updates.resolved-reopen',
+            with: [
+                'Number' => $this->ticket->id,
+                'FName' => $this->ticket->student->FName,
+                'LName' => $this->ticket->student->LName,
+                'Assignee' => $this->reopen->user->email,
+                'AssigneeFName' => $this->reopen->user->firstName,
+                'AssigneeLName' => $this->reopen->user->lastName,
+                'Reason' => $this->reopen->reason,
+                'Status' => $this->reopen->status,
+                'Response' => $this->reopen->response,
+                'Reopen_id' => $this->reopen->id,
+                'Student_id' => $this->reopen->student->id
+            ],
         );
     }
 

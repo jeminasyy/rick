@@ -142,9 +142,9 @@ Route::get('/{reopen}/reopen/resolve', [ReopenController::class, 'resolve'])->mi
 // Set Ticket as Pending Before Resolving
 Route::put('/{reopen}/reopen/setPending', [ReopenController::class, 'setPending'])->middleware('auth');
 // Feedback Form --- STUDENTS ONLY
-Route::get('/{reopen}/{student}/feedback', [FeedbackController::class, 'feedbackReopen'])->middleware('guest');
+Route::get('/{reopen}/{student}/feedback/reopen', [FeedbackController::class, 'feedbackReopen'])->middleware('guest');
 // Resolve Ticket -- AFTER SUBMITTING FEEDBACK
-Route::put('/{reopen}/{student}/setResolved', [FeedbackController::class, 'setResolvedReopen'])->middleware('guest');
+Route::put('/{reopen}/{student}/reopen/setResolved', [FeedbackController::class, 'setResolvedReopen'])->middleware('guest');
 
 
 

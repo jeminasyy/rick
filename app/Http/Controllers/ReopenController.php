@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Mail\VoidedReopenedTicket;
 use Illuminate\Support\Facades\DB;
 use App\Mail\OngoingReopenedTicket;
+use App\Mail\ResolvedReopenedTicket;
 use Illuminate\Support\Facades\Mail;
 
 class ReopenController extends Controller
@@ -214,8 +215,27 @@ class ReopenController extends Controller
     }
 
     // Set status as pending while waiting for student's feedback
-    public function setPending() {
+    public function setPending(Request $request, Reopen $reopen) {
+        $formFields = $request->validate([
+            'response' => 'required'
+        ]);
 
+        $formFields['status'] = "Resolve";
+        $formFields['dateResponded'] = now();
+
+        $ticket = Ticket::find($reopen->ticket->id);
+        $ticketField['status'] = "Pending";
+
+        // $student = Student::find($ticket->student_id);
+        // $studentField['ongoingTickets'] = $student->ongoingTickets - 1;
+
+        $ticket->update($ticketField);
+        // $student->update($studentField);
+        $reopen->update($formFields);
+
+        Mail::to($ticket->student->email)->send(new ResolvedReopenedTicket($reopen, $ticket));
+
+        return redirect()->route('ticket', [$ticket]);
     }
 
 }

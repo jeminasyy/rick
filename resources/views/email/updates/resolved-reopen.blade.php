@@ -6,8 +6,12 @@
     <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
     transform: rotate(0.08deg); ">
     <br>
-    <p style="font-weight: bold; margin-top: 10px;">Provided Solution:</p>
+
+    <p style="font-weight: bold; margin-top: 10px;">Reason for reopening:</p>
     <p>{{$Reason}}</p>
+
+    <p style="font-weight: bold; margin-top: 10px;">Provided Solution:</p>
+    <p>{{$Response}}</p>
 
     <p style="font-weight: bold; margin-top: 10px;">Assignee:</p>
     <p>{{$AssigneeFName}} {{$AssigneeLName}}</p>
@@ -15,7 +19,7 @@
 
     <p style="font-weight: bold; margin-top: 10px;">Tell us your experience!</p>
     <a 
-        href="http://vast-headland-55467.herokuapp.com/{{$Ticket_id}}/{{$Student_id}}/feedback"
+        href="http://vast-headland-55467.herokuapp.com/{{$Reopen_id}}/{{$Student_id}}/feedback/reopen"
         style="background-color: #EDC304; 
             border: none;
             color: white;
