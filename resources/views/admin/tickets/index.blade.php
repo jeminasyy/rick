@@ -37,10 +37,12 @@
                   <td>{{$ticket->status}}</td>
                 @endif
                 @if (count($ticket->reopens) != 0)
-                  <td style="word-break: break-all;">{{$ticket->user->email}}</td>
-                  @foreach($ticket->reopens as $reopen)
-                    <td style="word-break: break-all;">{{$reopen->user->email}}</td>
-                  @endforeach
+                  <td style="word-break: break-all;">
+                    {{$ticket->user->email}}
+                    @foreach($ticket->reopens as $reopen)
+                      <br>{{$reopen->user->email}}
+                    @endforeach
+                  </td>
                 @else
                   <td style="word-break: break-all;">{{$ticket->user->email}}</td>
                 @endif
