@@ -338,7 +338,8 @@ class TicketController extends Controller
     
             if ($request->user_id) {
                 $formFields['user_id'] = $request->user_id;
-            // } else {
+            } 
+            // else {
             //     $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
     
             //     if (count($users) == 0) {
