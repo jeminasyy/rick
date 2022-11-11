@@ -262,7 +262,7 @@
             @foreach($ticket->reopens as $reopen)
                 <div class="ticket-div">
                     <br>
-                    <p style="font-size: 17px; font-weight:bold">Ticket Reopened</p>
+                    <p style="font-size: 17px; font-weight:bold">Reopened Ticket# {{$reopen->id}}</p>
                     <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                     transform: rotate(0.08deg); ">
                     <br>
@@ -296,7 +296,7 @@
                 </div>
                 @if($reopen->reopenrating)
                     <div class="ticket-div">
-                        <p style="font-size: 17px; font-weight:bold">Student Feedback</p>
+                        <p style="font-size: 17px; font-weight:bold">Student Feedback to Reopened Ticket# {{$reopen->id}}</p>
                         <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                         transform: rotate(0.08deg); ">
                         <br>
