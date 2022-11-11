@@ -83,7 +83,13 @@ class ReopenController extends Controller
         ]);
         
         if($request->reassign == 1) {
-            $users = DB::table('users')->whereNot('id', $ticket->user->id)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
+            if($ticket->reopens) {
+                $reopen = DB::table('reopens')->where('response', null)->where('ticket_id', $ticket->id)->latest()->first();
+                $currentUser = $reopen->id;
+                $users = DB::table('users')->whereNot('id', $currentUser)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
+            } else {
+                $users = DB::table('users')->whereNot('id', $ticket->user->id)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
+            }
 
             if (count($users) == 0) {
                 $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
@@ -114,7 +120,13 @@ class ReopenController extends Controller
                 $formFields['user_id'] = $min_id;
             }
         } else {
-            $formFields['user_id'] = $ticket->user->id;
+            if ($ticket->reopens){
+                $reopen = DB::table('reopens')->where('response', null)->where('ticket_id', $ticket->id)->latest()->first();
+                $reopenUser = $reopen->user->id;
+                $formFields['user_id'] = $reopenUser;
+            }else {
+                $formFields['user_id'] = $ticket->user->id;
+            }
         }
 
         $formFields['ticket_id'] = $ticket->id;
