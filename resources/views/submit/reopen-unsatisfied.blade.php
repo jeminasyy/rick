@@ -13,19 +13,25 @@
         >
             Yes, reopen ticket
         </button> --}}
+           
+          
+    </div>
+    <div class="form-inline3">
         <button 
             class="btn btn-secondary btn-lg"
             id="secondary-button2"
             onclick="location.href='/';"
         >
             Yes, reopen ticket
-        </button>    
+        </button> 
+    </div>
+    <div class="form-inline3">
         <button 
             class="btn btn-secondary btn-lg"
             id="secondary-button2"
             onclick="location.href='/';"
         >
             Oh no, return home
-        </button>  
+        </button>
     </div>
 </x-layout>
