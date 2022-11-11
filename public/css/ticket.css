@@ -150,6 +150,7 @@ Mark as Resolved */
     margin-bottom: 10px; */
     width: 200px;
     margin-left: 10px;
+    margin-top: 10px;
 }
 #primary-button2 {
     background-color: #F8CA0A; 
@@ -160,4 +161,5 @@ Mark as Resolved */
     font-size: 17px;
     width: 200px;
     margin-left: 10px;
+    margin-top: 10px;
 }
