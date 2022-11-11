@@ -22,6 +22,11 @@
                 </div>
 
                 <div class="mb-6">
+                    <p class="attribute">Reason for reopening</p>
+                    <p>{{$reopen->reason}}</p>
+                </div>
+
+                <div class="mb-6">
                     <label for="response">Solution:</label>
                     <textarea 
                         name="response" 

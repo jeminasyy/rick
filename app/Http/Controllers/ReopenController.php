@@ -121,7 +121,7 @@ class ReopenController extends Controller
         $studentField['ongoingTickets'] = $student->ongoingTickets + 1;
 
         Reopen::create($formFields);
-        $ticketField['status'] = "Opened";
+        $ticketField['status'] = "Reopened";
         $student->update($studentField);
         $ticket->update($ticketField);
 

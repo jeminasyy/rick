@@ -309,7 +309,7 @@
                                 Void Ticket
                             </button>
                         </div>
-                    @elseif ($ticket->status == "Opened")
+                    @elseif ($ticket->status == "Reopened")
                         <div class="bottom">
                             <form method="POST" action="/{{$reopen->id}}/reopen/setOngoing">
                                 @csrf
