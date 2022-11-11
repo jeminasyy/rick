@@ -292,6 +292,7 @@
                             {{$reopen->dateResponded}}
                         </p>
                     @endif
+                    <br>
                 </div>
                 @if($reopen->reopenrating)
                     <div class="ticket-div">
