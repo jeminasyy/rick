@@ -204,8 +204,13 @@ class ReopenController extends Controller
     }
 
     // Display resolve ticket form
-    public function resolve() {
-
+    public function resolve(Reopen $reopen) {
+        if ($reopen->user->id != auth()->id()){
+            abort(403, 'Unauthorized Action');
+        }
+        return view('admin.reopen.resolve', [
+            'reopen' => $reopen
+        ]);
     }
 
     // Set status as pending while waiting for student's feedback
