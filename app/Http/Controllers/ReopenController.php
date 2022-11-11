@@ -260,7 +260,7 @@ class ReopenController extends Controller
         }
         return view('admin.reopen.transfer', [
             'reopen' => $reopen,
-            'ticket' => $reopen->ticket()->get(),
+            'ticket' => $reopen->ticket,
             'categs' => Categ::all(),
             'users' => User::all()
         ]);
