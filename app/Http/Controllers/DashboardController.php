@@ -14,6 +14,6 @@ class DashboardController extends Controller
         $resolvedTickets = Ticket::where('status', 'Resolved')->count();
         $reopenedTickets = Reopen::count();
 
-        return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'Reopened Tickets'));
+        return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets'));
     }
 }
