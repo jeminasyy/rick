@@ -17,7 +17,24 @@
                         <p class="h4">{{ $studentSatisfaction }}%</p>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
+                        <p class="font-weight-bold h4">Avg. Response Time</p>
+                        <p class="h4">{{ $studentSatisfaction }}%</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
+                        <p class="font-weight-bold h4">Avg. Reopen Times</p>
+                        <p class="h4">{{ $studentSatisfaction }}%</p>
+                    </div>
+                </div>
             </div>
+            
+            <br>
+            <hr style="width: 100%; background-color: #d5d5d5; border: 0.1px solid #C4C4C4;
+            transform: rotate(0.08deg); ">
+            <br>
 
             <div class="row">
                 <div class="col-md-3">
