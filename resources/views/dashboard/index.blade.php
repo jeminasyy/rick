@@ -32,8 +32,6 @@
             </div>
             
             <br>
-            <hr style="width: 100%; background-color: #d5d5d5; border: 0.1px solid #C4C4C4;
-            transform: rotate(0.08deg); ">
             <br>
 
             <div class="row">
@@ -69,7 +67,6 @@
 
             <br>
             <p class="attribute">This Month</p>
-            <br>
             <hr style="width: 100%; background-color: #d5d5d5; border: 0.1px solid #C4C4C4;
             transform: rotate(0.08deg); ">
             <br>
