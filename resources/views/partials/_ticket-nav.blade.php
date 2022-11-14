@@ -1,5 +1,5 @@
 <div id="ticketNav">
-    <nav class="ticketNav">
+    <nav>
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Blog</a>
