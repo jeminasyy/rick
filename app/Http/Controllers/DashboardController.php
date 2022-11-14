@@ -40,7 +40,8 @@ class DashboardController extends Controller
         $totalReopenRating = Reopenrating::count();
         $totalRating = $totalTicketRating + $totalReopenRating;
 
-        $studentSatisfaction = ($satisfied / $totalRating) * 100;
+        $calculate = ($satisfied / $totalRating) * 100;
+        $studentSatisfaction = round($calculate, 2);
 
         for ($x=0; $x < count($requests); $x++) {
             $add = Ticket::where('categ_id', $requests[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
