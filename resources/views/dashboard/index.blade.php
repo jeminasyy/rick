@@ -19,19 +19,18 @@
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
-                        <p class="font-weight-bold h4">Avg. Response Time</p>
+                        <p class="font-weight-bold h4">Average Response Time</p>
                         <p class="h4">{{ $studentSatisfaction }}%</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
-                        <p class="font-weight-bold h4">Avg. Reopen Times</p>
+                        <p class="font-weight-bold h4">Average Reopen Times</p>
                         <p class="h4">{{ $studentSatisfaction }}%</p>
                     </div>
                 </div>
             </div>
             
-            <br>
             <br>
 
             <div class="row">
