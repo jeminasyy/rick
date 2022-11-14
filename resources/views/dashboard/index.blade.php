@@ -1,7 +1,8 @@
 <x-layout>
     <x-sidenav>
-        <h1>Dashboaard</h1>
         <div class="col-md-12 grid-margin">
+            <h1>Dashboard</h1>
+            <hr>
             <div class="row">
                 <div class="col-md-3">
                     <div class="card card-body bg-primary text-white mb-3">
