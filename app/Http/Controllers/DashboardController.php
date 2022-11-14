@@ -7,6 +7,7 @@ use App\Models\Reopen;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -24,12 +25,12 @@ class DashboardController extends Controller
         $concernThisMonth = 0;
         $otherThisMonth = 0;
 
-        $requests = Categ::where('type', 'Request')->get()->toArray();
-        $inquiries = Categ::where('type', 'Inquiries')->get()->toArray();
-        $concerns = Categ::where('type', 'Concerns')->get()->toArray();
-        $others = Categ::where('type', 'Others')->get()->toArray();
+        $requests = DB::table('categs')->where('type', 'Request')->get()->toArray();
+        $inquiries = DB::table('categs')->where('type', 'Inquiries')->get()->toArray();
+        $concerns = DB::table('categs')->where('type', 'Concerns')->get()->toArray();
+        $others = DB::table('categs')->where('type', 'Others')->get()->toArray();
 
-        dd($requests[0]);
+        dd($inquiries[0]->id);
 
         for ($x=0; $x < count($requests); $x++) {
             $add = Ticket::where('categ_id', $requests[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
