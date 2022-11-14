@@ -29,7 +29,7 @@ class DashboardController extends Controller
         $concerns = Categ::where('type', 'Concerns')->get()->toArray();
         $others = Categ::where('type', 'Others')->get()->toArray();
 
-        dd($requests[0]->id);
+        dd($requests[0]);
 
         for ($x=0; $x < count($requests); $x++) {
             $add = Ticket::where('categ_id', $requests[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
