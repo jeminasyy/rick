@@ -166,7 +166,7 @@ Mark as Resolved */
 
 /* Dashboard */
 
-.card-red {
+#card-red {
     margin-bottom: 3px;
     background-color: red;
     color: white;

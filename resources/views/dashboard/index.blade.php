@@ -28,8 +28,8 @@
                         <a href="/", class="text-white">View</a>
                     </div>
                 </div>
-                <div class="card-red">
-                    <div class="card-red">
+                <div class="col-md-3">
+                    <div class="card card-body bg-danger text-white mb-3" id="card-red">
                         <p class="attribute">Reopened Tickets</p>
                         <p>4</p>
                         <a href="/", class="text-white">View</a>
