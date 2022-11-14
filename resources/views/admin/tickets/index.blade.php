@@ -4,12 +4,12 @@
 
       <div class="tabs">
         <div class="tab-2">
-          <label for="tab2-1">One</label>
+          <label for="tab2-1">My Tickets</label>
           <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
-          <div id="sidenav2">
-            <h4>My Tickets</h4>
+          <div>
+            {{-- <h4>My Tickets</h4>
               <hr style="width: 100%; margin-bottom: 0; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
-                transform: rotate(0.08deg); ">
+                transform: rotate(0.08deg); "> --}}
                 
               <table class="table table-hover">
                 <thead>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="tab-2">
-          <label for="tab2-2">Two</label>
+          <label for="tab2-2">All Tickets</label>
           <input id="tab2-2" name="tabs-two" type="radio">
           <div>
             <h4>All Tickets</h4>
