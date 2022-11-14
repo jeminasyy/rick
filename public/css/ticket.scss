@@ -177,7 +177,7 @@ Mark as Resolved */
 }
 
 // Tickets
-.tabset > input[type="radio"] {
+.tabset > input {
   position: absolute;
   left: -200vw;
   -webkit-appearance: none;
