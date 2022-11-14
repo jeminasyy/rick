@@ -5,9 +5,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategController;
-use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ReopenController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
