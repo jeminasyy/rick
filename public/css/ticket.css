@@ -166,8 +166,12 @@ Mark as Resolved */
 
 /* Dashboard */
 
-#card-red {
-    margin-bottom: 3px;
-    background-color: red;
-    color: white;
+.card-label {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+.card-info {
+    font-size: 17px;
 }
