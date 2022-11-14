@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categ;
 use App\Models\Reopen;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
@@ -18,10 +19,35 @@ class DashboardController extends Controller
         $thisMonth = Carbon::now()->format('m');
         $thisYear = Carbon::now()->format('Y');
 
-        $requestThisMonth = Ticket::where($this->categ()->type, 'Request')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
-        $inquiryThisMonth = Ticket::where($this->categ()->type, 'Inquiries')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
-        $concernThisMonth = Ticket::where($this->categ()->type, 'Concerns')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
-        $otherThisMonth = Ticket::where($this->categ()->type, 'Others')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
+        $requestThisMonth = 0;
+        $inquiryThisMonth = 0;
+        $concernThisMonth = 0;
+        $otherThisMonth = 0;
+
+        $requests = Categ::where('type', 'Request')->get()->toArray();
+        $inquiries = Categ::where('type', 'Inquiries')->get()->toArray();
+        $concerns = Categ::where('type', 'Concerns')->get()->toArray();
+        $others = Categ::where('type', 'Others')->get()->toArray();
+
+        for ($x=0; $x < count($requests); $x++) {
+            $add = Ticket::where('categ_id', $requests[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
+            $requestThisMonth = $requestThisMonth + $add;
+        }
+
+        for ($x=0; $x < count($inquiries); $x++) {
+            $add = Ticket::where('categ_id', $inquiries[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
+            $inquiryThisMonth = $inquiryThisMonth + $add;
+        }
+
+        for ($x=0; $x < count($concerns); $x++) {
+            $add = Ticket::where('categ_id', $concerns[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
+            $concernThisMonth = $concernThisMonth + $add;
+        }
+
+        for ($x=0; $x < count($others); $x++) {
+            $add = Ticket::where('categ_id', $others[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
+            $otherThisMonth = $otherThisMonth + $add;
+        }
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth'));
