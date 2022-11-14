@@ -8,28 +8,28 @@
             <br>
             <div class="row">
                 <div class="col-md-3">
-                    <div class="card card-body border border-secondary text-white mb-3 p-3">
+                    <div class="card card-body border border-warning mb-3 p-3">
                         <p class="attribute">Total Tickets</p>
                         <p>4</p>
                         <a href="/">View</a>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card card-body border border-secondary text-white mb-3 p-3">
+                    <div class="card card-body border border-primary mb-3 p-3">
                         <p class="attribute">Resolved Tickets</p>
                         <p>4</p>
                         <a href="/">View</a>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card card-body border border-secondary text-white mb-3 p-3">
+                    <div class="card card-body border border-danger mb-3 p-3">
                         <p class="attribute">New Tickets</p>
                         <p>4</p>
                         <a href="/">View</a>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card card-body border border-secondary text-white mb-3 p-3" >
+                    <div class="card card-body border border-dark border-5 mb-3 p-3" >
                         <p class="attribute">Reopened Tickets</p>
                         <p>4</p>
                         <a href="/">View</a>
