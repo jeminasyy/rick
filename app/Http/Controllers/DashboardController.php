@@ -18,10 +18,10 @@ class DashboardController extends Controller
         $thisMonth = Carbon::now()->format('m');
         $thisYear = Carbon::now()->format('Y');
 
-        $requestThisMonth = Ticket::where($this->categ->type, 'Request')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
-        $inquiryThisMonth = Ticket::where($this->categ->type, 'Inquiries')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
-        $concernThisMonth = Ticket::where($this->categ->type, 'Concerns')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
-        $otherThisMonth = Ticket::where($this->categ->type, 'Others')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
+        $requestThisMonth = Ticket::where($this->categ()->type, 'Request')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
+        $inquiryThisMonth = Ticket::where($this->categ()->type, 'Inquiries')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
+        $concernThisMonth = Ticket::where($this->categ()->type, 'Concerns')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
+        $otherThisMonth = Ticket::where($this->categ()->type, 'Others')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth'));
