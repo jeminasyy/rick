@@ -166,12 +166,12 @@ Mark as Resolved */
 
 /* Dashboard */
 
-.card-label {
+.cardlabel {
     font-weight: bold;
     margin-top: 10px;
     font-size: 17px;
 }
 
-.card-info {
+.cardinfo {
     font-size: 17px;
 }
