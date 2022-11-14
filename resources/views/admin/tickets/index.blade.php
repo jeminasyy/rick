@@ -6,7 +6,7 @@
         <div class="tab-2">
           <label for="tab2-1">My Tickets</label>
           <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
-          <div style="background-color: #FFFFFF; width:100%;">
+          <div style="background-color: #FFFFFF; width:200%;">
             {{-- <h4>My Tickets</h4>
               <hr style="width: 100%; margin-bottom: 0; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
                 transform: rotate(0.08deg); "> --}}
