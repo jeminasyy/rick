@@ -50,25 +50,25 @@
                 <div class="col-md-3">
                     <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
                         <p class="font-weight-bold h4">Request Tickets</p>
-                        <p class="h4">{{ $reopenedTickets }}</p>
+                        <p class="h4">{{ $requestThisMonth }}</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
                         <p class="font-weight-bold h4">Inquiry Tickets</p>
-                        <p class="h4">{{ $reopenedTickets }}</p>
+                        <p class="h4">{{ $inquiryThisMonth }}</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
                         <p class="font-weight-bold h4">Concern Tickets</p>
-                        <p class="h4">{{ $reopenedTickets }}</p>
+                        <p class="h4">{{ $concernThisMonth }}</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
                         <p class="font-weight-bold h4">Other Tickets</p>
-                        <p class="h4">{{ $reopenedTickets }}</p>
+                        <p class="h4">{{ $otherThisMonth }}</p>
                     </div>
                 </div>
             </div>

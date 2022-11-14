@@ -23,6 +23,7 @@ class DashboardController extends Controller
         $concernThisMonth = Ticket::where($this->categ->type, 'Concerns')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
         $otherThisMonth = Ticket::where($this->categ->type, 'Others')->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
 
-        return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets'));
+        return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
+                                                'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth'));
     }
 }
