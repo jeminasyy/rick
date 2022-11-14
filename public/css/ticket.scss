@@ -180,6 +180,11 @@ Mark as Resolved */
 .tabset > input[type="radio"] {
   position: absolute;
   left: -200vw;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
 }
 
 .tabset .tab-panel {
