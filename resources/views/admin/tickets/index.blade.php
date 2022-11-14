@@ -1,7 +1,7 @@
 <x-layout>
     <x-sidenav>
       @include('partials._search-ticket')
-      @include('partials._ticket-nav');
+      @include('partials._ticket-nav')
 
       <div id="sidenav2">
         <hr style="width: 100%; margin-bottom: 0; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;

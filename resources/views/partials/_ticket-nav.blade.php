@@ -6,7 +6,3 @@
 	<a href="#">Contact</a>
 	<div class="animation start-home"></div>
 </nav>
-
-<p>
-  By <span>Patak</span>
-</p>
