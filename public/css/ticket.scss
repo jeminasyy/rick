@@ -176,6 +176,43 @@ Mark as Resolved */
     font-size: 17px;
 }
 
-.ticketLink {
-  padding: 5px 10px 10px 5px;
+// Ticket Menu Bar
+
+.ticketNav{
+  background-color: #FFFCED;
+  width: 80%;
+  align-self: center;
+}
+
+.ticketNav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.ticketNav li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+.ticketNav li:last-child {
+  border-right: none;
+}
+
+.ticketNav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.ticketNav li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.ticketNav .active {
+  background-color: #04AA6D;
 }
