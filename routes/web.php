@@ -26,7 +26,7 @@ Route::get('/', function () {
 // Show Dashboard
 Route::get('/dashboard', function(){
     return view('dashboard.index');
-})->middleware('auth');
+});
 
 
 // ----SECURITY----
