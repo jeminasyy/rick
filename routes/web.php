@@ -24,9 +24,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 // Show Dashboard
-Route::get('/dashboard', function(){
-    return view('dashboard.index');
-});
+Route::get('/dashboard', [Controller::class, 'dashboard']);
 
 
 // ----SECURITY----
