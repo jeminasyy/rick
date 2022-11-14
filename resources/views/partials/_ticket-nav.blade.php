@@ -1,4 +1,4 @@
-<nav>
+<nav class="ticketNav">
 	<a href="#">Home</a>
 	<a href="#">About</a>
 	<a href="#">Blog</a>
