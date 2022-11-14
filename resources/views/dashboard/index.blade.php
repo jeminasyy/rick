@@ -28,7 +28,7 @@
                         <a href="/", class="text-white">View</a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="card-red">
                     <div class="card-red">
                         <p class="attribute">Reopened Tickets</p>
                         <p>4</p>
