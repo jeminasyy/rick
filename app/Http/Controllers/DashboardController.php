@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categ;
+use App\Models\Rating;
 use App\Models\Reopen;
+use App\Models\Reopenrating;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -30,7 +32,15 @@ class DashboardController extends Controller
         $concerns = DB::table('categs')->where('type', 'Concerns')->get()->toArray();
         $others = DB::table('categs')->where('type', 'Others')->get()->toArray();
 
-        // dd($inquiries[0]->id);
+        $ticketSatisfied = Rating::where('satisfied', 1)->count();
+        $reopenSatisfied = Reopenrating::where('satisfied', 1)->count();
+        $satisfied = $ticketSatisfied + $reopenSatisfied;
+
+        $totalTicketRating = Rating::count();
+        $totalReopenRating = Reopenrating::count();
+        $totalRating = $totalTicketRating + $totalReopenRating;
+
+        $studentSatisfaction = ($satisfied / $totalRating) * 100;
 
         for ($x=0; $x < count($requests); $x++) {
             $add = Ticket::where('categ_id', $requests[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
@@ -53,6 +63,7 @@ class DashboardController extends Controller
         }
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
-                                                'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth'));
+                                                'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
+                                                'studentSatisfaction'));
     }
 }
