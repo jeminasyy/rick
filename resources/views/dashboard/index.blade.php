@@ -1,34 +1,37 @@
 <x-layout>
     <x-sidenav>
         <div class="col-md-12 grid-margin">
-            <h1>Dashboard</h1>
-            <hr>
+            <p style="font-size: 17px; font-weight:bold">Ticket# {{$ticket->id}}</p>
+            <br>
+            <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
+            transform: rotate(0.08deg); ">
+            <br>
             <div class="row">
                 <div class="col-md-3">
                     <div class="card card-body bg-primary text-white mb-3">
-                        <label>Total Tickets</label>
-                        <h1>4</h1>
+                        <p class="attribute">Total Tickets</p>
+                        <p>4</p>
                         <a href="/", class="text-white">View</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body bg-primary text-white mb-3">
-                        <label>New Tickets</label>
-                        <h1>4</h1>
+                        <p class="attribute">New Tickets</p>
+                        <p>4</p>
                         <a href="/", class="text-white">View</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body bg-primary text-white mb-3">
-                        <label>Resolved Tickets</label>
-                        <h1>4</h1>
+                        <p class="attribute">Resolved Tickets</p>
+                        <p>4</p>
                         <a href="/", class="text-white">View</a>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card card-body bg-primary text-white mb-3">
-                        <label>Reopened Tickets</label>
-                        <h1>4</h1>
+                        <p class="attribute">Reopened Tickets</p>
+                        <p>4</p>
                         <a href="/", class="text-white">View</a>
                     </div>
                 </div>
