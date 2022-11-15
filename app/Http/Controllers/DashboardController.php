@@ -119,7 +119,7 @@ class DashboardController extends Controller
         // 32715
         // 1924.411765
 
-        dd(array_sum($merge));
+        // dd(array_sum($merge));
 
         $avgInterval = array_sum($merge) / count($merge);
 
