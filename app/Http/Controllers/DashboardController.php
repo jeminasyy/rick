@@ -115,11 +115,15 @@ class DashboardController extends Controller
 
         // $merge = array();
         $merge = array_merge($intervalsNew, $intervalsReopen);
-        dd($merge);
+        // dd($merge);
+        // 32715
+        // 1924.411765
 
-        // $avgInterval = $sum / $n;
+        dd(array_sum($merge));
 
-        // dd($avgInterval);
+        $avgInterval = array_sum($merge) / count($merge);
+
+        dd($avgInterval);
 
         // $years = floor($avgInterval / (365*60*60*24));
         // $months = floor(($avgInterval - $years * 365*60*60*24) / (30*60*60*24));
