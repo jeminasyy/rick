@@ -7,8 +7,9 @@
             transform: rotate(0.08deg); ">
             <br>
 
-            <div class="container">
-                <canvas id="myChart"></canvas>
+            <div class="row" style="padding:3px;">
+                <h1>{{ $chart1->options['chart_title'] }}</h1>
+                {!! $chart1->renderHtml() !!}
             </div>
 
             <div class="row">
@@ -101,7 +102,7 @@
     </x-sidenav>
 </x-layout>
 
-{{-- @section('javascript')
+@section('javascript')
 {!! $chart1->renderChartJsLibrary() !!}
 {!! $chart1->renderJs() !!}
-@endsection --}}
+@endsection
