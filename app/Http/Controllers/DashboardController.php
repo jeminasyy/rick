@@ -113,9 +113,10 @@ class DashboardController extends Controller
             array_push($intervalsReopen, $interval);
         }
 
+        $merge = array();
         $merge = array_merge($intervalsNew. $intervalsReopen);
         dd($merge);
-        
+
         // $avgInterval = $sum / $n;
 
         // dd($avgInterval);
