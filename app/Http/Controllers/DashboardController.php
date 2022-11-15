@@ -75,14 +75,15 @@ class DashboardController extends Controller
         // Get the array of all tickets
         // Get the count of reopen with the ticket_id (Reopens table)
         // Add them all
-        // Divide by Tickets::count
+        // Divide by total tickets
 
         $ticket_ids = DB::table('tickets')->select('id')->get()->toArray();
+        dd($ticket_ids);
         $reopens = array();
-        array_push($reopens, 2, 5, 0);
+        // array_push($reopens, 2, 5, 0);
         // dd($reopens);
-        $average = round((array_sum($reopens) / count($reopens)), 2);
-        dd($average);
+        // $average = round((array_sum($reopens) / count($reopens)), 2);
+        // dd($average);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
