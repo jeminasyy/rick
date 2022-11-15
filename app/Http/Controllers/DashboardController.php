@@ -80,6 +80,8 @@ class DashboardController extends Controller
         $ticket_ids = DB::table('tickets')->select('id')->get()->toArray();
         $reopens = array();
         array_push($reopens, 2, 5, 0);
+        // dd($reopens);
+        $average = ceil(array_sum($reopens) / count($reopens));
         dd($reopens);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
