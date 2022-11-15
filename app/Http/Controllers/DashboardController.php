@@ -91,10 +91,10 @@ class DashboardController extends Controller
         // Calculate the diff of each start and end dates
         // Get the average
 
-        $ticket_dates = DB::table('tickets')->select('created_at', 'dateResponded')->get()->toArray();
+        $ticket_dates = DB::table('tickets')->whereNot('dateResponded', null)->select('created_at', 'dateResponded')->get()->toArray();
         $intervalsNew = array();
 
-        $reopen_dates = DB::table('reopens')->select('created_at', 'dateResponded')->get()->toArray();
+        $reopen_dates = DB::table('reopens')->whereNot('dateResponded', null)->select('created_at', 'dateResponded')->get()->toArray();
         $intervalsReopen = array();
 
         // dd($ticket_dates[0]->created_at);
