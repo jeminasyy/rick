@@ -87,8 +87,30 @@ class DashboardController extends Controller
 
         $averageReopen = round(array_sum($reopens) / count($reopens));
  
+        // Get the start and end date of each tickets
+        // Calculate the diff of each start and end dates
+        // Get the average
+
         $ticket_dates = DB::table('tickets')->select('created_at', 'dateResponded')->get()->toArray();
-        dd($ticket_dates);
+        $intervalsNew = array();
+
+        $reopen_dates = DB::table('reopens')->select('created_at', 'dateResponded')->get()->toArray();
+        $intervalsReopen = array();
+
+        for ($x=0; $x < count($ticket_dates); $x++) {
+            $interval = date_diff($ticket_dates[$x]->created_at, $ticket_dates[$x]->date_Responded);
+            array_push($intervalsNew, $interval);
+        }
+
+        for ($x=0; $x < count($reopen_dates); $x++) {
+            $interval = date_diff($reopen_dates[$x]->created_at, $reopen_dates[$x]->date_Responded);
+            array_push($intervalsReopen, $interval);
+        }
+
+        $n = count($ticket_dates) + count($reopen_dates);
+        dd($n);
+
+        $sum = array_sum($ticket_dates) + array_sum($reopen_dates);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
