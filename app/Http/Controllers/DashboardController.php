@@ -81,7 +81,7 @@ class DashboardController extends Controller
         $reopens = array();
         array_push($reopens, 2, 5, 0);
         // dd($reopens);
-        $average = ceil(array_sum($reopens) / count($reopens));
+        $average = round((array_sum($reopens) / count($reopens)), 2);
         dd($average);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
