@@ -173,9 +173,33 @@ class DashboardController extends Controller
         ];
         $chart2 = new LaravelChart($chart_options);
 
+        $chart_options = [
+            'chart_title' => 'Tickets by category',
+            'report_type' => 'group_by_relationship',
+            'model' => 'App\Models\Ticket',
+            // 'group_by_field' => 'categ_id',
+            'relationship_name' => 'categ',
+            'group_by_field' => 'name',
+            // 'group_by_period' => 'day',
+            'chart_type' => 'pie',
+        ];
+        $chart3 = new LaravelChart($chart_options);
+
+        $chart_options = [
+            'chart_title' => 'Tickets by type',
+            'report_type' => 'group_by_relationship',
+            'model' => 'App\Models\Ticket',
+            // 'group_by_field' => 'categ_id',
+            'relationship_name' => 'categ',
+            'group_by_field' => 'type',
+            // 'group_by_period' => 'day',
+            'chart_type' => 'pie',
+        ];
+        $chart4 = new LaravelChart($chart_options);
+
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
                                                 'studentSatisfaction', 'averageReopen', 'averageResponseTime', 
-                                                'chart1', 'chart2'));
+                                                'chart1', 'chart2', 'chart3', 'chart4'));
     }
 }

@@ -8,6 +8,16 @@
 
         <div class="row">
             <div class="col-lg-6">
+                <h1>{{ $chart2->options['chart_title'] }}</h1>
+                {!! $chart2->renderHtml() !!}
+            </div>
+            <div class="col-lg-6">
+                <h1>{{ $chart1->options['chart_title'] }}</h1>
+                {!! $chart1->renderHtml() !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
                 <h1>{{ $chart1->options['chart_title'] }}</h1>
                 {!! $chart1->renderHtml() !!}
             </div>
