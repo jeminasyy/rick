@@ -124,7 +124,10 @@ class DashboardController extends Controller
         // $avgIntervalReopen = array_sum($intervalsReopen) / count($intervalsReopen);
         // dd($avgIntervalReopen);
         // 166819125.7
-        // 1668191257
+        // 1668191257 - intervalsReopen
+        // 16511 - intervalsNew
+
+        // 92678209.33 - average all
 
         // 514994.8818
 
@@ -135,7 +138,7 @@ class DashboardController extends Controller
 
         $avgInterval = $sum / $n;
 
-        dd(array_sum($intervalsNew));
+        dd($avgInterval);
 
         $years = floor($avgInterval / (365*60*60*24));
         $months = floor(($avgInterval - $years * 365*60*60*24) / (30*60*60*24));
