@@ -108,7 +108,7 @@ class DashboardController extends Controller
 
         // dd($intervalsNew);
         $avgIntervalNew = round(array_sum($intervalsNew) / count($intervalsNew));
-        dd($avgIntervalNew);
+        // dd($avgIntervalNew);
 
         $years = floor($avgIntervalNew / (365*60*60*24));
         $months = floor(($avgIntervalNew - $years * 365*60*60*24) / (30*60*60*24));
