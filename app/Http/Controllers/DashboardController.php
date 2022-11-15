@@ -146,11 +146,11 @@ class DashboardController extends Controller
             $seconds = "0" . $seconds;
         }
 
-        $avgResponseTime = $days . "days " .$hours . ":" . $minutes . ":" . $seconds;
-        dd($avgResponseTime);
+        $averageResponseTime = $days . "days " .$hours . ":" . $minutes . ":" . $seconds;
+        // dd($avgResponseTime);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
-                                                'studentSatisfaction', 'averageReopen'));
+                                                'studentSatisfaction', 'averageReopen', 'averageResponseTime'));
     }
 }

@@ -20,7 +20,7 @@
                 <div class="col-md-3">
                     <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
                         <p class="font-weight-bold h4">Average Response Time</p>
-                        <p class="h4">{{ $studentSatisfaction }}%</p>
+                        <p class="h4">{{ $averageResponseTime }}%</p>
                     </div>
                 </div>
                 <div class="col-md-3">
