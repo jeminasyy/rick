@@ -9,7 +9,7 @@
 
             <div class="row">
                 <h1>{{ $chart1->options['chart_title'] }}</h1>
-                {!! $chart1->renderHtml() !!}
+                {{!! $chart1->renderHtml() !!}}
             </div>
 
             <div class="row">
