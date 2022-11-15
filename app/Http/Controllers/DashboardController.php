@@ -154,13 +154,12 @@ class DashboardController extends Controller
         // CHARTS
         // Tickets per month
         $chart_options = [
-            'chart_title' => 'Tickets by months',
-            'report_type' => 'group_by_string',
+            'chart_title' => 'Users by months',
+            'report_type' => 'group_by_date',
             'model' => 'App\Models\Ticket',
-            'group_by_field' => 'department',
-            'chart_type' => 'pie',
-            'filter_field' => 'created_at',
-            'filter_period' => 'month', // show users only registered this month
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'month',
+            'chart_type' => 'bar',
         ];
         $chart1 = new LaravelChart($chart_options);
 
