@@ -110,14 +110,15 @@ class DashboardController extends Controller
         $avgIntervalNew = round(array_sum($intervalsNew) / count($intervalsNew));
         dd($avgIntervalNew);
 
-        // $sum = array_sum($intervalNew);
-        // $years = floor($sum / (365*60*60*24));
-        // $months = floor(($sum - $years * 365*60*60*24) / (30*60*60*24));
-        // $days = floor(($sum - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-        // $hours = floor(($sum - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
-        // $minutes = floor(($sum - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
-        // $seconds = floor(($sum - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
+        $years = floor($avgIntervalNew / (365*60*60*24));
+        $months = floor(($avgIntervalNew - $years * 365*60*60*24) / (30*60*60*24));
+        $days = floor(($avgIntervalNew - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+        $hours = floor(($avgIntervalNew - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
+        $minutes = floor(($avgIntervalNew - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
+        $seconds = floor(($avgIntervalNew - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
 
+        $avgResponseTime = $hours . "hrs " . $minutes . "min " . $seconds . "sec ";
+        dd($avgResponseTime);
 
         // $aveTime = array_sum($intervalsNew) / count();
 
