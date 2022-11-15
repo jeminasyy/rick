@@ -78,7 +78,8 @@ class DashboardController extends Controller
         // Divide by Tickets::count
 
         $ticket_ids = DB::table('tickets')->select('id')->get()->toArray();
-        // dd($ticket_ids);
+        $reopens = [];
+        dd($reopens);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
