@@ -95,7 +95,6 @@
 
         <br>
         <br>
-        <br>
         <div class="row">
             <div class="col-lg-6">
                 <h1>{{ $chart1->options['chart_title'] }}</h1>
