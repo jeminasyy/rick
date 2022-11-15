@@ -7,11 +7,11 @@
         <br>
 
         <div class="row-lg-3">
-            <div class="col">
+            <div class="col-lg">
                 <h1>{{ $chart1->options['chart_title'] }}</h1>
                 {!! $chart1->renderHtml() !!}
             </div>
-            <div class="col">
+            <div class="col-lg">
                 <h1>{{ $chart2->options['chart_title'] }}</h1>
                 {!! $chart2->renderHtml() !!}
             </div>
