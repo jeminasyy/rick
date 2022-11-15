@@ -7,14 +7,15 @@
     "require": {
         "php": "^8.0.2",
         "coconutcraig/laravel-postmark": "^3.0",
+        "fakerphp/faker": "^1.9.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "laraveldaily/laravel-charts": "^0.1.29",
         "symfony/http-client": "^6.1",
         "symfony/mailgun-mailer": "^6.1",
-        "symfony/postmark-mailer": "^6.1",
-        "fakerphp/faker": "^1.9.1"
+        "symfony/postmark-mailer": "^6.1"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
