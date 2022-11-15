@@ -22,46 +22,63 @@ class DashboardController extends Controller
         $thisMonth = Carbon::now()->format('m');
         $thisYear = Carbon::now()->format('Y');
 
-        $requestThisMonth = 0;
-        $inquiryThisMonth = 0;
-        $concernThisMonth = 0;
-        $otherThisMonth = 0;
-
+        // Get the categories for each type
         $requests = DB::table('categs')->where('type', 'Request')->get()->toArray();
         $inquiries = DB::table('categs')->where('type', 'Inquiries')->get()->toArray();
         $concerns = DB::table('categs')->where('type', 'Concerns')->get()->toArray();
         $others = DB::table('categs')->where('type', 'Others')->get()->toArray();
 
+        // Get the total number of satisfied solution (new and reopened)
         $ticketSatisfied = Rating::where('satisfied', 1)->count();
         $reopenSatisfied = Reopenrating::where('satisfied', 1)->count();
         $satisfied = $ticketSatisfied + $reopenSatisfied;
 
+        // Get the total number of rating/feedback (new and reopened)
         $totalTicketRating = Rating::count();
         $totalReopenRating = Reopenrating::count();
         $totalRating = $totalTicketRating + $totalReopenRating;
 
+        // Calculate the satisfaction rating
         $calculate = ($satisfied / $totalRating) * 100;
+        // Round up to 2 decimal points
         $studentSatisfaction = round($calculate, 2);
 
+        $requestThisMonth = 0;
+        $inquiryThisMonth = 0;
+        $concernThisMonth = 0;
+        $otherThisMonth = 0;
+
+        // Get the total number of requests this month
         for ($x=0; $x < count($requests); $x++) {
             $add = Ticket::where('categ_id', $requests[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
             $requestThisMonth = $requestThisMonth + $add;
         }
 
+        // Get the total number of inquiries this month
         for ($x=0; $x < count($inquiries); $x++) {
             $add = Ticket::where('categ_id', $inquiries[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
             $inquiryThisMonth = $inquiryThisMonth + $add;
         }
 
+        // Get the total number of concern this month
         for ($x=0; $x < count($concerns); $x++) {
             $add = Ticket::where('categ_id', $concerns[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
             $concernThisMonth = $concernThisMonth + $add;
         }
 
+        // Get the total number of others this month
         for ($x=0; $x < count($others); $x++) {
             $add = Ticket::where('categ_id', $others[$x]->id)->whereMonth('created_at', $thisMonth)->whereYear( 'created_at',$thisYear)->count();
             $otherThisMonth = $otherThisMonth + $add;
         }
+
+        // Get the array of all tickets
+        // Get the count of reopen with the ticket_id (Reopens table)
+        // Add them all
+        // Divide by Tickets::count
+
+        $ticket_ids = DB::table('tickets')->select('id')->get()->toArray();
+        dd($ticket_ids);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
