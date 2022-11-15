@@ -106,13 +106,6 @@ class DashboardController extends Controller
             array_push($intervalsNew, $interval);
         }
 
-        // dd($intervalsNew);
-        // $avgIntervalNew = array_sum($intervalsNew) / count($intervalsNew);
-        // dd($avgIntervalNew);
-        // 2064
-
-        // $aveTime = array_sum($intervalsNew) / count();
-
         for ($x=0; $x < count($reopen_dates); $x++) {
             $date1 = strtotime($reopen_dates[$x]->created_at);
             $date2 = strtotime($reopen_dates[$x]->dateResponded);
@@ -120,37 +113,24 @@ class DashboardController extends Controller
             array_push($intervalsReopen, $interval);
         }
 
-        // dd($intervalsReopen);
-        // $avgIntervalReopen = array_sum($intervalsReopen) / count($intervalsReopen);
-        // dd($avgIntervalReopen);
-        // 166819125.7
-        // 1668191257 - intervalsReopen
-        // 16511 - intervalsNew
-
-        // 92678209.33 - average all
-
-        // 514994.8818
-
-        $n = count($ticket_dates) + count($reopen_dates);
-        // dd($n);
-
-        $sum = array_sum($intervalsNew) + array_sum($intervalsReopen);
-
-        $avgInterval = $sum / $n;
+        $merge = array_merge($intervalsNew. $intervalsReopen);
+        dd($merge);
+        
+        // $avgInterval = $sum / $n;
 
         // dd($avgInterval);
 
-        $years = floor($avgInterval / (365*60*60*24));
-        $months = floor(($avgInterval - $years * 365*60*60*24) / (30*60*60*24));
-        $days = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-        $hours = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
-        $minutes = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
-        $seconds = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
+        // $years = floor($avgInterval / (365*60*60*24));
+        // $months = floor(($avgInterval - $years * 365*60*60*24) / (30*60*60*24));
+        // $days = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+        // $hours = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
+        // $minutes = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
+        // $seconds = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
 
         // $days = floor($avgInterval / (24*60*60));
         // $hours = 
-        $avgResponseTime = $years . "years " . $months . "months " . $days . "days " .$hours . ":" . $minutes . ":" . $seconds;
-        dd($avgResponseTime);
+        // $avgResponseTime = $years . "years " . $months . "months " . $days . "days " .$hours . ":" . $minutes . ":" . $seconds;
+        // dd($avgResponseTime);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
