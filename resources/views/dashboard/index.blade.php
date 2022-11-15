@@ -103,5 +103,6 @@
         </div>
     </x-sidenav>
     @{{{!! $chart1->renderChartJsLibrary() !!}
-    {!! $chart1->renderJs() !!}}}
+    {!! $chart1->renderJs() !!}
+    {!! $chart2->renderJs() !!}}}
 </x-layout>
