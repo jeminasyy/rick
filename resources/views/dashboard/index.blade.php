@@ -122,6 +122,8 @@
         </div>
         <br>
         <br>
+        <br>
+        <br>
     </x-sidenav>
     @{{{!! $chart1->renderChartJsLibrary() !!}
     {!! $chart1->renderJs() !!}
