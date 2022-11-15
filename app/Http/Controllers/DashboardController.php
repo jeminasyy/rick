@@ -86,7 +86,10 @@ class DashboardController extends Controller
             array_push($reopens, $count);
         }
 
-        dd($reopens);
+        $averageReopen = round(array_sum($reopens) / count($reopens));
+        dd($averageReopen);
+
+        // dd($reopens);
 
         // array_push($reopens, 2, 5, 0);
         // dd($reopens);
