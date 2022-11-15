@@ -78,8 +78,16 @@ class DashboardController extends Controller
         // Divide by total tickets
 
         $ticket_ids = DB::table('tickets')->select('id')->get()->toArray();
-        dd($ticket_ids);
+        // dd($ticket_ids);
         $reopens = array();
+
+        for ($x=0; $x < count($ticket_ids); $x++) {
+            $count = Reopen::where('ticket_id', $ticket_ids[$x]->id)->count();
+            array_push($reopens, $count);
+        }
+
+        dd($reopens);
+
         // array_push($reopens, 2, 5, 0);
         // dd($reopens);
         // $average = round((array_sum($reopens) / count($reopens)), 2);
