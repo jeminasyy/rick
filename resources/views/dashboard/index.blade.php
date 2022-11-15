@@ -17,8 +17,7 @@
             </div>
         </div>
         <br>
-        <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
-        transform: rotate(0.08deg); ">
+        <br>
         <br>
 
         <div class="row">
