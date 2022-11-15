@@ -100,9 +100,9 @@
             </div>
         </div>
     </x-sidenav>
+    @section('javascript')
+    {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!}
+    @endsection
 </x-layout>
 
-@section('javascript')
-{!! $chart1->renderChartJsLibrary() !!}
-{!! $chart1->renderJs() !!}
-@endsection
