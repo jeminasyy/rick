@@ -12,18 +12,18 @@
                 {!! $chart2->renderHtml() !!}
             </div>
             <div class="col-lg-6">
-                <h1>{{ $chart1->options['chart_title'] }}</h1>
+                <h1>{{ $chart->options['chart_title'] }}</h1>
                 {!! $chart1->renderHtml() !!}
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <h1>{{ $chart1->options['chart_title'] }}</h1>
-                {!! $chart1->renderHtml() !!}
+                <h1>{{ $chart3->options['chart_title'] }}</h1>
+                {!! $chart3->renderHtml() !!}
             </div>
             <div class="col-lg-6">
-                <h1>{{ $chart2->options['chart_title'] }}</h1>
-                {!! $chart2->renderHtml() !!}
+                <h1>{{ $chart4->options['chart_title'] }}</h1>
+                {!! $chart4->renderHtml() !!}
             </div>
         </div>
         <br>
@@ -121,5 +121,7 @@
     </x-sidenav>
     @{{{!! $chart1->renderChartJsLibrary() !!}
     {!! $chart1->renderJs() !!}
-    {!! $chart2->renderJs() !!}}}
+    {!! $chart2->renderJs() !!}
+    {!! $chart3->renderJs() !!}
+    {!! $chart4->renderJs() !!}}}
 </x-layout>
