@@ -7,15 +7,19 @@
         <br>
 
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-7">
                 <h1>{{ $chart1->options['chart_title'] }}</h1>
                 {!! $chart1->renderHtml() !!}
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-7">
                 <h1>{{ $chart2->options['chart_title'] }}</h1>
                 {!! $chart2->renderHtml() !!}
             </div>
         </div>
+        <br>
+        <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
+        transform: rotate(0.08deg); ">
+        <br>
 
         <div class="row">
             <div class="col-md-3">
