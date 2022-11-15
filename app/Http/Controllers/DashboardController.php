@@ -122,7 +122,11 @@ class DashboardController extends Controller
 
         dd($intervalsReopen);
         $avgIntervalReopen = array_sum($intervalsReopen) / count($intervalsReopen);
-        // dd($avgIntervalNew);
+        dd($avgIntervalReopen);
+        // 166819125.7
+        // 1668191257
+
+        // 514994.8818
 
         $n = count($ticket_dates) + count($reopen_dates);
         // dd($n);
