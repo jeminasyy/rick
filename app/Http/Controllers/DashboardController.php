@@ -132,6 +132,20 @@ class DashboardController extends Controller
         $minutes = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
         $seconds = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
 
+        $hours = strval($hours);
+        $minutes = strval($minutes);
+        $seconds = strval($seconds);
+
+        if (strlen($hours) == 1) {
+            $hours = "0" . $hours;
+        }
+        if (strlen($minutes) == 1) {
+            $minutes = "0" . $minutes;
+        }
+        if (strlen($seconds) == 1) {
+            $seconds = "0" . $seconds;
+        }
+
         $avgResponseTime = $days . "days " .$hours . ":" . $minutes . ":" . $seconds;
         dd($avgResponseTime);
 
