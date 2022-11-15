@@ -6,11 +6,9 @@
         transform: rotate(0.08deg); ">
         <br>
 
-        <div class="row">
-            <div class="col-md-3">
+        <div class="row-md-3">
                 <h1>{{ $chart1->options['chart_title'] }}</h1>
                 {!! $chart1->renderHtml() !!}
-            </div>
         </div>
 
         <div class="row">
