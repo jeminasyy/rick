@@ -1,6 +1,6 @@
 <x-layout>
     <x-sidenav>
-        <div class="col-md-12 grid-margin">
+        {{-- <div class="col-md-12 grid-margin"> --}}
             <p style="font-size: 22px; font-weight:bold">Dashboard</p>
             <br>
             <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
@@ -98,6 +98,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
     </x-sidenav>
 </x-layout>
