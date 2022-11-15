@@ -101,7 +101,3 @@
             </div>
         </div>
 </x-layout>
-@section('javascript')
-    {!! $chart1->renderChartJsLibrary() !!}
-    {!! $chart1->renderJs() !!}
-    @endsection
