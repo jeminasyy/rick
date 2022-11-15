@@ -87,7 +87,7 @@ class DashboardController extends Controller
         }
 
         $averageReopen = round(array_sum($reopens) / count($reopens));
-        dd($averageReopen);
+        // dd($averageReopen);
 
         // dd($reopens);
 
@@ -98,6 +98,6 @@ class DashboardController extends Controller
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
-                                                'studentSatisfaction'));
+                                                'studentSatisfaction', 'averageReopen'));
     }
 }

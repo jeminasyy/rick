@@ -26,7 +26,7 @@
                 <div class="col-md-3">
                     <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
                         <p class="font-weight-bold h4">Average Reopen Times</p>
-                        <p class="h4">{{ $studentSatisfaction }}%</p>
+                        <p class="h4">{{ $averageReopen }}%</p>
                     </div>
                 </div>
             </div>
