@@ -82,7 +82,7 @@ class DashboardController extends Controller
         array_push($reopens, 2, 5, 0);
         // dd($reopens);
         $average = ceil(array_sum($reopens) / count($reopens));
-        dd($reopens);
+        dd($average);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
