@@ -1,6 +1,5 @@
 <x-layout>
     <x-sidenav>
-        <div id="sidenav2">
             <div class="col-md-12 grid-margin">
                 <p style="font-size: 22px; font-weight:bold">Dashboard</p>
                 <br>
@@ -101,10 +100,8 @@
                 </div>
             </div>
         </div>
-    </x-sidenav>
-    @section('javascript')
+</x-layout>
+@section('javascript')
     {!! $chart1->renderChartJsLibrary() !!}
     {!! $chart1->renderJs() !!}
     @endsection
-</x-layout>
-
