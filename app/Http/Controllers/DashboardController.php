@@ -97,6 +97,7 @@ class DashboardController extends Controller
         $reopen_dates = DB::table('reopens')->select('created_at', 'dateResponded')->get()->toArray();
         $intervalsReopen = array();
 
+        dd($ticket_dates[0]->created_at);
         for ($x=0; $x < count($ticket_dates); $x++) {
             $interval = date_diff($ticket_dates[$x]->created_at, $ticket_dates[$x]->dateResponded);
             array_push($intervalsNew, $interval);
