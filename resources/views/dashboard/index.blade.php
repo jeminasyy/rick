@@ -18,15 +18,15 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <h1>{{ $chart3->options['chart_title'] }}</h1>
                 {!! $chart3->renderHtml() !!}
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <h1>{{ $chart4->options['chart_title'] }}</h1>
                 {!! $chart4->renderHtml() !!}
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <h1>{{ $chart5->options['chart_title'] }}</h1>
                 {!! $chart5->renderHtml() !!}
             </div>
@@ -128,5 +128,6 @@
     {!! $chart1->renderJs() !!}
     {!! $chart2->renderJs() !!}
     {!! $chart3->renderJs() !!}
-    {!! $chart4->renderJs() !!}}}
+    {!! $chart4->renderJs() !!}
+    {!! $chart5->renderJs() !!}}}
 </x-layout>
