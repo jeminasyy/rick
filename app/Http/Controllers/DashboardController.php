@@ -72,13 +72,12 @@ class DashboardController extends Controller
             $otherThisMonth = $otherThisMonth + $add;
         }
 
-        // Get the array of all tickets
+        // Get the array of all tickets_id
         // Get the count of reopen with the ticket_id (Reopens table)
-        // Add them all
-        // Divide by total tickets
+        // Push to array
+        // Calculate the average
 
         $ticket_ids = DB::table('tickets')->select('id')->get()->toArray();
-        // dd($ticket_ids);
         $reopens = array();
 
         for ($x=0; $x < count($ticket_ids); $x++) {
@@ -87,14 +86,9 @@ class DashboardController extends Controller
         }
 
         $averageReopen = round(array_sum($reopens) / count($reopens));
-        // dd($averageReopen);
-
-        // dd($reopens);
-
-        // array_push($reopens, 2, 5, 0);
-        // dd($reopens);
-        // $average = round((array_sum($reopens) / count($reopens)), 2);
-        // dd($average);
+ 
+        $ticket_dates = DB::table('tickets')->select('created_at', 'dateResponded')->get()->toArray();
+        dd($ticket_dates);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
