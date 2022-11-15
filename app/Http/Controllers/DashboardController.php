@@ -146,7 +146,7 @@ class DashboardController extends Controller
             $seconds = "0" . $seconds;
         }
 
-        $averageResponseTime = $days . "days " .$hours . ":" . $minutes . ":" . $seconds;
+        $averageResponseTime = $days . " Day/s " .$hours . ":" . $minutes . ":" . $seconds;
         // dd($avgResponseTime);
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
