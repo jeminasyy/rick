@@ -23,10 +23,10 @@ class DashboardController extends Controller
         $thisYear = Carbon::now()->format('Y');
 
         // Get the categories for each type
-        $requests = DB::table('categs')->where('type', 'Request')->get()->toArray();
-        $inquiries = DB::table('categs')->where('type', 'Inquiries')->get()->toArray();
-        $concerns = DB::table('categs')->where('type', 'Concerns')->get()->toArray();
-        $others = DB::table('categs')->where('type', 'Others')->get()->toArray();
+        $requests = DB::table('categs')->where('type', 'Request')->select('id')->get()->toArray();
+        $inquiries = DB::table('categs')->where('type', 'Inquiries')->select('id')->get()->toArray();
+        $concerns = DB::table('categs')->where('type', 'Concerns')->select('id')->get()->toArray();
+        $others = DB::table('categs')->where('type', 'Others')->select('id')->get()->toArray();
 
         // Get the total number of satisfied solution (new and reopened)
         $ticketSatisfied = Rating::where('satisfied', 1)->count();
