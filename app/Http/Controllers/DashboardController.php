@@ -10,6 +10,7 @@ use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
@@ -149,8 +150,22 @@ class DashboardController extends Controller
         $averageResponseTime = $days . " Day/s " .$hours . ":" . $minutes . ":" . $seconds;
         // dd($avgResponseTime);
 
+
+        // CHARTS
+        // Tickets per month
+        $chart_options = [
+            'chart_title' => 'Tickets by months',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\Ticket',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'month',
+            'chart_type' => 'bar',
+        ];
+        $chart1 = new LaravelChart($chart_options);
+
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
-                                                'studentSatisfaction', 'averageReopen', 'averageResponseTime'));
+                                                'studentSatisfaction', 'averageReopen', 'averageResponseTime',
+                                            'chart1'));
     }
 }

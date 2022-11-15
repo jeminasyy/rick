@@ -8,6 +8,8 @@
             <br>
 
             <div class="row">
+                <h1>{{ $chart1->options['chart_title'] }}</h1>
+                {!! $chart1->renderHtml() !!}
             </div>
 
             <div class="row">
@@ -99,3 +101,8 @@
         </div>
     </x-sidenav>
 </x-layout>
+
+@section('javascript')
+{!! $chart1->renderChartJsLibrary() !!}
+{!! $chart1->renderJs() !!}
+@endsection
