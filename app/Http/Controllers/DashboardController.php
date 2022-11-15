@@ -165,7 +165,7 @@ class DashboardController extends Controller
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
-                                                'studentSatisfaction', 'averageReopen', 'averageResponseTime',
-                                            'chart1'));
+                                                'studentSatisfaction', 'averageReopen', 'averageResponseTime', 
+                                                'chart1'));
     }
 }
