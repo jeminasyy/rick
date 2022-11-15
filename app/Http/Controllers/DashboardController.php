@@ -102,10 +102,22 @@ class DashboardController extends Controller
             $date1 = strtotime($ticket_dates[$x]->created_at);
             $date2 = strtotime($ticket_dates[$x]->dateResponded);
             $interval = abs($date2 - $date1);
+
             array_push($intervalsNew, $interval);
         }
 
         dd($intervalsNew);
+
+        $sum = array_sum($intervalsNew);
+        $years = floor($sum / (365*60*60*24));
+        $months = floor(($sum - $years * 365*60*60*24) / (30*60*60*24));
+        $days = floor(($sum - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+        $hours = floor(($sum - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
+        $minutes = floor(($sum - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
+        $seconds = floor(($sum - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
+
+
+        // $aveTime = array_sum($intervalsNew) / count();
 
         for ($x=0; $x < count($reopen_dates); $x++) {
             $date1 = strtotime($reopen_dates[$x]->created_at);
