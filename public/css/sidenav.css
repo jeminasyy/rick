@@ -27,7 +27,7 @@
 
 /* ------------MAIN CONTENT------------ */
 .main-content {
-    min-height: 653px;
+    min-height: 100%;
     padding: 30px;
     position: relative;
     background: #f7f2e4;
