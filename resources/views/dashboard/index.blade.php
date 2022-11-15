@@ -7,35 +7,6 @@
         <br>
 
         <div class="row">
-            <div class="col-lg-6">
-                <h1>{{ $chart1->options['chart_title'] }}</h1>
-                {!! $chart1->renderHtml() !!}
-            </div>
-            <div class="col-lg-6">
-                <h1>{{ $chart2->options['chart_title'] }}</h1>
-                {!! $chart2->renderHtml() !!}
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-lg-4">
-                <h1>{{ $chart3->options['chart_title'] }}</h1>
-                {!! $chart3->renderHtml() !!}
-            </div>
-            <div class="col-lg-4">
-                <h1>{{ $chart4->options['chart_title'] }}</h1>
-                {!! $chart4->renderHtml() !!}
-            </div>
-            <div class="col-lg-4">
-                <h1>{{ $chart5->options['chart_title'] }}</h1>
-                {!! $chart5->renderHtml() !!}
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-
-        <div class="row">
             <div class="col-md-3">
                 <div class="card card-body border rounded-10 bg-white mb-3 p-6" >
                     <p class="font-weight-bold h4">Student Satisfaction</p>
@@ -119,6 +90,35 @@
                     <p class="font-weight-bold h4">Other Tickets</p>
                     <p class="h4">{{ $otherThisMonth }}</p>
                 </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>{{ $chart1->options['chart_title'] }}</h1>
+                {!! $chart1->renderHtml() !!}
+            </div>
+            <div class="col-lg-6">
+                <h1>{{ $chart2->options['chart_title'] }}</h1>
+                {!! $chart2->renderHtml() !!}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-4">
+                <h1>{{ $chart3->options['chart_title'] }}</h1>
+                {!! $chart3->renderHtml() !!}
+            </div>
+            <div class="col-lg-4">
+                <h1>{{ $chart4->options['chart_title'] }}</h1>
+                {!! $chart4->renderHtml() !!}
+            </div>
+            <div class="col-lg-4">
+                <h1>{{ $chart5->options['chart_title'] }}</h1>
+                {!! $chart5->renderHtml() !!}
             </div>
         </div>
         <br>
