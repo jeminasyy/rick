@@ -6,9 +6,11 @@
         transform: rotate(0.08deg); ">
         <br>
 
-        <div class="row" style="padding:3px;">
-            <h1>{{ $chart1->options['chart_title'] }}</h1>
-            {!! $chart1->renderHtml() !!}
+        <div class="row">
+            <div class="col-md-3">
+                <h1>{{ $chart1->options['chart_title'] }}</h1>
+                {!! $chart1->renderHtml() !!}
+            </div>
         </div>
 
         <div class="row">
@@ -98,9 +100,8 @@
             </div>
         </div>
     </x-sidenav>
+    @section('javascript')
+    {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!}
+    @endsection
 </x-layout>
-
-@section('javascript')
-{!! $chart1->renderChartJsLibrary() !!}
-{!! $chart1->renderJs() !!}
-@endsection
