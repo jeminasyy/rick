@@ -7,13 +7,13 @@
         <br>
 
         <div class="row">
-            <div class="col-xl-3">
+            <div class="col-xl-2">
                 <div class="card card-body border rounded-10 bg-white mb-3 p-3" >
                     <h1>{{ $chart1->options['chart_title'] }}</h1>
                     {!! $chart1->renderHtml() !!}
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-2">
                 <div class="card card-body border rounded-10 bg-white mb-3 p-3" >
                     <h1>{{ $chart2->options['chart_title'] }}</h1>
                     {!! $chart2->renderHtml() !!}
