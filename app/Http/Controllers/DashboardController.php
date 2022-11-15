@@ -98,12 +98,12 @@ class DashboardController extends Controller
         $intervalsReopen = array();
 
         for ($x=0; $x < count($ticket_dates); $x++) {
-            $interval = date_diff($ticket_dates[$x]->created_at, $ticket_dates[$x]->date_Responded);
+            $interval = date_diff($ticket_dates[$x]->created_at, $ticket_dates[$x]->dateResponded);
             array_push($intervalsNew, $interval);
         }
 
         for ($x=0; $x < count($reopen_dates); $x++) {
-            $interval = date_diff($reopen_dates[$x]->created_at, $reopen_dates[$x]->date_Responded);
+            $interval = date_diff($reopen_dates[$x]->created_at, $reopen_dates[$x]->dateResponded);
             array_push($intervalsReopen, $interval);
         }
 
