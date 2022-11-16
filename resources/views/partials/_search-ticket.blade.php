@@ -25,7 +25,7 @@
 </div>
 
 <div class="row">
-    <div class="col ml-6 mr-3 w-30">
+    <div class="col-sm-2">
         <form action="/tickets">
             <p class="attribute">Category</p>
             <select name="categ_id" id="priority" onchange="this.form.submit()">
@@ -64,7 +64,7 @@
             </select>
         </form>
     </div>
-    <div class="col mr-3 w-20">
+    <div class="col-sm-2">
         <form action="/tickets">
             <p class="attribute">Priority</p>
             <select name="priority" id="priority" onchange="this.form.submit()">
@@ -76,7 +76,7 @@
             </select>
         </form>
     </div>
-    <div class="col mr-3 w-20">
+    <div class="col-sm-2">
         <form action="/tickets">
             <p class="attribute">Status</p>
             <select name="status" id="priority" onchange="this.form.submit()">
@@ -92,7 +92,7 @@
             </select>
         </form>
     </div>
-    <div class="col mr-3 w-30">
+    <div class="col-sm-2">
         <form action="/tickets">
             <p class="attribute">Assignee</p>
             <select name="user_id" id="priority" onchange="this.form.submit()">
