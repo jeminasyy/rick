@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-2">
+    <div class="col ml-2">
         <form action="/tickets">
             <div class="relative border-2 border-gray-100 rounded-lg" id="search-div">
                 
