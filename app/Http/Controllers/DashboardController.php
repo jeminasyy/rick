@@ -151,6 +151,14 @@ class DashboardController extends Controller
         // dd($avgResponseTime);
 
 
+        $ratingsNew = DB::table('ratings')->select('rating')->get()->toArray();
+        $ratingsReopen = DB::table('reopenratings')->select('rating')->get()->toArray();
+        $ratings = array_merge($ratingsNew, $ratingsReopen);
+
+        $averageRating = round(array_sum($ratings) / count($ratings));
+
+        dd($averageRating);
+
         // CHARTS
         // Tickets per month
         $chart_options = [
@@ -209,7 +217,7 @@ class DashboardController extends Controller
 
         return view('dashboard.index', compact('totalTickets', 'newTickets', 'resolvedTickets', 'reopenedTickets',
                                                 'requestThisMonth', 'inquiryThisMonth', 'concernThisMonth', 'otherThisMonth',
-                                                'studentSatisfaction', 'averageReopen', 'averageResponseTime', 
+                                                'studentSatisfaction', 'averageRating', 'averageReopen', 'averageResponseTime', 
                                                 'chart1', 'chart2', 'chart3', 'chart4', 'chart5'));
     }
 }
