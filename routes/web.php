@@ -103,7 +103,7 @@ Route::get('/reopenConfirm/{ticket}/{student}', [FeedbackController::class, 'reo
 // Show Tickets list
 Route::get('/tickets', [TicketController::class,'index'])->middleware('auth');
 // Show User's Tickets list
-Route::get('/mytickets', [TicketController::class, 'indexUser'])->middleware('auth');
+Route::get('/mytickets', [TicketController::class, 'manage'])->middleware('auth');
 // Update Ticket Priority
 Route::put('/{ticket}/ticket/updatePriority', [TicketController::class, 'updatePriority'])->middleware('auth');
 // Mark as Ongoing

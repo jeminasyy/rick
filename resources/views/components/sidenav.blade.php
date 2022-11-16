@@ -12,7 +12,7 @@
             <span class="tooltip">Dashboard</span>
         </li>
         <li>
-            <a href="/tickets">
+            <a href="/mytickets">
                 <i class='bx bxs-coupon bx-md'></i>
                 <span class="links_name">Tickets</span>
             </a>

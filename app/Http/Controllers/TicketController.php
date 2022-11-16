@@ -214,6 +214,21 @@ class TicketController extends Controller
         ]);
     }
 
+    public function manage() {
+        return view('admin.tickets.manage', [
+            'heading' => 'All Tickets',
+            'tickets' => auth()->user()->tickets->get()
+                ->filter(request(['search']))
+                ->filter(request(['categ_id']))
+                ->filter(request(['priority']))
+                ->filter(request(['user_id']))
+                ->filter(request(['status']))
+                ->paginate(10),
+            'categs' => Categ::all(),
+            'users' => User::all()
+        ]);
+    }
+
     // Show single ticket
     public function show($id){
         return view('admin.tickets.show', [
