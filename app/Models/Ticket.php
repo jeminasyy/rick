@@ -43,7 +43,7 @@ class Ticket extends Model
         }
 
         if($filters['priority'] ?? false) {
-            $query->where('categ_id', 'like', '%' . request('priority') . '%');
+            $query->where('priority', 'like', '%' . request('priority') . '%');
         }
 
         if($filters['user_id'] ?? false) {

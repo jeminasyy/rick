@@ -1,6 +1,6 @@
 <form action="/tickets">
     <p class="attribute">Category</p>
-    <select name="categ_id" id="priority" onchange="this.form.submit()" value="{{old('categ_id')}}">
+    <select name="categ_id" id="priority" onchange="this.form.submit()">
         @unless(count($categs) == 0)
             <option value="" font color="#gray">--Select--</option>
             <optgroup label="Requests">
