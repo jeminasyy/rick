@@ -61,6 +61,14 @@
     border: 2px solid #cccc;
 }
 
+#filter {
+    margin-top: 5px;
+    padding: 7px 20px 7px 5px;
+    border-radius: 6px;
+    border: 2px solid #cccc;
+    width: 300px;
+}
+
 #transfer {
     background-color: #FFFFFF; 
     border: 2px solid#F8CA0A; 

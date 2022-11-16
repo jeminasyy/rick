@@ -28,7 +28,7 @@
     <div class="col-sm-2">
         <form action="/tickets">
             <p class="attribute">Category</p>
-            <select name="categ_id" id="priority" onchange="this.form.submit()">
+            <select name="categ_id" id="filter" onchange="this.form.submit()">
                 @unless(count($categs) == 0)
                     <option value="" font color="#gray">--Select--</option>
                     <optgroup label="Requests">
@@ -67,7 +67,7 @@
     <div class="col-sm-2">
         <form action="/tickets">
             <p class="attribute">Priority</p>
-            <select name="priority" id="priority" onchange="this.form.submit()">
+            <select name="priority" id="filter" onchange="this.form.submit()">
                 <option value="" font color="#gray">--Select--</option>
                 <option value="Unset">Unset</option>
                 <option value="High">High</option>
@@ -79,7 +79,7 @@
     <div class="col-sm-2">
         <form action="/tickets">
             <p class="attribute">Status</p>
-            <select name="status" id="priority" onchange="this.form.submit()">
+            <select name="status" id="filter" onchange="this.form.submit()">
                 <option value="" font color="#gray">--Select--</option>
                 <option value="New">New</option>
                 <option value="Opened">Opened</option>
@@ -95,7 +95,7 @@
     <div class="col-sm-2">
         <form action="/tickets">
             <p class="attribute">Assignee</p>
-            <select name="user_id" id="priority" onchange="this.form.submit()">
+            <select name="user_id" id="filter" onchange="this.form.submit()">
                 <option value="" font color="#gray">--Select--</option>
                 @foreach ($users as $user)
                     <option value="{{$user['id']}}">{{$user['email']}}</option>
