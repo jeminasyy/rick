@@ -189,11 +189,11 @@ Mark as Resolved */
 div.ticketNav {
     overflow: auto;
     white-space: nowrap;
+    margin-bottom: 20px;
 }
 
 div.ticketNav a {
     display: inline-block;
-    color: white;
     text-align: center;
     padding: 14px;
     text-decoration: none;
@@ -201,9 +201,11 @@ div.ticketNav a {
 }
 
 div.ticketNav a:hover {
-    background-color: #edc204b9;
+    background-color: #eccd41;
+    color: white;
 }
 
 div.ticketNav a:active {
-    background-color: #edc204b9;
+    background-color: #eccd41;
+    color: white;
 }
