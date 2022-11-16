@@ -187,7 +187,6 @@ Mark as Resolved */
 /* Ticket Menu Bar */
 
 div.ticketNav {
-    background-color: #333;
     overflow: auto;
     white-space: nowrap;
 }
@@ -198,8 +197,13 @@ div.ticketNav a {
     text-align: center;
     padding: 14px;
     text-decoration: none;
+    margin-right: 20px;
 }
 
 div.ticketNav a:hover {
-  background-color: #777;
+    background-color: #edc204b9;
+}
+
+div.ticketNav a:active {
+    background-color: #edc204b9;
 }
