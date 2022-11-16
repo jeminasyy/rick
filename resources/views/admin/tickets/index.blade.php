@@ -2,7 +2,7 @@
     <x-sidenav>
       <div class="ticketNav">
         <a href="/mytickets">My Tickets</a>
-        <a href="/tickets" active>All Tickets</a>
+        <a href="/tickets" class="active">All Tickets</a>
       </div>
       @include('partials._search-ticket')
 
