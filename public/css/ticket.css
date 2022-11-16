@@ -190,12 +190,14 @@ div.ticketNav {
     overflow: auto;
     white-space: nowrap;
     margin-bottom: 20px;
+    width: fit-content;
+    border: 2px solid #cccc;
 }
 
 div.ticketNav a {
     display: inline-block;
     text-align: center;
-    padding: 20px;
+    padding: 14px;
     text-decoration: none;
     border-radius: 2px;
 }
