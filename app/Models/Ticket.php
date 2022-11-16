@@ -28,22 +28,17 @@ class Ticket extends Model
 
     public function scopeFilter($query, array $filters) {
         if($filters['search'] ?? false) {
-            // $student_ids = DB::table('student')
-            //     ->select('id')
-            //     ->where('email', 'like', '%' . request('search') . '%')
-            //     ->orWhere('FName', 'like', '%' . request('search') . '%')
-            //     ->orWhere('LName', 'like', '%' . request('search') . '%');
-
             $query->where('id', 'like', '%' . request('search') . '%')
                 ->orWhere('description', 'like', '%' . request('search') . '%')
                 ->orWhere('department', 'like', '%' . request('search') . '%')
                 ->orWhere('status', 'like', '%' . request('search') . '%')
                 ->orWhere('response', 'like', '%' . request('search') . '%')
-                ->orWhere('created_at', 'like', '%' . request('search') . '%');
-            
-            // foreach($student_ids as $student_id){
-            //     $query->orWhere('student_id', 'like', '%' . $student_id . '%');
-            // }
+                ->orWhere('created_at', 'like', '%' . request('search') . '%')
+                ->orWhere('student_id', 'like', '%' . request('search') . '%');
+        }
+
+        if($filters['categ_id'] ?? false) {
+            $query->where('categ_id', 'like', '%' . request('categ_id') . '%');
         }
     }
 

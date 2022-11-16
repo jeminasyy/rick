@@ -203,6 +203,7 @@ class TicketController extends Controller
         return view('admin.tickets.index', [
             'heading' => 'All Tickets',
             'tickets' => Ticket::latest()->filter(request(['search']))->paginate(10),
+            'categs' => Categ::all()
         ]);
     }
 
