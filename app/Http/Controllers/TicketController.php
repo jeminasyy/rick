@@ -217,7 +217,7 @@ class TicketController extends Controller
     public function manage() {
         return view('admin.tickets.manage', [
             'heading' => 'All Tickets',
-            'tickets' => auth()->user()->tickets->get()
+            'tickets' => Ticket::where('user_id', auth()->user()->id)
                 ->filter(request(['search']))
                 ->filter(request(['categ_id']))
                 ->filter(request(['priority']))
