@@ -189,13 +189,13 @@ Mark as Resolved */
 div.ticketNav {
     overflow: auto;
     white-space: nowrap;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: fit-content;
     border: 2px solid #cccc;
     float: right;
 }
 
-div.ticketNav a {
+div.ticketNav li {
     display: inline-block;
     text-align: center;
     padding: 14px;
@@ -203,12 +203,12 @@ div.ticketNav a {
     border-radius: 2px;
 }
 
-div.ticketNav a:hover {
+div.ticketNav li:hover {
     background-color: #eccd41;
     color: white;
 }
 
-div.ticketNav a:active {
+div.ticketNav li:active {
     background-color: #eccd41;
     color: white;
 }

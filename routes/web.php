@@ -25,7 +25,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 // Show Dashboard
-Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth');
 
 
 // ----SECURITY----
@@ -99,9 +99,11 @@ Route::get('/reopenConfirm/{ticket}/{student}', [FeedbackController::class, 'reo
 // ----TICKETS----
 // **Admin/FDO Only
 
-// 1. Submit New Ticket
+// 1. New Tickets
 // Show Tickets list
-Route::get('/tickets', [TicketController::class,'index']);
+Route::get('/tickets', [TicketController::class,'index'])->middleware('auth');
+// Show User's Tickets list
+Route::get('/mytickets', [TicketController::class, 'indexUser'])->middleware('auth');
 // Update Ticket Priority
 Route::put('/{ticket}/ticket/updatePriority', [TicketController::class, 'updatePriority'])->middleware('auth');
 // Mark as Ongoing

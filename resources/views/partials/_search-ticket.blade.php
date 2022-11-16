@@ -84,7 +84,7 @@
                 <option value="New">New</option>
                 <option value="Opened">Opened</option>
                 <option value="Ongoing">Ongoing</option>
-                <option value="Resolved">Pending</option>
+                <option value="Pending">Pending</option>
                 <option value="Resolved">Resolved</option>
                 <option value="Voided">Voided</option>
                 <option value="Inactive">Inactive</option>
