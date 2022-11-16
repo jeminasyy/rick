@@ -39,7 +39,6 @@ class Ticket extends Model
                 ->orWhere('department', 'like', '%' . request('search') . '%')
                 ->orWhere('status', 'like', '%' . request('search') . '%')
                 ->orWhere('response', 'like', '%' . request('search') . '%')
-                ->orWhere('timesReopened', 'like', '%' . request('search') . '%')
                 ->orWhere('created_at', 'like', '%' . request('search') . '%');
             
             // foreach($student_ids as $student_id){
