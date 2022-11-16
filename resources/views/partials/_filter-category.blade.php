@@ -2,7 +2,7 @@
     <p class="attribute">Category</p>
     <select name="categ_id" id="priority" onchange="this.form.submit()" value="{{old('categ_id')}}">
         @unless(count($categs) == 0)
-            <option value="">---All---</option>
+            <option value="">All</option>
             <optgroup label="Requests">
                 @foreach ($categs as $categ)
                     @if($categ['type'] == 'Request')

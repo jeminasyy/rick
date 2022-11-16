@@ -34,8 +34,15 @@ class Ticket extends Model
                 ->orWhere('status', 'like', '%' . request('search') . '%')
                 ->orWhere('response', 'like', '%' . request('search') . '%')
                 ->orWhere('created_at', 'like', '%' . request('search') . '%')
-                ->orWhere('student_id', 'like', '%' . request('search') . '%');
-        } elseif($filters['categ_id'] ?? false) {
+                ->orWhere('student_id', 'like', '%' . request('search') . '%')
+                ->orWhere('priority', 'like', '%' . request('search') . '%');
+        }
+        
+        if($filters['categ_id'] ?? false) {
+            $query->where('categ_id', 'like', '%' . request('categ_id') . '%');
+        }
+
+        if($filters['priority'] ?? false) {
             $query->where('categ_id', 'like', '%' . request('categ_id') . '%');
         }
     }
