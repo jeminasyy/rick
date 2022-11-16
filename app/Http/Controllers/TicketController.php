@@ -202,7 +202,7 @@ class TicketController extends Controller
     public function index() {
         return view('admin.tickets.index', [
             'heading' => 'All Tickets',
-            'tickets' => Ticket::latest()->filter(request(['search']))->paginate(10),
+            'tickets' => Ticket::latest()->filter(request(['search']))->filter(request(['categ_id']))->paginate(10),
             'categs' => Categ::all()
         ]);
     }
