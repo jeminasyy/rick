@@ -126,10 +126,10 @@
                 {!! $chart5->renderHtml() !!}
             </div>
         </div>
+        {{-- <br>
         <br>
         <br>
-        <br>
-        <br>
+        <br> --}}
     </x-sidenav>
     @{{{!! $chart1->renderChartJsLibrary() !!}
     {!! $chart1->renderJs() !!}
