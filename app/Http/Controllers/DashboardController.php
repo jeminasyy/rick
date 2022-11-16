@@ -161,7 +161,7 @@ class DashboardController extends Controller
             $sum += $ratings[$x]->rating;
         }
 
-        $averageRating = round($sum / count($ratings));
+        $averageRating = round($sum / count($ratings), 2);
 
         // 3.15
         dd($averageRating);
