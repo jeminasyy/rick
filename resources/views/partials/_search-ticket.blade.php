@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xl-2">
+    <div class="col-md-6">
         <form action="/tickets">
             <div class="relative border-2 border-gray-100 rounded-lg" id="search-div">
                 
@@ -25,7 +25,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
         <form action="/tickets">
             <p class="attribute">Category</p>
             <select name="categ_id" id="priority" onchange="this.form.submit()">
@@ -64,7 +64,7 @@
             </select>
         </form>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
         <form action="/tickets">
             <p class="attribute">Priority</p>
             <select name="priority" id="priority" onchange="this.form.submit()">
