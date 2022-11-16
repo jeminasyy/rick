@@ -195,7 +195,7 @@ div.ticketNav {
     float: right;
 }
 
-div.ticketNav li {
+div.ticketNav a {
     display: inline-block;
     text-align: center;
     padding: 14px;
@@ -203,12 +203,12 @@ div.ticketNav li {
     border-radius: 2px;
 }
 
-div.ticketNav li:hover {
+div.ticketNav a:hover {
     background-color: #eccd41;
     color: white;
 }
 
-div.ticketNav li:active {
+div.ticketNav a:active {
     background-color: #eccd41;
     color: white;
 }
