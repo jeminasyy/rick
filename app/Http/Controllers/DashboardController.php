@@ -155,6 +155,8 @@ class DashboardController extends Controller
         $ratingsReopen = DB::table('reopenratings')->select('rating')->get()->toArray();
         $ratings = array_merge($ratingsNew, $ratingsReopen);
 
+        dd($ratings);
+
         $averageRating = round(array_sum($ratings) / count($ratings));
 
         dd($averageRating);
