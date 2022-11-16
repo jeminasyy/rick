@@ -1,6 +1,9 @@
 <x-layout>
     <x-sidenav>
-      @include('partials._ticket-nav')
+      <div class="ticketNav">
+        <a href="/mytickets">My Tickets</a>
+        <a href="/tickets" active>All Tickets</a>
+      </div>
       @include('partials._search-ticket')
 
       <div id="sidenav2">
