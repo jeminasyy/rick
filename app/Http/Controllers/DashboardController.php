@@ -155,10 +155,15 @@ class DashboardController extends Controller
         $ratingsReopen = DB::table('reopenratings')->select('rating')->get()->toArray();
         $ratings = array_merge($ratingsNew, $ratingsReopen);
 
-        dd($ratings);
+        $sum = 0;
 
-        $averageRating = round(array_sum($ratings) / count($ratings));
+        for ($x=0; $x < count($ratings); $x++) {
+            $sum = $ratings[$x]->rating;
+        }
 
+        $averageRating = round($sum / count($ratings));
+
+        // 3.15
         dd($averageRating);
 
         // CHARTS
