@@ -4,7 +4,7 @@
         <option value="" selected>All</option>
         @unless(count($users) == 0)
         @foreach ($users as $user)
-            <option value="{{$user['id']}}">{{$categ['email']}}</option>
+            <option value="{{$user['id']}}">{{$user['email']}}</option>
         @endforeach
         @endunless
     </select>
