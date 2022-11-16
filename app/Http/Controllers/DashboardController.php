@@ -164,7 +164,7 @@ class DashboardController extends Controller
         $averageRating = round($sum / count($ratings), 2);
 
         // 3.15
-        dd($averageRating);
+        // dd($averageRating);
 
         // CHARTS
         // Tickets per month
