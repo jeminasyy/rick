@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row pd-2">
     <form action="/tickets">
         <div class="relative border-2 border-gray-100 rounded-lg" id="search-div">
             
@@ -71,6 +71,22 @@
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
+            </select>
+        </form>
+    </div>
+    <div class="col-md-2">
+        <form action="/tickets">
+            <p class="attribute">Status</p>
+            <select name="status" id="priority" onchange="this.form.submit()">
+                <option value="" font color="#gray">--Select--</option>
+                <option value="New">New</option>
+                <option value="Opened">Opened</option>
+                <option value="Ongoing">Ongoing</option>
+                <option value="Resolved">Pending</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Voided">Voided</option>
+                <option value="Inactive">Inactive</option>
+                <option value="Reopened">Reopened</option>
             </select>
         </form>
     </div>

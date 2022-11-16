@@ -207,6 +207,7 @@ class TicketController extends Controller
                 ->filter(request(['categ_id']))
                 ->filter(request(['priority']))
                 ->filter(request(['user_id']))
+                ->filter(request(['status']))
                 ->paginate(10),
             'categs' => Categ::all(),
             'users' => User::all()
