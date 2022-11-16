@@ -1,4 +1,4 @@
 <div class="ticketNav">
-    <a href="/tickets">My Tickets</a>
-    <a href="#">All Tickets</a>
+    <a href="/mytickets">My Tickets</a>
+    <a href="/tickets">All Tickets</a>
 </div>

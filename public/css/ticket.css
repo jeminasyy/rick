@@ -195,9 +195,9 @@ div.ticketNav {
 div.ticketNav a {
     display: inline-block;
     text-align: center;
-    padding: 14px;
+    padding: 20px;
     text-decoration: none;
-    margin-right: 20px;
+    border-radius: 2px;
 }
 
 div.ticketNav a:hover {
