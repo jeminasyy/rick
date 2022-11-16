@@ -204,7 +204,7 @@ class TicketController extends Controller
             'heading' => 'All Tickets',
             'tickets' => Ticket::latest()->filter(request(['search']))->filter(request(['categ_id']))->filter(request(['user_id']))->paginate(10),
             'categs' => Categ::all(),
-            'users' => User::where('verified', 1)
+            'users' => User::all()
         ]);
     }
 
