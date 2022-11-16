@@ -185,3 +185,21 @@ Mark as Resolved */
 }
 
 /* Ticket Menu Bar */
+
+#ticketNav {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+#ticketNav a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+#ticketNav a:hover {
+  background-color: #777;
+}
