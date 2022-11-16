@@ -192,6 +192,7 @@ div.ticketNav {
     margin-bottom: 20px;
     width: fit-content;
     border: 2px solid #cccc;
+    float: right;
 }
 
 div.ticketNav a {
