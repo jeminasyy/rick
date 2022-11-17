@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\CreateYourAccount;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -137,6 +138,22 @@ class UserController extends Controller
 
         return redirect('/login')->with('message', 'Please log in to continue');
     } 
+
+    // Change Password
+
+
+    // Forgot Password
+
+
+    // Show Edit User Form
+    public function edit(User $user){
+        dd($user->id);
+        return view('admin.users.edit', [
+            'user' => $user,
+            'categs' => Categ::all(),
+            'usercategs' => DB::table('usercategs')->where('user_id', $user->id)->select('categ_id')->get()->toArray()
+        ]);
+    }
 
     // Show Login Form
     public function login(){

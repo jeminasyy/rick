@@ -174,6 +174,13 @@ Route::put('/{user}/register', [UserController::class, 'createPassword'])->middl
 // Change Password
 
 
+// Edit User Access
+// Show Edit Form
+Route::get('/user/{user}/edit', [UserController::class, 'edit'])->middleware('auth');
+// Update User Access
+Route::post('/user/{user}/update', [UserController::class, 'update'])->middleware('auth');
+
+
 // Delete User
 
 

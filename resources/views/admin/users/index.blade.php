@@ -49,7 +49,7 @@
                         <td></td>
                         @endif
                         <td class="action">
-                            <Button class="editBtn"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>
+                            <Button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>
                             <Button class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i></Button>
                         </td>
                     </tr>
