@@ -32,55 +32,55 @@
                         <legend>User Access:</legend>
 
                         @unless(count($categ) == 0)
-                        {{dd($categ)}}
+                        {{-- {{dd($categ)}} --}}
                             <h2 class="text-2xl font-bold uppercase mb-1"">
                                 Requests
                             </h2>
                             @for($x=0; $x < count($categ); $x++)
-                                @if($categ['type'] == 'Request')
+                                @if($categ[$x]->type == 'Request')
                                 <div>
-                                    @if (in_array($categ['id'], $usercategs))
-                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
+                                    @if (in_array($categ[$x]->id, $usercategs))
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ[$x]->id}} checked>
                                     @else
-                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}}>
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ[$x]->id}}>
                                     @endif
-                                    <label for="categ_id">{{$categ['name']}}</label>
+                                    <label for="categ_id">{{$categ[$x]->name}}</label>
                                 </div>
                                 @endif
                             @endfor
                             @for($x=0; $x < count($categ); $x++)
-                                @if($categ['type'] == 'Inquiries')
+                                @if($categ[$x]->type == 'Inquiries')
                                 <div>
-                                    @if (in_array($categ['id'], $usercategs))
-                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
+                                    @if (in_array($categ[$x]->id, $usercategs))
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ[$x]->id}} checked>
                                     @else
-                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}}>
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ[$x]->id}}>
                                     @endif
-                                    <label for="categ_id">{{$categ['name']}}</label>
+                                    <label for="categ_id">{{$categ[$x]->name}}</label>
                                 </div>
                                 @endif
                             @endfor
                             @for($x=0; $x < count($categ); $x++)
-                                @if($categ['type'] == 'Concerns')
+                                @if($categ[$x]->type == 'Concerns')
                                 <div>
-                                    @if (in_array($categ['id'], $usercategs))
-                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
+                                    @if (in_array($categ[$x]->id, $usercategs))
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ[$x]->id}} checked>
                                     @else
-                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}}>
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ[$x]->id}}>
                                     @endif
-                                    <label for="categ_id">{{$categ['name']}}</label>
+                                    <label for="categ_id">{{$categ[$x]->name}}</label>
                                 </div>
                                 @endif
                             @endfor
                             @for($x=0; $x < count($categ); $x++)
-                                @if($categ['type'] == 'Others')
+                                @if($categ[$x]->type == 'Others')
                                 <div>
-                                    @if (in_array($categ['id'], $usercategs))
-                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
+                                    @if (in_array($categ[$x]->id, $usercategs))
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ[$x]->id}} checked>
                                     @else
-                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}}>
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ[$x]->id}}>
                                     @endif
-                                    <label for="categ_id">{{$categ['name']}}</label>
+                                    <label for="categ_id">{{$categ[$x]->name}}</label>
                                 </div>
                                 @endif
                             @endfor
