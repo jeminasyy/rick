@@ -8,7 +8,7 @@
                 </h2>
             </header>
     
-            <form method="POST" action="/user/{{$user->id}}/update'" enctype="multipart/form-data">
+            <form method="POST" action="/user/{{$user->id}}/update" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-6">
