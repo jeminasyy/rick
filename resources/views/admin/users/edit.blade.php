@@ -32,6 +32,7 @@
                         <legend>User Access:</legend>
 
                         @unless(count($categ) == 0)
+                        {{dd($categ)}}
                             <h2 class="text-2xl font-bold uppercase mb-1"">
                                 Requests
                             </h2>
