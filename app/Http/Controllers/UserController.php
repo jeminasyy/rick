@@ -158,7 +158,7 @@ class UserController extends Controller
         // dd($user->id);
         return view('admin.users.edit', [
             'user' => $user,
-            'categs' => Categ::all(),
+            'categs' => DB::table('categs')->get()->toArray(),
             'usercategs' => DB::table('usercategs')->where('user_id', $user->id)->select('categ_id')->get()->toArray()
         ]);
     }

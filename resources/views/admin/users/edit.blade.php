@@ -36,7 +36,7 @@
                                 Requests
                             </h2>
                             @foreach ($categs as $categ)
-                                @if($categ->type == 'Request')
+                                @if($categ['type'] == 'Request')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
                                         <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
@@ -48,7 +48,7 @@
                                 @endif
                             @endforeach
                             @foreach ($categs as $categ)
-                                @if($categ->type == 'Inquiries')
+                                @if($categ['type'] == 'Inquiries')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
                                         <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
@@ -60,7 +60,7 @@
                                 @endif
                             @endforeach
                             @foreach ($categs as $categ)
-                                @if($categ->type == 'Concerns')
+                                @if($categ['type'] == 'Concerns')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
                                         <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
@@ -72,7 +72,7 @@
                                 @endif
                             @endforeach
                             @foreach ($categs as $categ)
-                                @if($categ->type == 'Others')
+                                @if($categ['type'] == 'Others')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
                                         <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
