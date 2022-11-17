@@ -54,6 +54,9 @@
                                 </div>
                                 @endif
                             @endfor
+                            <h2 class="text-2xl font-bold uppercase mb-1"">
+                                Inquiries
+                            </h2>
                             @for($x=0; $x < count($categ); $x++)
                                 @if($categ[$x]->type == 'Inquiries')
                                 <div>
@@ -66,6 +69,9 @@
                                 </div>
                                 @endif
                             @endfor
+                            <h2 class="text-2xl font-bold uppercase mb-1"">
+                                Concerns
+                            </h2>
                             @for($x=0; $x < count($categ); $x++)
                                 @if($categ[$x]->type == 'Concerns')
                                 <div>
@@ -78,6 +84,9 @@
                                 </div>
                                 @endif
                             @endfor
+                            <h2 class="text-2xl font-bold uppercase mb-1"">
+                                Others
+                            </h2>
                             @for($x=0; $x < count($categ); $x++)
                                 @if($categ[$x]->type == 'Others')
                                 <div>

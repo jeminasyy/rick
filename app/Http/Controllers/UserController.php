@@ -96,7 +96,7 @@ class UserController extends Controller
 
         $user = User::create($formFields);
 
-        if (count($request->categ_id) != 0) {
+        if ($request->categ_id != null) {
             for($x=0; $x < count($request->categ_id); $x++) {
                 $categFields['user_id'] = $user->id;
                 $categFields['categ_id'] = $request->categ_id[$x];
