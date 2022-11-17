@@ -12,8 +12,16 @@
                     <input name="ticketLimit" class="ticket-limit-input" type="number" value="{{$limit[0]->ticketLimit}}">
                 </div>
                 <div class="mb-6">
-                    <button type="submit" class="tlbtn" id="tlSave">Save</button>
-                    <a href="/ticketlimit" class="tlbtn" id="tlCancel">Cancel</button>
+                    <button type="submit" 
+                        class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
+                        style="margin-top: 4%; margin-left:2%; background-color: #EDC304;
+                        border: 1px solid#EDC304;
+                        border-radius: 5px;"
+                    >
+                        Save
+                    </button>
+    
+                    <a href="/ticketlimit" class="text-black ml-4"> Cancel </a>
                 </div>
             </form>
         </div>
