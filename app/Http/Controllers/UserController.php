@@ -163,7 +163,7 @@ class UserController extends Controller
             array_push($usercategs, $getUserCategs[$x]->categ_id);
         }
 
-        dd($usercategs);
+        // dd($usercategs);
         return view('admin.users.edit', [
             'user' => $user,
             'categ' => DB::table('categs')->select('id', 'type', 'name')->get()->toArray(),
