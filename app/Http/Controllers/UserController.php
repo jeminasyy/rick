@@ -17,7 +17,7 @@ class UserController extends Controller
     // Show User Profile
     public function profile() {
         return view('admin.users.profile', [
-            'usercategs' => Usercateg::where('user_id', auth()->user()->id)
+            'usercategs' => Usercateg::where('user_id', auth()->user()->id)->get()
         ]);
     }
 
