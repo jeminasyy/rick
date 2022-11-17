@@ -48,10 +48,13 @@
                         @else
                         <td></td>
                         @endif
-                        <td class="action">
+                        <td>
+                            <a href="/users/{{$user->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View</a>
+                        </td>
+                        {{-- <td class="action">
                             <Button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>
                             <Button class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i></Button>
-                        </td>
+                        </td> --}}
                     </tr>
 
                     @endforeach

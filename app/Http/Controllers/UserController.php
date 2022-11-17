@@ -35,6 +35,14 @@ class UserController extends Controller
         ]);
     }
 
+    // Show single user
+    public function show(User $user) {
+        return view('admin.users.show', [
+            'user' => $user,
+            'usercategs' => Usercateg::where('user_id', $user->id)->get()
+        ]);
+    }
+
     // Show create form
     public function create() {
         // Make sure user logged in is an admin

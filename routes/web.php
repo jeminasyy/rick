@@ -155,7 +155,7 @@ Route::put('/{reopen}/reopen/setTransfer', [ReopenController::class, 'setTransfe
 
 // ----USERS----
 // View User Profile
-Route::get('profile', [UserController::class, 'profile'])->middleware('auth');
+Route::get('/profile', [UserController::class, 'profile'])->middleware('auth');
 // View Users List
 Route::get('/users', [UserController::class, 'index'])->middleware('auth');
 // Show Create User Form
@@ -173,6 +173,8 @@ Route::put('/{user}/register', [UserController::class, 'createPassword'])->middl
 
 // Change Password
 
+// View User
+Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth');
 
 // Edit User Access
 // Show Edit Form
