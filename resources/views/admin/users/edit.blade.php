@@ -4,13 +4,19 @@
         <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
             <header>
                 <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
-                    Edit User
+                    Edit User#{{$user->id}}
                 </h2>
             </header>
     
             <form method="POST" action="/user/{{$user->id}}/update" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <div class="mb-6">
+                    <p class="attribute">Name</p>
+                    <p>{{$user->lastName}}, {{$user->firstName}}</p>
+                    <p class="attribute">Email</p>
+                    <p>{{$user->email}}</p>
+                </div>
                 <div class="mb-6">
                     <label for="role">Role</label>
                     <select 
