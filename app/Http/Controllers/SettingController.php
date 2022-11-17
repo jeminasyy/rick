@@ -36,6 +36,6 @@ class SettingController extends Controller
         $getSetting = Setting::find($setting[0]->id);
 
         $getSetting->update($formFields);
-        dd($getSetting);
+        dd($getSetting->ticketLimit);
     }
 }
