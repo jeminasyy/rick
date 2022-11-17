@@ -11,26 +11,26 @@
             <p class="attribute">USER ACCESS</p>
                 <p class="attribute">Request</p>
                 @foreach ($usercategs as $usercateg)
-                    @if($usercateg->categ()->type == 'Request')
-                        <p>{{$usercateg->categ()->name}}</p>
+                    @if($usercateg->categ->type == 'Request')
+                        <p>{{$usercateg->categ->name}}</p>
                     @endif
                 @endforeach
                 <p class="attribute">Inquiries</p>
                 @foreach ($usercategs as $usercateg)
-                    @if($usercateg->categ()->type == 'Inquiries')
-                        <p>{{$usercateg->categ()->name}}</p>
+                    @if($usercateg->categ->type == 'Inquiries')
+                        <p>{{$usercateg->categ->name}}</p>
                     @endif
                 @endforeach
                 <p class="attribute">Concerns</p>
                 @foreach ($usercategs as $usercateg)
-                    @if($usercateg->categ()->type == 'Concerns')
-                        <p>{{$usercateg->categ()->name}}</p>
+                    @if($usercateg->categ->type == 'Concerns')
+                        <p>{{$usercateg->categ->name}}</p>
                     @endif
                 @endforeach
                 <p class="attribute">Others</p>
                 @foreach ($usercategs as $usercateg)
-                    @if($usercateg->categ()->type == 'Others')
-                        <p>{{$usercateg->categ()->name}}</p>
+                    @if($usercateg->categ->type == 'Others')
+                        <p>{{$usercateg->categ->name}}</p>
                     @endif
                 @endforeach
         </div>
