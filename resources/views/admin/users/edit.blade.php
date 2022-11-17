@@ -32,7 +32,7 @@
                         <legend>User Access:</legend>
 
                         @unless(count($categ) == 0)
-                        {{dd(gettype($categ[0]->type))}}
+                        {{dd(gettype($categ[0]->id))}}
                             <h2 class="text-2xl font-bold uppercase mb-1"">
                                 Requests
                             </h2>
