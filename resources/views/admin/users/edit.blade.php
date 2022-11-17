@@ -35,7 +35,7 @@
                             <h2 class="text-2xl font-bold uppercase mb-1"">
                                 Requests
                             </h2>
-                            @foreach ($categs as $categ)
+                            @for($x=0; $x < count($categs); $x++)
                                 @if($categ['type'] == 'Request')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
@@ -46,8 +46,8 @@
                                     <label for="categ_id">{{$categ['name']}}</label>
                                 </div>
                                 @endif
-                            @endforeach
-                            @foreach ($categs as $categ)
+                            @endfor
+                            @for($x=0; $x < count($categs); $x++)
                                 @if($categ['type'] == 'Inquiries')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
@@ -58,8 +58,8 @@
                                     <label for="categ_id">{{$categ['name']}}</label>
                                 </div>
                                 @endif
-                            @endforeach
-                            @foreach ($categs as $categ)
+                            @endfor
+                            @for($x=0; $x < count($categs); $x++)
                                 @if($categ['type'] == 'Concerns')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
@@ -70,8 +70,8 @@
                                     <label for="categ_id">{{$categ['name']}}</label>
                                 </div>
                                 @endif
-                            @endforeach
-                            @foreach ($categs as $categ)
+                            @endfor
+                            @for($x=0; $x < count($categs); $x++)
                                 @if($categ['type'] == 'Others')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
@@ -82,7 +82,7 @@
                                     <label for="categ_id">{{$categ['name']}}</label>
                                 </div>
                                 @endif
-                            @endforeach
+                            @endfor
                         @endunless
                     </fieldset>
                     @error('categ_id')
