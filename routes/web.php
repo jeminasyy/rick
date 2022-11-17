@@ -40,7 +40,10 @@ Route::get('/categories', [CategController::class, 'index'])->middleware('auth')
 Route::get('/categories/create', [CategController::class, 'create'])->middleware('auth');
 // Create New Category
 Route::post('/categories', [CategController::class, 'store'])->middleware('auth');
+// Show Edit Category Form
+Route::get('/categories/{categ}/edit', [CategController::class, 'edit'])->middleware('auth');
 // Update Category
+Route::put('/categories/{categ}/update', [CategController::class, 'update'])->middleware('auth');
 
 // Delete Category
 

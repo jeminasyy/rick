@@ -51,4 +51,35 @@ class CategController extends Controller
 
         return redirect('/categories')->with('message', 'Category created successfully');
     }
+
+    // Show edit form
+    public function edit(Categ $categ) {
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+
+        return view('admin.categories.edit', [
+            'categ' => $categ
+        ]);
+    }
+
+    // Update Category
+    public function update(Request $request, Categ $categ) {
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+
+        $formFields = $request->validate([
+            'name' => ['required', 'min:2'],
+            'type' => ['required'],
+        ]);
+
+        if($request->description) {
+            $formFields['description'] = $request->description;
+        }
+
+        $categ->update($formFields);
+
+        return redirect('/categories')->with('message', 'Category updated successfully');
+    }
 }
