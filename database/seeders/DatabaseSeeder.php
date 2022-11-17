@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use App\Models\Categ;
+use App\Models\Usercateg;
 use App\Models\Submission;
 use Illuminate\Database\Seeder;
 
@@ -32,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'dj@meow.com',
             'password' => $password,
             'role' => 'FDO',
-            'categ_id' => "|1|12|",
+            // 'categ_id' => "|1|12|",
             'verified' => false,
         ]);
 
@@ -42,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'john@meow.com',
             'password' => $password,
             'role' => 'Admin',
-            'categ_id' => "|2|4|",
+            // 'categ_id' => "|2|4|",
             'verified' => true,
             'email_verified_at' => now(),
         ]);
@@ -50,25 +51,31 @@ class DatabaseSeeder extends Seeder
         Categ::factory()->create([
             'name' => 'Payment Concern',
             'type' => 'Concerns',
-            'description' => 'Enrollment Payment Concern'
+            'description' => 'Payments issues in the bank'
         ]);
 
         Categ::factory()->create([
-            'name' => 'Class Schedule',
+            'name' => 'Enrollment Issue',
+            'type' => 'Concerns',
+            'description' => 'Registration Form and student portal'
+        ]);
+
+        Categ::factory()->create([
+            'name' => 'Exam Schedule',
             'type' => 'Inquiries',
-            'description' => 'Confusions in class schedule'
+            'description' => 'Clarifications for the final exam schedule'
         ]);
 
         Categ::factory()->create([
-            'name' => 'Good Moral',
+            'name' => 'Good Moral Certificate',
             'type' => 'Request',
             'description' => 'basta'
         ]);
 
         Categ::factory()->create([
-            'name' => 'Meow',
+            'name' => 'UST ID',
             'type' => 'Others',
-            'description' => 'basta'
+            'description' => 'Issuance of the UST ID'
         ]);
 
         // Submission::factory()->create([

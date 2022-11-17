@@ -33,4 +33,9 @@ class Categ extends Model
     public function users() {
         return $this->hasManyThrough(User::class, 'categ_id');
     }
+
+    // Relationship to Usercategs
+    public function usercategs() {
+        return $this->hasMany(Usercateg::class, 'usercateg_id');
+    }
 }

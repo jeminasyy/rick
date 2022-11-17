@@ -26,7 +26,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'register_token',
         'email_verified_at',
         'verified',
-        'categ_id'
     ];
 
     /**
@@ -66,12 +65,22 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     
     // Relationship with Categs
-    public function categs() {
-        return $this->hasManyThrough(Categ::class, 'categ_id');
+    // public function categs() {
+    //     return $this->hasManyThrough(Categ::class, 'categ_id');
+    // }
+
+    // Relationship to Usercategs
+    public function usercategs() {
+        return $this->hasMany(Usercateg::class, 'usercateg_id');
     }
 
     // Relationship to Reopen
     public function reopens() {
         return $this->hasMany(Reopen::class, 'user_id');
+    }
+
+    // Relationship to Reopen
+    public function notifications() {
+        return $this->hasMany(Notification::class, 'user_id');
     }
 }
