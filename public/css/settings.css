@@ -573,8 +573,8 @@ margin-bottom: 30px;
 }
 
 .ticket-limit-input {
-    display: block;
-    margin: auto;
+    /* display: block;
+    margin: auto; */
     margin-top: 20px;
     width: 4em;
     height: 3em;
