@@ -12,8 +12,8 @@
                     <input name="ticketLimit" class="ticket-limit-input" type="number" value="{{$limit[0]->ticketLimit}}">
                 </div>
                 <div class="mb-6">
-                    <button class="tlbtn" id="tlCancel">Cancel</button>
-                    <button class="tlbtn" id="tlSave">Save</button>
+                    <button onclick="location.href='/ticketlimit';" class="tlbtn" id="tlCancel">Cancel</button>
+                    <button type="submit" class="tlbtn" id="tlSave">Save</button>
                 </div>
             </form>
         </div>
