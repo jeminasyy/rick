@@ -5,10 +5,16 @@
             <form method="POST" action="/ticketlimit/update" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <label>Limit Amounts of On Going Tickets Per Student</label>
-                <input type="number" value="{{$limit[0]->ticketLimit}}">
-                <button class="tlbtn" id="tlCancel">Cancel</button>
-                <button class="tlbtn" id="tlSave">Save</button>
+                <div class="mb-6">
+                    <p class="attribute">Limit Amounts of On Going Tickets Per Student</p>
+                </div>
+                <div class="mb-6">
+                    <input type="number" value="{{$limit[0]->ticketLimit}}">
+                </div>
+                <div class="mb-6">
+                    <button class="tlbtn" id="tlCancel">Cancel</button>
+                    <button class="tlbtn" id="tlSave">Save</button>
+                </div>
             </form>
         </div>
     </x-sidenav>
