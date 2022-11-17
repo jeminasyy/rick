@@ -9,7 +9,10 @@
             <p class="attribute">EMAIL VERIFIED</p>
             <p>{{auth()->user()->email_verified_at}}</p>
             <p class="attribute">USER ACCESS</p>
-                <p class="attribute">Request</p>
+                @foreach($usercategs as $usercateg)
+                    <p>{{$usercateg->categ_id}}</p>
+                @endforeach
+                {{-- <p class="attribute">Request</p>
                 @foreach ($usercategs as $usercateg)
                     @if($usercateg->categ->type == 'Request')
                         <p>{{$usercateg->categ->name}}</p>
@@ -32,7 +35,7 @@
                     @if($usercateg->categ->type == 'Others')
                         <p>{{$usercateg->categ->name}}</p>
                     @endif
-                @endforeach
+                @endforeach --}}
         </div>
     </x-sidenav>
 </x-layout>
