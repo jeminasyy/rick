@@ -200,3 +200,10 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// SETTINGS
+// Show Edit Ticket Limitation Form
+Route::get('/ticketlimit', [SettingsController::class, 'ticketlimit'])->middleware('auth');
+// Update Ticket limitation
+Route::put('/ticketlimit/update', [SettingsController::class, 'updatelimit'])->middleware('auth');

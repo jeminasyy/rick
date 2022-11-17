@@ -6,6 +6,10 @@
                 <Button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i>Edit</Button>
                 <Button class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i>Delete</Button>
             </div>
+
+            <a href="/users">
+                <i class='bx bx-left-arrow-alt bx-md'></i>
+            </a>
             <h1 style="font-size: 19px">User#{{$user->id}}</h1><br> 
             <p class="attribute">NAME</p>
             <p>{{$user->lastName}}, {{$user->firstName}}</p>

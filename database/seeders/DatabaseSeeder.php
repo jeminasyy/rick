@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use App\Models\Categ;
+use App\Models\Setting;
 use App\Models\Usercateg;
 use App\Models\Submission;
 use Illuminate\Database\Seeder;
@@ -82,5 +83,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'jemina.sy.iics@ust.edu.ph',
         //     'tickets' => 1
         // ]);
+        Setting::factory(1)->create();
     }
 }
