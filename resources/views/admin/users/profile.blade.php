@@ -10,26 +10,25 @@
             <p>{{auth()->user()->email_verified_at}}</p>
             <p class="attribute">USER ACCESS</p>
                 <p class="attribute">Request</p>
-                {{dd(auth()->user()->usercategs())}}
-                @foreach (auth()->user()->usercategs() as $usercateg)
+                @foreach ($usercategs as $usercateg)
                     @if($usercateg->categ()->type == 'Request')
                         <p>{{$usercateg->categ()->name}}</p>
                     @endif
                 @endforeach
                 <p class="attribute">Inquiries</p>
-                @foreach (auth()->user()->usercategs() as $usercateg)
+                @foreach ($usercategs as $usercateg)
                     @if($usercateg->categ()->type == 'Inquiries')
                         <p>{{$usercateg->categ()->name}}</p>
                     @endif
                 @endforeach
                 <p class="attribute">Concerns</p>
-                @foreach (auth()->user()->usercategs() as $usercateg)
+                @foreach ($usercategs as $usercateg)
                     @if($usercateg->categ()->type == 'Concerns')
                         <p>{{$usercateg->categ()->name}}</p>
                     @endif
                 @endforeach
                 <p class="attribute">Others</p>
-                @foreach (auth()->user()->usercategs() as $usercateg)
+                @foreach ($usercategs as $usercateg)
                     @if($usercateg->categ()->type == 'Others')
                         <p>{{$usercateg->categ()->name}}</p>
                     @endif
