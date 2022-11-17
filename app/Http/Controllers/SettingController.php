@@ -34,6 +34,8 @@ class SettingController extends Controller
 
         $setting = DB::table('settings')->get()->toArray();
         $getSetting = Setting::find($setting[0]->id);
+
+        $getSetting->update($formFields);
         dd($getSetting);
     }
 }
