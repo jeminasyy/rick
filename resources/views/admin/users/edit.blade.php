@@ -31,11 +31,11 @@
                     <fieldset>
                         <legend>User Access:</legend>
 
-                        @unless(count($categs) == 0)
+                        @unless(count($categ) == 0)
                             <h2 class="text-2xl font-bold uppercase mb-1"">
                                 Requests
                             </h2>
-                            @for($x=0; $x < count($categs); $x++)
+                            @for($x=0; $x < count($categ); $x++)
                                 @if($categ['type'] == 'Request')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
@@ -47,7 +47,7 @@
                                 </div>
                                 @endif
                             @endfor
-                            @for($x=0; $x < count($categs); $x++)
+                            @for($x=0; $x < count($categ); $x++)
                                 @if($categ['type'] == 'Inquiries')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
@@ -59,7 +59,7 @@
                                 </div>
                                 @endif
                             @endfor
-                            @for($x=0; $x < count($categs); $x++)
+                            @for($x=0; $x < count($categ); $x++)
                                 @if($categ['type'] == 'Concerns')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
@@ -71,7 +71,7 @@
                                 </div>
                                 @endif
                             @endfor
-                            @for($x=0; $x < count($categs); $x++)
+                            @for($x=0; $x < count($categ); $x++)
                                 @if($categ['type'] == 'Others')
                                 <div>
                                     @if (in_array($categ['id'], $usercategs))
