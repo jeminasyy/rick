@@ -39,10 +39,15 @@ class DashboardController extends Controller
         $totalReopenRating = Reopenrating::count();
         $totalRating = $totalTicketRating + $totalReopenRating;
 
-        // Calculate the satisfaction rating
-        $calculate = ($satisfied / $totalRating) * 100;
-        // Round up to 2 decimal points
-        $studentSatisfaction = round($calculate, 2);
+        if ($totalRating != 0) {
+            // Calculate the satisfaction rating
+            $calculate =(($satisfied / $totalRating) * 100);
+            // Round up to 2 decimal points
+            $roundCalculate = round($calculate, 2);
+            $studentSatisfaction = $roundCalculate . "%";
+        } else {
+            $studentSatisfaction = "No Data";
+        }
 
         $requestThisMonth = 0;
         $inquiryThisMonth = 0;
@@ -86,7 +91,12 @@ class DashboardController extends Controller
             array_push($reopens, $count);
         }
 
-        $averageReopen = round(array_sum($reopens) / count($reopens));
+        if (count($reopens) != 0) {
+            $calcAverageReopen = round(array_sum($reopens) / count($reopens));
+            $averageReopen = $calcAverageReopen . " Time/s";
+        } else {
+            $averageReopen = "No Data";
+        }
  
         // Get the start and end date of each tickets
         // Calculate the diff of each start and end dates
@@ -98,73 +108,83 @@ class DashboardController extends Controller
         $reopen_dates = DB::table('reopens')->whereNot('dateResponded', null)->select('created_at', 'dateResponded')->get()->toArray();
         $intervalsReopen = array();
 
-        // dd($ticket_dates[0]->created_at);
-        for ($x=0; $x < count($ticket_dates); $x++) {
-            $date1 = strtotime($ticket_dates[$x]->created_at);
-            $date2 = strtotime($ticket_dates[$x]->dateResponded);
-            $interval = abs($date2 - $date1);
+        if (count($ticket_dates) != 0 || count($reopen_dates) != 0) {
+            // dd($ticket_dates[0]->created_at);
+            for ($x=0; $x < count($ticket_dates); $x++) {
+                $date1 = strtotime($ticket_dates[$x]->created_at);
+                $date2 = strtotime($ticket_dates[$x]->dateResponded);
+                $interval = abs($date2 - $date1);
 
-            array_push($intervalsNew, $interval);
+                array_push($intervalsNew, $interval);
+            }
+
+            for ($x=0; $x < count($reopen_dates); $x++) {
+                $date1 = strtotime($reopen_dates[$x]->created_at);
+                $date2 = strtotime($reopen_dates[$x]->dateResponded);
+                $interval = abs($date2 - $date1);
+                array_push($intervalsReopen, $interval);
+            }
+
+            // $merge = array();
+            $merge = array_merge($intervalsNew, $intervalsReopen);
+            // dd($merge);
+            // 32715
+            // 1924.411765
+
+            // dd(array_sum($merge));
+
+            $avgInterval = array_sum($merge) / count($merge);
+
+            // dd($avgInterval);
+
+            $years = floor($avgInterval / (365*60*60*24));
+            $months = floor(($avgInterval - $years * 365*60*60*24) / (30*60*60*24));
+            $days = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+            $hours = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
+            $minutes = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
+            $seconds = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
+
+            $hours = strval($hours);
+            $minutes = strval($minutes);
+            $seconds = strval($seconds);
+
+            if (strlen($hours) == 1) {
+                $hours = "0" . $hours;
+            }
+            if (strlen($minutes) == 1) {
+                $minutes = "0" . $minutes;
+            }
+            if (strlen($seconds) == 1) {
+                $seconds = "0" . $seconds;
+            }
+
+            $averageResponseTime = $days . " Day/s " .$hours . ":" . $minutes . ":" . $seconds;
+            // dd($avgResponseTime);
+        } else {
+            $averageResponseTime = "No Data";
         }
 
-        for ($x=0; $x < count($reopen_dates); $x++) {
-            $date1 = strtotime($reopen_dates[$x]->created_at);
-            $date2 = strtotime($reopen_dates[$x]->dateResponded);
-            $interval = abs($date2 - $date1);
-            array_push($intervalsReopen, $interval);
-        }
-
-        // $merge = array();
-        $merge = array_merge($intervalsNew, $intervalsReopen);
-        // dd($merge);
-        // 32715
-        // 1924.411765
-
-        // dd(array_sum($merge));
-
-        $avgInterval = array_sum($merge) / count($merge);
-
-        // dd($avgInterval);
-
-        $years = floor($avgInterval / (365*60*60*24));
-        $months = floor(($avgInterval - $years * 365*60*60*24) / (30*60*60*24));
-        $days = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-        $hours = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
-        $minutes = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
-        $seconds = floor(($avgInterval - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60));
-
-        $hours = strval($hours);
-        $minutes = strval($minutes);
-        $seconds = strval($seconds);
-
-        if (strlen($hours) == 1) {
-            $hours = "0" . $hours;
-        }
-        if (strlen($minutes) == 1) {
-            $minutes = "0" . $minutes;
-        }
-        if (strlen($seconds) == 1) {
-            $seconds = "0" . $seconds;
-        }
-
-        $averageResponseTime = $days . " Day/s " .$hours . ":" . $minutes . ":" . $seconds;
-        // dd($avgResponseTime);
+        
 
 
         $ratingsNew = DB::table('ratings')->select('rating')->get()->toArray();
         $ratingsReopen = DB::table('reopenratings')->select('rating')->get()->toArray();
         $ratings = array_merge($ratingsNew, $ratingsReopen);
 
-        $sum = 0;
+        if (count($ratings) != 0) {
+            $sum = 0;
 
-        for ($x=0; $x < count($ratings); $x++) {
-            $sum += $ratings[$x]->rating;
+            for ($x=0; $x < count($ratings); $x++) {
+                $sum += $ratings[$x]->rating;
+            }
+
+            $averageRating = round($sum / count($ratings), 2);
+
+            // 3.15
+            // dd($averageRating);
+        } else {
+            $averageRating = "No Data";
         }
-
-        $averageRating = round($sum / count($ratings), 2);
-
-        // 3.15
-        // dd($averageRating);
 
         // CHARTS
         // Tickets per month
