@@ -5,13 +5,13 @@
             <form method="POST" action="/ticketlimit/update" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="mb-6">
+                <div class="mb-6 justify-content-center">
                     <p class="attribute">Limit Amounts of On Going Tickets Per Student</p>
                 </div>
-                <div class="mb-6">
+                <div class="mb-6 justify-content-center">
                     <input class="ticket-limit-input" type="number" value="{{$limit[0]->ticketLimit}}">
                 </div>
-                <div class="mb-6">
+                <div class="mb-6 justify-content-center">
                     <button class="tlbtn" id="tlCancel">Cancel</button>
                     <button class="tlbtn" id="tlSave">Save</button>
                 </div>
