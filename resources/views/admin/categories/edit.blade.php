@@ -29,13 +29,30 @@
                     <select 
                         class="form-control"
                         name="type"
-                        value="{{$categ->type}}"
+                        {{-- value="{{$categ->type}}" --}}
                     >
-                        <option value="" selected>Choose...</option>
-                        <option value="Request">Request</option>
-                        <option value="Inquiries">Inquiries</option>
-                        <option value="Concerns">Concerns</option>
-                        <option value="Others">Others</option>
+                        {{-- <option value="" selected>Choose...</option> --}}
+                        @if ($categ->type == 'Request')
+                            <option value="Request" selected>Request</option>
+                            <option value="Inquiries">Inquiries</option>
+                            <option value="Concerns">Concerns</option>
+                            <option value="Others">Others</option>
+                        @elseif ($categ->type == 'Inquiries')
+                            <option value="Request">Request</option>
+                            <option value="Inquiries" selected>Inquiries</option>
+                            <option value="Concerns">Concerns</option>
+                            <option value="Others">Others</option>
+                        @elseif ($categ->type == 'Concerns')
+                            <option value="Request">Request</option>
+                            <option value="Inquiries">Inquiries</option>
+                            <option value="Concerns" selected>Concerns</option>
+                            <option value="Others">Others</option>
+                        @elseif ($categ->type == 'Others')
+                            <option value="Request">Request</option>
+                            <option value="Inquiries">Inquiries</option>
+                            <option value="Concerns">Concerns</option>
+                            <option value="Others" selected>Others</option>
+                        @endif
                     </select>
                     @error('type')
                     <p class="text-red-500 text-md mt-1">{{$message}}</p>
