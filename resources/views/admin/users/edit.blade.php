@@ -4,12 +4,13 @@
         <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
             <header>
                 <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
-                    Edit New User
+                    Edit User
                 </h2>
             </header>
     
             <form method="POST" action="/user/{{$user->id}}/update'" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="mb-6">
                     <label for="role">Role</label>
                     <select 
@@ -107,7 +108,7 @@
                         Create
                     </button>
     
-                    <a href="/users" class="text-black ml-4"> Back </a>
+                    <a href="/user/{{$user->id}}" class="text-black ml-4"> Back </a>
                 </div>
             </form>
         </div>
