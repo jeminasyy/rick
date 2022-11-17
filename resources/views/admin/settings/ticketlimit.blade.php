@@ -6,10 +6,10 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-6">
-                    <p class="attribute">Limit Amounts of On Going Tickets Per Student</p>
+                    <p class="attribute">Limit Amount of Ongoing Tickets Per Student</p>
                 </div>
                 <div class="mb-6">
-                    <input class="ticket-limit-input" type="number" value="{{$limit[0]->ticketLimit}}">
+                    <input name="ticketLimit" class="ticket-limit-input" type="number" value="{{$limit[0]->ticketLimit}}">
                 </div>
                 <div class="mb-6">
                     <button class="tlbtn" id="tlCancel">Cancel</button>

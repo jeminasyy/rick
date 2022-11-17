@@ -20,4 +20,20 @@ class SettingController extends Controller
             'limit' => $settings
         ]);
     }
+
+    public function updateLimit(Request $request) {
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+
+        dd($request);
+
+        $formFields = $request->validate([
+            'ticketLimit' => 'required'
+        ]);
+
+        $setting = DB::table('settings')->get()->toArray();
+        $getSetting = Setting::find($setting[0]->id);
+        dd($getSetting);
+    }
 }
