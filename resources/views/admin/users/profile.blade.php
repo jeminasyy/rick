@@ -10,6 +10,7 @@
             <p>{{auth()->user()->email_verified_at}}</p>
             <p class="attribute">USER ACCESS</p>
                 <p class="attribute">Request</p>
+                {{dd(auth()->user()->usercategs())}}
                 @foreach (auth()->user()->usercategs() as $usercateg)
                     @if($usercateg->categ()->type == 'Request')
                         <p>{{$usercateg->categ()->name}}</p>
