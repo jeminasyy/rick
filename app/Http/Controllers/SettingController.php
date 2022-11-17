@@ -15,7 +15,7 @@ class SettingController extends Controller
 
         $settings = DB::table('settings')->get()->toArray();
 
-        dd($settings);
+        // dd($settings);
         return view('admin.settings.ticketlimit', [
             'limit' => $settings
         ]);
