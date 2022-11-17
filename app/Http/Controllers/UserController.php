@@ -155,7 +155,7 @@ class UserController extends Controller
 
     // Show Edit User Form
     public function edit(User $user){
-        dd($user->id);
+        // dd($user->id);
         return view('admin.users.edit', [
             'user' => $user,
             'categs' => Categ::all(),
