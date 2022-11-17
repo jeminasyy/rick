@@ -156,10 +156,13 @@ class UserController extends Controller
     // Show Edit User Form
     public function edit(User $user){
         // dd($user->id);
+        $getUserCategs = DB::table('usercategs')->where('user_id', $user->id)->select('categ_id')->get()->toArray();
+        $usercategs = array_values($getUserCategs);
+        dd($usercategs);
         return view('admin.users.edit', [
             'user' => $user,
             'categ' => DB::table('categs')->select('id', 'type', 'name')->get()->toArray(),
-            'usercategs' => DB::table('usercategs')->where('user_id', $user->id)->select('categ_id')->get()->toArray()
+            'usercategs' => $usercategs
         ]);
     }
 
