@@ -9,7 +9,7 @@
                     <p class="attribute">Limit Amounts of On Going Tickets Per Student</p>
                 </div>
                 <div class="mb-6">
-                    <input type="number" value="{{$limit[0]->ticketLimit}}">
+                    <input class="ticket-limit-input" type="number" value="{{$limit[0]->ticketLimit}}">
                 </div>
                 <div class="mb-6">
                     <button class="tlbtn" id="tlCancel">Cancel</button>

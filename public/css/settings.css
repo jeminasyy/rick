@@ -572,6 +572,16 @@ margin-bottom: 30px;
     margin-top: 20px;
 }
 
+.ticket-limit-input {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    width: 4em;
+    height: 3em;
+    text-align: center;
+    font-size: 20px;
+}
+
 .tlbtn{
     
     margin-top:2em;
