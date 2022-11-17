@@ -39,10 +39,49 @@
                                 @if($categ->type == 'Request')
                                 <div>
                                     @if (in_array($categ->id, $usercategs))
-                                    <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}}>
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
+                                    @else
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}}>
+                                    @endif
                                     <label for="categ_id">{{$categ['name']}}</label>
                                 </div>
-                                @endifs
+                                @endif
+                            @endforeach
+                            @foreach ($categs as $categ)
+                                @if($categ->type == 'Inquiries')
+                                <div>
+                                    @if (in_array($categ->id, $usercategs))
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
+                                    @else
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}}>
+                                    @endif
+                                    <label for="categ_id">{{$categ['name']}}</label>
+                                </div>
+                                @endif
+                            @endforeach
+                            @foreach ($categs as $categ)
+                                @if($categ->type == 'Concerns')
+                                <div>
+                                    @if (in_array($categ->id, $usercategs))
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
+                                    @else
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}}>
+                                    @endif
+                                    <label for="categ_id">{{$categ['name']}}</label>
+                                </div>
+                                @endif
+                            @endforeach
+                            @foreach ($categs as $categ)
+                                @if($categ->type == 'Others')
+                                <div>
+                                    @if (in_array($categ->id, $usercategs))
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}} checked>
+                                    @else
+                                        <input type="checkbox" id="categ_id" name="categ_id[]" value={{$categ['id']}}>
+                                    @endif
+                                    <label for="categ_id">{{$categ['name']}}</label>
+                                </div>
+                                @endif
                             @endforeach
                         @endunless
                     </fieldset>
