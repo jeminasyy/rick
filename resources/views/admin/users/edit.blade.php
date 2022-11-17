@@ -1,6 +1,6 @@
 <x-layout>
     <x-sidenav>
-        {{-- @include('partials._settings') --}}
+        @include('partials._settings')
         <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
             <header>
                 <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
@@ -17,9 +17,14 @@
                         name="role"
                         value="{{$user->role}}"
                     >
-                        <option value="" selected>Choose...</option>
-                        <option value="FDO">Front Desk Officer</option>
-                        <option value="Admin">Adminstrator</option>
+                        {{-- <option value="" selected>Choose...</option> --}}
+                        @if ($user->role == "FDO")
+                            <option value="FDO" selected>Front Desk Officer</option>
+                            <option value="Admin">Adminstrator</option>
+                        @elseif ($user->role == "Admin")
+                            <option value="FDO">Front Desk Officer</option>
+                            <option value="Admin" selected>Adminstrator</option>
+                        @endif
                     </select>
                     @error('role')
                     <p class="text-red-500 text-md mt-1">{{$message}}</p>

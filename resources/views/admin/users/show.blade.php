@@ -2,7 +2,11 @@
     <x-sidenav>
         @include('partials._settings')
         <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
-            <h1 style="font-size: 19px">User#{{$user->id}}</h1><br>
+            <div style="float: right">
+                <Button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>
+                <Button class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i></Button>
+            </div>
+            <h1 style="font-size: 19px">User#{{$user->id}}</h1><br> 
             <p class="attribute">NAME</p>
             <p>{{$user->lastName}}, {{$user->firstName}}</p>
             <p class="attribute">ROLE</p>
