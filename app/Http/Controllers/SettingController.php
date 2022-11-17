@@ -26,7 +26,7 @@ class SettingController extends Controller
             abort(403, 'Unauthorized Access');
         }
 
-        dd($request);
+        // dd($request);
 
         $formFields = $request->validate([
             'ticketLimit' => 'required'
