@@ -105,10 +105,10 @@
                         border: 1px solid#EDC304;
                         border-radius: 5px;"
                     >
-                        Create
+                        Edit
                     </button>
     
-                    <a href="/user/{{$user->id}}" class="text-black ml-4"> Back </a>
+                    <a href="/users/{{$user->id}}" class="text-black ml-4"> Back </a>
                 </div>
             </form>
         </div>

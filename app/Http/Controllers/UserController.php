@@ -156,6 +156,9 @@ class UserController extends Controller
     // Show Edit User Form
     public function edit(User $user){
         // dd($user->id);
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
         $getUserCategs = DB::table('usercategs')->where('user_id', $user->id)->select('categ_id')->get()->toArray();
         // $usercategs = array_values($getUserCategs);
         $usercategs = array();
@@ -169,6 +172,31 @@ class UserController extends Controller
             'categ' => DB::table('categs')->select('id', 'type', 'name')->get()->toArray(),
             'usercategs' => $usercategs
         ]);
+    }
+
+    // Update User
+    public function update(Request $request, User $user){
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+
+        $formFields = $request->validate([
+            'role' => 'required',
+        ]);
+
+        DB::table('usercategs')->where('user_id', $user->id)->delete();
+
+        if (count($request->categ_id) != 0) {
+            for($x=0; $x < count($request->categ_id); $x++) {
+                $categFields['user_id'] = $user->id;
+                $categFields['categ_id'] = $request->categ_id[$x];
+                Usercateg::create($categFields);
+            }
+        }
+
+        $user->update($formFields);
+
+        return redirect('/users')->with('message', 'User updated successfully');
     }
 
     // Show Login Form
