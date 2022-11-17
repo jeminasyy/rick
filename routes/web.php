@@ -9,6 +9,7 @@ use App\Http\Controllers\ReopenController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -204,6 +205,6 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // SETTINGS
 // Show Edit Ticket Limitation Form
-Route::get('/ticketlimit', [SettingsController::class, 'ticketlimit'])->middleware('auth');
+Route::get('/ticketlimit', [SettingController::class, 'ticketlimit'])->middleware('auth');
 // Update Ticket limitation
-Route::put('/ticketlimit/update', [SettingsController::class, 'updatelimit'])->middleware('auth');
+Route::put('/ticketlimit/update', [SettingController::class, 'updatelimit'])->middleware('auth');
