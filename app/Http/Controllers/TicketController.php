@@ -58,7 +58,7 @@ class TicketController extends Controller
 
             $setting = DB::table('settings')->get()->toArray();
             $getSetting = Setting::find($setting[0]->id);
-            dd($getSetting->ticketLimit);
+            // dd($getSetting->ticketLimit);
             if($student->ongoingTickets >= $getSetting->ticketLimit){
                 return view('admin.tickets.limit-reached', [
                     'student' => $student
@@ -146,10 +146,12 @@ class TicketController extends Controller
             'year' => 'required'
         ]);
 
-        $categ_id = "|" . $request->categ_id . "|";
+        // $categ_id = "|" . $request->categ_id . "|";
 
         $formFields['student_id'] = (string)$student->id;
-        $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
+        $users = DB::table('usercategs')->where('categ_id', $request->categ_id)->where($this->user->verified, true)->get()->toArray();
+        dd($users);
+        // $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
 
         if (count($users) == 0) {
             $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
