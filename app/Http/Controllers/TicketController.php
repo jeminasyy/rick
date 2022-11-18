@@ -155,8 +155,13 @@ class TicketController extends Controller
         //     $join->on('users.id', '=', 'latest_posts.user_id');
         // })->get();
         $usercategs = DB::table('usercategs')->where('categ_id', $request->categ_id)->get();
-        dd($usercategs);
-        $users = array(); 
+        $users = DB::table('users')
+                    ->where('verified', true)
+                    ->joinSub($usercategs, 'user_categs', function ($join) {
+                        $join->on('users.categ_id', '=', 'user_categs.categ_id');
+                    })->get();
+        dd($users);
+        // $users = array(); 
         // dd($users);
         // $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
 
