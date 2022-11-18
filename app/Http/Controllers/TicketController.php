@@ -200,7 +200,7 @@ class TicketController extends Controller
         $min = DB::table('tickets')->where('user_id', $users[$firstKey]->id)->whereNot('status', 'Resolved')->count();
         $min_id = $users[$firstKey]->id;
 
-        dd($firstKey);
+        dd($firstKey+1);
         
         for($x=$firstKey+1; $x<count($users); $x++){
             $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
