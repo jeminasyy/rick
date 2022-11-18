@@ -36,7 +36,7 @@
                         <br>{{$ticket->student->email}}
                       </td>
                       <td>{{$ticket->description}}</td>
-                      <td>{{$ticket->dateSubmitted}}</td>
+                      <td>{{$ticket->created_at}}</td>
                       @if($ticket->status == "Pending")
                         <td>Ongoing</td>
                       @else

@@ -20,7 +20,6 @@ class Ticket extends Model
         'status',
         'response',
         'timesReopened',
-        'dateSubmitted',
         'dateResponded',
         'dateResolved',
         'priority'

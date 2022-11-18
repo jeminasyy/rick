@@ -34,7 +34,7 @@
                   <br>{{$ticket->student->email}}
                 </td>
                 <td>{{$ticket->description}}</td>
-                <td>{{$ticket->dateSubmitted}}</td>
+                <td>{{$ticket->created_at}}</td>
                 <td>{{$ticket->status}}</td>
                 <td style="word-break: break-all;">{{$ticket->user->email}}</td>
                 <td>

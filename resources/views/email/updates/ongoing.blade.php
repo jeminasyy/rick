@@ -23,7 +23,7 @@
     <p>{{$ticket->user->email}}</p>
 
     <p style="font-weight: bold; margin-top: 10px;">Date Submitted</p>
-    <p>{{$ticket->dateSubmitted}}</p>
+    <p>{{$ticket->created_at}}</p>
 
     <p style="font-weight: bold; margin-top: 10px;">Type</p>
     <p>{{$ticket->categ->type}}</p>

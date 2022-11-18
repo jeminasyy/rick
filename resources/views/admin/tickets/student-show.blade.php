@@ -9,7 +9,7 @@
             <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
             transform: rotate(0.08deg); ">
             <br>
-            <h1 style="font-size:12px; font-weight:bold; float:right "> Date: {{$ticket->dateSubmitted}}</h1>
+            <h1 style="font-size:12px; font-weight:bold; float:right "> Date: {{$ticket->created_at}}</h1>
         </div>
 
         <div class="ticket-div" style="padding-top:10px; padding-bottom:30px">
