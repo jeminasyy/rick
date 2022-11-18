@@ -98,8 +98,15 @@ class ReopenController extends Controller
                 $users = DB::table('usercategs')->whereNot('user_id', $currentUser)->where('categ_id', $ticket->categ->id)->get()->toArray();
                 $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
                 $verifiedUsers = array();
+
                 for ($x=0; $x < count($verified); $x++) {
                     array_push($verifiedUsers, $verified[$x]->id);
+                }
+
+                for ($x=0; $x < count($users); $x++) {
+                    if (!(in_array($users[$x]->user_id, $verifiedUsers))){
+                        unset($users[$x]);
+                    }
                 }
 
             } else {
@@ -134,6 +141,7 @@ class ReopenController extends Controller
                 }
     
                 $formFields['user_id'] = $min_id;
+                $ticketField['user_id'] = $min_id;
             } else {
                 $firstKey = array_key_first($users);
                 $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
@@ -147,6 +155,7 @@ class ReopenController extends Controller
                     }
                 }
                 $formFields['user_id'] = $min_id;
+                $ticketField['user_id'] = $min_id;
             }
         } else {
             if (count($ticket->reopens) != 0){
@@ -360,8 +369,8 @@ class ReopenController extends Controller
             }
         }
 
-        $assignee = User::find($min_id);
-        $formFields['assignee'] = $assignee->email;
+        // $assignee = User::find($min_id);
+        // $formFields['user_id'] = $assignee->email;
         $ticket->update($formFields);
         $reopen->update($reopenFields);
         return redirect()->route('ticket', [$ticket]);
