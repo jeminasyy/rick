@@ -162,6 +162,8 @@ class TicketController extends Controller
             array_push($verifiedUsers, $verified[$x]->id);
         }
 
+        dd($users);
+
         for ($x=0; $x < count($users); $x++) {
             if (!(in_array($users[$x]->user_id, $verifiedUsers))){
                 unset($users[$x]);
