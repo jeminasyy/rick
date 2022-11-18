@@ -168,7 +168,7 @@ class TicketController extends Controller
             }
         }
 
-        // dd($users);
+        dd($users);
         // $users = array(); 
         // dd($users);
         // $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
