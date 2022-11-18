@@ -154,7 +154,9 @@ class TicketController extends Controller
         // ->joinSub($latestPosts, 'latest_posts', function ($join) {
         //     $join->on('users.id', '=', 'latest_posts.user_id');
         // })->get();
-        $usercategs = DB::table('usercategs')->where('categ_id', $request->categ_id)->get();
+        $usercategs = DB::table('usercategs')
+                        ->where('categ_id', $request->categ_id)
+                        ->groupBy('user_id');
         $users = DB::table('users')
                     ->where('verified', true)
                     ->joinSub($usercategs, 'user_categs', function ($join) {
