@@ -149,17 +149,15 @@ class TicketController extends Controller
         // $categ_id = "|" . $request->categ_id . "|";
 
         $formFields['student_id'] = (string)$student->id;
-        $verifiedUsers = DB::table('users')->where('verified', true)->get();
+        // $verifiedUsers = DB::table('users')->where('verified', true)->get();
         // $users = DB::table('users')
         // ->joinSub($latestPosts, 'latest_posts', function ($join) {
         //     $join->on('users.id', '=', 'latest_posts.user_id');
         // })->get();
-        $users = DB::table('usercategs')
-                            ->where('categ_id', $request->categ_id)
-                            ->joinSub($verifiedUsers, 'verified_user', function ($join) {
-                                $join->on('usercategs.user_id', '=', 'verified_user,id');
-                            })->get();
-        dd($users);
+        $usercategs = DB::table('usercategs')->where('categ_id', $request->categ_id)->get();
+        dd($usercategs);
+        $users = array(); 
+        // dd($users);
         // $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
 
         if (count($users) == 0) {
