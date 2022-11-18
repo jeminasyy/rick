@@ -162,7 +162,7 @@ class TicketController extends Controller
             array_push($verifiedUsers, $verified[$x]->id);
         }
 
-        dd($users);
+        // dd($users);
 
         for ($x=0; $x < count($users); $x++) {
             if (!(in_array($users[$x]->user_id, $verifiedUsers))){
@@ -170,7 +170,7 @@ class TicketController extends Controller
             }
         }
 
-        dd($verifiedUsers);
+        // dd($verifiedUsers);
         dd($users);
         // $users = array(); 
         // dd($users);
