@@ -168,6 +168,7 @@ class TicketController extends Controller
             }
         }
 
+        dd($verifiedUsers);
         dd($users);
         // $users = array(); 
         // dd($users);
