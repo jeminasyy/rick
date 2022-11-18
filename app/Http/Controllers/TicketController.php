@@ -168,7 +168,7 @@ class TicketController extends Controller
             }
         }
 
-        dd($users);
+        // dd($users);
         // $users = array(); 
         // dd($users);
         // $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
@@ -196,10 +196,13 @@ class TicketController extends Controller
             return redirect('/new/submitted');
         }
         
-        $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
-        $min_id = $users[0]->id;
+        $firstKey = array_key_first($users);
+        $min = DB::table('tickets')->where('user_id', $users[$firstKey]->id)->whereNot('status', 'Resolved')->count();
+        $min_id = $users[$firstKey]->id;
+
+        dd($firstKey);
         
-        for($x=1; $x<count($users); $x++){
+        for($x=$firstKey+1; $x<count($users); $x++){
             $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
             if($min > $a) {
                 $min = $a;
