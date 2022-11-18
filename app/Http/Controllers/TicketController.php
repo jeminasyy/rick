@@ -215,6 +215,8 @@ class TicketController extends Controller
 
         $formFields['user_id'] = $min_id;
         // $formFields['dateSubmitted'] = now();
+        $assignee = User::find($min_id);
+        $formFields['assignee'] = $assignee->email;
 
         $ticket = Ticket::create($formFields);
         $student->update($studentFields);

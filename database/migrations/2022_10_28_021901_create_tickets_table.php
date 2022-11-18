@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->char('student_id')->foreign()->references('id')->on('students');
             $table->string('year');
+            $table->string('assignee');
             $table->string('department');
             $table->longText('description');
             $table->string('status')->default('New');

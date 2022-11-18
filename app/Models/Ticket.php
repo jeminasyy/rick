@@ -14,6 +14,7 @@ class Ticket extends Model
         'categ_id',
         'user_id',
         'student_id',
+        'assignee',
         'description',
         'year',
         'department',
