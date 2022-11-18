@@ -160,7 +160,7 @@ class TicketController extends Controller
         $users = DB::table('users')
                     ->where('verified', true)
                     ->joinSub($usercategs, 'user_categs', function ($join) {
-                        $join->on('users.categ_id', '=', 'user_categs.categ_id');
+                        $join->on('users.user_id', '=', 'user_categs.user_id');
                     })->get();
         dd($users);
         // $users = array(); 
