@@ -7,6 +7,7 @@ use App\Models\Categ;
 use App\Models\Reopen;
 use App\Models\Ticket;
 use App\Mail\VerifyNew;
+use App\Models\Setting;
 use App\Models\Student;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -32,7 +33,10 @@ class ReopenController extends Controller
         
         if ($find) {
             $student = Student::find($find->id);
-            if ($student->ongoingTickets >= 3) {
+
+            $setting = DB::table('settings')->get()->toArray();
+            $getSetting = Setting::find($setting[0]->id);
+            if ($student->ongoingTickets >= $getSetting->ticketLimit) {
                 return view('admin.tickets.limit-reached', [
                     'student' => $student
                 ]);

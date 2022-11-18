@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Categ;
+use App\Models\Reopen;
 use App\Models\Ticket;
 use App\Mail\VerifyNew;
+use App\Models\Setting;
 use App\Models\Student;
 use App\Mail\VoidedTicket;
 use App\Mail\OngoingTicket;
@@ -14,7 +16,6 @@ use App\Mail\ResolvedTicket;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Mail\NewTicketSubmitted;
-use App\Models\Reopen;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -54,7 +55,11 @@ class TicketController extends Controller
         
         if ($find) {
             $student = Student::find($find->id);
-            if($student->ongoingTickets >= 3){
+
+            $setting = DB::table('settings')->get()->toArray();
+            $getSetting = Setting::find($setting[0]->id);
+            dd($getSetting->ticketLimit);
+            if($student->ongoingTickets >= $getSetting->ticketLimit){
                 return view('admin.tickets.limit-reached', [
                     'student' => $student
                 ]);
