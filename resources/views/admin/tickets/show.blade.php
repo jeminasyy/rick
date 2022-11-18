@@ -57,7 +57,7 @@
                 <p>{{$ticket->department}}</p>
 
                 <p class="attribute">Assignee</p>
-                <p>{{$ticket->user->email}}</p>
+                <p>{{$ticket->assignee}}</p>
             </div>
             
             <div class="ticket-right">

@@ -360,6 +360,8 @@ class ReopenController extends Controller
             }
         }
 
+        $assignee = User::find($min_id);
+        $formFields['assignee'] = $assignee->email;
         $ticket->update($formFields);
         $reopen->update($reopenFields);
         return redirect()->route('ticket', [$ticket]);
