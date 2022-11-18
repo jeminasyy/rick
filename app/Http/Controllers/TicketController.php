@@ -156,7 +156,7 @@ class TicketController extends Controller
         // })->get();
         $users = DB::table('usercategs')->where('categ_id', $request->categ_id)->get()->toArray();
         
-        $verified = DB::table('users')->where('verified', true)->select('id')->get()->toArray();
+        $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
         $verifiedUsers = array();
         for ($x=0; $x < count($verified); $x++) {
             array_push($verifiedUsers, $verified[$x]->id);
@@ -168,7 +168,7 @@ class TicketController extends Controller
             }
         }
 
-        dd($users);
+        // dd($users);
         // $users = array(); 
         // dd($users);
         // $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
