@@ -94,9 +94,22 @@ class ReopenController extends Controller
                 $reopen = DB::table('reopens')->where('ticket_id', $ticket->id)->latest()->first();
                 // dd($reopen->user_id);
                 $currentUser = $reopen->user_id;
-                $users = DB::table('users')->whereNot('id', $currentUser)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
+                // $users = DB::table('users')->whereNot('id', $currentUser)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
+                $users = DB::table('usercategs')->whereNot('user_id', $currentUser)->where('categ_id', $ticket->categ->id)->get()->toArray();
+                $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
+                $verifiedUsers = array();
+                for ($x=0; $x < count($verified); $x++) {
+                    array_push($verifiedUsers, $verified[$x]->id);
+                }
+
             } else {
-                $users = DB::table('users')->whereNot('id', $ticket->user->id)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
+                // $users = DB::table('users')->whereNot('id', $ticket->user->id)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
+                $users = DB::table('usercategs')->whereNot('user_id', $ticket->user->id)->where('categ_id', $ticket->categ->id)->get()->toArray();
+                $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
+                $verifiedUsers = array();
+                for ($x=0; $x < count($verified); $x++) {
+                    array_push($verifiedUsers, $verified[$x]->id);
+                }
             }
 
             if (count($users) == 0) {
@@ -115,10 +128,11 @@ class ReopenController extends Controller
     
                 $formFields['user_id'] = $min_id;
             } else {
-                $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
-                $min_id = $users[0]->id;
+                $firstKey = array_key_first($users);
+                $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
+                $min_id = $users[$firstKey]->user_id;
                 
-                for($x=1; $x<count($users); $x++){
+                for($x=$firstKey+1; $x<count($users); $x++){
                     $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
                     if($min > $a) {
                         $min = $a;
@@ -128,7 +142,8 @@ class ReopenController extends Controller
                 $formFields['user_id'] = $min_id;
             }
         } else {
-            if ($ticket->reopens){
+            if (count($ticket->reopens) != 0){
+            // if ($ticket->reopens){
                 $reopen = DB::table('reopens')->where('ticket_id', $ticket->id)->latest()->first();
                 $reopenUser = $reopen->user_id;
                 $formFields['user_id'] = $reopenUser;
