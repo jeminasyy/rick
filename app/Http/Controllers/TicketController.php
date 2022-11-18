@@ -189,7 +189,7 @@ class TicketController extends Controller
 
             $formFields['user_id'] = $min_id;
             $formFields['status'] = 'New';
-            $formFields['dateSubmitted'] = now();
+            // $formFields['dateSubmitted'] = now();
 
             Ticket::create($formFields);
             $student->update($studentFields);
@@ -211,7 +211,7 @@ class TicketController extends Controller
         }
 
         $formFields['user_id'] = $min_id;
-        $formFields['dateSubmitted'] = now();
+        // $formFields['dateSubmitted'] = now();
 
         $ticket = Ticket::create($formFields);
         $student->update($studentFields);
