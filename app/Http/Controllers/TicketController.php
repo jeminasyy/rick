@@ -396,8 +396,21 @@ class TicketController extends Controller
                 $formFields['user_id'] = $request->user_id;
             } else {
                 if ($ticket->status != "Resolved" && $ticket->status != "Voided") {
-                    $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
-    
+                    // $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
+
+                    $users = DB::table('usercategs')->where('categ_id', $request->categ_id)->get()->toArray();
+                    $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
+                    $verifiedUsers = array();
+                    for ($x=0; $x < count($verified); $x++) {
+                        array_push($verifiedUsers, $verified[$x]->id);
+                    }
+
+                    for ($x=0; $x < count($users); $x++) {
+                        if (!(in_array($users[$x]->user_id, $verifiedUsers))){
+                            unset($users[$x]);
+                        }
+                    }
+
                     if (count($users) == 0) {
                         $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
         
@@ -413,10 +426,11 @@ class TicketController extends Controller
                         }
                         $formFields['user_id'] = $min_id;
                     } else {
-                        $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
-                        $min_id = $users[0]->id;
+                        $firstKey = array_key_first($users);
+                        $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
+                        $min_id = $users[$firstKey]->user_id;
                         
-                        for($x=1; $x<count($users); $x++){
+                        for($x=$firstKey+1; $x<count($users); $x++){
                             $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
                             if($min > $a) {
                                 $min = $a;
