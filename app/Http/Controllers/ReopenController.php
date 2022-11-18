@@ -107,8 +107,15 @@ class ReopenController extends Controller
                 $users = DB::table('usercategs')->whereNot('user_id', $ticket->user->id)->where('categ_id', $ticket->categ->id)->get()->toArray();
                 $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
                 $verifiedUsers = array();
+                
                 for ($x=0; $x < count($verified); $x++) {
                     array_push($verifiedUsers, $verified[$x]->id);
+                }
+
+                for ($x=0; $x < count($users); $x++) {
+                    if (!(in_array($users[$x]->user_id, $verifiedUsers))){
+                        unset($users[$x]);
+                    }
                 }
             }
 
