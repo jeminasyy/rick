@@ -129,7 +129,7 @@ class TicketController extends Controller
     // Show submit ticket form
     public function create(Student $student){
         return view('admin.tickets.create', [
-            'categs' => Categ::where('archive', 0),
+            'categs' => Categ::where('archive', 0)->get(),
             'student' => $student
         ]);
     }
@@ -246,7 +246,7 @@ class TicketController extends Controller
                 ->filter(request(['user_id']))
                 ->filter(request(['status']))
                 ->paginate(10),
-            'categs' => Categ::where('archive', 0),
+            'categs' => Categ::where('archive', 0)->get(),
             'users' => User::all()
         ]);
     }
@@ -378,7 +378,7 @@ class TicketController extends Controller
         if ($ticket->user_id == auth()->id()) {
             return view('admin.tickets.transfer', [
                 'ticket' => $ticket,
-                'categs' => Categ::where('archive', 0),
+                'categs' => Categ::where('archive', 0)->get(),
                 'users' => User::all()
             ]);
         }

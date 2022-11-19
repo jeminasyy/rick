@@ -297,7 +297,7 @@ class ReopenController extends Controller
         return view('admin.reopen.transfer', [
             'reopen' => $reopen,
             'ticket' => $reopen->ticket,
-            'categs' => Categ::where('archive', 0),
+            'categs' => Categ::where('archive', 0)->get(),
             'users' => User::all()
         ]);
     }
