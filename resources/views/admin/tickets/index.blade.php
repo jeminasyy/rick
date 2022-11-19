@@ -36,10 +36,11 @@
                 <td>{{$ticket->description}}</td>
                 <td>{{$ticket->created_at}}</td>
                 <td>{{$ticket->status}}</td>
-                @if ($ticket->user->email)
-                  <td style="word-break: break-all;">{{$ticket->user->email}}</td>
-                @else
+                @if (!$ticket->user->email)
                   <td style="word-break: break-all;">Unavailable</td>
+                  
+                @else
+                  <td style="word-break: break-all;">{{$ticket->user->email}}</td>
                 @endif
                 <td>
                   <a href="/tickets/{{$ticket->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View</a>
