@@ -2,6 +2,11 @@
     <x-sidenav>
         @include('partials._settings')
         <div style="width: 75%; display:inline-block; vertical-align: top;">
+            <div class="ticketNav">
+                <a href="/users">View Users</a>
+                <a href="/users/archived" class="active">View Archived</a>
+            </div>
+
             <div class="settings-content-container">
                 <div class="newCat">
                    <!-- <form>
@@ -14,11 +19,6 @@
                 </div>
 
                 <div class="table-holder-categories">
-
-                    <div class="ticketNav">
-                        <a href="/users">View Users</a>
-                        <a href="/users/archived" class="active">View Archived</a>
-                      </div>
 
                 @include('partials._search-user')
 
@@ -50,7 +50,7 @@
                         <td></td>
                         @endif
                         <td>
-                            <a href="/users/{{$user->id}}" style="background-color: F8CA0A; color: #ffffff; padding: 2px 5px">
+                            <a href="/users/{{$user->id}}">
                                 <i class='bx bxs-archive-out'></i>
                                 Archive Out
                             </a>
