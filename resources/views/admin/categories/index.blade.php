@@ -44,9 +44,6 @@
                     @if(count($categs) != 0)
 
                         @foreach($categs as $categ)
-                        <form method="POST" action="/categories/{{$categ->id}}/archive">
-                            @csrf
-                            @method('PUT')
                         <tr>
                             <td style="text-align:center">{{$categ['id']}}</td>
                             <td>{{$categ['name']}}</th>
@@ -54,7 +51,9 @@
                             <td>{{$categ['description']}}</td>
                             <td class="action">
                                 <button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></button>
-                                <button type="submit" class="deleteBtn" style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px"><i class='bx-fw bx bxs-archive-in bx-sm'></i></button>
+                                <button class="deleteBtn" onclick="location.href='/categories/{{$categ->id}}/archive';" style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px">
+                                    <i class='bx-fw bx bxs-archive-in bx-sm'></i>
+                                </button>
                                 {{-- <form method="POST" action="/categories/{{$categ->id}}/archive">
                                     @csrf
                                     @method('PUT')
@@ -66,7 +65,7 @@
                                     <form method="POST" action="/categories/{{$categ->id}}/archive">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="deleteBtn" style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px"><i class='bx-fw bx bxs-archive-in bx-sm'></i></button>
+                                        <input type="submit" class="deleteBtn" style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px"><i class='bx-fw bx bxs-archive-in bx-sm'></i>
                                     </form>
                                 </div> --}}
                             </td>
