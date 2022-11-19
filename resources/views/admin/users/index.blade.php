@@ -1,6 +1,6 @@
 <x-layout>
     <x-sidenav>
-        <div class="ticketNav">
+        <div class="ticketNav" style="width:50%">
             <a href="/users" class="active">View Users</a>
             <a href="/users/archived">View Archived</a>
           </div>
