@@ -32,6 +32,30 @@ class CategController extends Controller
         ]);
     }
 
+    // Archive Category
+    public function archive(Categ $categ) {
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+
+        $formFields['archive'] = true;
+        $categ->update($formFields);
+
+        return redirect('/categories')->with('message', 'Category archived successfully');
+    }
+
+    // Unarchive Category
+    public function unarchive(Categ $categ) {
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+        
+        $formFields['archive'] = false;
+        $categ->update($formFields);
+
+        return redirect('/categories')->with('message', 'Category archived successfully');
+    }
+
     // Show create form
     public function create() {
         // Make sure user is an admin

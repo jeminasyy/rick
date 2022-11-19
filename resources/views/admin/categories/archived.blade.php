@@ -44,27 +44,24 @@
                         <th></th>
                     </tr>
         
-                    @unless(count($categs) == 0)
+                    @if(count($categs) != 0)
 
-                    @foreach($categs as $categ)
-                    <tr>
-                        <td style="text-align:center">{{$categ['id']}}</td>
-                        <td>{{$categ['name']}}</th>
-                        <td>{{$categ['type']}}</td>
-                        <td>{{$categ['description']}}</td>
-                        <td class="action">
-                            <Button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>
-                            <form>
-                                <Button class="deleteBtn"><i class='bx-fw bx bxs-archive-in bx-sm' ></i></Button>
-                            </form>
-                        </td>
-                    </tr>
+                        @foreach($categs as $categ)
+                        <tr>
+                            <td style="text-align:center">{{$categ['id']}}</td>
+                            <td>{{$categ['name']}}</th>
+                            <td>{{$categ['type']}}</td>
+                            <td>{{$categ['description']}}</td>
+                            <td class="action">
+                                <form>
+                                    <Button type="submit" class="deleteBtn"><i class='bx-fw bx bxs-archive-out bx-sm' ></i></Button>
+                                </form>
+                            </td>
+                        </tr>
 
-                    @endforeach
+                        @endforeach
 
-                    @else 
-                        <p>No Categories Found</p>
-                    @endunless
+                    @endif
 
                 </table>
 
