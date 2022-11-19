@@ -21,7 +21,7 @@
                 </div>
 
                 @include('partials._search-user')
-
+                <br><br>
                 <table>
                     <tr>
                         <th>ID</th>
