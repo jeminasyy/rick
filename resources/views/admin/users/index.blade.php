@@ -25,7 +25,7 @@
                 
                 @include('partials._search-user')
 
-                <a href="/users/create" style="font-weight: bold; float: right;padding-bottom:5px; margin-top:10px">
+                <a href="/users/create" style="font-weight: bold; float:right; right: 0; padding-bottom:5px; margin-top:10px">
                     <i class='bx bxs-user-plus bx-fw'></i> Create New User
                 </a>
 
