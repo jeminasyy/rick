@@ -38,7 +38,7 @@ Route::get('/security', [UserController::class, 'changePassword'])->middleware('
 // Show Categories List
 Route::get('/categories', [CategController::class, 'index'])->middleware('auth');
 // Show Archived Categories List
-Route::get('/categories/archived', [CategController::class, 'archive'])->middleware('auth');
+Route::get('/categories/archived', [CategController::class, 'archived'])->middleware('auth');
 // Show Create Category Form
 Route::get('/categories/create', [CategController::class, 'create'])->middleware('auth');
 // Create New Category
