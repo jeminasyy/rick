@@ -15,12 +15,6 @@
 
                 <div class="table-holder-categories">
 
-                @include('partials._search-category')
-
-                {{-- <a href="/categories/create" style="font-weight: bold; float: right;padding-bottom:5px">
-                    <i class='bx bxs-category bx-fw'></i> Create New Category
-                </a> --}}
-
                 <div style="float:right">
                     <div class="userNav">
                         <a href="/categories" class="active">Categories</a>
@@ -30,12 +24,18 @@
                     <a href="/categories/create" style="font-weight: bold; float: right;padding-bottom:5px">
                         <i class='bx bxs-category bx-fw'></i> Create New Category
                     </a>
-                    {{-- <a href="/users/create" style="font-weight: bold; float:right; right: 0; padding-bottom:5px; margin-top:10px">
-                        <i class='bx bxs-user-plus bx-fw'></i> Create New User
-                    </a> --}}
                 </div>
+                @include('partials._search-category')
+                <br><br>
+
+                {{-- <a href="/categories/create" style="font-weight: bold; float: right;padding-bottom:5px">
+                    <i class='bx bxs-category bx-fw'></i> Create New Category
+                </a> --}}
 
                 <table>
+                    <form method="POST" action="/categories/{{$categ->id}}/archive">
+                        @csrf
+                        @method('PUT')
                     <tr>
                         <th>ID</th>
                         <th>NAME</th>
@@ -53,20 +53,22 @@
                             <td>{{$categ['type']}}</td>
                             <td>{{$categ['description']}}</td>
                             <td class="action">
+                                <button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></button>
+                                <button type="submit" class="deleteBtn" style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px"><i class='bx-fw bx bxs-archive-in bx-sm'></i></button>
                                 {{-- <form method="POST" action="/categories/{{$categ->id}}/archive">
                                     @csrf
                                     @method('PUT')
                                     <button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></button>
                                     <button type="submit" class="deleteBtn"><i class='bx-fw bx bxs-archive-in bx-sm' ></i></button>
                                 </form> --}}
-                                <div style="display: flex; flex-direction: row;">
+                                {{-- <div style="display: flex; flex-direction: row;">
                                     <button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></button>
                                     <form method="POST" action="/categories/{{$categ->id}}/archive">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('PUT')
                                         <button type="submit" class="deleteBtn" style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px"><i class='bx-fw bx bxs-archive-in bx-sm'></i></button>
                                     </form>
-                                </div>
+                                </div> --}}
                             </td>
                         </tr>
 

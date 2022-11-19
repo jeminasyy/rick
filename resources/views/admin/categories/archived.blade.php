@@ -15,25 +15,18 @@
 
                 <div class="table-holder-categories">
 
-                @include('partials._search-category')
-
-                {{-- <a href="/categories/create" style="font-weight: bold; float: right;padding-bottom:5px">
-                    <i class='bx bxs-category bx-fw'></i> Create New Category
-                </a> --}}
-
                 <div style="float:right">
                     <div class="userNav">
-                        <a href="/categories">Categories</a>
-                        <a href="/categories/archived" class="active">Archive</a>
+                        <a href="/categories" class="active">Categories</a>
+                        <a href="/categories/archived">Archive</a>
                     </div>
                     <br>
                     <a href="/categories/create" style="font-weight: bold; float: right;padding-bottom:5px">
                         <i class='bx bxs-category bx-fw'></i> Create New Category
                     </a>
-                    {{-- <a href="/users/create" style="font-weight: bold; float:right; right: 0; padding-bottom:5px; margin-top:10px">
-                        <i class='bx bxs-user-plus bx-fw'></i> Create New User
-                    </a> --}}
                 </div>
+                @include('partials._search-category')
+                <br><br>
 
                 <table>
                     <tr>
