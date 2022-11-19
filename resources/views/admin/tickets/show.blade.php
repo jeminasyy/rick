@@ -273,10 +273,17 @@
                         {{$reopen->reason}}
                     </p>
 
-                    <p class="reopen-p">
-                        <span style="font-weight: bold">Assignee:&nbsp;&nbsp;</span>
-                        {{$reopen->user->email}}
-                    </p>
+                    @if ($reopen->user->email != null)
+                        <p class="reopen-p">
+                            <span style="font-weight: bold">Assignee:&nbsp;&nbsp;</span>
+                            {{$reopen->user->email}}
+                        </p>
+                    @else
+                        <p class="reopen-p">
+                            <span style="font-weight: bold">Assignee:&nbsp;&nbsp;</span>
+                            Unavailable
+                        </p>
+                    @endif
 
                     @if ($reopen->response != null)
                         <p class="reopen-p">
