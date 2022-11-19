@@ -14,12 +14,14 @@
                     </form>-->
                 </div>
 
-                <div class="table-holder-categories">
-
                 <div class="ticketNav">
                     <a href="/users" class="active">View Users</a>
                     <a href="/users/archived">View Archived</a>
                 </div>
+                
+                <div class="table-holder-categories">
+
+                
                 @include('partials._search-user')
 
                 <a href="/users/create" style="font-weight: bold; float: right;padding-bottom:5px">
