@@ -3,8 +3,13 @@
         @include('partials._settings')
         <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
             <div style="float: right">
-                <Button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i>Edit</Button>
-                <Button class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i>Delete</Button>
+                <button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i>Edit</button>
+                <form method="POST" action="/users/{{$user->id}}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i>Delete</button>
+                    {{-- <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button> --}}
+                  </form>
             </div>
 
             <a href="/users">

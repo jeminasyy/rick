@@ -200,6 +200,17 @@ class UserController extends Controller
         return redirect('/users')->with('message', 'User updated successfully');
     }
 
+    // Delete User
+    public function destroy(User $user) {
+        // Make sure logged in user is owner
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+        
+        $user->delete();
+        return redirect('/users')->with('message', 'User deleted successfully');
+    }
+
     // Show Login Form
     public function login(){
         return view('admin.users.login');
