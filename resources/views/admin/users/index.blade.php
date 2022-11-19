@@ -19,11 +19,7 @@
                 <div class="table-holder-categories">
 
                     <div style="float:right">
-                        <div style="overflow: auto;
-                            white-space: nowrap;
-                            margin-bottom: 10px;
-                            width: fit-content;
-                            border: 2px solid #cccc;">
+                        <div class="userNav">
                             <a href="/users" class="active">View Users</a>
                             <a href="/users/archived">View Archived</a>
                         </div>
