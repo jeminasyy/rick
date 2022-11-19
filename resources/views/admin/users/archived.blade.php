@@ -50,7 +50,7 @@
                         <td></td>
                         @endif
                         <td>
-                            <a href="/user/restore{{$user->id}}"><i class='bx bxs-archive-out'></i>Archive Out</button>
+                            <a href="/user/restore/{{$user->id}}"><i class='bx bxs-archive-out'></i>Archive Out</button>
                         </td>
                     </tr>
 
