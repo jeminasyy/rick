@@ -219,7 +219,7 @@ class UserController extends Controller
             abort(403, 'Unauthorized Access');
         }
         
-        User::withTrashed()
+        User::onlyTrashed()
             ->where('id', $id)
             ->restore();
         // DB::table('users')->where('id', $user->id)->delete();
