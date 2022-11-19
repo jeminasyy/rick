@@ -3,6 +3,11 @@
         @include('partials._settings')
         
         <div style="width: 75%; display:inline-block; vertical-align: top;">
+            <div class="ticketNav">
+                <a href="/users" class="active">View Users</a>
+                <a href="/users/archived">View Archived</a>
+            </div>
+            
             <div class="settings-content-container">
                 <div class="newCat">
                    <!-- <form>
@@ -14,11 +19,6 @@
                     </form>-->
                 </div>
 
-                <div class="ticketNav">
-                    <a href="/users" class="active">View Users</a>
-                    <a href="/users/archived">View Archived</a>
-                </div>
-                
                 <div class="table-holder-categories">
 
                 
