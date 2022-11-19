@@ -50,28 +50,12 @@
                             <td>{{$categ['type']}}</td>
                             <td>{{$categ['description']}}</td>
                             <td class="action">
-                                {{-- <button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></button>
-                                <button class="deleteBtn" onclick="location.href='/categories/{{$categ->id}}/archive';" style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px">
+                                <button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></button>
+                                <button onclick="location.href='/categories/{{$categ->id}}/archive';"
+                                    class="deleteBtn" 
+                                    style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px">
                                     <i class='bx-fw bx bxs-archive-in bx-sm'></i>
-                                </button> --}}
-                                {{-- <form method="POST" action="/categories/{{$categ->id}}/archive">
-                                    @csrf
-                                    @method('PUT')
-                                    <button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></button>
-                                    <button type="submit" class="deleteBtn"><i class='bx-fw bx bxs-archive-in bx-sm' ></i></button>
-                                </form> --}}
-                                <div style="display: flex; flex-direction: row;">
-                                    <button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></button>
-                                    <form method="POST" action="/categories/{{$categ->id}}/archive">
-                                        @csrf
-                                        @method('PUT')
-                                        <button onclick="this.form.submit()"
-                                            class="deleteBtn" 
-                                            style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px">
-                                            <i class='bx-fw bx bxs-archive-in bx-sm'></i>
-                                        </button>
-                                    </form>
-                                </div>
+                                </button>
                             </td>
                         </tr>
 
