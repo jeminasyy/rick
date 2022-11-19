@@ -16,7 +16,7 @@ class CategController extends Controller
 
         return view('admin.categories.index', [
             'heading' => 'Categories',
-            'categs' => Categ::where('archived', false)->filter(request(['search']))->paginate(5)
+            'categs' => Categ::where('archive', 0)->filter(request(['search']))->paginate(5)
         ]);
     }
 
@@ -28,7 +28,7 @@ class CategController extends Controller
 
         return view('admin.categories.index', [
             'heading' => 'Categories',
-            'categs' => Categ::where('archived', true)->filter(request(['search']))->paginate(5)
+            'categs' => Categ::where('archive', 1)->filter(request(['search']))->paginate(5)
         ]);
     }
 
