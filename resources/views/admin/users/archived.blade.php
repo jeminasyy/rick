@@ -15,11 +15,10 @@
 
                 <div class="table-holder-categories">
 
-                <div class="ticketNav">
+                <div class="ticketNav" style="margin-bottom: 5px">
                     <a href="/users">View Users</a>
                     <a href="/users/archived" class="active">View Archived</a>
                 </div>
-                <br><br>
 
                 @include('partials._search-user')
 
