@@ -207,8 +207,8 @@ class UserController extends Controller
             abort(403, 'Unauthorized Access');
         }
         
-        // $user->delete();
-        DB::table('users')->where('id', $user->id)->delete();
+        $user->delete();
+        // DB::table('users')->where('id', $user->id)->delete();
         return redirect('/users')->with('message', 'User deleted successfully');
     }
 
