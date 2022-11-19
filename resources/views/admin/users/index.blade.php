@@ -20,8 +20,8 @@
 
                     <div style="float:right">
                         <div class="userNav">
-                            <a href="/users" class="active">View Users</a>
-                            <a href="/users/archived">View Archived</a>
+                            <a href="/users" class="active">Users</a>
+                            <a href="/users/archived">Archive</a>
                         </div>
                         <br>
                         <a href="/users/create" style="font-weight: bold; float:right; right: 0; padding-bottom:5px; margin-top:10px">

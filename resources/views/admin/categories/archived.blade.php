@@ -23,8 +23,8 @@
 
                 <div style="float:right">
                     <div class="userNav">
-                        <a href="/categories">View Categories</a>
-                        <a href="/categories/archived" class="active">View Archived</a>
+                        <a href="/categories">Categories</a>
+                        <a href="/categories/archived" class="active">Archive</a>
                     </div>
                     <br>
                     <a href="/categories/create" style="font-weight: bold; float: right;padding-bottom:5px">

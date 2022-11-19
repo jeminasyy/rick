@@ -16,8 +16,8 @@
                 <div class="table-holder-categories">
 
                 <div class="ticketNav" style="margin-bottom: 5px">
-                    <a href="/users">View Users</a>
-                    <a href="/users/archived" class="active">View Archived</a>
+                    <a href="/users">Users</a>
+                    <a href="/users/archived" class="active">Archive</a>
                 </div>
 
                 @include('partials._search-user')
