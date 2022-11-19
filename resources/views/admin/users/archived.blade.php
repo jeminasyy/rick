@@ -2,11 +2,6 @@
     <x-sidenav>
         @include('partials._settings')
         <div style="width: 75%; display:inline-block; vertical-align: top;">
-            <div class="ticketNav">
-                <a href="/users">View Users</a>
-                <a href="/users/archived" class="active">View Archived</a>
-            </div>
-
             <div class="settings-content-container">
                 <div class="newCat">
                    <!-- <form>
@@ -19,6 +14,12 @@
                 </div>
 
                 <div class="table-holder-categories">
+
+                <div class="ticketNav">
+                    <a href="/users">View Users</a>
+                    <a href="/users/archived" class="active">View Archived</a>
+                </div>
+                <br><br>
 
                 @include('partials._search-user')
 

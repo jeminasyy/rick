@@ -3,11 +3,6 @@
         @include('partials._settings')
         
         <div style="width: 75%; display:inline-block; vertical-align: top;">
-            <div class="ticketNav">
-                <a href="/users" class="active">View Users</a>
-                <a href="/users/archived">View Archived</a>
-            </div>
-            
             <div class="settings-content-container">
                 <div class="newCat">
                    <!-- <form>
@@ -22,12 +17,19 @@
                 
                 
                 <div class="table-holder-categories">
+
+                    <div class="ticketNav">
+                        <a href="/users" class="active">View Users</a>
+                        <a href="/users/archived">View Archived</a>
+                    </div>
                 
                 @include('partials._search-user')
 
-                <a href="/users/create" style="font-weight: bold; float:right; right: 0; padding-bottom:5px; margin-top:10px">
-                    <i class='bx bxs-user-plus bx-fw'></i> Create New User
-                </a>
+                <div class="w-100">
+                    <a href="/users/create" style="font-weight: bold; float:right; right: 0; padding-bottom:5px; margin-top:10px">
+                        <i class='bx bxs-user-plus bx-fw'></i> Create New User
+                    </a>
+                </div>
 
                 <table>
                     <tr>
