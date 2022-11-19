@@ -23,8 +23,8 @@
 
                 <div style="float:right">
                     <div class="userNav">
-                        <a href="/categories" class="active">View Categories</a>
-                        <a href="/categories/archived">View Archived</a>
+                        <a href="/categories">View Categories</a>
+                        <a href="/categories/archived" class="active">View Archived</a>
                     </div>
                     <br>
                     <a href="/categories/create" style="font-weight: bold; float: right;padding-bottom:5px">
@@ -53,10 +53,8 @@
                         <td>{{$categ['type']}}</td>
                         <td>{{$categ['description']}}</td>
                         <td class="action">
-                            <form method="POST" action="/categories/{{$categ->id}}/archive">
-                                @csrf
-                                @method('PUT')
-                                <Button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>
+                            <Button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>
+                            <form>
                                 <Button class="deleteBtn"><i class='bx-fw bx bxs-archive-in bx-sm' ></i></Button>
                             </form>
                         </td>

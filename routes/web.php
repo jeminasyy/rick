@@ -47,6 +47,8 @@ Route::post('/categories', [CategController::class, 'store'])->middleware('auth'
 Route::get('/categories/{categ}/edit', [CategController::class, 'edit'])->middleware('auth');
 // Update Category
 Route::put('/categories/{categ}/update', [CategController::class, 'update'])->middleware('auth');
+// Archive Category
+Route::put('/categories/{categ}/archive', [CategController::class, 'archive'])->middleware('auth');
 
 // Delete Category
 

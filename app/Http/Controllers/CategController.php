@@ -26,7 +26,7 @@ class CategController extends Controller
             abort(403, 'Unauthorized Access');
         }
 
-        return view('admin.categories.index', [
+        return view('admin.categories.archived', [
             'heading' => 'Categories',
             'categs' => Categ::where('archive', 1)->filter(request(['search']))->paginate(5)
         ]);
