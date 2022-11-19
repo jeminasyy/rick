@@ -38,7 +38,7 @@ class CategController extends Controller
             abort(403, 'Unauthorized Access');
         }
 
-        $formFields['archive'] = true;
+        $formFields['archive'] = 1;
         $categ->update($formFields);
 
         return redirect('/categories')->with('message', 'Category archived successfully');
