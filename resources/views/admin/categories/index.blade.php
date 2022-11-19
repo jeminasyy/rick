@@ -63,9 +63,8 @@
                                     <button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></button>
                                     <form method="POST" action="/categories/{{$categ->id}}/archive">
                                         @csrf
-                                        @method('PUT')
+                                        @method('DELETE')
                                         <button type="submit" class="deleteBtn" style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px"><i class='bx-fw bx bxs-archive-in bx-sm'></i></button>
-                                        {{-- <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button> --}}
                                     </form>
                                 </div>
                             </td>
