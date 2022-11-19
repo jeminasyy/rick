@@ -54,7 +54,7 @@
                             <td>{{$categ['description']}}</td>
                             <td class="action">
                                 <form>
-                                    <Button type="submit" class="deleteBtn"><i class='bx-fw bx bxs-archive-out bx-sm' ></i></Button>
+                                    <button type="submit" class="deleteBtn"><i class='bx-fw bx bxs-archive-out bx-sm' ></i></button>
                                 </form>
                             </td>
                         </tr>
