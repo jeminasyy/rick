@@ -1,7 +1,7 @@
 <x-layout>
     <x-sidenav>
         <div class="ticket-div">
-            <a href="/tickets">
+            <a href="javascript:history.back()">
                 <i class='bx bx-left-arrow-alt bx-md'></i>
             </a>
             <p style="font-size: 17px; font-weight:bold">Ticket# {{$ticket->id}}</p>
