@@ -17,13 +17,10 @@
 
                 <div style="float:right">
                     <div class="userNav">
-                        <a href="/categories" class="active">Categories</a>
-                        <a href="/categories/archived">Archive</a>
+                        <a href="/categories">Categories</a>
+                        <a href="/categories/archived" class="active">Archive</a>
                     </div>
-                    <br>
-                    <a href="/categories/create" style="font-weight: bold; float: right;padding-bottom:5px">
-                        <i class='bx bxs-category bx-fw'></i> Create New Category
-                    </a>
+                    <br><br>
                 </div>
                 @include('partials._search-category')
                 <br><br>

@@ -63,7 +63,7 @@ class UserController extends Controller
         }
 
         return view('admin.users.create', [
-            'categs' => Categ::where('archive', 0)
+            'categs' => Categ::where('archive', 0)->get()
         ]);
     }
 
@@ -181,7 +181,7 @@ class UserController extends Controller
         // dd($usercategs);
         return view('admin.users.edit', [
             'user' => $user,
-            'categ' => DB::table('categs')->select('id', 'type', 'name')->get()->toArray(),
+            'categ' => DB::table('categs')->where('archive', 0)->select('id', 'type', 'name')->get()->toArray(),
             'usercategs' => $usercategs
         ]);
     }
