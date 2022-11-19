@@ -21,6 +21,20 @@
                     <i class='bx bxs-category bx-fw'></i> Create New Category
                 </a>
 
+                <div style="float:right">
+                    <div class="userNav">
+                        <a href="/users" class="active">View Categories</a>
+                        <a href="/users/archived">View Archived</a>
+                    </div>
+                    <br>
+                    <a href="/categories/create" style="font-weight: bold; float: right;padding-bottom:5px">
+                        <i class='bx bxs-category bx-fw'></i> Create New Category
+                    </a>
+                    {{-- <a href="/users/create" style="font-weight: bold; float:right; right: 0; padding-bottom:5px; margin-top:10px">
+                        <i class='bx bxs-user-plus bx-fw'></i> Create New User
+                    </a> --}}
+                </div>
+
                 <table>
                     <tr>
                         <th>ID</th>
@@ -40,7 +54,7 @@
                         <td>{{$categ['description']}}</td>
                         <td class="action">
                             <Button class="editBtn" onclick="location.href='/categories/{{$categ->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>
-                            <Button class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i></Button>
+                            <Button class="deleteBtn"><i class='bx-fw bx bxs-archive-in bx-sm' ></i></Button>
                         </td>
                     </tr>
 
@@ -49,7 +63,6 @@
                     @else 
                         <p>No Categories Found</p>
                     @endunless
-
 
                 </table>
 

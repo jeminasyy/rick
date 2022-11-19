@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->longText('description')->nullable();
+            $table->boolean('archive')->default(false);
             $table->timestamps();
         });
     }

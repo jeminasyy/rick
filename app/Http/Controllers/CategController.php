@@ -16,7 +16,19 @@ class CategController extends Controller
 
         return view('admin.categories.index', [
             'heading' => 'Categories',
-            'categs' => Categ::latest()->filter(request(['search']))->paginate(5)
+            'categs' => Categ::where('archived', false)->filter(request(['search']))->paginate(5)
+        ]);
+    }
+
+    // Show archived categories list
+    public function archived() {
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+
+        return view('admin.categories.index', [
+            'heading' => 'Categories',
+            'categs' => Categ::where('archived', true)->filter(request(['search']))->paginate(5)
         ]);
     }
 

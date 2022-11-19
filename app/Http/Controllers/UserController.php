@@ -63,7 +63,7 @@ class UserController extends Controller
         }
 
         return view('admin.users.create', [
-            'categs' => Categ::all()
+            'categs' => Categ::where('archived', false)
         ]);
     }
 
