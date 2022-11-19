@@ -188,7 +188,7 @@ Route::put('/user/{user}/update', [UserController::class, 'update'])->middleware
 
 
 // Delete User
-Route::delete('/users/{user}', [ListingController::class, 'destroy'])->middleware('auth');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth');
 
 // ----AUTHENTICATION----
 // Log User Out
