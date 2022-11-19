@@ -50,21 +50,8 @@
                         <td></td>
                         @endif
                         <td>
-                            {{-- <a href="/users/{{$user->id}}">
-                                <i class='bx bxs-archive-out'></i>
-                                Archive Out
-                            </a> --}}
-                            <form method="POST" action="/users/restore/{{$user->id}}">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit"><i class='bx bxs-archive-out'></i>Archive Out</button>
-                                {{-- <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button> --}}
-                            </form>
+                            <a href="/user/restore{{$user->id}}"><i class='bx bxs-archive-out'></i>Archive Out</button>
                         </td>
-                        {{-- <td class="action">
-                            <Button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>
-                            <Button class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i></Button>
-                        </td> --}}
                     </tr>
 
                     @endforeach

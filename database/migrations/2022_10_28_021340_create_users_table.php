@@ -29,15 +29,15 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            // $table->softDeletes($column = 'deleted_at', $precision = 0);
-        });
-        Schema::table('users', function (Blueprint $table) {
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->softDeletes($column = 'deleted_at', $precision = 0);
+        // });
          
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->dropSoftDeletes();
+        // });
     }
 
     /**
@@ -48,5 +48,8 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };
