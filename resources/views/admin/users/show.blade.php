@@ -50,12 +50,12 @@
                 @endif
             @endforeach
 
-            <div class="form-group col-md-10" style="display: flex; flex-direction: row;">
+            <div class="form-group col-md-10 pt-10" style="display: flex; flex-direction: row;">
                 <button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i>Edit</button>
                 <form method="POST" action="/users/{{$user->id}}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="text-red-500"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i>Delete</button>
+                    <button type="submit" class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i>Delete</button>
                     {{-- <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button> --}}
                 </form>
             </div>
