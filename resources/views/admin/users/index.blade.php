@@ -21,6 +21,7 @@
                     <div class="ticketNav">
                         <a href="/users" class="active">View Users</a>
                         <a href="/users/archived">View Archived</a>
+                        <br>
                         <a href="/users/create" style="font-weight: bold; float:right; right: 0; padding-bottom:5px; margin-top:10px">
                             <i class='bx bxs-user-plus bx-fw'></i> Create New User
                         </a>
