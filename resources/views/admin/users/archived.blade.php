@@ -1,10 +1,6 @@
 <x-layout>
     <x-sidenav>
         @include('partials._settings')
-        <div class="ticketNav">
-            <a href="/users">View Users</a>
-            <a href="/users/archived" class="active">View Archived</a>
-          </div>
         <div style="width: 75%; display:inline-block; vertical-align: top;">
             <div class="settings-content-container">
                 <div class="newCat">
@@ -18,6 +14,11 @@
                 </div>
 
                 <div class="table-holder-categories">
+
+                    <div class="ticketNav">
+                        <a href="/users">View Users</a>
+                        <a href="/users/archived" class="active">View Archived</a>
+                      </div>
 
                 @include('partials._search-user')
 
