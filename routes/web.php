@@ -48,7 +48,7 @@ Route::get('/categories/{categ}/edit', [CategController::class, 'edit'])->middle
 // Update Category
 Route::put('/categories/{categ}/update', [CategController::class, 'update'])->middleware('auth');
 // Archive Category
-Route::get('/categories/{categ}/archive', [CategController::class, 'archive'])->middleware('auth');
+Route::get('/categories/{id}/archive', [CategController::class, 'archive'])->middleware('auth');
 // Unarchive Category
 Route::put('/categories/{categ}/unarchive', [CategController::class, 'unarchive'])->middleware('auth');
 // Delete Category

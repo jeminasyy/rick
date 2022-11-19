@@ -33,13 +33,15 @@ class CategController extends Controller
     }
 
     // Archive Category
-    public function archive(Categ $categ) {
+    public function archive($id) {
         if(auth()->user()->role == "FDO"){
             abort(403, 'Unauthorized Access');
         }
 
-        $formFields['archive'] = true;
-        $categ->update($formFields);
+        // $formFields['archive'] = true;
+        // $categ->update($formFields);
+        Categ::where('id', $id)
+            ->update(['archive' => true]);
 
         return redirect('/categories')->with('message', 'Category archived successfully');
     }
