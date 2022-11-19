@@ -7,7 +7,7 @@
                 <form method="POST" action="/users/{{$user->id}}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="deleteBtn"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i>Delete</button>
+                    <button type="submit" class="text-red-500"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i>Delete</button>
                     {{-- <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button> --}}
                   </form>
             </div>
