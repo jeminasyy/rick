@@ -33,9 +33,6 @@
                 </a> --}}
 
                 <table>
-                    <form method="POST" action="/categories/{{$categ->id}}/archive">
-                        @csrf
-                        @method('PUT')
                     <tr>
                         <th>ID</th>
                         <th>NAME</th>
@@ -47,6 +44,9 @@
                     @if(count($categs) != 0)
 
                         @foreach($categs as $categ)
+                        <form method="POST" action="/categories/{{$categ->id}}/archive">
+                            @csrf
+                            @method('PUT')
                         <tr>
                             <td style="text-align:center">{{$categ['id']}}</td>
                             <td>{{$categ['name']}}</th>
