@@ -14,17 +14,18 @@
                     </form>-->
                 </div>
 
-                <div class="ticketNav">
-                    <a href="/users" class="active">View Users</a>
-                    <a href="/users/archived">View Archived</a>
-                </div>
+                
                 
                 <div class="table-holder-categories">
 
+                    <div class="ticketNav">
+                        <a href="/users" class="active">View Users</a>
+                        <a href="/users/archived">View Archived</a>
+                    </div>
                 
                 @include('partials._search-user')
 
-                <a href="/users/create" style="font-weight: bold; float: right;padding-bottom:5px">
+                <a href="/users/create" style="font-weight: bold; float: right;padding-bottom:5px; margin-top:10px">
                     <i class='bx bxs-user-plus bx-fw'></i> Create New User
                 </a>
 
