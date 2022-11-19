@@ -46,9 +46,7 @@
                             <td>{{$categ['type']}}</td>
                             <td>{{$categ['description']}}</td>
                             <td class="action">
-                                <form>
-                                    <button type="submit" class="deleteBtn"><i class='bx-fw bx bxs-archive-out bx-sm' ></i></button>
-                                </form>
+                                <a href="/categories/{{$categ->id}}/unarchive"><i class='bx bxs-archive-out'></i>Archive Out</button>
                             </td>
                         </tr>
 

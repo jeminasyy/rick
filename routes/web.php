@@ -50,7 +50,7 @@ Route::put('/categories/{categ}/update', [CategController::class, 'update'])->mi
 // Archive Category
 Route::get('/categories/{id}/archive', [CategController::class, 'archive'])->middleware('auth');
 // Unarchive Category
-Route::put('/categories/{categ}/unarchive', [CategController::class, 'unarchive'])->middleware('auth');
+Route::get('/categories/{id}/unarchive', [CategController::class, 'unarchive'])->middleware('auth');
 // Delete Category
 
 
