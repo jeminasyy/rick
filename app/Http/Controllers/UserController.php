@@ -224,6 +224,16 @@ class UserController extends Controller
         return redirect('/users')->with('message', 'User deleted successfully');
     }
 
+    // Restore User
+    public function restore(User $user) {
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+        $user->restore();
+        // DB::table('users')->where('id', $user->id)->delete();
+        return redirect('/users')->with('message', 'User restored successfully');
+    }
+
     // Show Login Form
     public function login(){
         return view('admin.users.login');

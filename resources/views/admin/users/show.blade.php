@@ -55,7 +55,7 @@
                 <form method="POST" action="/users/{{$user->id}}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="deleteBtn" style="background-color: #F44336; padding: 4px 6px 3px 5px;"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i>Delete</button>
+                    <button type="submit" class="deleteBtn" style="background-color: #F44336; padding: 4px 6px 3px 5px; margin-left: 5px"><i class='bx-fw bx bxs-trash-alt bx-sm' ></i>Delete</button>
                     {{-- <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button> --}}
                 </form>
             </div>
