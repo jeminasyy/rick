@@ -1,10 +1,11 @@
 <x-layout>
     <x-sidenav>
-        @include('partials._settings')
         <div class="ticketNav">
             <a href="/users" class="active">View Users</a>
             <a href="/users/archived">View Archived</a>
           </div>
+        @include('partials._settings')
+        
         <div style="width: 75%; display:inline-block; vertical-align: top;">
             <div class="settings-content-container">
                 <div class="newCat">
