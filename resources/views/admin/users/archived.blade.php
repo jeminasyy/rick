@@ -56,7 +56,7 @@
                             </a> --}}
                             <form method="POST" action="/users/restore/{{$user->id}}">
                                 @csrf
-                                @method('PUT')
+                                @method('DELETE')
                                 <button type="submit"><i class='bx bxs-archive-out'></i>Archive Out</button>
                                 {{-- <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button> --}}
                             </form>

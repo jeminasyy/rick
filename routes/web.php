@@ -186,7 +186,7 @@ Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth')
 // Show Edit Form
 Route::get('/user/{user}/edit', [UserController::class, 'edit'])->middleware('auth');
 // Update User Access
-Route::put('/user/{user}/update', [UserController::class, 'update'])->middleware('auth');
+Route::delete('/user/{user}/update', [UserController::class, 'update'])->middleware('auth');
 
 
 // Delete User
