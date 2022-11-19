@@ -2,8 +2,8 @@
     <x-sidenav>
         @include('partials._settings')
         <div class="ticketNav">
-            <a href="/users" class="active">View Users</a>
-            <a href="/users/archived">View Archived</a>
+            <a href="/users">View Users</a>
+            <a href="/users/archived" class="active">View Archived</a>
           </div>
         <div style="width: 75%; display:inline-block; vertical-align: top;">
             <div class="settings-content-container">
@@ -20,10 +20,6 @@
                 <div class="table-holder-categories">
 
                 @include('partials._search-user')
-
-                <a href="/users/create" style="font-weight: bold; float: right;padding-bottom:5px">
-                    <i class='bx bxs-user-plus bx-fw'></i> Create New User
-                </a>
 
                 <table>
                     <tr>
@@ -53,7 +49,10 @@
                         <td></td>
                         @endif
                         <td>
-                            <a href="/users/{{$user->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View</a>
+                            <a href="/users/{{$user->id}}" style="background-color: F8CA0A; color: #ffffff; padding: 2px 5px">
+                                <i class='bx bxs-archive-out'></i>
+                                Archive Out
+                            </a>
                         </td>
                         {{-- <td class="action">
                             <Button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i></Button>

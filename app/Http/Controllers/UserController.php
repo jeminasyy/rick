@@ -35,6 +35,18 @@ class UserController extends Controller
         ]);
     }
 
+    // Show archived users list
+    public function archived(){
+        // Make sure user is an admin
+        if(auth()->user()->role == "FDO"){
+            abort(403, 'Unauthorized Access');
+        }
+        return view('admin.users.archived', [
+            'heading' => 'Users',
+            'users' => User::onlyTrashed()->filter(request(['search']))->paginate(5)
+        ]);
+    }
+
     // Show single user
     public function show(User $user) {
         return view('admin.users.show', [

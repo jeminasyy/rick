@@ -273,15 +273,15 @@
                         {{$reopen->reason}}
                     </p>
 
-                    @if ($reopen->user->email == null)
+                    @if ($reopen->user != null)
                         <p class="reopen-p">
                             <span style="font-weight: bold">Assignee:&nbsp;&nbsp;</span>
-                            Unavailable
+                            {{$reopen->user->email}}
                         </p>
                     @else
                         <p class="reopen-p">
                             <span style="font-weight: bold">Assignee:&nbsp;&nbsp;</span>
-                            {{$reopen->user->email}}
+                            Unavailable
                         </p>
                     @endif
 

@@ -162,6 +162,8 @@ Route::put('/{reopen}/reopen/setTransfer', [ReopenController::class, 'setTransfe
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth');
 // View Users List
 Route::get('/users', [UserController::class, 'index'])->middleware('auth');
+// View Archived Users List
+Route::get('/users/archived', [UserController::class, 'archived'])->middleware('auth');
 // Show Create User Form
 Route::get('/users/create', [UserController::class, 'create'])->middleware('auth');
 // Create New Account
