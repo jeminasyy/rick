@@ -30,6 +30,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->dropSoftDeletes();
         });
         // Schema::table('users', function (Blueprint $table) {
         //     $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -47,8 +48,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });   
+        Schema::dropIfExists('users');
     }
 };
