@@ -213,14 +213,14 @@ class UserController extends Controller
     }
 
     // Delete User
-    public function destroy(User $user) {
+    public function destroy($id) {
         // Make sure logged in user is owner
         if(auth()->user()->role == "FDO"){
             abort(403, 'Unauthorized Access');
         }
         
         User::withTrashed()
-            ->where('id', $user->id)
+            ->where('id', $id)
             ->restore();
         // DB::table('users')->where('id', $user->id)->delete();
         return redirect('/users')->with('message', 'User deleted successfully');
