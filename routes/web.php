@@ -186,13 +186,13 @@ Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth')
 // Show Edit Form
 Route::get('/user/{user}/edit', [UserController::class, 'edit'])->middleware('auth');
 // Update User Access
-Route::delete('/user/{user}/update', [UserController::class, 'update'])->middleware('auth');
+Route::put('/user/{user}/update', [UserController::class, 'update'])->middleware('auth');
 
 
 // Delete User
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth');
 // Restore User
-Route::put('/users/restore/{user}', [UserController::class, 'restore'])->middleware('auth');
+Route::delete('/users/restore/{user}', [UserController::class, 'restore'])->middleware('auth');
 
 // ----AUTHENTICATION----
 // Log User Out
