@@ -81,7 +81,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Reopen::class, 'user_id');
     }
 
-    // Relationship to Reopen
+    // Relationship to Notifications
     public function notifications() {
         return $this->hasMany(Notification::class, 'user_id');
     }

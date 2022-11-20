@@ -12,7 +12,7 @@ class Notification extends Model
     protected $fillable = [
         'type',
         'user_id',
-        'newId',
+        'ticketId',
         'reopenId'
     ];
 
