@@ -247,6 +247,7 @@ div.userNav a.active {
     padding: 10px;
     font-size: 16px;
     border: none;
+    border-radius: 50px;
     cursor: pointer;
   }
   
