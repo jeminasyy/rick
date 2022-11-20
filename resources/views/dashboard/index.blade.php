@@ -3,8 +3,8 @@
         <div>
             @if (auth()->user()->role == "Admin")
                 <a href="/dashboard/export" style="float: right; top:0">
-                    <button style="padding: 5px 10px; background-color: #70b7ee;
-                        border: 1px solid#70b7ee;
+                    <button style="padding: 5px 10px; background-color: #2980B9;
+                        border: 1px solid#2980B9;
                         border-radius: 5px;
                         color: white;
                         width: fit-content">
