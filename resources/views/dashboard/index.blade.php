@@ -2,11 +2,12 @@
     <x-sidenav>
         <p style="font-size: 22px; font-weight:bold">Dashboard</p>
         @if (auth()->user()->role == "Admin")
-            <a href="/dashboard/export" style="float: right">
-                <button style="top:0; background-color: #70b7ee;
+            <a href="/dashboard/export" style="float: right; top:0">
+                <button style="padding: 5px 10px; background-color: #70b7ee;
                     border: 1px solid#70b7ee;
                     border-radius: 5px;
-                    color: white">
+                    color: white;
+                    width: fit-content">
                     Generate Report
                 </button>
             </a>
