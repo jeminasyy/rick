@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use PDF;
 
 class DashboardController extends Controller
 {
@@ -254,4 +255,8 @@ class DashboardController extends Controller
                                                 'studentSatisfaction', 'averageRating', 'averageReopen', 'averageResponseTime', 
                                                 'chart1', 'chart2', 'chart3', 'chart4', 'chart5'));
     }
+
+    // public function createPDF(){
+
+    // }
 }

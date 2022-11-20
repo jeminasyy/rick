@@ -111,6 +111,8 @@ Route::get('/reopenConfirm/{ticket}/{student}', [FeedbackController::class, 'reo
 // 1. New Tickets
 // Show Tickets list
 Route::get('/tickets', [TicketController::class,'index']);
+// Generate PDF
+Route::get('/generate/tickets', [TicketController:: class, 'createPDF']);
 // Show User's Tickets list
 Route::get('/mytickets', [TicketController::class, 'manage']);
 // Update Ticket Priority

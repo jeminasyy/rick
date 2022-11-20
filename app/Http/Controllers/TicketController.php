@@ -18,6 +18,8 @@ use Illuminate\Validation\Rule;
 use App\Mail\NewTicketSubmitted;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use PDF;
+// use Barryvdh\DomPDF\PDF;
 
 // -------------------------------------------
 // ** CONTROLLER FOR SUBMITTING NEW TICKETS **
@@ -235,6 +237,15 @@ class TicketController extends Controller
 
 
     // ---- ADMIN/FDO VIEW ----
+    // Generate pdf
+    public function createPDF() {
+        $tickets = Ticket::all();
+
+        $pdf = PDF::loadView('admin.tickets.index', ['tickets' => $tickets]);
+
+        $pdf->download('report.pdf');
+    }
+
     // Show all tickets
     public function index() {
         return view('admin.tickets.index', [
