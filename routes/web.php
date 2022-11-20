@@ -26,7 +26,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 // Show Dashboard
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
 
 // ----SECURITY----
@@ -110,7 +110,7 @@ Route::get('/reopenConfirm/{ticket}/{student}', [FeedbackController::class, 'reo
 
 // 1. New Tickets
 // Show Tickets list
-Route::get('/tickets', [TicketController::class,'index'])->middleware('auth');
+Route::get('/tickets', [TicketController::class,'index']);
 // Show User's Tickets list
 Route::get('/mytickets', [TicketController::class, 'manage'])->middleware('auth');
 // Update Ticket Priority
