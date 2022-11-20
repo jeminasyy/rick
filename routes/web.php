@@ -224,7 +224,7 @@ Route::put('/forgotpassword/send', [UserController::class, 'sendFP']);
 // Sent Successfully
 Route::get('/forgotpassword/sent', [UserController::class, 'sentFP']);
 // Reset Password Form
-Route::get('/reset/password/{id}/{resetToken}', [UserController::class, 'resetPassword']);
+Route::get('/resetpassword/{id}/{resetToken}', [UserController::class, 'resetPassword']);
 // Reset Password 
 Route::put('/reset/password/{user}', [UserController::class, 'updatePassword']);
 

@@ -4,7 +4,7 @@
 
     <br>
     <a 
-        href="http://vast-headland-55467.herokuapp.com/reset/password/{{$User_id}}/{{$resetToken}}"
+        href="http://vast-headland-55467.herokuapp.com/resetpassword/{{$User_id}}/{{$resetToken}}"
         style="background-color: #EDC304; 
             border: none;
             color: white;
