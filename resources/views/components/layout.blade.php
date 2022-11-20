@@ -71,7 +71,7 @@
                     <span class="font-bold-uppercase">
                         Welcome {{auth()->user()->firstName}}
                     </span>
-                    <div class="dropdown">
+                    {{-- <div class="dropdown"> --}}
                         <button onclick="myFunction()" class="dropbtn">
                             @if (auth()->user()->newNotifs > 0)
                                 <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
@@ -79,7 +79,7 @@
                                 <i class='bx-fw bx bxs-bell bx-md'></i>
                             @endif
                         </button>
-                    </div>
+                    {{-- </div> --}}
                     {{-- <div class="dropdown">
                         <button onclick="myFunction()" class="dropbtn">Dropdown</button>
                         
