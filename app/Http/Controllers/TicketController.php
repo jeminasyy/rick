@@ -18,8 +18,8 @@ use Illuminate\Validation\Rule;
 use App\Mail\NewTicketSubmitted;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use PDF;
-// use Barryvdh\DomPDF\PDF;
+// use PDF;
+use Barryvdh\DomPDF\PDF;
 
 // -------------------------------------------
 // ** CONTROLLER FOR SUBMITTING NEW TICKETS **
