@@ -281,7 +281,7 @@ class UserController extends Controller
             $user = User::find($find->id);
             $formFields['resetToken'] = $code;
             $user->update($formFields);
-            Mail::to($user->email)->send(new ResetPassword($user));
+            Mail::to($user->email)->send(new ResetPassword($user, $code));
             return redirect('/forgotpassword/sent');
         } else {
             return redirect('/forgotpassword/sent');
