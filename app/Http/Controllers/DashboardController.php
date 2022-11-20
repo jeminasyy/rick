@@ -518,7 +518,7 @@ class DashboardController extends Controller
     }
 
     public function exportExcelCSV() {
-        $date = Carbon::now()->format('m d Y');
+        $date = Carbon::now()->format('m-d-Y');
         $name = "Report" . $date . ".xlsx";
         return Excel::download(new TicketsExport, $name);
         // return Excel::download(new TicketsExport, 'tickets.'.$slug);
