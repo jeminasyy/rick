@@ -78,12 +78,13 @@
                             <i class='bx-fw bx bxs-bell bx-md'></i>
                         @endif
                     </button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#home">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                    </div>
                 </div>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                </div>
+                
 
                 @else
                 <a href="/login" 
