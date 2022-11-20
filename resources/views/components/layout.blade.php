@@ -108,9 +108,14 @@
 
         <main>
             <div id="myDropdown" class="dropdown-content">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+                <div class="containterNotif">
+                    <a href="#home">Home</a>
+                </div>
+                <div class="containterNotif">
+                    <a href="#home">Home</a>
+                </div>
+                {{-- <a href="#about">About</a>
+                <a href="#contact">Contact</a> --}}
               </div>
             {{-- VIEW OUTPUT --}}
                 {{$slot}}

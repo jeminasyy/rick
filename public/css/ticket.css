@@ -272,6 +272,10 @@ div.userNav a.active {
     right: 0;
     /* top:0; */
   }
+
+  .containterNotif { 
+    border: 1px solid rgba(155, 155, 155, 0.8);
+  }
   
   .dropdown-content a {
     color: black;
