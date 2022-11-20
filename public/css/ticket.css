@@ -241,17 +241,17 @@ div.userNav a.active {
 }
 
 /* Notifications */
-/* .dropbtn {
+.dropbtn {
     background-color: #3498DB;
-    color: white;
+    /* color: white; */
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-  } */
+  }
   
   .dropbtn:hover, .dropbtn:focus {
-    color: #2980B9;
+    background-color: #2980B9;
   }
   
   .dropdown {
