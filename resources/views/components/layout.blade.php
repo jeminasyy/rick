@@ -71,13 +71,13 @@
                     <span class="font-bold-uppercase">
                         Welcome {{auth()->user()->firstName}}
                     </span>
-                    <a onclick="notifMenu()">
+                    <button onclick="notifMenu()">
                         @if (auth()->user()->newNotifs > 0)
                             <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
                         @else
                             <i class='bx-fw bx bxs-bell bx-md'></i>
                         @endif
-                    </a>
+                    </button>
                 </div>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="#home">Home</a>
