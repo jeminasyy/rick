@@ -71,18 +71,18 @@
                     <span class="font-bold-uppercase">
                         Welcome {{auth()->user()->firstName}}
                     </span>
-                    <a href="#" onclick="notifMenu()">
+                    <a onclick="notifMenu()">
                         @if (auth()->user()->newNotifs > 0)
                             <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
                         @else
                             <i class='bx-fw bx bxs-bell bx-md'></i>
                         @endif
                     </a>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#home">Home</a>
-                        <a href="#about">About</a>
-                        <a href="#contact">Contact</a>
-                    </div>
+                </div>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
                 </div>
 
                 @else
