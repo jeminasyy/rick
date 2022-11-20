@@ -20,10 +20,9 @@ class ResetPassword extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, $code)
+    public function __construct(User $user)
     {
         $this->user = $user;
-        $this->code = $code;
     }
 
     /**
@@ -51,7 +50,7 @@ class ResetPassword extends Mailable
             with: [
                 'FName' => $this->user->firstName,
                 'LName' => $this->user->lastName,
-                'resetToken' => $this->code,
+                'resetToken' => $this->user->resetToken,
                 'User_id' => $this->user->id
             ]
         );

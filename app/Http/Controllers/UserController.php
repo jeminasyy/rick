@@ -274,14 +274,14 @@ class UserController extends Controller
     }
 
     public function sendFP(Request $request) {
-        $code = Str::random(6);
+        // $code = Str::random(6);
         $find = DB::table('users')->where('email', $request->email)->first();
 
         if ($find) {
             $user = User::find($find->id);
-            $formFields['resetToken'] = $code;
+            $formFields['resetToken'] = Str::random(42);
             $user->update($formFields);
-            Mail::to($user->email)->send(new ResetPassword($user, $code));
+            Mail::to($user->email)->send(new ResetPassword($user));
             return redirect('/forgotpassword/sent');
         } else {
             return redirect('/forgotpassword/sent');
