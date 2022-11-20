@@ -338,9 +338,15 @@ class UserController extends Controller
         $hashedPassword = Auth::user()->getAuthPassword();
 
         if (Hash::check($formFields['currentPassword'], $hashedPassword)){
-            dd("meowie");
+            $password = bcrypt($formFields['password']);
+            $user->update(['password', $password]);
+            return view('admin.settings.security', [
+                'message' => "Password Change Successfully!"
+            ]);
         } else {
-            dd("oh no");
+            return view('admin.settings.security', [
+                'message' => "Failed to Password Change! Please Try Again."
+            ]);
         }
     }
 }

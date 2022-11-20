@@ -3,10 +3,14 @@
         @include('partials._settings')
 
         <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
+            
             <header>
                 <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
                     Change Password
                 </h2>
+                @if ($message != null) 
+                    <p>{{ $message }}</p>
+                @endif
             </header>
 
             <form method="POST" action="/security/{{auth()->user()->id}}" enctype="multipart/form-data">
