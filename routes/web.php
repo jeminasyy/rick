@@ -221,6 +221,8 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/forgotpassword/verify', [UserController::class, 'verifyFP']);
 // Send Email
 Route::put('/forgotpassword/send', [UserController::class, 'sendFP']);
+// Sent Successfully
+Route::get('/forgotpassword/sent', [UserController::class, 'sentFP']);
 // Reset Password Form
 Route::get('/reset/password/{id}/{resetToken}', [UserController::class, 'resetPassword']);
 // Reset Password Form
