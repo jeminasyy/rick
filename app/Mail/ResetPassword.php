@@ -51,7 +51,7 @@ class ResetPassword extends Mailable
             with: [
                 'FName' => $this->user->firstName,
                 'LName' => $this->user->lastName,
-                'resetToken' => $this->user->resetToken,
+                'resetToken' => $this->code,
                 'User_id' => $this->user->id
             ]
         );
