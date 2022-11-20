@@ -294,7 +294,8 @@ class UserController extends Controller
     }
 
     // Reset Password Form
-    public function resetPassword(User $user, $resetToken) {
+    public function resetPassword($id, $resetToken) {
+        $user = User::find($id);
 
         return view('admin.forgotpass.reset', [
             'user' => $user
