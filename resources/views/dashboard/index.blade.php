@@ -3,7 +3,7 @@
         <p style="font-size: 22px; font-weight:bold">Dashboard</p>
         @if (auth()->user()->role == "Admin")
             <a href="/dashboard/export" style="float: right">
-                <button style="margin-left:2%; background-color: #70b7ee;
+                <button style="top:0; background-color: #70b7ee;
                     border: 1px solid#70b7ee;
                     border-radius: 5px;
                     color: white">
