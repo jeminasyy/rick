@@ -15,7 +15,7 @@ class TicketsExport implements FromView
 
     public function view(): View
     {
-        return view('admin.dashboard.tickets', [
+        return view('dashboard.tickets', [
             'invoices' => Ticket::all()
         ]);
     }
