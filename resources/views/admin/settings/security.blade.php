@@ -24,7 +24,7 @@
                         name="currentPassword" 
                         value="{{old('currentPassword')}}"
                     />
-                    @error('oldPassword')
+                    @error('currentPassword')
                         <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
