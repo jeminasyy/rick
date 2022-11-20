@@ -244,7 +244,7 @@ div.userNav a.active {
 .dropbtn {
     background-color: transparent;
     /* color: white; */
-    /* padding: 16px; */
+    padding: 5px;
     font-size: 16px;
     border: none;
     cursor: pointer;
