@@ -1,7 +1,6 @@
 <x-layout>
     <x-sidenav>
         <div>
-            <p style="font-size: 22px; font-weight:bold">Dashboard</p>
             @if (auth()->user()->role == "Admin")
                 <a href="/dashboard/export" style="float: right; top:0">
                     <button style="padding: 5px 10px; background-color: #70b7ee;
@@ -13,6 +12,7 @@
                     </button>
                 </a>
             @endif
+            <p style="font-size: 22px; font-weight:bold">Dashboard</p> 
         </div>
         <br>
         <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
