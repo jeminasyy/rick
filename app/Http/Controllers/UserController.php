@@ -300,7 +300,23 @@ class UserController extends Controller
     }
 
     // Update Password
-    public function updatePassword(User $user){
+    public function updatePassword(Request $request, User $user){
+        if (!$user->resetToken){
+            abort(403, 'Unauthorized Action');
+        }
 
+        $formFields = $request->validate([
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        // Hash Password
+        $formFields['password'] = bcrypt($formFields['password']);
+
+        // Remove reset token
+        $formFields['resetToken'] = null;
+
+        $user->update($formFields);
+
+        return redirect('/login')->with('message', 'Please log in to continue');
     }
 }
