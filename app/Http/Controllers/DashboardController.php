@@ -517,7 +517,7 @@ class DashboardController extends Controller
         return $pdf->download('report.pdf');
     }
 
-    public function exportExcelCSV($slug) {
+    public function exportExcelCSV() {
         return Excel::download(new TicketsExport, 'users.xlsx');
         // return Excel::download(new TicketsExport, 'tickets.'.$slug);
     }
