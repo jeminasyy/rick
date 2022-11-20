@@ -71,7 +71,7 @@
                     <span class="font-bold-uppercase">
                         Welcome {{auth()->user()->firstName}}
                     </span>
-                    <button onclick="myFunction()">
+                    <button onclick="myFunction()" class="dropbtn">
                         @if (auth()->user()->newNotifs > 0)
                             <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
                         @else
