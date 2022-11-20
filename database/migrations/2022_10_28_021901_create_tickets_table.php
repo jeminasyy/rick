@@ -29,7 +29,6 @@ return new class extends Migration
             // $table->dateTime('dateSubmitted');
             $table->dateTime('dateResponded')->nullable();
             $table->dateTime('dateResolved')->nullable();
-            $table->string('resetToken')->nullable();
             $table->timestamps();
         });
     }
