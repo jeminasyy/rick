@@ -1,7 +1,10 @@
 <x-layout>
     <x-sidenav>
         <p style="font-size: 22px; font-weight:bold">Dashboard</p>
-        <a href="/dashboard/export">Generate Report</a>
+        <a href="/dashboard/export"
+            style="float: right">
+            Generate Report
+        </a>
         <br>
         <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
         transform: rotate(0.08deg); ">

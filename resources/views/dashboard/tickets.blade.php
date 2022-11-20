@@ -55,6 +55,9 @@
 <table>
   <thead>
   <tr>
+    <th>Tickets</th>
+  </tr>
+  <tr>
       <th>Ticket ID</th>
       <th>Category</th>
       <th>Student Name</th>
