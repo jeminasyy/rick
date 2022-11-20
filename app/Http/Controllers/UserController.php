@@ -349,7 +349,7 @@ class UserController extends Controller
         } else {
             return view('admin.settings.security', [
                 'message' => "Failed to Change Password! Please Try Again.",
-                'color' => "#FF9494"
+                'color' => "#FB7272"
             ]);
         }
     }
