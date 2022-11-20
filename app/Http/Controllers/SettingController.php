@@ -41,7 +41,7 @@ class SettingController extends Controller
         $settings = DB::table('settings')->get()->toArray();
         return view('admin.settings.ticketlimit', [
             'limit' => $settings,
-            'message' => "Settings Updated Successfully!",
+            'message' => "Ticket Limitation Updated Successfully!",
             'color' => "#4BB543"
         ]);
     }

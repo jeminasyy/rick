@@ -71,8 +71,12 @@
                     <span class="font-bold-uppercase">
                         Welcome {{auth()->user()->firstName}}
                     </span>
-                    <a>
-                        <i class='bx-fw bx bxs-bell bx-md'></i>
+                    <a href="#">
+                        @if (auth()->user()->newNotifs > 0)
+                            <i class='bx-fw bx bxs-bell bx-md'></i>
+                        @else
+                            <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
+                        @endif
                     </a>
                 </div>
 

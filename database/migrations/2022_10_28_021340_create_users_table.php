@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('role');
+            $table->integer('newNotifs')->default(0);
+            // $table->integer('totalNotifs')->default(0);
             $table->string('register_token')->nullable();
             $table->string('resetToken')->nullable();
             $table->boolean('verified');
