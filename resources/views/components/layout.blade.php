@@ -73,11 +73,11 @@
                     </span>
                     @if (auth()->user()->newNotifs > 0)
                         <button onclick="myFunction()" class="dropbtn">
-                            <i class='bx-fw bx bxs-bell bx-sm bx-tada'></i>
+                            <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
                         </button>
                     @else
                         <button onclick="myFunction()" class="dropbtn">
-                            <i class='bx-fw bx bxs-bell bx-sm'></i>
+                            <i class='bx-fw bx bxs-bell bx-md'></i>
                         </button>
                     @endif
                     
