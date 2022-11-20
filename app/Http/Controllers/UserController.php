@@ -321,7 +321,9 @@ class UserController extends Controller
 
     // Change Password (Security Settings)
     public function changePassword() {
-        return view('admin.settings.security');
+        return view('admin.settings.security', [
+            'message' => null
+        ]);
     }
 
     // Update Change Password
