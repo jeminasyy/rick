@@ -332,18 +332,18 @@ class UserController extends Controller
             abort(403, 'Unauthorized Access');
         }
 
-        $formFields = $request->validate([
+        $request->validate([
             'currentPassword' => 'required',
             'password' => 'required|confirmed|min:6'
         ]);
 
         $hashedPassword = Auth::user()->getAuthPassword();
 
-        if (Hash::check($formFields['currentPassword'], $hashedPassword)){
-            $password = bcrypt($formFields['password']);
-            $user->update(['password', $password]);
+        if (Hash::check($request->currentPassword, $hashedPassword)){
+            $formFields['password'] = bcrypt($request->currentPassword);
+            $user->update($formFields);
             return view('admin.settings.security', [
-                'message' => "Password Change Successfully!"
+                'message' => "Password Updated Successfully!"
             ]);
         } else {
             return view('admin.settings.security', [
