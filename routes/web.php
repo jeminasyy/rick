@@ -26,11 +26,11 @@ Route::get('/', function () {
 })->middleware('guest');
 
 // Show Dashboard
-Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth');
 // Generate Report PDF
-Route::get('/generate/dashboard', [DashboardController::class, 'createPDF']);
+Route::get('/generate/dashboard', [DashboardController::class, 'createPDF'])->middleware('auth');
 // Generate Report EXCEL
-Route::get('/dashboard/export', [DashboardController::class, 'exportExcelCSV']);
+Route::get('/dashboard/export', [DashboardController::class, 'exportExcelCSV'])->middleware('auth');
 
 // ----SECURITY----
 // Show Change Password Form
@@ -113,11 +113,11 @@ Route::get('/reopenConfirm/{ticket}/{student}', [FeedbackController::class, 'reo
 
 // 1. New Tickets
 // Show Tickets list
-Route::get('/tickets', [TicketController::class,'index']);
+Route::get('/tickets', [TicketController::class,'index'])->middleware('auth');
 // Generate PDF
-Route::get('/generate/tickets', [TicketController:: class, 'createPDF']);
+Route::get('/generate/tickets', [TicketController:: class, 'createPDF'])->middleware('auth');
 // Show User's Tickets list
-Route::get('/mytickets', [TicketController::class, 'manage']);
+Route::get('/mytickets', [TicketController::class, 'manage'])->middleware('auth');
 // Update Ticket Priority
 Route::put('/{ticket}/ticket/updatePriority', [TicketController::class, 'updatePriority'])->middleware('auth');
 // Mark as Ongoing

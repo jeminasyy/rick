@@ -1,10 +1,16 @@
 <x-layout>
     <x-sidenav>
         <p style="font-size: 22px; font-weight:bold">Dashboard</p>
-        <a href="/dashboard/export"
-            style="float: right">
-            Generate Report
-        </a>
+        @if (auth()->user()->role == "Admin")
+            <a href="/dashboard/export" style="float: right">
+                <button style="margin-top: 4%; margin-left:2%; background-color: #70b7ee;
+                    border: 1px solid#70b7ee;
+                    border-radius: 5px;
+                    color: white">
+                    Generate Report
+                </button>
+            </a>
+        @endif
         <br>
         <hr style="width: 100%; background-color: #C4C4C4; border: 0.1px solid #C4C4C4;
         transform: rotate(0.08deg); ">
