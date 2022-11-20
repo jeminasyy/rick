@@ -295,9 +295,6 @@ class UserController extends Controller
 
     // Reset Password Form
     public function resetPassword(User $user, $resetToken) {
-        if ($user->resetToken != $resetToken){
-            abort(403, 'Unauthorized Action');
-        }
 
         return view('admin.forgotpass.reset', [
             'user' => $user
