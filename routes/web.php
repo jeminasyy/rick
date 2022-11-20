@@ -32,10 +32,6 @@ Route::get('/generate/dashboard', [DashboardController::class, 'createPDF'])->mi
 // Generate Report EXCEL
 Route::get('/dashboard/export', [DashboardController::class, 'exportExcelCSV'])->middleware('auth');
 
-// ----SECURITY----
-// Show Change Password Form
-Route::get('/security', [UserController::class, 'changePassword'])->middleware('auth');
-
 
 // ----CATEGORIES----
 // Show Categories List
@@ -187,7 +183,6 @@ Route::get('/{id}/{register_token}/register', [UserController::class, 'register'
 // Create Password
 Route::put('/{user}/register', [UserController::class, 'createPassword'])->middleware('guest');
 
-// Change Password
 
 // View User
 Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth');
@@ -233,3 +228,8 @@ Route::put('/reset/password/{user}', [UserController::class, 'updatePassword']);
 Route::get('/ticketlimit', [SettingController::class, 'ticketlimit'])->middleware('auth');
 // Update Ticket limitation
 Route::put('/ticketlimit/update', [SettingController::class, 'updatelimit'])->middleware('auth');
+// ----SECURITY----
+// Show Change Password Form
+Route::get('/security', [UserController::class, 'changePassword'])->middleware('auth');
+// Update Password Change
+Route::put('/security/{user}', [UserController::class, 'updateChange'])->middleware('auth');

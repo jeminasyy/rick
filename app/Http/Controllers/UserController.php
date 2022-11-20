@@ -263,11 +263,6 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
 
-    // Change Password (Security Settings)
-    public function changePassword() {
-        return view('admin.settings.security');
-    }
-
     // Forgot Password --> Verify Email
     public function verifyFP(){
         return view('admin.forgotpass.email');
@@ -321,5 +316,28 @@ class UserController extends Controller
         $user->update($formFields);
 
         return redirect('/login')->with('message', 'Please log in to continue');
+    }
+
+    // Change Password (Security Settings)
+    public function changePassword() {
+        return view('admin.settings.security');
+    }
+
+    // Update Change Password
+    public function updateChange(Request $request, User $user) {
+        if (auth()->user()->id != $user->id) {
+            abort(403, 'Unauthorized Access');
+        }
+
+        $formFields = $request->validate([
+            'currentPassword' => 'required',
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        if ($formFields['currentPassword'] == auth()->user()->password){
+            dd("meowie");
+        } else {
+            dd("oh no");
+        }
     }
 }
