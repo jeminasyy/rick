@@ -17,7 +17,8 @@ class SettingController extends Controller
 
         // dd($settings);
         return view('admin.settings.ticketlimit', [
-            'limit' => $settings
+            'limit' => $settings,
+            'message' => null
         ]);
     }
 
@@ -30,7 +31,6 @@ class SettingController extends Controller
 
         $formFields = $request->validate([
             'ticketLimit' => 'required',
-            'message' => null
         ]);
 
         $setting = DB::table('settings')->get()->toArray();
