@@ -1,32 +1,40 @@
 <table>
-    <thead>
+  <thead>
+  <tr>
+      <th>Ticket ID</th>
+      <th>Category</th>
+      <th>Student Name</th>
+      <th>Student Email</th>
+      <th>Year Level</th>
+      <th>Department</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Assignee</th>
+      <th>Priority</th>
+      <th>Response/Solution</th>
+      <th>Date Submitted</th>
+      <th>Date Responded</th>
+      <th>Date Resolved</th>
+  </tr>
+  </thead>
+  <tbody>
+  @foreach($tickets as $ticket)
       <tr>
-        <th scope="col">ID</th>
-        <th scope="col">CATEGORY</th>
-        <th scope="col">REQUESTER</th>
-        <th scope="col">DESCRIPTION</th>
-        <th scope="col">DATE</th>
-        <th scope="col">STATUS</th>
-        <th scope="col">ASSIGNEE</th>
+          <td>{{ $ticket->id }}</td>
+          <td>{{ $ticket->categ->name }}</td>
+          <td>{{ $ticket->student->LName }}, {{ $ticket->student->FName }}</td>
+          <td>{{ $ticket->student->email }}</td>
+          <td>{{ $ticket->year }}</td>
+          <td>{{ $ticket->department }}</td>
+          <td>{{ $ticket->description }}</td>
+          <td>{{ $ticket->status }}</td>
+          <td>{{ $ticket->assignee }}</td>
+          <td>{{ $ticket->priority }}</td>
+          <td>{{ $ticket->response }}</td>
+          <td>{{ $ticket->create_at }}</td>
+          <td>{{ $ticket->dateResponded }}</td>
+          <td>{{ $ticket->dateResolved }}</td>
       </tr>
-    </thead>
-    <tbody>
-      @foreach($tickets as $ticket)
-        <tr>
-          <td>{{$ticket->id}}</td>
-          <td>{{$ticket->categ->name}}</td>
-          <td scope="row" style="word-break: break-all;">
-            <b>{{$ticket->student->LName}}, {{$ticket->student->FName}}</b>
-            <br>{{$ticket->student->email}}
-          </td>
-          <td>{{$ticket->description}}</td>
-          <td>{{$ticket->created_at}}</td>
-          <td>{{$ticket->status}}</td>
-          @if ($ticket->user != null)
-            <td style="word-break: break-all;">{{$ticket->user->email}}</td>
-          @else
-            <td style="word-break: break-all;">Unavailable</td>
-          @endif
-        </tr>
-    </tbody>
+  @endforeach
+  </tbody>
 </table>
