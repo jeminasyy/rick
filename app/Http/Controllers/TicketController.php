@@ -241,9 +241,11 @@ class TicketController extends Controller
     public function createPDF() {
         $tickets = Ticket::all();
 
-        $pdf = PDF::loadView('admin.tickets.report', ['tickets' => $tickets]);
+        // $pdf = new PDF;
+        // $pdf->loadView('admin.tickets.report');
+        $pdf = PDF::loadView('admin.tickets.index');
 
-        $pdf->download('report.pdf');
+        return $pdf->download('report.pdf');
     }
 
     // Show all tickets
