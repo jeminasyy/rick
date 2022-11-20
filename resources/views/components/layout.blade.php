@@ -78,9 +78,7 @@
                             <i class='bx-fw bx bxs-bell bx-md'></i>
                         @endif
                     </button> --}}
-                    <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-                    </div>
+                    
                 </div>
 
                 @else
@@ -101,11 +99,14 @@
             </div>
                 
         </nav>
-        <div id="myDropdown" class="dropdown-content">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#home">Home</a>
+              <a href="#about">About</a>
+              <a href="#contact">Contact</a>
+            </div>
+        </div>
 
         <main>
             {{-- VIEW OUTPUT --}}

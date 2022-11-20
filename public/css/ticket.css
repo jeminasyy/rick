@@ -256,7 +256,9 @@ div.userNav a.active {
   
   .dropdown {
     position: relative;
-    display: inline-block;
+    /* display: inline-block; */
+    float:right;
+    top:0;
   }
   
   .dropdown-content {
