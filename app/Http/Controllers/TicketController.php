@@ -243,7 +243,7 @@ class TicketController extends Controller
 
         // $pdf = new PDF;
         // $pdf->loadView('admin.tickets.report');
-        $pdf = PDF::loadView('admin.tickets.index', ['tickets'=>$tickets]);
+        $pdf = PDF::loadView('admin.tickets.report', ['tickets'=>$tickets]);
 
         return $pdf->download('report.pdf');
     }
