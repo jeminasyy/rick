@@ -343,11 +343,13 @@ class UserController extends Controller
             $formFields['password'] = bcrypt($request->password);
             $user->update($formFields);
             return view('admin.settings.security', [
-                'message' => "Password Updated Successfully!"
+                'message' => "Password Updated Successfully!",
+                'color' => "#4BB543"
             ]);
         } else {
             return view('admin.settings.security', [
-                'message' => "Failed to Password Change! Please Try Again."
+                'message' => "Failed to Password Change! Please Try Again.",
+                'color' => "#FF9494"
             ]);
         }
     }

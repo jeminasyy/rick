@@ -9,7 +9,7 @@
                     Change Password
                 </h2>
                 @if ($message != null) 
-                    <p>{{ $message }}</p>
+                    <p style="font-weight:bold; color:{{$color}}">{{ $message }}</p>
                 @endif
             </header>
 
