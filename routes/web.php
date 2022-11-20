@@ -27,8 +27,10 @@ Route::get('/', function () {
 
 // Show Dashboard
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-// Generate Report
+// Generate Report PDF
 Route::get('/generate/dashboard', [DashboardController::class, 'createPDF']);
+// Generate Report EXCEL
+Route::get('/dashboard/export', [ExcelCSVController::class, 'exportExcelCSV']);
 
 // ----SECURITY----
 // Show Change Password Form
