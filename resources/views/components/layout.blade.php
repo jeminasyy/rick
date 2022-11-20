@@ -78,34 +78,7 @@
                             <i class='bx-fw bx bxs-bell bx-md'></i>
                         @endif
                     </button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#home">Home</a>
-                        <a href="#about">About</a>
-                        <a href="#contact">Contact</a>
-                    </div>
                 </div>
-                <script>
-                    /* When the user clicks on the button, 
-                    toggle between hiding and showing the dropdown content */
-                    function notifMenu() {
-                      document.getElementById("myDropdown").classList.toggle("show");
-                    }
-                    
-                    // Close the dropdown if the user clicks outside of it
-                    window.onclick = function(event) {
-                      if (!event.target.matches('.dropbtn')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                          var openDropdown = dropdowns[i];
-                          if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                          }
-                        }
-                      }
-                    }
-                </script>
-                
 
                 @else
                 <a href="/login" 
@@ -126,9 +99,37 @@
                 
         </nav>
 
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+
         <main>
             {{-- VIEW OUTPUT --}}
                 {{$slot}}
         </main>
+
+        <script>
+            /* When the user clicks on the button, 
+            toggle between hiding and showing the dropdown content */
+            function notifMenu() {
+              document.getElementById("myDropdown").classList.toggle("show");
+            }
+            
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
+            }
+        </script>
     </body>
 </html>
