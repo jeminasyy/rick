@@ -71,13 +71,21 @@
                     <span class="font-bold-uppercase">
                         Welcome {{auth()->user()->firstName}}
                     </span>
-                    <button onclick="notifMenu()">
+                    {{-- <button onclick="notifMenu()">
                         @if (auth()->user()->newNotifs > 0)
                             <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
                         @else
                             <i class='bx-fw bx bxs-bell bx-md'></i>
                         @endif
-                    </button>
+                    </button> --}}
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                        <div id="myDropdown" class="dropdown-content">
+                          <a href="#home">Home</a>
+                          <a href="#about">About</a>
+                          <a href="#contact">Contact</a>
+                        </div>
+                    </div>
                 </div>
 
                 @else
@@ -99,12 +107,6 @@
                 
         </nav>
 
-        <div id="myDropdown" class="dropdown-content">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </div>
-
         <main>
             {{-- VIEW OUTPUT --}}
                 {{$slot}}
@@ -113,7 +115,7 @@
         <script>
             /* When the user clicks on the button, 
             toggle between hiding and showing the dropdown content */
-            function notifMenu() {
+            function myFunction() {
               document.getElementById("myDropdown").classList.toggle("show");
             }
             
