@@ -12,6 +12,7 @@ use App\Mail\CreateYourAccount;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
@@ -334,7 +335,9 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
-        if ($formFields['currentPassword'] == auth()->user()->password){
+        $hashedPassword = Auth::user()->getAuthPassword();
+
+        if (Hash::check($formFields['currentPassword'], $hashedPassword)){
             dd("meowie");
         } else {
             dd("oh no");
