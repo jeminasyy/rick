@@ -71,13 +71,15 @@
                     <span class="font-bold-uppercase">
                         Welcome {{auth()->user()->firstName}}
                     </span>
-                    <button onclick="myFunction()" class="dropbtn">
-                        @if (auth()->user()->newNotifs > 0)
-                            <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
-                        @else
-                            <i class='bx-fw bx bxs-bell bx-md'></i>
-                        @endif
-                    </button>
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">
+                            @if (auth()->user()->newNotifs > 0)
+                                <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
+                            @else
+                                <i class='bx-fw bx bxs-bell bx-md'></i>
+                            @endif
+                        </button>
+                    </div>
                     {{-- <div class="dropdown">
                         <button onclick="myFunction()" class="dropbtn">Dropdown</button>
                         
