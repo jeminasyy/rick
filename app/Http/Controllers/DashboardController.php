@@ -12,6 +12,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use PDF;
+use App\Exports\TicketsExport; 
+use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardController extends Controller
 {
@@ -513,5 +515,10 @@ class DashboardController extends Controller
         ]);
 
         return $pdf->download('report.pdf');
+    }
+
+    public function exportExcelCSV($slug) {
+        return Excel::download(new TicketsExport, 'users.xlsx');
+        // return Excel::download(new TicketsExport, 'tickets.'.$slug);
     }
 }
