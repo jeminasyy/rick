@@ -492,7 +492,7 @@ class DashboardController extends Controller
         ];
         $chart5 = new LaravelChart($chart_options);
 
-        $pdf = PDF::loadView('dashboard.index', [
+        $pdf = PDF::loadView('dashboard.report', [
             'totalTickets' => $totalTickets, 
             'newTickets' => $newTickets, 
             'resolvedTickets' => $resolvedTickets, 
