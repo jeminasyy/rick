@@ -66,6 +66,9 @@
                 <p class="text-red-500 text-md mt-1">{{$message}}</p>
                 @enderror
             </div>
+            <div class="mb-6">
+                <a href="/forgotpassword/verify">Forgot Password</a>
+            </div>
 
              <div class="mb-6">
                 <button type="submit" 
@@ -78,9 +81,6 @@
                 </button>
 
                 <a href="/users" class="text-black ml-4"> Back </a>
-            </div>
-            <div class="mb-6">
-                <a href="/forgotpassword">Forgot Password</a>
             </div>
         </form>
     </div>
