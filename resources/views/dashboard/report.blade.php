@@ -1,14 +1,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
-    <link rel="stylesheet" href="{{asset('css/email.css')}}">
-    <link rel="stylesheet" href="{{asset('css/modal.css')}}">
-    <link rel="stylesheet" href="{{asset('css/settings.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/sidenav.css')}}">
-    <link rel="stylesheet" href="{{asset('css/ticket.css')}}">
-    <link rel="stylesheet" href="{{asset('css/transfer.css')}}">
     
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
