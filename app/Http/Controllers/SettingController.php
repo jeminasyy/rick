@@ -29,13 +29,20 @@ class SettingController extends Controller
         // dd($request);
 
         $formFields = $request->validate([
-            'ticketLimit' => 'required'
+            'ticketLimit' => 'required',
+            'message' => null
         ]);
 
         $setting = DB::table('settings')->get()->toArray();
         $getSetting = Setting::find($setting[0]->id);
 
         $getSetting->update($formFields);
-        dd($getSetting->ticketLimit);
+        // dd($getSetting->ticketLimit);
+        $settings = DB::table('settings')->get()->toArray();
+        return view('admin.settings.ticketlimit', [
+            'limit' => $settings,
+            'message' => "Settings Updated Successfully!",
+            'color' => "#4BB543"
+        ]);
     }
 }

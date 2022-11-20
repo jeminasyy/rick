@@ -7,6 +7,9 @@
                 @method('PUT')
                 <div class="mb-6">
                     <p class="attribute">Limit Amount of Ongoing Tickets Per Student</p>
+                    @if ($message != null) 
+                        <p style="font-weight:bold; color:{{$color}}">{{ $message }}</p>
+                    @endif
                 </div>
                 <div class="mb-6">
                     <input name="ticketLimit" class="ticket-limit-input" type="number" value="{{$limit[0]->ticketLimit}}">
