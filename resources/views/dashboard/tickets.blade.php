@@ -27,9 +27,6 @@
           @else
             <td style="word-break: break-all;">Unavailable</td>
           @endif
-          <td>
-            <a href="/tickets/{{$ticket->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View</a>
-          </td>
         </tr>
     </tbody>
-  </table>
+</table>
