@@ -216,6 +216,15 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Forgot Password
+// Input Email
+Route::get('/forgotpassword/verify', [UserController::class, 'verifyFP']);
+// Send Email
+Route::put('/forgotpassword/send', [UserController::class, 'sendFP']);
+// Reset Password Form
+Route::get('/reset/password/{id}/{resetToken}', [UserController::class, 'resetPassword']);
+// Reset Password Form
+Route::put('/reset/password/{user}', [UserController::class, 'updatePassword']);
 
 // SETTINGS
 // Show Edit Ticket Limitation Form

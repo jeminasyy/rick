@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Categ;
 use App\Models\Usercateg;
+use App\Mail\ResetPassword;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\CreateYourAccount;
@@ -159,12 +160,6 @@ class UserController extends Controller
         return redirect('/login')->with('message', 'Please log in to continue');
     } 
 
-    // Change Password
-
-
-    // Forgot Password
-
-
     // Show Edit User Form
     public function edit(User $user){
         // dd($user->id);
@@ -271,5 +266,34 @@ class UserController extends Controller
     // Change Password (Security Settings)
     public function changePassword() {
         return view('admin.settings.security');
+    }
+
+    // Forgot Password --> Verify Email
+    public function verifyFP(){
+        return view('admin.forgotpass.email');
+    }
+
+    public function sendFP(Request $request) {
+        $code = Str::random(6);
+        $find = DB::table('users')->where('email', $request->email)->first();
+
+        if ($find) {
+            $user = User::find($find->id);
+            $formFields['resetToken'] = $code;
+            $user->update($formFields);
+            Mail::to($user->email)->send(new ResetPassword($user));
+        }
+    }
+
+    // Reset Password Form
+    public function resetPassword(User $user) {
+        return view('admin.forgotpass.reset', [
+            'user' => $user
+        ]);
+    }
+
+    // Update Password
+    public function updatePassword(User $user){
+
     }
 }
