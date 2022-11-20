@@ -279,6 +279,6 @@ div.userNav a.active {
     border: 1px solid rgba(155, 155, 155, 0.8);
   }
   
-  .dropdown a:hover {background-color: #ddd;}
+  .dropdown a:hover {background-color: #fbf6f6;}
   
   .show {display: block;}
