@@ -119,7 +119,7 @@
             @auth
             <div id="myDropdown" class="dropdown-content">
                 {{-- @unless(auth()->user()->notifications()->get() != null) --}}
-                @foreach(auth()->user()->notifications()->get() as $notification)
+                @foreach(auth()->user()->notifications()->latest()->get() as $notification)
                     @if ($notification->type == "New Ticket")
                         <div class="containterNotif">
                             <a href="/tickets/{{$notification->ticketId}}" style="font-weight: bold">New Ticket</a>
