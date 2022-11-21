@@ -117,12 +117,23 @@
 
         <main>
             <div id="myDropdown" class="dropdown-content">
-                <div class="containterNotif">
+                @unless(auth()->user()->notifications() != 0)
+                @foreach(auth()->user()->notifications() as $notification)
+                    <div class="containterNotif">
+                        <a href="#home">Home</a>
+                    </div>
+                @endforeach
+                @else
+                    <div class="containterNotif">
+                        <a>No Notifications</a>
+                    </div>
+                @endunless
+                {{-- <div class="containterNotif">
                     <a href="#home">Home</a>
                 </div>
                 <div class="containterNotif">
                     <a href="#home">Home</a>
-                </div>
+                </div> --}}
                 {{-- <a href="#about">About</a>
                 <a href="#contact">Contact</a> --}}
               </div>
