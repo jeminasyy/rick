@@ -118,7 +118,7 @@
         <main>
             @auth
             <div id="myDropdown" class="dropdown-content">
-                {{-- @unless(auth()->user()->notifications()->get() != null) --}}
+                {{-- @unless(auth()->user()->notifications()->latest()->get() != null) --}}
                 @foreach(auth()->user()->notifications()->latest()->get() as $notification)
                     @if ($notification->type == "New Ticket")
                         <div class="containterNotif">

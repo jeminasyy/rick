@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'lastName' => 'Doe',
             'email' => 'johnpdoe.246@gmail.com',
             'password' => $password,
-            'role' => 'Admin',
+            'role' => "Admin",
             // 'categ_id' => "|2|4|",
             'verified' => true,
             'email_verified_at' => now(),
