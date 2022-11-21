@@ -199,16 +199,16 @@ class TicketController extends Controller
             $formFields['assignee'] = $assignee->email;
             // $formFields['dateSubmitted'] = now();
 
-            $newTicket = Ticket::create($formFields);
+            $ticket = Ticket::create($formFields);
             $student->update($studentFields);
 
             $notifFields['user_id'] = $min_id;
             $notifFields['type'] = "New Ticket";
-            $notifFields['ticketId'] = $newTicket->id;
+            $notifFields['ticketId'] = $ticket->id;
             Notification::create($notifFields);
 
-            $userFields['newNotifs'] = $assignee->newNotifs + 1;
-            $assignee->update($userFields);
+            // $userFields['newNotifs'] = $assignee->newNotifs + 1;
+            // $assignee->update($userFields);
 
             return redirect('/new/submitted');
         }
@@ -234,6 +234,11 @@ class TicketController extends Controller
 
         $ticket = Ticket::create($formFields);
         $student->update($studentFields);
+
+        $notifFields['user_id'] = $min_id;
+        $notifFields['type'] = "New Ticket";
+        $notifFields['ticketId'] = $ticket->id;
+        Notification::create($notifFields);
 
         Mail::to($ticket->student->email)->send(new NewTicketSubmitted($ticket));
 

@@ -10,6 +10,7 @@ use App\Mail\VerifyNew;
 use App\Models\Setting;
 use App\Models\Student;
 use Illuminate\Support\Str;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Mail\VoidedReopenedTicket;
 use Illuminate\Support\Facades\DB;
@@ -142,6 +143,7 @@ class ReopenController extends Controller
     
                 $formFields['user_id'] = $min_id;
                 $ticketField['user_id'] = $min_id;
+                $notifFields['user_id'] = $min_id;
             } else {
                 $firstKey = array_key_first($users);
                 $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
@@ -156,6 +158,7 @@ class ReopenController extends Controller
                 }
                 $formFields['user_id'] = $min_id;
                 $ticketField['user_id'] = $min_id;
+                $notifFields['user_id'] = $min_id;
             }
         } else {
             if (count($ticket->reopens) != 0){
@@ -163,8 +166,10 @@ class ReopenController extends Controller
                 $reopen = DB::table('reopens')->where('ticket_id', $ticket->id)->latest()->first();
                 $reopenUser = $reopen->user_id;
                 $formFields['user_id'] = $reopenUser;
+                $notifFields['user_id'] = $reopenUser;
             }else {
                 $formFields['user_id'] = $ticket->user->id;
+                $notifFields['user_id'] = $ticket->user->id;
             }
         }
 
@@ -176,6 +181,10 @@ class ReopenController extends Controller
         $ticketField['status'] = "Reopened";
         $student->update($studentField);
         $ticket->update($ticketField);
+
+        $notifFields['type'] = "Reopen Ticket";
+        $notifFields['ticketId'] = $ticket->id;
+        Notification::create($notifFields);
 
         return view('email.reopen.submitted');
     }
