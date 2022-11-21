@@ -476,9 +476,11 @@ class TicketController extends Controller
                     }
                 }
             }
+            $user = User::find($formFields['user_id']);
+            $formFields['assignee'] = $user->email;
             $ticket->update($formFields);
 
-            $notifFields['type'] = "New Ticket";
+            $notifFields['type'] = "Transfer Ticket";
             $notifFields['ticketId'] = $ticket->id;
             Notification::create($notifFields);
             return redirect()->route('ticket', [$ticket]);
