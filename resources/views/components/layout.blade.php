@@ -120,9 +120,27 @@
             <div id="myDropdown" class="dropdown-content">
                 {{-- @unless(auth()->user()->notifications()->get() != null) --}}
                 @foreach(auth()->user()->notifications()->get() as $notification)
-                    <div class="containterNotif">
-                        <a href="#home">Home</a>
-                    </div>
+                    @if ($notification->type == "New Ticket")
+                        <div class="containterNotif">
+                            <a href="/tickets/{{$notification->ticketId}}" style="font-weight: bold">New Ticket</a>
+                            <a href="/tickets/{{$notification->ticketId}}">Ticket#{{$notification->ticketId}} has been assigned to you.</a>
+                        </div>
+                    @elseif ($notification->type == "New Reopen")
+                        <div class="containterNotif">
+                            <a href="/tickets/{{$notification->ticketId}}" style="font-weight: bold">New Reopen Ticket</a>
+                            <a href="/tickets/{{$notification->ticketId}}">Reopen#{{$notification->reopenId}} has been assigned to you.</a>
+                        </div>
+                    @elseif ($notification->type == "Transfer Ticket")
+                        <div class="containterNotif">
+                            <a href="/tickets/{{$notification->ticketId}}" style="font-weight: bold">Transferred Ticket</a>
+                            <a href="/tickets/{{$notification->ticketId}}">Ticket#{{$notification->ticketId}} has been transferred to you.</a>
+                        </div>
+                    @elseif ($notification->type == "Transfer Reopen")
+                        <div class="containterNotif">
+                            <a href="/tickets/{{$notification->ticketId}}" style="font-weight: bold">Transferred Reopen Ticket</a>
+                            <a href="/tickets/{{$notification->ticketId}}">Reopen#{{$notification->reopenId}} has been transferred to you.</a>
+                        </div>
+                    @endif
                 @endforeach
                 {{-- @else
                     <div class="containterNotif">
