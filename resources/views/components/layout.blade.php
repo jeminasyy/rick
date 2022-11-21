@@ -116,6 +116,7 @@
         </nav>
 
         <main>
+            @auth
             <div id="myDropdown" class="dropdown-content">
                 @unless(auth()->user()->notifications() != null)
                 @foreach(auth()->user()->notifications() as $notification)
