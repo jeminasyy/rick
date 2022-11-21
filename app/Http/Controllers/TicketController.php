@@ -186,13 +186,15 @@ class TicketController extends Controller
             $min_id = $admins[0]->id;
             // dd($min_id);
 
-            for($x=1; $x<count($users); $x++){
+            for($x=1; $x<count($admins); $x++){
                 $a = DB::table('tickets')->where('user_id', $admins[$x]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
                 if($min > $a) {
                     $min = $a;
                     $min_id = $admins[$x]->id;
+                    // dd($min);
                 }
             }
+            // dd($min);
 
             $formFields['user_id'] = $min_id;
             $formFields['status'] = 'New';
@@ -211,35 +213,37 @@ class TicketController extends Controller
             // $userFields['newNotifs'] = $assignee->newNotifs + 1;
             // $assignee->update($userFields);
 
-            return redirect('/new/submitted');
-        }
-        
-        $firstKey = array_key_first($users);
-        $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
-        $min_id = $users[$firstKey]->user_id;
+            // return redirect('/new/submitted');
+        } else {
+            $firstKey = array_key_first($users);
+            $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
+            $min_id = $users[$firstKey]->user_id;
 
-        // dd($firstKey+1);
-        
-        for($x=$firstKey+1; $x<count($users); $x++){
-            $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
-            if($min > $a) {
-                $min = $a;
-                $min_id = $users[$x]->id;
+            // dd($firstKey+1);
+            
+            for($x=$firstKey+1; $x<count($users); $x++){
+                $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
+                if($min > $a) {
+                    $min = $a;
+                    $min_id = $users[$x]->id;
+                }
             }
+
+            $formFields['user_id'] = $min_id;
+            // $formFields['dateSubmitted'] = now();
+            $assignee = User::find($min_id);
+            $formFields['assignee'] = $assignee->email;
+
+            $ticket = Ticket::create($formFields);
+            $student->update($studentFields);
+
+            $notifFields['user_id'] = $min_id;
+            $notifFields['type'] = "New Ticket";
+            $notifFields['ticketId'] = $ticket->id;
+            Notification::create($notifFields);
         }
 
-        $formFields['user_id'] = $min_id;
-        // $formFields['dateSubmitted'] = now();
-        $assignee = User::find($min_id);
-        $formFields['assignee'] = $assignee->email;
-
-        $ticket = Ticket::create($formFields);
-        $student->update($studentFields);
-
-        $notifFields['user_id'] = $min_id;
-        $notifFields['type'] = "New Ticket";
-        $notifFields['ticketId'] = $ticket->id;
-        Notification::create($notifFields);
+        // dd($ticket->user->email);
 
         Mail::to($ticket->student->email)->send(new NewTicketSubmitted($ticket));
 

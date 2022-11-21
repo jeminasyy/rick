@@ -69,7 +69,8 @@
 
                     <fieldset>
                         <legend>User Access:</legend>
-
+                        <p>Note: Admins will have access to all categories</p>
+                        <br>
                         @unless(count($categs) == 0)
                             <h2 class="text-2xl font-bold uppercase mb-1"">
                                 Requests
