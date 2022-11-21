@@ -124,11 +124,11 @@
                         <a href="#home">Home</a>
                     </div>
                 @endforeach
-                @else
+                {{-- @else
                     <div class="containterNotif">
                         <a>No Notifications</a>
                     </div>
-                @endunless
+                @endunless --}}
                 {{-- <div class="containterNotif">
                     <a href="#home">Home</a>
                 </div>
