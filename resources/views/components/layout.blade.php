@@ -80,7 +80,7 @@
                     <form class="inline" method="POST" action="/notifications/{{auth()->user()->id}}">
                         @csrf
                         @method('PUT')
-                        <button onclick="myFunction()" class="dropbtn">
+                        <button type="submit" onclick="myFunction()" class="dropbtn">
                             <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
                         </button>
                     </form>
