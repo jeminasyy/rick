@@ -331,7 +331,7 @@ class ReopenController extends Controller
         if ($request->user_id) {
             $formFields['user_id'] = $request->user_id;
             $reopenFields['user_id'] = $request->user_id;
-            $notifFields['user_id'] = $request->user->id;
+            $notifFields['user_id'] = $request->user_id;
         } else {
             if ($ticket->status != "Ongoing" && $ticket->status != "Resolved" && $ticket->status != "Voided") {
                 // $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
