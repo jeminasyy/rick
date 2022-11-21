@@ -282,7 +282,7 @@ div.userNav a.active {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    border: 1px solid rgba(155, 155, 155, 0.8);
+    /* border: 1px solid rgba(155, 155, 155, 0.8); */
   }
   
   .dropdown a:hover {background-color: #fbf6f6;}
