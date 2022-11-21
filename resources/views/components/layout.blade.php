@@ -138,7 +138,7 @@
                 {{-- <a href="#about">About</a>
                 <a href="#contact">Contact</a> --}}
               </div>
-              {{-- @endif --}}
+              @endif
             {{-- VIEW OUTPUT --}}
                 {{$slot}}
         </main>
