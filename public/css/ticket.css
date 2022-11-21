@@ -268,8 +268,10 @@ div.userNav a.active {
     min-width: 320px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 100;
+    /* z-index: 100; */
     right: 0;
+    max-height: 20%;
+    overflow-y: visible;
     /* top:0; */
   }
 
