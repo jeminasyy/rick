@@ -28,20 +28,20 @@ class DatabaseSeeder extends Seeder
 
         $password = bcrypt('123456');
 
-        User::factory()->create([
-            'firstName' => 'Jane',
-            'lastName' => 'Doe',
-            'email' => 'dj@meow.com',
-            'password' => $password,
-            'role' => 'FDO',
-            // 'categ_id' => "|1|12|",
-            'verified' => false,
-        ]);
+        // User::factory()->create([
+        //     'firstName' => 'Jane',
+        //     'lastName' => 'Doe',
+        //     'email' => 'dj@meow.com',
+        //     'password' => $password,
+        //     'role' => 'FDO',
+        //     // 'categ_id' => "|1|12|",
+        //     'verified' => false,
+        // ]);
 
         User::factory()->create([
             'firstName' => 'John',
             'lastName' => 'Doe',
-            'email' => 'john@meow.com',
+            'email' => 'johnpdoe.246@gmail.com',
             'password' => $password,
             'role' => 'Admin',
             // 'categ_id' => "|2|4|",

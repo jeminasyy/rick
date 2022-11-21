@@ -5,7 +5,7 @@
         <a href="/tickets" class="active">All Tickets</a>
       </div>
 
-      <a href="/generate/tickets">Generate Report</a>
+      {{-- <a href="/generate/tickets">Generate Report</a> --}}
       @include('partials._search-ticket')
 
       <div id="sidenav2">
