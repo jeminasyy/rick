@@ -426,6 +426,7 @@ class TicketController extends Controller
     
             if ($request->user_id) {
                 $formFields['user_id'] = $request->user_id;
+                $notifFields['user_id'] = $request->user_id;
             } else {
                 if ($ticket->status != "Resolved" && $ticket->status != "Voided") {
                     // $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
@@ -457,6 +458,7 @@ class TicketController extends Controller
                             }
                         }
                         $formFields['user_id'] = $min_id;
+                        $notifFields['user_id'] = $min_id;
                     } else {
                         $firstKey = array_key_first($users);
                         $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
@@ -470,10 +472,15 @@ class TicketController extends Controller
                             }
                         }
                         $formFields['user_id'] = $min_id;
+                        $notifFields['user_id'] = $min_id;
                     }
                 }
             }
             $ticket->update($formFields);
+
+            $notifFields['type'] = "New Ticket";
+            $notifFields['ticketId'] = $ticket->id;
+            Notification::create($notifFields);
             return redirect()->route('ticket', [$ticket]);
         }
         abort(403, 'Unauthorized Action');

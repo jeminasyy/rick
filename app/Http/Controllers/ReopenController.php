@@ -177,13 +177,14 @@ class ReopenController extends Controller
 
         $studentField['ongoingTickets'] = $student->ongoingTickets + 1;
 
-        Reopen::create($formFields);
+        $reopen = Reopen::create($formFields);
         $ticketField['status'] = "Reopened";
         $student->update($studentField);
         $ticket->update($ticketField);
 
-        $notifFields['type'] = "Reopen Ticket";
+        $notifFields['type'] = "New Reopen";
         $notifFields['ticketId'] = $ticket->id;
+        $notifFields['reopenId'] = $reopen->id;
         Notification::create($notifFields);
 
         return view('email.reopen.submitted');
@@ -330,8 +331,9 @@ class ReopenController extends Controller
         if ($request->user_id) {
             $formFields['user_id'] = $request->user_id;
             $reopenFields['user_id'] = $request->user_id;
+            $notifFields['user_id'] = $request->user->id;
         } else {
-            if ($ticket->status != "Resolved" && $ticket->status != "Voided") {
+            if ($ticket->status != "Ongoing" && $ticket->status != "Resolved" && $ticket->status != "Voided") {
                 // $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
                 $users = DB::table('usercategs')->where('categ_id', $request->categ_id)->get()->toArray();
                 $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
@@ -361,6 +363,7 @@ class ReopenController extends Controller
                     }
                     $formFields['user_id'] = $min_id;
                     $reopenFields['user_id'] = $min_id;
+                    $notifFields['user_id'] = $min_id;
                 } else {
                     $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
                     $min_id = $users[0]->id;
@@ -374,6 +377,7 @@ class ReopenController extends Controller
                     }
                     $formFields['user_id'] = $min_id;
                     $reopenFields['user_id'] = $min_id;
+                    $notifFields['user_id'] = $min_id;
                 }
             }
         }
@@ -382,6 +386,11 @@ class ReopenController extends Controller
         // $formFields['user_id'] = $assignee->email;
         $ticket->update($formFields);
         $reopen->update($reopenFields);
+
+        $notifFields['type'] = "Transfer Reopen";
+        $notifFields['ticketId'] = $ticket->id;
+        $notifFields['reopenId'] = $reopen->id;
+        Notification::create($notifFields);
         return redirect()->route('ticket', [$ticket]);
     }
 }
