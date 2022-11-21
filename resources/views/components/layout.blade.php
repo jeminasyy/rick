@@ -118,17 +118,17 @@
         <main>
             @auth
             <div id="myDropdown" class="dropdown-content">
-                @unless(auth()->user()->notifications()->get() != null)
+                {{-- @unless(auth()->user()->notifications()->get() != null) --}}
                 @foreach(auth()->user()->notifications()->get() as $notification)
                     <div class="containterNotif">
                         <a href="#home">Home</a>
                     </div>
                 @endforeach
-                @else
+                {{-- @else
                     <div class="containterNotif">
                         <a>No Notifications</a>
                     </div>
-                @endunless
+                @endunless --}}
                 {{-- <div class="containterNotif">
                     <a href="#home">Home</a>
                 </div>
