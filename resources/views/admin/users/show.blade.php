@@ -55,6 +55,7 @@
                 <form method="POST" action="/users/{{$user->id}}">
                     @csrf
                     @method('DELETE')
+                    @if(auth()->user()->role == "Admin" && auth()->user()->id != $user->id)
                     <button type="submit" class="deleteBtn" style="background-color: #ec746b; padding: 4px 6px 3px 5px; margin-left: 5px"><i class='bx-fw bx bxs-archive-in bx-sm'></i>Archive</button>
                     {{-- <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button> --}}
                 </form>
