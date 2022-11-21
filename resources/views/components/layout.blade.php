@@ -119,7 +119,7 @@
             @auth
             <div id="myDropdown" class="dropdown-content">
                 {{-- @unless(auth()->user()->notifications()) --}}
-                @foreach(auth()->user()->notifications() as $notification)
+                @foreach(auth()->user()->notifications()->id as $id)
                     <div class="containterNotif">
                         <a href="#home">Home</a>
                     </div>
