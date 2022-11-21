@@ -118,7 +118,7 @@
         <main>
             @auth
             <div id="myDropdown" class="dropdown-content">
-                @unless(auth()->user()->notifications() != null)
+                @unless(auth()->user()->notifications())
                 @foreach(auth()->user()->notifications() as $notification)
                     <div class="containterNotif">
                         <a href="#home">Home</a>
