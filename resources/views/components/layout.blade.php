@@ -71,24 +71,24 @@
                     <span class="font-bold-uppercase">
                         Welcome {{auth()->user()->firstName}}
                     </span>
-                    @if (auth()->user()->newNotifs > 0)
+                    {{-- @if (auth()->user()->newNotifs > 0) --}}
                     {{-- <a href="/notifications/{{auth()->user()->id}}">
                         <button onclick="myFunction()" class="dropbtn">
                             <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
                         </button>
                     </a> --}}
-                    <form class="inline" method="POST" action="/notifications/{{auth()->user()->id}}">
+                    {{-- <form class="inline" method="POST" action="/notifications/{{auth()->user()->id}}">
                         @csrf
                         @method('PUT')
                         <button type="submit" onclick="myFunction()" class="dropbtn">
                             <i class='bx-fw bx bxs-bell bx-md bx-tada'></i>
                         </button>
-                    </form>
-                    @else
+                    </form> --}}
+                    {{-- @else --}}
                         <button onclick="myFunction()" class="dropbtn">
                             <i class='bx-fw bx bxs-bell bx-md'></i>
                         </button>
-                    @endif
+                    {{-- @endif --}}
                     
                     {{-- <div class="dropdown">
                         <button onclick="myFunction()" class="dropbtn">Dropdown</button>
