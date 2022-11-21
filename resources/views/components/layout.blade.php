@@ -140,6 +140,7 @@
               </div>
             {{-- VIEW OUTPUT --}}
                 {{$slot}}
+            @endif
         </main>
 
         <script>
