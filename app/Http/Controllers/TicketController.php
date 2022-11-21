@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\User;
 use App\Models\Categ;
 use App\Models\Reopen;
@@ -13,12 +14,12 @@ use App\Mail\VoidedTicket;
 use App\Mail\OngoingTicket;
 use Illuminate\Support\Str;
 use App\Mail\ResolvedTicket;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Mail\NewTicketSubmitted;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use PDF;
 // use Barryvdh\DomPDF\PDF;
 
 // -------------------------------------------
@@ -198,8 +199,17 @@ class TicketController extends Controller
             $formFields['assignee'] = $assignee->email;
             // $formFields['dateSubmitted'] = now();
 
-            Ticket::create($formFields);
+            $newTicket = Ticket::create($formFields);
             $student->update($studentFields);
+
+            $notifFields['user_id'] = $min_id;
+            $notifFields['type'] = "New Ticket";
+            $notifFields['ticketId'] = $newTicket->id;
+            Notification::create($notifFields);
+
+            $userFields['newNotifs'] = $assignee->newNotifs + 1;
+            $assignee->update($userFields);
+
             return redirect('/new/submitted');
         }
         
