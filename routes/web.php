@@ -235,4 +235,4 @@ Route::get('/security', [UserController::class, 'changePassword'])->middleware('
 Route::put('/security/{user}', [UserController::class, 'updateChange'])->middleware('auth');
 
 // REMOVE NEW NOTIFICATIONS
-Route::put('/notifications/{user}', [UserController::class, 'updateChange'])->middleware('auth');
+Route::get('/notifications/{user}', [UserController::class, 'updateChange'])->middleware('auth');
