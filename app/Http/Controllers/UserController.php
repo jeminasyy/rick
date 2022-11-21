@@ -358,5 +358,6 @@ class UserController extends Controller
     public function removeNew(User $user){
         $formFields['newNotifs'] = 0;
         $user->update($formFields);
+        dd($user->newNotifs);
     }
 }
