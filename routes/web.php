@@ -233,3 +233,6 @@ Route::put('/ticketlimit/update', [SettingController::class, 'updatelimit'])->mi
 Route::get('/security', [UserController::class, 'changePassword'])->middleware('auth');
 // Update Password Change
 Route::put('/security/{user}', [UserController::class, 'updateChange'])->middleware('auth');
+
+// REMOVE NEW NOTIFICATIONS
+Route::put('/notifications/{user}', [UserController::class, 'updateChange'])->middleware('auth');

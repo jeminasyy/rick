@@ -353,4 +353,10 @@ class UserController extends Controller
             ]);
         }
     }
+
+    // Remove new notifications
+    public function removeNew(User $user){
+        $formFields['newNotifs'] = 0;
+        $user->update($formFields);
+    }
 }
