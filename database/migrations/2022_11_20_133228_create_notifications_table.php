@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('ticketId');
             $table->string('reopenId')->nullable();
+            $table->boolean('clicked')->default(false);
             $table->timestamps();
         });
     }
