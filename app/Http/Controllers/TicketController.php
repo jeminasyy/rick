@@ -210,8 +210,8 @@ class TicketController extends Controller
             $notifFields['ticketId'] = $ticket->id;
             Notification::create($notifFields);
 
-            // $userFields['newNotifs'] = $assignee->newNotifs + 1;
-            // $assignee->update($userFields);
+            $userFields['newNotifs'] = $assignee->newNotifs + 1;
+            $assignee->update($userFields);
 
             // return redirect('/new/submitted');
         } else {
