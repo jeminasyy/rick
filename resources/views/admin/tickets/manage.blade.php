@@ -35,7 +35,11 @@
                 </td>
                 <td>{{$ticket->description}}</td>
                 <td>{{$ticket->created_at}}</td>
-                <td>{{$ticket->status}}</td>
+                @if ($ticket->status == "Pending")
+                  <td>Ongoing</td>
+                @else
+                  <td>{{$ticket->status}}</td>
+                @endif
                 <td style="word-break: break-all;">{{$ticket->user->email}}</td>
                 <td>
                   <a href="/tickets/{{$ticket->id}}"><i class='bx-fw bx bxs-show bx-sm'></i>View</a>

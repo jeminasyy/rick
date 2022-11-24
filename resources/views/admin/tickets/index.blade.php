@@ -37,7 +37,11 @@
                 </td>
                 <td>{{$ticket->description}}</td>
                 <td>{{$ticket->created_at}}</td>
-                <td>{{$ticket->status}}</td>
+                @if ($ticket->status == "Pending")
+                  <td>Ongoing</td>
+                @else
+                  <td>{{$ticket->status}}</td>
+                @endif
                 @if ($ticket->user != null)
                   <td style="word-break: break-all;">{{$ticket->user->email}}</td>
                 @else

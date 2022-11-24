@@ -73,7 +73,7 @@
                 
                 @if ($ticket->status == "Pending")
                     <p class="attribute">Status</p>
-                    <p>Pending - Waiting for Student's Feedback</p>
+                    <p>Ongoing - Waiting for Student's Feedback</p>
                 @else
                     <p class="attribute">Status</p>
                     <p>{{$ticket->status}}</p>
