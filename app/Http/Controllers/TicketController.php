@@ -481,7 +481,10 @@ class TicketController extends Controller
                     }
                 }
             }
-            $user = User::find($formFields['user_id']);
+
+            if ($request->user_id != null) {
+                $user = User::find($formFields['user_id']);
+            }
             $formFields['assignee'] = $user->email;
             $ticket->update($formFields);
 
