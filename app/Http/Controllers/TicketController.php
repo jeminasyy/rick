@@ -422,7 +422,7 @@ class TicketController extends Controller
     public function setTransfer(Request $request, Ticket $ticket) {
         if ($ticket->user_id == auth()->id()) {
             if (!$request->categ_id && !$request->user_id){
-                return back()->withErrors(['categ_id' => 'Form is empty'])->onlyInput('categ_id');
+                return back()->withErrors(['categ_id' => 'Form is empty!'])->onlyInput('categ_id');
             }
     
             if ($request->categ_id) {
@@ -433,7 +433,7 @@ class TicketController extends Controller
                 $formFields['user_id'] = $request->user_id;
                 $notifFields['user_id'] = $request->user_id;
             } else {
-                if ($ticket->status != "Resolved" && $ticket->status != "Voided") {
+                if ($ticket->status != "Ongoing" && $ticket->status != "Pending" && $ticket->status != "Resolved" && $ticket->status != "Voided") {
                     // $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
 
                     $users = DB::table('usercategs')->where('categ_id', $request->categ_id)->get()->toArray();
@@ -482,15 +482,16 @@ class TicketController extends Controller
                 }
             }
 
-            if ($request->user_id != null) {
+            if ($formFields['user_id'] != null) {
                 $user = User::find($formFields['user_id']);
-            }
-            $formFields['assignee'] = $user->email;
-            $ticket->update($formFields);
+                $formFields['assignee'] = $user->email;
+                $ticket->update($formFields);
 
-            $notifFields['type'] = "Transfer Ticket";
-            $notifFields['ticketId'] = $ticket->id;
-            Notification::create($notifFields);
+                $notifFields['type'] = "Transfer Ticket";
+                $notifFields['ticketId'] = $ticket->id;
+                Notification::create($notifFields);
+            }
+            
             return redirect()->route('ticket', [$ticket]);
         }
         abort(403, 'Unauthorized Action');
