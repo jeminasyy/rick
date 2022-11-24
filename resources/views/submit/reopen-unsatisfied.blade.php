@@ -1,9 +1,9 @@
 <x-layout>
     <div class="ticket-div">
-        <h1 style="color:black; font-family: 'Cabin', sans-serif; font-size: 29;text-align: center; margin-top: 13%; position: relative;">
+        <h1 style="color:black; font-family: 'Cabin', sans-serif; font-size: 220%;text-align: center; margin-top: 13%; position: relative;">
             You answered No.
         </h1>
-        <h1 style="color:black; font-family: 'Cabin', sans-serif; font-size: 29;text-align: center;  position: relative;">
+        <h1 style="color:black; font-family: 'Cabin', sans-serif; font-size: 220%;text-align: center;  position: relative;">
             Do you want to reopen this ticket?
         </h1>
         {{-- <button

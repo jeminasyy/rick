@@ -1,7 +1,7 @@
 <x-layout>
     <div id="submit-ticket">
         <header>
-            <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
+            <h2 class="text-3xl font-bold uppercase mb-1 mb-2 mt-10 ml-6">
                 Please complete your student information
             </h2>
         </header>
