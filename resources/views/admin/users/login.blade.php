@@ -32,9 +32,9 @@
 
 
 <x-layout>
-    <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
+    <div style="width: 30%; margin: 5% 35%; display:inline-block; vertical-align: top;">
         <header>
-            <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
+            <h2 class="text-4xl font-bold uppercase mb-1 mb-8" style="text-align: center;">
                 Log into your account
             </h2>
         </header>
@@ -44,7 +44,8 @@
             <div class="mb-6">
                 <label for="email">Email</label>
                 <input 
-                    type="text" 
+                    type="text"
+                    style="align-content: center;" 
                     class="form-control" 
                     name="email" 
                     value="{{old('email')}}"
@@ -58,6 +59,7 @@
                 <label for="password">Password</label>
                 <input 
                     type="password" 
+                    style="align-content: center;"
                     class="form-control" 
                     name="password" 
                     value="{{old('password')}}"
@@ -67,20 +69,20 @@
                 @enderror
             </div>
             <div class="mb-6">
-                <a href="/forgotpassword/verify">Forgot Password</a>
+                <a href="/forgotpassword/verify">Forgot Password?</a>
             </div>
 
              <div class="mb-6">
                 <button type="submit" 
                     class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
-                    style="margin-top: 4%; margin-left:2%; background-color: #EDC304;
+                    style="margin-top: 3%; margin-left:0.8%; background-color: #EDC304;
                     border: 1px solid#EDC304;
-                    border-radius: 5px;"
+                    border-radius: 10px; width:100%"
                 >
                     Sign In
                 </button>
 
-                <a href="/users" class="text-black ml-4"> Back </a>
+                {{-- <a href="/users" class="text-black ml-4"> Back </a> --}}
             </div>
         </form>
     </div>
