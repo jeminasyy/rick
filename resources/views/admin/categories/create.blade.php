@@ -1,7 +1,7 @@
 <x-layout>
     <x-sidenav>
         @include('partials._settings')
-        <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
+        <div style="width: 40%; margin: 1% 5%; display:inline-block; vertical-align: top;">
             <header>
                 <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
                     Create New Category
@@ -43,12 +43,12 @@
 
                 <div class="mb-6">
                     <label for="lastName">Description</label>
-                    <input 
-                        type="text" 
+                    <textarea 
+                        row="20"
                         class="form-control" 
                         name="description" 
                         value="{{old('description')}}"
-                    />
+                    ></textarea>
                     @error('description')
                     <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror

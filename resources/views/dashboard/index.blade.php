@@ -11,6 +11,20 @@
                         Generate Report
                     </button>
                 </a>
+
+                {{-- <button style="padding: 5px 10px; background-color: #2980B9;
+                    border: 1px solid#2980B9;
+                    border-radius: 5px;
+                    color: white;
+                    width: 162px;
+                    float: right; top:0">
+                    Generate Report&nbsp;&nbsp;
+                    <i class='bx-fw bx bxs-down-arrow bx-xs'></i>
+                </button>
+
+                <div class="">
+                    <a href="/dashboard/export">.XSLX</a>
+                </div> --}}
             @endif
             <p style="font-size: 22px; font-weight:bold">Dashboard</p> 
         </div>
@@ -145,10 +159,17 @@
         <br>
         <br>
     </x-sidenav>
-    @{{{!! $chart1->renderChartJsLibrary() !!}
+    @{{
+    
+    {!! $chart1->renderChartJsLibrary() !!}
     {!! $chart1->renderJs() !!}
     {!! $chart2->renderJs() !!}
     {!! $chart3->renderJs() !!}
     {!! $chart4->renderJs() !!}
-    {!! $chart5->renderJs() !!}}}
+    {!! $chart5->renderJs() !!}
+    
+    
+    
+    
+    }}
 </x-layout>

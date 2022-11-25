@@ -2,7 +2,7 @@
     <x-sidenav>
         @include('partials._settings')
 
-        <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
+        <div style="width: 30%; margin: 1% 5%; display:inline-block; vertical-align: top;">
             
             <header>
                 <h2 class="text-2xl font-bold uppercase mb-1 mb-8">

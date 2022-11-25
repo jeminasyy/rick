@@ -85,9 +85,25 @@
                         </button>
                     </form> --}}
                     {{-- @else --}}
+                    @if (auth()->user()->newNotifs > 0)
+                        <button onclick="myFunction()" class="dropbtn">
+                            <i class='bx-fw bx bxs-bell bx-md'></i>
+                            <span style="position: absolute;
+                                top: -7px;
+                                right: -6px;
+                                padding: 2px 7px;
+                                border-radius: 50%;
+                                background-color: red;
+                                color: white;
+                                font-size:12px;">
+                                {{auth()->user()->newNotifs}}
+                            </span>
+                        </button>
+                    @else 
                         <button onclick="myFunction()" class="dropbtn">
                             <i class='bx-fw bx bxs-bell bx-md'></i>
                         </button>
+                    @endif
                     {{-- @endif --}}
                     
                     {{-- <div class="dropdown">
@@ -118,14 +134,30 @@
         <main>
             @auth
             <div id="myDropdown" class="dropdown-content">
-                {{-- @unless(auth()->user()->notifications()->latest()->get() != null) --}}
+                @if(auth()->user()->notifications()->count() > 0)
                 @foreach(auth()->user()->notifications()->latest()->get() as $notification)
                     @if ($notification->type == "New Ticket")
                         <div class="containterNotif">
-                            <a href="/tickets/{{$notification->ticketId}}" style="font-weight: bold">New Ticket</a>
-                            <a href="/tickets/{{$notification->ticketId}}">Ticket#{{$notification->ticketId}} has been assigned to you.</a>
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">New Ticket</a>
+                            <a href="/notifications/{{$notification->id}}">Ticket#{{$notification->ticketId}} has been assigned to you.</a>
                         </div>
                     @elseif ($notification->type == "New Reopen")
+                        <div class="containterNotif">
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">New Reopen Ticket</a>
+                            <a href="/notifications/{{$notification->id}}">Reopen#{{$notification->reopenId}} has been assigned to you.</a>
+                        </div>
+                    @elseif ($notification->type == "Transfer Ticket")
+                        <div class="containterNotif">
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">Transferred Ticket</a>
+                            <a href="/notifications/{{$notification->id}}">Ticket#{{$notification->ticketId}} has been transferred to you.</a>
+                        </div>
+                    @elseif ($notification->type == "Transfer Reopen")
+                        <div class="containterNotif">
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">Transferred Reopen Ticket</a>
+                            <a href="/notifications/{{$notification->id}}">Reopen#{{$notification->reopenId}} has been transferred to you.</a>
+                        </div>
+                    @endif
+                    {{-- @elseif ($notification->type == "New Reopen")
                         <div class="containterNotif">
                             <a href="/tickets/{{$notification->ticketId}}" style="font-weight: bold">New Reopen Ticket</a>
                             <a href="/tickets/{{$notification->ticketId}}">Reopen#{{$notification->reopenId}} has been assigned to you.</a>
@@ -140,13 +172,13 @@
                             <a href="/tickets/{{$notification->ticketId}}" style="font-weight: bold">Transferred Reopen Ticket</a>
                             <a href="/tickets/{{$notification->ticketId}}">Reopen#{{$notification->reopenId}} has been transferred to you.</a>
                         </div>
-                    @endif
+                    @endif --}}
                 @endforeach
-                {{-- @else
+                @else
                     <div class="containterNotif">
                         <a>No Notifications</a>
                     </div>
-                @endunless --}}
+                @endunless
                 {{-- <div class="containterNotif">
                     <a href="#home">Home</a>
                 </div>
@@ -155,7 +187,7 @@
                 </div> --}}
                 {{-- <a href="#about">About</a>
                 <a href="#contact">Contact</a> --}}
-              </div>
+            </div>
               @endif
             {{-- VIEW OUTPUT --}}
                 {{$slot}}

@@ -1,7 +1,7 @@
 <x-layout>
     <x-sidenav>
         @include('partials._settings')
-        <div style="width: 50%; margin: 1% 5%; display:inline-block; vertical-align: top;">
+        <div style="width: 30%; margin: 1% 5%; display:inline-block; vertical-align: top;">
             <header>
                 <h2 class="text-2xl font-bold uppercase mb-1 mb-8">
                     Create New User
@@ -130,7 +130,7 @@
                     <button 
                         type="submit" 
                         class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
-                        style="margin-top: 4%; margin-left:2%; background-color: #EDC304;
+                        style="margin-top: 4%; background-color: #EDC304;
                         border: 1px solid#EDC304;
                         border-radius: 5px;"
                     >

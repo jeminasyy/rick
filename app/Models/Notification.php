@@ -13,7 +13,8 @@ class Notification extends Model
         'type',
         'user_id',
         'ticketId',
-        'reopenId'
+        'reopenId',
+        'clicked'
     ];
 
     // Relationship to User

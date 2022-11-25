@@ -363,10 +363,12 @@ margin-bottom: 30px;
     position: absolute;
     width: 320px;
     height: 55px;
-    left:39.2%;
-    right: 38.56%;
-    top: 50%;
-    bottom: 52.15%;
+    margin-left: 40%;
+    margin-top: 35px;
+    /* left:39.2%;
+    right: 38.56%; 40
+    /* top: 50%; */
+    /* bottom: 52.15%; */
     background: #ffffff;
     border: 3px solid#F8CA0A;
     border-radius: 5px;

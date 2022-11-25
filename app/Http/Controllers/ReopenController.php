@@ -144,6 +144,15 @@ class ReopenController extends Controller
                 $formFields['user_id'] = $min_id;
                 $ticketField['user_id'] = $min_id;
                 $notifFields['user_id'] = $min_id;
+
+                $notifFields['type'] = "New Reopen";
+                $notifFields['ticketId'] = $ticket->id;
+                $notifFields['reopenId'] = $reopen->id;
+                Notification::create($notifFields);
+                
+                $assignee = User::find($min_id);
+                $userFields['newNotifs'] = $assignee->newNotifs + 1;
+                $assignee->update($userFields);
             } else {
                 $firstKey = array_key_first($users);
                 $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
@@ -159,6 +168,15 @@ class ReopenController extends Controller
                 $formFields['user_id'] = $min_id;
                 $ticketField['user_id'] = $min_id;
                 $notifFields['user_id'] = $min_id;
+
+                $notifFields['type'] = "New Reopen";
+                $notifFields['ticketId'] = $ticket->id;
+                $notifFields['reopenId'] = $reopen->id;
+                Notification::create($notifFields);
+                
+                $assignee = User::find($min_id);
+                $userFields['newNotifs'] = $assignee->newNotifs + 1;
+                $assignee->update($userFields);
             }
         } else {
             if (count($ticket->reopens) != 0){
@@ -167,10 +185,20 @@ class ReopenController extends Controller
                 $reopenUser = $reopen->user_id;
                 $formFields['user_id'] = $reopenUser;
                 $notifFields['user_id'] = $reopenUser;
+                $assignee = User::find($reopenUser);
             }else {
                 $formFields['user_id'] = $ticket->user->id;
                 $notifFields['user_id'] = $ticket->user->id;
+                $assignee = User::find($ticket->user->id);
             }
+
+            $notifFields['type'] = "New Reopen";
+            $notifFields['ticketId'] = $ticket->id;
+            $notifFields['reopenId'] = $reopen->id;
+            Notification::create($notifFields);
+        
+            $userFields['newNotifs'] = $assignee->newNotifs + 1;
+            $assignee->update($userFields);
         }
 
         $formFields['ticket_id'] = $ticket->id;
@@ -182,10 +210,7 @@ class ReopenController extends Controller
         $student->update($studentField);
         $ticket->update($ticketField);
 
-        $notifFields['type'] = "New Reopen";
-        $notifFields['ticketId'] = $ticket->id;
-        $notifFields['reopenId'] = $reopen->id;
-        Notification::create($notifFields);
+        
 
         return view('email.reopen.submitted');
     }
@@ -332,65 +357,100 @@ class ReopenController extends Controller
             $formFields['user_id'] = $request->user_id;
             $reopenFields['user_id'] = $request->user_id;
             $notifFields['user_id'] = $request->user_id;
-        } else {
-            if ($ticket->status != "Ongoing" && $ticket->status != "Resolved" && $ticket->status != "Voided") {
-                // $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
-                $users = DB::table('usercategs')->where('categ_id', $request->categ_id)->get()->toArray();
-                $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
-                $verifiedUsers = array();
-                for ($x=0; $x < count($verified); $x++) {
-                    array_push($verifiedUsers, $verified[$x]->id);
-                }
 
-                for ($x=0; $x < count($users); $x++) {
-                    if (!(in_array($users[$x]->user_id, $verifiedUsers))){
-                        unset($users[$x]);
-                    }
-                }
+            $notifFields['type'] = "Transfer Reopen";
+            $notifFields['ticketId'] = $ticket->id;
+            $notifFields['reopenId'] = $reopen->id;
+            Notification::create($notifFields);
 
-                if (count($users) == 0) {
-                    $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
+            $assignee = User::find($request->user_id);
+            $userFields['newNotifs'] = $assignee->newNotifs + 1;
+            $assignee->update($userFields);
+            $reopen->update($reopenFields);
+        } 
+        // else {
+        //     if ($ticket->status != "Ongoing" && $ticket->status != "Pending" && $ticket->status != "Resolved" && $ticket->status != "Voided") {
+        //         // $users = DB::table('users')->where('verified', true)->where('categ_id', 'like', '%' . $request->categ_id . '%')->get()->toArray();
+        //         $users = DB::table('usercategs')->where('categ_id', $request->categ_id)->get()->toArray();
+        //         $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
+        //         $verifiedUsers = array();
+        //         for ($x=0; $x < count($verified); $x++) {
+        //             array_push($verifiedUsers, $verified[$x]->id);
+        //         }
+
+        //         for ($x=0; $x < count($users); $x++) {
+        //             if (!(in_array($users[$x]->user_id, $verifiedUsers))){
+        //                 unset($users[$x]);
+        //             }
+        //         }
+
+        //         if (count($users) == 0) {
+        //             $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
     
-                    $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->count();
-                    $min_id = $admins[0]->id;
+        //             $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->count();
+        //             $min_id = $admins[0]->id;
     
-                    for($x=1; $x<count($users); $x++){
-                        $a = DB::table('tickets')->where('user_id', $admins[$x]->id)->whereNot('status', 'Resolved')->count();
-                        if($min > $a) {
-                            $min = $a;
-                            $min_id = $admins[$x]->id;
-                        }
-                    }
-                    $formFields['user_id'] = $min_id;
-                    $reopenFields['user_id'] = $min_id;
-                    $notifFields['user_id'] = $min_id;
-                } else {
-                    $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
-                    $min_id = $users[0]->id;
+        //             for($x=1; $x<count($users); $x++){
+        //                 $a = DB::table('tickets')->where('user_id', $admins[$x]->id)->whereNot('status', 'Resolved')->count();
+        //                 if($min > $a) {
+        //                     $min = $a;
+        //                     $min_id = $admins[$x]->id;
+        //                 }
+        //             }
+        //             $formFields['user_id'] = $min_id;
+        //             $reopenFields['user_id'] = $min_id;
+        //             $notifFields['user_id'] = $min_id;
+
+        //             $notifFields['type'] = "Transfer Reopen";
+        //             $notifFields['ticketId'] = $ticket->id;
+        //             $notifFields['reopenId'] = $reopen->id;
+        //             Notification::create($notifFields);
+
+        //             $assignee = User::find($min_id);
+        //             $userFields['newNotifs'] = $assignee->newNotifs + 1;
+        //             $assignee->update($userFields);
+        //         } else {
+        //             $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
+        //             $min_id = $users[0]->id;
                     
-                    for($x=1; $x<count($users); $x++){
-                        $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
-                        if($min > $a) {
-                            $min = $a;
-                            $min_id = $users[$x]->id;
-                        }
-                    }
-                    $formFields['user_id'] = $min_id;
-                    $reopenFields['user_id'] = $min_id;
-                    $notifFields['user_id'] = $min_id;
-                }
-            }
-        }
+        //             for($x=1; $x<count($users); $x++){
+        //                 $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
+        //                 if($min > $a) {
+        //                     $min = $a;
+        //                     $min_id = $users[$x]->id;
+        //                 }
+        //             }
+        //             $formFields['user_id'] = $min_id;
+        //             $reopenFields['user_id'] = $min_id;
+        //             $notifFields['user_id'] = $min_id;
+
+        //             $notifFields['type'] = "Transfer Reopen";
+        //             $notifFields['ticketId'] = $ticket->id;
+        //             $notifFields['reopenId'] = $reopen->id;
+        //             Notification::create($notifFields);
+
+        //             $assignee = User::find($min_id);
+        //             $userFields['newNotifs'] = $assignee->newNotifs + 1;
+        //             $assignee->update($userFields);
+        //         }
+        //     }
+        // }
 
         // $assignee = User::find($min_id);
         // $formFields['user_id'] = $assignee->email;
         $ticket->update($formFields);
-        $reopen->update($reopenFields);
 
-        $notifFields['type'] = "Transfer Reopen";
-        $notifFields['ticketId'] = $ticket->id;
-        $notifFields['reopenId'] = $reopen->id;
-        Notification::create($notifFields);
+        // if ($request->user_id != null) {
+        //     $notifFields['type'] = "Transfer Reopen";
+        //     $notifFields['ticketId'] = $ticket->id;
+        //     $notifFields['reopenId'] = $reopen->id;
+        //     Notification::create($notifFields);
+
+        //     $assignee = User::find($ticket->user->id);
+        //     $userFields['newNotifs'] = $assignee->newNotifs + 1;
+        //     $assignee->update($userFields);
+        // }
+        
         return redirect()->route('ticket', [$ticket]);
     }
 }

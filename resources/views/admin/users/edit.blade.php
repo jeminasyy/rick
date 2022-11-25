@@ -116,7 +116,7 @@
                     <button 
                         type="submit" 
                         class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
-                        style="margin-top: 4%; margin-left:2%; background-color: #EDC304;
+                        style="margin-top: 4%; background-color: #EDC304;
                         border: 1px solid#EDC304;
                         border-radius: 5px;"
                     >

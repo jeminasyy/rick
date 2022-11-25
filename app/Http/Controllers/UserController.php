@@ -7,6 +7,7 @@ use App\Models\Categ;
 use App\Models\Usercateg;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Str;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Mail\CreateYourAccount;
 use Illuminate\Validation\Rule;
@@ -354,10 +355,27 @@ class UserController extends Controller
         }
     }
 
-    // Remove new notifications
-    public function removeNew(User $user){
-        $formFields['newNotifs'] = 0;
-        $user->update($formFields);
-        dd($user->newNotifs);
+    // Decrement new notifications when clicked
+    public function removeNew(Notification $notification){
+        if (auth()->user()->id != $notification->user_id) {
+            abort(403, 'Unauthorized Access');
+        }
+
+        // dd($notification->clicked == false);
+
+        if ($notification->clicked == false) {
+            $user = User::find($notification->user_id);
+            $formFields['newNotifs'] = $user->newNotifs - 1;
+            $user->update($formFields);
+
+            $notifFields['clicked'] = 1;
+            $notification->update($notifFields);
+        }
+
+        // dd($notification->clicked);
+
+        // dd(auth()->user()->newNotifs);
+
+        return redirect()->route('ticket', [$notification->ticketId]);
     }
 }
