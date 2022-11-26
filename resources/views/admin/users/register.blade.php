@@ -19,6 +19,7 @@
                     class="form-control" 
                     name="password" 
                     value="{{old('password')}}"
+                    id="password"
                 />
                 @error('password')
                     <p class="text-red-500 text-md mt-1">{{$message}}</p>
@@ -32,6 +33,7 @@
                     class="form-control" 
                     name="password_confirmation" 
                     value="{{old('password_confirmation')}}"
+                    id="confirmpassword"
                 />
                 @error('password_confirmation')
                     <p class="text-red-500 text-md mt-1">{{$message}}</p>
