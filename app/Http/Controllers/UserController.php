@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -141,9 +143,39 @@ class UserController extends Controller
             abort(403, 'Unauthorized Action');
         }
 
+        // $formFields = $request->validate([
+        //     'password' => 'required|confirmed|min:8|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/'
+        // ]);
+
         $formFields = $request->validate([
-            'password' => 'required|confirmed|min:6'
+            'password' => ['required', 'confirmed', Password::min(8)->mixedCase()->letters()->numbers()->symbols()]
         ]);
+
+        // $formFields = $request->validate([
+        //     'passowrd' => [
+        //         'required',
+        //         Password::min(8)
+        //             ->letters()
+        //             ->mixedCase()
+        //             ->numbers()
+        //             ->symbols()
+        //     ]
+        // ]);
+            
+
+        // regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/
+
+        // $formFields = Validator::make($request->all(), [
+        //     'password' => [
+        //         'required', 
+        //         'confirmed', 
+        //         Password::min(8)
+        //             ->letters()
+        //             ->mixedCase()
+        //             ->numbers()
+        //             ->symbols()
+        //     ],
+        // ]);
 
         // Hash Password
         $formFields['password'] = bcrypt($formFields['password']);
@@ -306,7 +338,7 @@ class UserController extends Controller
         }
 
         $formFields = $request->validate([
-            'password' => 'required|confirmed|min:6'
+            'password' => ['required', 'confirmed', Password::min(8)->mixedCase()->letters()->numbers()->symbols()]
         ]);
 
         // Hash Password
@@ -334,9 +366,20 @@ class UserController extends Controller
         }
 
         $request->validate([
-            'currentPassword' => 'required',
-            'password' => 'required|confirmed|min:6'
+            'currentPassword' => ['required', 'current_password'], 
+            'password' => ['required', 'confirmed', Password::min(8)->mixedCase()->letters()->numbers()->symbols()]
         ]);
+
+        // $formFields = $request->validate([
+        //     'passowrd' => [
+        //         'required',
+        //         Password::min(8)
+        //             ->letters()
+        //             ->mixedCase()
+        //             ->numbers()
+        //             ->symbols()
+        //     ]
+        // ]);
 
         $hashedPassword = Auth::user()->getAuthPassword();
 

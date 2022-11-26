@@ -12,6 +12,15 @@
                     <p style="font-weight:bold; color:{{$color}}">{{ $message }}</p>
                 @endif
             </header>
+            {{-- @push('other-scripts')
+            <script>
+                $(document).ready(function(){
+                    $('#checkbox').on('change', function(){
+                        $('#password').attr('type',$('#checkbox').prop('checked')==true?"text":"password"); 
+                    });
+                });
+            </script>
+            @endpush --}}
 
             <form method="POST" action="/security/{{auth()->user()->id}}" enctype="multipart/form-data">
                 @csrf
@@ -23,6 +32,7 @@
                         class="form-control" 
                         name="currentPassword" 
                         value="{{old('currentPassword')}}"
+                        id="currentpassword"
                     />
                     @error('currentPassword')
                         <p class="text-red-500 text-md mt-1">{{$message}}</p>
@@ -36,6 +46,7 @@
                         class="form-control" 
                         name="password" 
                         value="{{old('password')}}"
+                        id="newpassword"
                     />
                     @error('password')
                         <p class="text-red-500 text-md mt-1">{{$message}}</p>
@@ -49,16 +60,32 @@
                         class="form-control" 
                         name="password_confirmation" 
                         value="{{old('password_confirmation')}}"
+                        id="confirmpassword"
                     />
                     @error('password_confirmation')
                         <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
+                
+                <input type="checkbox" id="checkbox">&nbsp; Show Password
+
+                {{-- @{{
+                    {{$(document).ready(function(){
+                        $('#checkbox').on('change', function(){
+                            $('#password').attr('type',$('#checkbox').prop('checked')==true?"text":"password"); 
+                        });
+                    });}}
+                }} --}}
+
+                
+                    
+                    {{-- <input type="password" id="password"> 
+                    <input type="checkbox" id="checkbox">Show Password --}}
     
-                    <div class="mb-6">
+                <div class="mb-6">
                     <button type="submit" 
                         class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
-                        style="margin-top: 3%; background-color: #EDC304;
+                        style="margin-top: 7%; background-color: #EDC304;
                         border: 1px solid#EDC304;
                         border-radius: 5px;"
                     >

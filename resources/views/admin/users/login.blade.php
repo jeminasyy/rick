@@ -63,13 +63,15 @@
                     class="form-control" 
                     name="password" 
                     value="{{old('password')}}"
+                    id="password"
                 />
                 @error('password')
                 <p class="text-red-500 text-md mt-1">{{$message}}</p>
                 @enderror
             </div>
             <div class="mb-6">
-                <a href="/forgotpassword/verify">Forgot Password?</a>
+                <input type="checkbox" id="checkbox">&nbsp; Show Password
+                <a style="float:right" href="/forgotpassword/verify">Forgot Password?</a>
             </div>
 
              <div class="mb-6">

@@ -33,6 +33,17 @@
                     },
                 },
             };
+
+            
+            $(document).ready(function(){
+                $('#checkbox').on('change', function(){
+                    $('#password').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
+                    $('#currentpassword').attr('type',$('#checkbox').prop('checked')==true?"text":"password"); 
+                    $('#newpassword').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
+                    $('#confirmpassword').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
+                });
+            });
+           
         </script>
         <title>RICK | Request. Inquiries. Concerns. Komersiyo</title>
     </head>

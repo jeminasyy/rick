@@ -19,6 +19,7 @@
                     class="form-control" 
                     name="password" 
                     value="{{old('password')}}"
+                    id="newpassword"
                 />
                 @error('password')
                     <p class="text-red-500 text-md mt-1">{{$message}}</p>
@@ -32,13 +33,18 @@
                     class="form-control" 
                     name="password_confirmation" 
                     value="{{old('password_confirmation')}}"
+                    id="confirmpassword"
                 />
                 @error('password_confirmation')
                     <p class="text-red-500 text-md mt-1">{{$message}}</p>
                 @enderror
             </div>
 
-                <div class="mb-6">
+            <div class="mb-6">
+                <input type="checkbox" id="checkbox">&nbsp; Show Password
+            </div>
+
+            <div class="mb-6">
                 <button type="submit" 
                     class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                     style="margin-top: 2%; background-color: #EDC304;
