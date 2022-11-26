@@ -38,7 +38,9 @@
                 @enderror
             </div>
 
-                <div class="mb-6">
+            <input type="checkbox" id="checkbox">&nbsp; Show Password
+
+            <div class="mb-6">
                 <button type="submit" 
                     class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
                     style="margin-top: 4%; margin-left:2%; background-color: #EDC304;
