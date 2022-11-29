@@ -163,7 +163,7 @@ class Kernel extends ConsoleKernel
                 }
             }
 
-        })->everyFiveMinutes();
+        })->everyMinute();
 
         // for actual
         // notifications stay in one week
