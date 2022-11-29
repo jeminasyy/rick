@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Categ;
+use App\Models\Ticket;
 use App\Models\Usercateg;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Str;
@@ -246,6 +247,224 @@ class UserController extends Controller
         // Make sure logged in user is owner
         if(auth()->user()->role == "FDO"){
             abort(403, 'Unauthorized Access');
+        }
+
+        $reopens = DB::table('reopens')
+                    ->where('user_id', $user->id)
+                    ->where('response', null)
+                    ->get()->toArray();
+
+        $tickets = DB::table('tickets')
+                    ->where('user_id', $user->id)
+                    ->whereNot('status', "Resolved")
+                    ->whereNot('status', "Voided")
+                    ->whereNot('status', "Inactive")
+                    ->whereNot('status', "Reopened")
+                    ->get()->toArray();
+
+        
+        // dd($user->id);
+        // dd($reopens[0]->ticket_id);
+        // dd(count($reopens));
+        if (count($reopens) > 0) {
+            // dd($reopens);
+            for($x=0; $x < count($reopens); $x++) {
+                // dd($x);
+                $ticket = Ticket::find($reopens[$x]->ticket_id);
+                $users = DB::table('usercategs')
+                            ->whereNot('user_id', $user->id)
+                            ->where('categ_id', $ticket->categ_id)
+                            ->get()->toArray();
+                
+                $verified = DB::table('users')
+                            ->where('deleted_at', null)
+                            ->where('verified', true)
+                            ->where('role', 'FDO')
+                            ->select('id')
+                            ->get()->toArray();
+
+                $verifiedUsers = array();
+                for ($y=0; $y < count($verified); $y++) {
+                    array_push($verifiedUsers, $verified[$y]->id);
+                }
+
+                for ($z=0; $z < count($users); $z++) {
+                    if (!(in_array($users[$z]->user_id, $verifiedUsers))){
+                        unset($users[$z]);
+                    }
+                }
+                // dd($users);
+                if (count($users) == 0) {
+                    $admins = DB::table('users')
+                                ->whereNot('id', $user->id)
+                                ->where('verified', true)
+                                ->where('role', 'Admin')
+                                ->get()->toArray();
+
+                    // dd($admins);
+    
+                    $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->count();
+                    $min_id = $admins[0]->id;
+    
+                    for($b=1; $b<count($admins); $b++){
+                        $a = DB::table('tickets')->where('user_id', $admins[$b]->id)->whereNot('status', 'Resolved')->count();
+                        if($min > $a) {
+                            $min = $a;
+                            $min_id = $admins[$b]->id;
+                        }
+                    }
+                    
+                    $notifFields['user_id'] = $min_id;
+                    // DB::table('reopens')->where('id', $reopens[$x]->id)->update(['user_id' => $min_id]);
+                    // DB::table('tickets')->where('id', $reopens[$x]->ticket_id)->update(['user_id' => $min_id]);
+
+                    // $notifFields['type'] = "Transfer Reopen";
+                    // $notifFields['ticketId'] = $ticket->id;
+                    // $notifFields['reopenId'] = $reopens[$x]->id;
+                    // Notification::create($notifFields);
+
+                    // $assignee = User::find($min_id);
+                    // $userFields['newNotifs'] = $assignee->newNotifs + 1;
+                    // $assignee->update($userFields);
+                } else {
+                    $firstKey = array_key_first($users);
+                    $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
+                    $min_id = $users[$firstKey]->user_id;
+                    
+                    for($c=$firstKey+1; $c<count($users); $c++){
+                        $a = DB::table('tickets')->where('user_id', $users[$c]->user_id)->whereNot('status', 'Resolved')->count();
+                        if($min > $a) {
+                            $min = $a;
+                            $min_id = $users[$c]->user_id;
+                        }
+                    }
+                    // dd($reopens);
+                    // dd($min_id);
+                    $notifFields['user_id'] = $min_id;
+                    // DB::table('reopens')->where('id', $reopens[$x]->id)->update(['user_id' => $min_id]);
+                    // DB::table('tickets')->where('id', $reopens[$x]->ticket_id)->update(['user_id' => $min_id]);
+
+                    // $notifFields['type'] = "Transfer Reopen";
+                    // $notifFields['ticketId'] = $ticket->id;
+                    // $notifFields['reopenId'] = $reopens[$x]->id;
+                    // Notification::create($notifFields);
+
+                    // $assignee = User::find($min_id);
+                    // $userFields['newNotifs'] = $assignee->newNotifs + 1;
+                    // $assignee->update($userFields);
+                }
+                
+                // dd($reopens);
+
+                // dd($x);
+                $notifFields['type'] = "Transfer Reopen";
+                $notifFields['ticketId'] = $ticket->id;
+                $notifFields['reopenId'] = $reopens[$x]->id;
+                Notification::create($notifFields);
+
+                // dd($min_id);
+                $assignee = User::find($min_id);
+                $userFields['newNotifs'] = $assignee->newNotifs + 1;
+                $assignee->update($userFields);
+
+                DB::table('reopens')->where('id', $reopens[$x]->id)->update(['user_id' => $min_id]);
+                DB::table('tickets')->where('id', $reopens[$x]->ticket_id)->update(['user_id' => $min_id]);
+            }
+        }
+
+        // $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
+        // dd($admins);
+        // dd($tickets[0]->categ_id);
+        if (count($tickets) > 0) {
+            for($x=0; $x < count($tickets); $x++) {
+                $users = DB::table('usercategs')
+                            ->whereNot('user_id', $user->id)
+                            ->where('categ_id', $tickets[$x]->categ_id)
+                            ->get()->toArray();
+
+                $verified = DB::table('users')
+                            ->where('deleted_at', null)
+                            ->where('verified', true)
+                            ->where('role', 'FDO')
+                            ->select('id')
+                            ->get()->toArray();
+
+                $verifiedUsers = array();
+
+                for ($y=0; $y < count($verified); $y++) {
+                    array_push($verifiedUsers, $verified[$y]->id);
+                }
+                // dd($verifiedUsers);
+                for ($z=0; $z < count($users); $z++) {
+                    if (!(in_array($users[$z]->user_id, $verifiedUsers))){
+                        unset($users[$z]);
+                    }
+                }
+
+                // dd($users);
+                if (count($users) == 0) {
+                    $admins = DB::table('users')
+                                ->where('deleted_at', null) //newline
+                                ->whereNot('id', $user->id)
+                                ->where('verified', true)
+                                ->where('role', 'Admin')
+                                ->get()->toArray();
+    
+                    // dd($admins);
+                    $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count(); //newline voided
+                    $min_id = $admins[0]->id;
+    
+                    for($b=1; $b<count($admins); $b++){
+                        $a = DB::table('tickets')->where('user_id', $admins[$b]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count(); //newline voided
+                        if($min > $a) {
+                            $min = $a;
+                            $min_id = $admins[$b]->id;
+                        }
+                    } 
+                    $notifFields['user_id'] = $min_id;
+
+                    // $assignee = User::find($min_id);
+                    // $userFields['newNotifs'] = $assignee->newNotifs + 1;
+                    // $assignee->update($userFields);
+
+                    // DB::table('tickets')->where('id', $tickets[$x]->id)->update(['user_id' => $min_id]);
+                } else {
+                    $firstKey = array_key_first($users);
+                    $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count(); //newline voided
+                    $min_id = $users[$firstKey]->user_id;
+                    
+                    for($c=$firstKey+1; $c<count($users); $c++){
+                        $a = DB::table('tickets')->where('user_id', $users[$c]->user_id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count(); //newline voided
+                        if($min > $a) {
+                            $min = $a;
+                            $min_id = $users[$c]->user_id;
+                        }
+                    }
+                    $notifFields['user_id'] = $min_id;
+                    // dd($min_id);
+
+                    // $assignee = User::find($min_id);
+                    // $userFields['newNotifs'] = $assignee->newNotifs + 1;
+                    // $assignee->update($userFields);
+
+                    // DB::table('tickets')->where('id', $tickets[$x]->id)->update(['user_id' => $min_id]);
+                }
+                // dd($tickets);
+                $notifFields['type'] = "Transfer Ticket";
+                $notifFields['ticketId'] = $tickets[$x]->id;
+                Notification::create($notifFields);
+
+                // dd($min_id);
+                $assignee = User::find($min_id);
+                $userFields['newNotifs'] = $assignee->newNotifs + 1;
+                $assignee->update($userFields);
+
+                DB::table('tickets')->where('id', $tickets[$x]->id)->update(['user_id' => $min_id]);
+
+                // $updatedTickets = Ticket::all();
+                // dd($updatedTickets);
+                // DB::table('reopens')->where('id', $reopens[$x]->id)->update(['user_id' => 2]);
+            }
         }
         
         $user->delete();

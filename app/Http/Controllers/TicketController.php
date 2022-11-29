@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use PDF;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Categ;
 use App\Models\Reopen;
@@ -19,7 +20,10 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Mail\NewTicketSubmitted;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Concerns\ToArray;
+
 // use Barryvdh\DomPDF\PDF;
 
 // -------------------------------------------
@@ -67,7 +71,8 @@ class TicketController extends Controller
                     'student' => $student
                 ]);
             }
-            $formFields['code'] = $code;
+            $formFields['code'] = bcrypt($code);
+            // $formFields['code'] = $code;
             $student->update($formFields);
             Mail::to($student->email)->send(new VerifyNew($student, $code));
             return redirect('/new/code');
@@ -80,8 +85,8 @@ class TicketController extends Controller
         $formFields['id'] = Student::generateStudentid();
         $formFields['ongoingTickets'] = 0;
         $formFields['tickets'] = 0;
-        // $formFields['code'] = bcrypt($code);
-        $formFields['code'] = $code;
+        $formFields['code'] = bcrypt($code);
+        // $formFields['code'] = $code;
 
         $student = Student::create($formFields);
         
@@ -97,11 +102,25 @@ class TicketController extends Controller
 
     // Verify email with code
     public function verifyNew(Request $request){
-        $find = DB::table('students')->where('code', $request->code)->first();
-        if (! $find){
+        // dd(bcrypt($request->code));
+        // $find = DB::table('students')->where('code', $request->code)->first();
+
+        $students = DB::table('students')->get()->toArray();
+        // $codes = array();
+
+        $find = null;
+        for ($a=0; $a < count($students); $a++) {
+            $hashedCode = $students[$a]->code;
+            if (Hash::check($request->code, $hashedCode)) {
+                $find = $students[$a]->id;
+            }
+        }
+        // dd($find);
+
+        if ($find == null){
             abort(404, 'Not Found');
         }
-        $student = Student::find($find->id);
+        $student = Student::find($find);
         if(!$student->FName || !$student->LName || !$student->studNumber){
             return redirect()->route('completeInfo', [$student]);
         }
@@ -139,6 +158,19 @@ class TicketController extends Controller
 
     // Store new ticket
     public function store(Request $request, Student $student) {
+        // $allTickets = DB::table('tickets')
+        //                 ->where('dateResponded', null)
+        //                 ->get()->toArray();
+
+        // $date2 = date_create(Carbon::now());
+        // $date1 = date_create($allTickets[0]->created_at);
+        // $interval = date_diff($date1, $date2);
+        // $intervalNum = intval($interval->format("%R%d"));
+        // dd($interval->format("%R%i"));
+        // dd($interval->format("%R%d"));
+        // dd($allTickets[0]->created_at);
+        // dd($intervalNum < 3);
+
         $studentFields['tickets'] = $student->tickets+1;
         $studentFields['ongoingTickets'] = $student->ongoingTickets + 1;
 
@@ -149,24 +181,22 @@ class TicketController extends Controller
             'year' => 'required'
         ]);
 
-        // $categ_id = "|" . $request->categ_id . "|";
-
         $formFields['student_id'] = (string)$student->id;
-        // $verifiedUsers = DB::table('users')->where('verified', true)->get();
-        // $users = DB::table('users')
-        // ->joinSub($latestPosts, 'latest_posts', function ($join) {
-        //     $join->on('users.id', '=', 'latest_posts.user_id');
-        // })->get();
-        $users = DB::table('usercategs')->where('categ_id', $request->categ_id)->get()->toArray();
+
+        $users = DB::table('usercategs')
+                    ->where('categ_id', $request->categ_id)
+                    ->get()->toArray();
         // dd($users);
-        $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->get()->toArray();
-        // dd($verified);
+        $verified = DB::table('users')
+                    ->where('deleted_at', null) //newline
+                    ->where('verified', true)
+                    ->where('role', 'FDO')
+                    ->get()->toArray();
         $verifiedUsers = array();
+
         for ($x=0; $x < count($verified); $x++) {
             array_push($verifiedUsers, $verified[$x]->id);
         }
-
-        // dd($verifiedUsers);
 
         for ($x=0; $x < count($users); $x++) {
             if (!(in_array($users[$x]->user_id, $verifiedUsers))){
@@ -174,36 +204,28 @@ class TicketController extends Controller
             }
         }
 
-        // dd($verifiedUsers);
-        // dd($users);
-        // $users = array(); 
-        // dd($users);
-        // $users = DB::table('users')->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $categ_id . '%')->get()->toArray();
-
-        
-
         if (count($users) == 0) {
-            $admins = DB::table('users')->where('verified', true)->where('role', "Admin")->get()->toArray();
-            // dd($admins);
+            $admins = DB::table('users')
+                        ->where('deleted_at', null) //newline
+                        ->where('verified', true)
+                        ->where('role', "Admin")
+                        ->get()->toArray();
+
             $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
             $min_id = $admins[0]->id;
-            // dd($min_id);
 
-            for($x=1; $x<count($admins); $x++){
-                $a = DB::table('tickets')->where('user_id', $admins[$x]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
+            for($b=1; $b<count($admins); $b++){
+                $a = DB::table('tickets')->where('user_id', $admins[$b]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
                 if($min > $a) {
                     $min = $a;
-                    $min_id = $admins[$x]->id;
-                    // dd($min);
+                    $min_id = $admins[$b]->id;
                 }
             }
-            // dd($min);
 
             $formFields['user_id'] = $min_id;
             $formFields['status'] = 'New';
             $assignee = User::find($min_id);
             $formFields['assignee'] = $assignee->email;
-            // $formFields['dateSubmitted'] = now();
 
             $ticket = Ticket::create($formFields);
             $student->update($studentFields);
@@ -216,21 +238,20 @@ class TicketController extends Controller
             $userFields['newNotifs'] = $assignee->newNotifs + 1;
             $assignee->update($userFields);
 
-            // return redirect('/new/submitted');
         } else {
             $firstKey = array_key_first($users);
-            $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
+            $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count(); //newline voided
             $min_id = $users[$firstKey]->user_id;
-
-            // dd($firstKey+1);
             
-            for($x=$firstKey+1; $x<count($users); $x++){
-                $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
+            for($c=$firstKey+1; $c<count($users); $c++){
+                $a = DB::table('tickets')->where('user_id', $users[$c]->user_id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count(); //newline voided
                 if($min > $a) {
                     $min = $a;
-                    $min_id = $users[$x]->id;
+                    $min_id = $users[$c]->user_id;
                 }
             }
+
+            // dd($min_id);
 
             $formFields['user_id'] = $min_id;
             // $formFields['dateSubmitted'] = now();
@@ -490,9 +511,10 @@ class TicketController extends Controller
                             $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
                             if($min > $a) {
                                 $min = $a;
-                                $min_id = $users[$x]->id;
+                                $min_id = $users[$x]->user_id;
                             }
                         }
+                        // dd($min);
                         $formFields['user_id'] = $min_id;
                         $notifFields['user_id'] = $min_id;
                     }

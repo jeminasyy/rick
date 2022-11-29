@@ -52,7 +52,7 @@
 
             <div class="form-group col-md-10 pt-10" style="display: flex; flex-direction: row;">
                 <button class="editBtn" onclick="location.href='/user/{{$user->id}}/edit';"><i class='bx-fw bx bxs-edit-alt bx-sm'></i>Edit</button>
-                <form method="POST" action="/users/{{$user->id}}">
+                <form method="POST" action="/users/{{$user->id}}/archive">
                     @csrf
                     @method('DELETE')
                     @if(auth()->user()->role == "Admin" && auth()->user()->id != $user->id)

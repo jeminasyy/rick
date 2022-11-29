@@ -49,6 +49,28 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
+        User::factory()->create([
+            'firstName' => 'Paz',
+            'lastName' => 'Cembrano',
+            'email' => 'pcembrano.capstone@gmail.com',
+            'password' => $password,
+            'role' => "FDO",
+            // 'categ_id' => "|2|4|",
+            'verified' => true,
+            'email_verified_at' => now(),
+        ]);
+
+        User::factory()->create([
+            'firstName' => 'Sebastian',
+            'lastName' => 'Ocampo',
+            'email' => 'socampo.capstone@gmail.com',
+            'password' => $password,
+            'role' => "FDO",
+            // 'categ_id' => "|2|4|",
+            'verified' => true,
+            'email_verified_at' => now(),
+        ]);
+
         Categ::factory()->create([
             'name' => 'Payment Concern',
             'type' => 'Concerns',

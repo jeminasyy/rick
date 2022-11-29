@@ -149,23 +149,33 @@
                 @foreach(auth()->user()->notifications()->latest()->get() as $notification)
                     @if ($notification->type == "New Ticket")
                         <div class="containterNotif">
-                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">New Ticket</a>
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">New Ticket<em><span style="font-weight:normal; font-size:12px; float:right">{{$notification->created_at}}</span></em></a>
                             <a href="/notifications/{{$notification->id}}">Ticket#{{$notification->ticketId}} has been assigned to you.</a>
                         </div>
                     @elseif ($notification->type == "New Reopen")
                         <div class="containterNotif">
-                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">New Reopen Ticket</a>
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">New Reopen<em><span style="font-weight:normal; font-size:12px; float:right">{{$notification->created_at}}</span></em></a>
                             <a href="/notifications/{{$notification->id}}">Reopen#{{$notification->reopenId}} has been assigned to you.</a>
                         </div>
                     @elseif ($notification->type == "Transfer Ticket")
                         <div class="containterNotif">
-                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">Transferred Ticket</a>
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">Transferred New<em><span style="font-weight:normal; font-size:12px; float:right">{{$notification->created_at}}</span></em></a>
                             <a href="/notifications/{{$notification->id}}">Ticket#{{$notification->ticketId}} has been transferred to you.</a>
                         </div>
                     @elseif ($notification->type == "Transfer Reopen")
                         <div class="containterNotif">
-                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">Transferred Reopen Ticket</a>
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">Transferred Reopen<em><span style="font-weight:normal; font-size:12px; float:right">{{$notification->created_at}}</span></em></a>
                             <a href="/notifications/{{$notification->id}}">Reopen#{{$notification->reopenId}} has been transferred to you.</a>
+                        </div>
+                    @elseif ($notification->type == "Reminder Ticket")
+                        <div class="containterNotif">
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">Unresolved New<em><span style="font-weight:normal; font-size:12px; float:right">{{$notification->created_at}}</span></em></a>
+                            <a href="/notifications/{{$notification->id}}">Reminder: Please respond to Ticket#{{$notification->ticketId}}</a>
+                        </div>
+                    @elseif ($notification->type == "Reminder Reopen")
+                        <div class="containterNotif">
+                            <a href="/notifications/{{$notification->id}}" style="font-weight: bold">Unresolved Reopen<em><span style="font-weight:normal; font-size:12px; float:right">{{$notification->created_at}}</span></em></a>
+                            <a href="/notifications/{{$notification->id}}">Reminder: Please respond to Reopen#{{$notification->reopenId}}</a>
                         </div>
                     @endif
                     {{-- @elseif ($notification->type == "New Reopen")

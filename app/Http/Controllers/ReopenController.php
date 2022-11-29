@@ -16,6 +16,7 @@ use App\Mail\VoidedReopenedTicket;
 use Illuminate\Support\Facades\DB;
 use App\Mail\OngoingReopenedTicket;
 use App\Mail\ResolvedReopenedTicket;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class ReopenController extends Controller
@@ -43,7 +44,8 @@ class ReopenController extends Controller
                 ]);
             }
             if($student->tickets > $student->ongoingTickets) {
-                $formFields['code'] = $code;
+                $formFields['code'] = bcrypt($code);
+                // $formFields['code'] = $code;
                 $student->update($formFields);
                 Mail::to($student->email)->send(new VerifyNew($student, $code));
                 return redirect('/reopen/code');
@@ -60,11 +62,21 @@ class ReopenController extends Controller
 
     // Verify email with code
     public function verifyReopen(Request $request){
-        $find = DB::table('students')->where('code', $request->code)->first();
-        if (! $find){
+        // $find = DB::table('students')->where('code', bcrypt($request->code))->first();
+        $students = DB::table('students')->get()->toArray();
+
+        $find = null;
+        for ($a=0; $a < count($students); $a++) {
+            $hashedCode = $students[$a]->code;
+            if (Hash::check($request->code, $hashedCode)) {
+                $find = $students[$a]->id;
+            }
+        }
+        
+        if ($find == null){
             abort(404, 'Not Found');
         }
-        $student = Student::find($find->id);
+        $student = Student::find($find);
         // return view();
         return redirect()->route('viewReopen', [$student]);
     }
@@ -92,14 +104,25 @@ class ReopenController extends Controller
         if($request->reassign == 1) {
             // dd(count($ticket->reopens));
             if(count($ticket->reopens) != 0) {
-                $reopen = DB::table('reopens')->where('ticket_id', $ticket->id)->latest()->first();
-                // dd($reopen->user_id);
-                $currentUser = $reopen->user_id;
-                // $users = DB::table('users')->whereNot('id', $currentUser)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
-                $users = DB::table('usercategs')->whereNot('user_id', $currentUser)->where('categ_id', $ticket->categ->id)->get()->toArray();
-                $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
-                $verifiedUsers = array();
+                $reopen = DB::table('reopens')
+                            ->where('ticket_id', $ticket->id)
+                            ->latest()->first();
 
+                $currentUser = $reopen->user_id;
+
+                $users = DB::table('usercategs')
+                            ->whereNot('user_id', $currentUser)
+                            ->where('categ_id', $ticket->categ->id)
+                            ->get()->toArray();
+
+                $verified = DB::table('users')
+                            ->where('deleted_at', null) //newline
+                            ->where('verified', true)
+                            ->where('role', 'FDO')
+                            ->select('id')
+                            ->get()->toArray();
+
+                $verifiedUsers = array();
                 for ($x=0; $x < count($verified); $x++) {
                     array_push($verifiedUsers, $verified[$x]->id);
                 }
@@ -111,11 +134,19 @@ class ReopenController extends Controller
                 }
 
             } else {
-                // $users = DB::table('users')->whereNot('id', $ticket->user->id)->where('verified', true)->where('role', 'FDO')->where('categ_id', 'like', '%' . $ticket->categ->id . '%')->get()->toArray();
-                $users = DB::table('usercategs')->whereNot('user_id', $ticket->user->id)->where('categ_id', $ticket->categ->id)->get()->toArray();
-                $verified = DB::table('users')->where('verified', true)->where('role', 'FDO')->select('id')->get()->toArray();
-                $verifiedUsers = array();
+                $users = DB::table('usercategs')
+                            ->whereNot('user_id', $ticket->user->id)
+                            ->where('categ_id', $ticket->categ->id)
+                            ->get()->toArray();
 
+                $verified = DB::table('users')
+                            ->where('deleted_at', null) //newline
+                            ->where('verified', true)
+                            ->where('role', 'FDO')
+                            ->select('id')
+                            ->get()->toArray();
+
+                $verifiedUsers = array();
                 for ($x=0; $x < count($verified); $x++) {
                     array_push($verifiedUsers, $verified[$x]->id);
                 }
@@ -128,16 +159,20 @@ class ReopenController extends Controller
             }
 
             if (count($users) == 0) {
-                $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
+                $admins = DB::table('users')
+                            ->where('deleted_at', null) //newline
+                            ->where('verified', true)
+                            ->where('role', 'Admin')
+                            ->get()->toArray();
     
                 $min = DB::table('tickets')->where('user_id', $admins[0]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
                 $min_id = $admins[0]->id;
     
-                for($x=1; $x<count($users); $x++){
-                    $a = DB::table('tickets')->where('user_id', $admins[$x]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
+                for($b=1; $b<count($users); $b++){
+                    $a = DB::table('tickets')->where('user_id', $admins[$b]->id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count();
                     if($min > $a) {
                         $min = $a;
-                        $min_id = $admins[$x]->id;
+                        $min_id = $admins[$b]->id;
                     }
                 }
     
@@ -155,14 +190,14 @@ class ReopenController extends Controller
                 $assignee->update($userFields);
             } else {
                 $firstKey = array_key_first($users);
-                $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
+                $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count(); //newline voided
                 $min_id = $users[$firstKey]->user_id;
                 
-                for($x=$firstKey+1; $x<count($users); $x++){
-                    $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
+                for($c=$firstKey+1; $c<count($users); $c++){
+                    $a = DB::table('tickets')->where('user_id', $users[$c]->user_id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count(); // newline voided
                     if($min > $a) {
                         $min = $a;
-                        $min_id = $users[$x]->id;
+                        $min_id = $users[$c]->user_id;
                     }
                 }
                 $formFields['user_id'] = $min_id;
@@ -181,7 +216,10 @@ class ReopenController extends Controller
         } else {
             if (count($ticket->reopens) != 0){
             // if ($ticket->reopens){
-                $reopen = DB::table('reopens')->where('ticket_id', $ticket->id)->latest()->first();
+                $reopen = DB::table('reopens')
+                            ->where('ticket_id', $ticket->id)
+                            ->latest()->first();
+                            
                 $reopenUser = $reopen->user_id;
                 $formFields['user_id'] = $reopenUser;
                 $notifFields['user_id'] = $reopenUser;
@@ -382,7 +420,7 @@ class ReopenController extends Controller
                         unset($users[$x]);
                     }
                 }
-                dd($users);
+                // dd($users);
 
                 if (count($users) == 0) {
                     $admins = DB::table('users')->where('verified', true)->where('role', 'Admin')->get()->toArray();
@@ -410,16 +448,21 @@ class ReopenController extends Controller
                     $userFields['newNotifs'] = $assignee->newNotifs + 1;
                     $assignee->update($userFields);
                 } else {
-                    $min = DB::table('tickets')->where('user_id', $users[0]->id)->whereNot('status', 'Resolved')->count();
+                    $firstKey = array_key_first($users);
+                    $min = DB::table('tickets')->where('user_id', $users[$firstKey]->id)->whereNot('status', 'Resolved')->count();
                     $min_id = $users[0]->id;
+
+                    // dd($users);
                     
-                    for($x=1; $x<count($users); $x++){
+                    for($x=$firstKey+1; $x<count($users); $x++){
                         $a = DB::table('tickets')->where('user_id', $users[$x]->id)->whereNot('status', 'Resolved')->count();
                         if($min > $a) {
                             $min = $a;
-                            $min_id = $users[$x]->id;
+                            $min_id = $users[$x]->user_id;
                         }
                     }
+
+                    dd($min_id);
                     $formFields['user_id'] = $min_id;
                     $reopenFields['user_id'] = $min_id;
                     $notifFields['user_id'] = $min_id;
@@ -439,6 +482,7 @@ class ReopenController extends Controller
         // $assignee = User::find($min_id);
         // $formFields['user_id'] = $assignee->email;
         $ticket->update($formFields);
+        $reopen->update($formFields); //idk
 
         // if ($request->user_id != null) {
         //     $notifFields['type'] = "Transfer Reopen";

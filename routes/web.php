@@ -195,7 +195,7 @@ Route::put('/user/{user}/update', [UserController::class, 'update'])->middleware
 
 
 // Delete User
-Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth');
+Route::delete('/users/{user}/archive', [UserController::class, 'destroy'])->middleware('auth');
 // Restore User
 Route::get('/users/restore/{id}', [UserController::class, 'restore'])->middleware('auth');
 
