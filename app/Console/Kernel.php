@@ -33,12 +33,12 @@ class Kernel extends ConsoleKernel
                 // testing
                 $intervalNum = intval($interval->format("%R%i"));
                 if ($intervalNum > 3 ) {
-                    DB::table('notifications')->where('id', $notifications[$z]->id)->delete();
                     $user = User::find($notifications[$z]->user_id);
                     if ($notifications[$z]->clicked == 0) {
                         $userField['newNotifs'] = $user->newNotifs - 1;
                         $user->update($userField);
                     }
+                    DB::table('notifications')->where('id', $notifications[$z]->id)->delete();
                 }
 
                 // actual
@@ -68,7 +68,7 @@ class Kernel extends ConsoleKernel
                     $user = User::find($tickets[$x]->user_id);
                     $userField['newNotifs'] = $user->newNotifs + 1;
                     $user->update($userField);
-                    echo($tickets[$x]->id);
+                    // echo($tickets[$x]->id);
                     // echo();
                 }
 
@@ -139,15 +139,31 @@ class Kernel extends ConsoleKernel
                 $intervalNum = intval($interval->format("%R%i"));
                 // echo($intervalNum);
                 if ($intervalNum > 5) {
-                    $student = Student::find($pendingTickets[$x]->student_id);
+                    $student = Student::find($pendingTickets[$m]->student_id);
                     $studField['ongoingTickets'] = $student->ongoingTickets - 1;
                     $student->update($studField);
 
-                    DB::table('tickets')->where('id', $pendingTickets[$x]->id)->update(['status' => "Inactive"]);
+                    DB::table('tickets')->where('id', $pendingTickets[$m]->id)->update(['status' => "Inactive"]);
+                    // $getTicket = Ticket::find($pendingTickets[$x]->id)
                 }
             }
 
-        })->everyMinute();
+            $inactiveStudents = DB::table('students')
+                                    ->where('tickets', 0)
+                                    ->get()->toArray();
+            for ($k=0; $k < count($inactiveStudents); $k++) {
+                $date9 = date_create($inactiveStudents[$k]->created_at);
+                $date10 = date_create(Carbon::now());
+                $interval = date_diff($date9, $date10);
+
+                $intervalNum = intval($interval->format("%R%i"));
+
+                if ($intervalNum > 10) {
+                    DB::table('students')->where('id', $inactiveStudents[$k]->id)->delete();
+                }
+            }
+
+        })->everyFiveMinutes();
 
         // for actual
         // notifications stay in one week
