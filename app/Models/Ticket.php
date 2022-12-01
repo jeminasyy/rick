@@ -16,6 +16,8 @@ class Ticket extends Model
         'student_id',
         'assignee',
         'description',
+        'file_email',
+        'file',
         'year',
         'department',
         'status',

@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Concerns\ToArray;
+use Illuminate\Support\Facades\Storage;
 
 // use Barryvdh\DomPDF\PDF;
 
@@ -328,6 +329,8 @@ class TicketController extends Controller
 
     // Show single ticket
     public function show($id){
+        // $ticket = Ticket::find($id);
+        // $file_name = $ticket->file_email;
         return view('admin.tickets.show', [
             'ticket' => Ticket::find($id),
             'reopen' => DB::table('reopens')->where('ticket_id', $id)->latest()->first(),
@@ -420,14 +423,30 @@ class TicketController extends Controller
         if ($ticket->user_id != auth()->id()){
             abort(403, 'Unauthorized Action');
         }
+
+        // dd($request->file_email);
         $formFields = $request->validate([
             'response' => 'required'
         ]);
         $formFields['status'] = "Pending";
         $formFields['dateResponded'] = now();
 
+        if ($request->hasFile('file_email')) {
+            // dd($request->file_email);
+            // for ($a=0; $a < count($request->file_email); $a++) {
+                // $code = str::random(15);
+                // Storage::put($request->file_email, $request->file_email);
+                $formFields['file_email'] = $request->file('file_email')->store('out', 'public');
+            // }
+            
+        }
+        // else {
+        //     dd("biu biu");
+        // }
+
         $ticket->update($formFields);
 
+        // dd($ticket);
         Mail::to($ticket->student->email)->send(new ResolvedTicket($ticket));
 
         return redirect()->route('ticket', [$ticket]);

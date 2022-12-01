@@ -161,6 +161,11 @@
 
                     <p class="attribute">Response/Solution</p>
                     <p>{{$ticket->response}}</p>
+
+                    @if ($ticket->file_email)
+                        <p class="attribute">Attached File</p>
+                        <a href="{{asset('storage/' . $ticket->file_email)}}" target="_blank">Open File</a>
+                    @endif
                 @endif
 
                 {{-- @if ($ticket->status == "Voided")

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('assignee');
             $table->string('department');
             $table->longText('description');
+            
             $table->string('status')->default('New');
             $table->string('priority')->default('Unset');
             $table->string('response')->nullable();
