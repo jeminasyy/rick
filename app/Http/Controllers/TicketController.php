@@ -436,8 +436,13 @@ class TicketController extends Controller
             // for ($a=0; $a < count($request->file_email); $a++) {
                 // $code = str::random(15);
                 // Storage::put($request->file_email, $request->file_email);
-                $formFields['file_email'] = $request->file('file_email')->store('out', 'public');
+
+                // Storage::disk('s3')->put('avatars/1', $content);
+                // $formFields['file_email'] = $request->file('file_email')->store('out', 'public');
             // }
+
+            $file = $request->file('file_email');
+            dd($file);
             
         }
         // else {
