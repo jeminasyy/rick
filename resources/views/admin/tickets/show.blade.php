@@ -164,7 +164,7 @@
 
                     @if ($ticket->file_email)
                         <p class="attribute">Attached File</p>
-                        <a href="{{asset('storage/' . $ticket->file_email)}}" target="_blank">Open File</a>
+                        <a href={{$url}} target="_blank">Open File</a>
                     @endif
                 @endif
 

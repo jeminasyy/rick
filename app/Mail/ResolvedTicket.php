@@ -10,6 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Attachment;
 
 class ResolvedTicket extends Mailable
 {
@@ -20,9 +21,10 @@ class ResolvedTicket extends Mailable
      *
      * @return void
      */
-    public function __construct(Ticket $ticket)
+    public function __construct(Ticket $ticket, $filename)
     {
         $this->ticket = $ticket;
+        $this->filename = $filename;
     }
 
     /**
@@ -68,6 +70,8 @@ class ResolvedTicket extends Mailable
      */
     public function attachments()
     {
-        return [];
+        return [
+            Attachment::fromStorageDisk('s3', 'avatars/' . $this->filename)
+        ];
     }
 }

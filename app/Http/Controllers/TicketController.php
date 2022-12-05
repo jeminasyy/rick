@@ -329,11 +329,17 @@ class TicketController extends Controller
 
     // Show single ticket
     public function show($id){
-        // $ticket = Ticket::find($id);
+        $ticket = Ticket::find($id);
         // $file_name = $ticket->file_email;
+        if ($ticket->file_email) {
+            $url = Storage::url('avatars/' . $ticket->file_email);
+        } else {
+            $url = null;
+        }
         return view('admin.tickets.show', [
-            'ticket' => Ticket::find($id),
+            'ticket' => $ticket,
             'reopen' => DB::table('reopens')->where('ticket_id', $id)->latest()->first(),
+            'url' => $url
             // 'rating' => DB::table('ratings')->where('ticket_id', $id)->get(),
             // 'reopenratings' => DB::table('reopenratings')->where
         ]);
@@ -430,8 +436,28 @@ class TicketController extends Controller
         ]);
         $formFields['status'] = "Pending";
         $formFields['dateResponded'] = now();
+        // Storage::put('test.txt', 'Hello S3 Bucket!');
 
         if ($request->hasFile('file_email')) {
+            $file = $request->file('file_email');
+            $code = str::random(20);
+            $filename = $code . $file->getClientOriginalName();
+
+            // Storage::putFileAs('avatars', $file, $filename, 's3');
+            $file->storePubliclyAs('avatars', $filename, 's3');
+            $formFields['file_email'] = $filename;
+
+            // $url = Storage::url($filename);
+            $visibility = Storage::getVisibility('avatars/' . $filename);
+
+            // dd($visibility);
+            // Storage::setVisibility('avatars/' . $filename, 'public');
+            // $visibility = Storage::getVisibility($url);
+            // dd($filename);
+        }
+        
+
+        // if ($request->hasFile('file_email')) {
             // dd($request->file_email);
             // for ($a=0; $a < count($request->file_email); $a++) {
                 // $code = str::random(15);
@@ -440,22 +466,39 @@ class TicketController extends Controller
                 // Storage::disk('s3')->put('avatars/1', $content);
                 // $formFields['file_email'] = $request->file('file_email')->store('out', 'public');
             // }
+            // Storage::put('test.txt', 'Hello S3 Bucket!');
 
-            $file = $request->file('file_email');
-            dd($file);
+            // $code = str::random(20);
+            // $file = $request->file('file_email');
+            // $filename = $code . $file->getClientOriginalName();
+            // $file->store('out', 's3');
+            // $stored = $file->storeAs('avatars', $filename, 's3');
+            // $stored = $file->store('out', 's3');
+            // $stored = Storage::disk('s3')->put($file);
+            // dd($stored);
+            // if ($stored){
+            //     $formFields['file_email'] = $filename;
+            //     $ticket->update($formFields);
+            // } else {
+            //     dd("error");
+            // }
+            // $formFields['file_email'] = $filename;
+            // dd($filename);
             
-        }
+        // }
         // else {
         //     dd("biu biu");
         // }
 
-        $ticket->update($formFields);
+        $ticket->update($formFields); // meow
 
         // dd($ticket);
-        Mail::to($ticket->student->email)->send(new ResolvedTicket($ticket));
+        Mail::to($ticket->student->email)->send(new ResolvedTicket($ticket, $filename)); // meow
 
         return redirect()->route('ticket', [$ticket]);
     }
+
+    // View file
 
     // Show transfer ticket form
     public function transfer(Ticket $ticket) {
