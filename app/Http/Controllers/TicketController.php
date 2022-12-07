@@ -438,6 +438,8 @@ class TicketController extends Controller
         $formFields['dateResponded'] = now();
         // Storage::put('test.txt', 'Hello S3 Bucket!');
 
+        $filename = null;
+        
         if ($request->hasFile('file_email')) {
             $file = $request->file('file_email');
             $code = str::random(20);
@@ -448,7 +450,7 @@ class TicketController extends Controller
             $formFields['file_email'] = $filename;
 
             // $url = Storage::url($filename);
-            $visibility = Storage::getVisibility('avatars/' . $filename);
+            // $visibility = Storage::getVisibility('avatars/' . $filename);
 
             // dd($visibility);
             // Storage::setVisibility('avatars/' . $filename, 'public');

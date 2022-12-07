@@ -15,6 +15,7 @@ class Reopen extends Model
         'reason',
         'status',
         'response',
+        'file_email_reopen',
         'dateReopened',
         'dateResponded',
         'dateResolved'

@@ -164,7 +164,7 @@
 
                     @if ($ticket->file_email)
                         <p class="attribute">Attached File</p>
-                        <a href={{$url}} target="_blank">Open File</a>
+                        <a href={{$url}} target="_blank">Open File <i class='bx bx-link-external'></i></a>
                     @endif
                 @endif
 
@@ -304,6 +304,12 @@
                             <span style="font-weight: bold">Date Responded:&nbsp;&nbsp;</span>
                             {{$reopen->dateResponded}}
                         </p>
+                        @if ($reopen->file_email_reopen != null)
+                        <p class="reopen-p">
+                            <span style="font-weight: bold">Attached File:&nbsp;&nbsp;</span>
+                            <a href={{Storage::url('reopens/' . $reopen->file_email_reopen)}} target="_blank">Open File <i class='bx bx-link-external'></i></a>
+                        </p>
+                        @endif
                     @endif
                     <br>
                 </div>

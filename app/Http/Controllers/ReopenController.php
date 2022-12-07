@@ -349,14 +349,25 @@ class ReopenController extends Controller
         $ticket = Ticket::find($reopen->ticket->id);
         $ticketField['status'] = "Pending";
 
+        $filename = null;
+
         // $student = Student::find($ticket->student_id);
         // $studentField['ongoingTickets'] = $student->ongoingTickets - 1;
+
+        if ($request->hasFile('file_email_reopen')) {
+            $file = $request->file('file_email_reopen');
+            $code = str::random(20);
+            $filename = $code . $file->getClientOriginalName();
+
+            $file->storePubliclyAs('reopens', $filename, 's3');
+            $formFields['file_email_reopen'] = $filename;
+        }
 
         $ticket->update($ticketField);
         // $student->update($studentField);
         $reopen->update($formFields);
 
-        Mail::to($ticket->student->email)->send(new ResolvedReopenedTicket($reopen, $ticket));
+        Mail::to($ticket->student->email)->send(new ResolvedReopenedTicket($reopen, $ticket, $filename));
 
         return redirect()->route('ticket', [$ticket]);
     }

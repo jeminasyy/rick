@@ -11,6 +11,7 @@ use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailables\Attachment;
 
 class ResolvedReopenedTicket extends Mailable
 {
@@ -21,10 +22,11 @@ class ResolvedReopenedTicket extends Mailable
      *
      * @return void
      */
-    public function __construct(Reopen $reopen, Ticket $ticket)
+    public function __construct(Reopen $reopen, Ticket $ticket, $filename)
     {
         $this->reopen = $reopen;
         $this->ticket = $ticket;
+        $this->filename = $filename;
     }
 
     /**
@@ -72,6 +74,10 @@ class ResolvedReopenedTicket extends Mailable
      */
     public function attachments()
     {
-        return [];
+        if ($this->filename != null) {
+            return [
+                Attachment::fromStorageDisk('s3', 'reopens/' . $this->filename)
+            ];
+        }
     }
 }

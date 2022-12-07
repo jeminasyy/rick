@@ -70,8 +70,10 @@ class ResolvedTicket extends Mailable
      */
     public function attachments()
     {
-        return [
-            Attachment::fromStorageDisk('s3', 'avatars/' . $this->filename)
-        ];
+        if ($this->filename != null) {
+            return [
+                Attachment::fromStorageDisk('s3', 'avatars/' . $this->filename)
+            ];
+        }
     }
 }

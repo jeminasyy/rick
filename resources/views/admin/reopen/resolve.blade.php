@@ -41,6 +41,18 @@
                 </div>
 
                 <div class="mb-6">
+                    <label for="file_email">Attach File:</label>
+                    <input 
+                        type="file"
+                        name="file_email_reopen" 
+                        value="{{old('file_email_reopen')}}"
+                    />
+                    @error('file_email_reopen')
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-6">
                     <button 
                         type="submit" 
                         class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
