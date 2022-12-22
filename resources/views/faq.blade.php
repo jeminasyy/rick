@@ -42,5 +42,5 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp; 2. &nbsp;Email updates will be sent when changes are made to the ticket. </p>
         <br>
     </div>
- 
+
 </x-layout>

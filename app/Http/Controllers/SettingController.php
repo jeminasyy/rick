@@ -44,7 +44,7 @@ class SettingController extends Controller
 
         $logFields['action_type'] = "EditLimit";
         $logFields['user_id'] = auth()->user()->id;
-        $logFields['ticketLimit'] = $request->ticketlimit;
+        $logFields['ticketLimit'] = strval($request->ticketLimit);
         Userlog::create($logFields);
 
         $settings = DB::table('settings')->get()->toArray();
