@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="mb-6">
-                    <label for="response">Solution:</label>
+                    <label for="response">Solution</label>
                     <textarea 
                         name="response" 
                         class="form-control" 
@@ -41,7 +41,8 @@
                 </div>
 
                 <div class="mb-6">
-                    <label for="file_email">Attach File:</label>
+                    <label for="file_email">Attach File</label>
+                    <p>File must not exceed 5MB</p><br>
                     <input 
                         type="file"
                         name="file_email_reopen" 
