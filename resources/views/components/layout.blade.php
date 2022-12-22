@@ -175,7 +175,7 @@
                         margin-top: 30px;
                         font-size: 18px"
                 >
-                    <i class='bx bxs-log-in bx-fw'></i>LOGIN
+                    <i class='bx bxs-log-in bx-fw'></i>Login
                 </a>
                 @endif
 
