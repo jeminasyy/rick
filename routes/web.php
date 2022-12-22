@@ -2,14 +2,15 @@
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategController;
 use App\Http\Controllers\ReopenController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,11 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Route::get('/FAQ', function () {
-    return view('faq');
+    $settings = DB::table('settings')->get()->toArray();
+    $ticketLimit = $settings[0]->ticketLimit;
+    return view('faq', [
+        'ticketLimit' => $ticketLimit
+    ]);
 })->middleware('guest');
 
 // Show Dashboard

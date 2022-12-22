@@ -9,7 +9,7 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp; 1. &nbsp;Access the Home Page and click on “Submit New Ticket”.</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp; 2. &nbsp;Must be a bonafide student at the College of Commerce and Business Administration.</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp; 3. &nbsp;Provide your UST email address and enter the verification code that will be sent to your email.</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp; 4. &nbsp;Do not spam tickets. Students are allowed to have x ongoing tickets only.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; 4. &nbsp;Do not spam tickets. Students are allowed to have {{$ticketLimit}} ongoing tickets only.</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp; 5. &nbsp;Check your email for updates from time to time.</p>
 
         <br>
@@ -17,7 +17,7 @@
         <p>&nbsp;&nbsp;&nbsp;&nbsp; 1. &nbsp;You may reopen a previous ticket when you encounter the similar problem or when your problem was not fully resolved.</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp; 2. &nbsp;To reopen a ticket, access the Home Page and click on “Reopen Ticket”.</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp; 3. &nbsp;Provide your UST email address and enter the verification code that will be sent to your email.</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp; 4. &nbsp;Do not spam tickets. Students are allowed to have 3 ongoing tickets only.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; 4. &nbsp;Do not spam tickets. Students are allowed to have {{$ticketLimit}} ongoing tickets only.</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp; 5. &nbsp;Check your email for updates from time to time.</p>
 
         <br>
