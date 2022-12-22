@@ -42,7 +42,35 @@
                     $('#newpassword').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
                     $('#confirmpassword').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
                 });
+
+                $('#categ_id').on('change', function() {
+                    var value = $(this).val(); var toAppend = '';
+                    if (value == "others") {
+                        $("#others_categ").removeAttr("disabled"); 
+                    } else {
+                        $("#others_categ").attr("disabled", "disabled"); 
+                    }
+                });
+
+                // $('#categ_id').change(function () {
+                //     var value = $(this).val(); var toAppend = '';
+                //     if (value == 1) {
+                //         toAppend = "<input type='textbox' >"; $("#container").html(toAppend); return;
+                //     }
+
+                // });
             });
+
+
+
+            // function change() {
+            //     var select = document.getElementById("categ_id");
+            //     var divv = document.getElementById("container");
+            //     var value = select.value;
+            //     if (value == "others") {
+            //         toAppend = "<input type='textbox' >"; divv.innerHTML=toAppend; return;
+            //     }
+            // }
            
         </script>
         <title>RICK | Request. Inquiries. Concerns. Komersiyo</title>
@@ -124,6 +152,19 @@
                 </div>
 
                 @else
+                <a href="/FAQ" 
+                    class="hover:text-laravel" 
+                    style="color:#333333;
+                        position: absolute;
+                        top:0;
+                        right:0;
+                        margin-right: 130px;
+                        margin-top: 30px;
+                        font-size: 18px"
+                >
+                    <i class='bx bx-question-mark bx-fw'></i>FAQ
+                </a>
+
                 <a href="/login" 
                     class="hover:text-laravel" 
                     style="color:#333333;

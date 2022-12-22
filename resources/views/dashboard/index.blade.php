@@ -7,10 +7,21 @@
                         border: 1px solid#2980B9;
                         border-radius: 5px;
                         color: white;
-                        width: fit-content">
+                        width: fit-content;">
                         Generate Report
                     </button>
                 </a>
+
+                {{-- <a href="/generate/dashboard" style="float: right; top:0">
+                    <button style="padding: 5px 10px; background-color: #2980B9;
+                        border: 1px solid#2980B9;
+                        border-radius: 5px;
+                        color: white;
+                        width: fit-content;
+                        margin-right:10px">
+                        Generate PDF
+                    </button>
+                </a> --}}
 
                 {{-- <button style="padding: 5px 10px; background-color: #2980B9;
                     border: 1px solid#2980B9;

@@ -25,6 +25,10 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
 
+Route::get('/FAQ', function () {
+    return view('faq');
+})->middleware('guest');
+
 // Show Dashboard
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth');
 // Generate Report PDF
@@ -233,6 +237,12 @@ Route::put('/ticketlimit/update', [SettingController::class, 'updatelimit'])->mi
 Route::get('/security', [UserController::class, 'changePassword'])->middleware('auth');
 // Update Password Change
 Route::put('/security/{user}', [UserController::class, 'updateChange'])->middleware('auth');
+// Show Student Log
+Route::get('/student-audit', [SettingController::class, 'studentAudit'])->middleware('auth');
+// Show Student Summary
+Route::get('/student-summary', [SettingController::class, 'studentSummary'])->middleware('auth');
+// Show User Log
+Route::get('/user-audit', [SettingController::class, 'userAudit'])->middleware('auth');
 
 // DECREMENT NEW NOTIFICATION
 Route::get('/notifications/{notification}', [UserController::class, 'removeNew'])->middleware('auth');

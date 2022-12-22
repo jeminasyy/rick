@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categ;
+use App\Models\Userlog;
 use Illuminate\Http\Request;
 
 class CategController extends Controller
@@ -40,6 +41,13 @@ class CategController extends Controller
 
         // $formFields['archive'] = true;
         // $categ->update($formFields);
+
+        $logFields['user_id'] = auth()->user()->id;
+        $logFields['action_type'] = "ArchiveC";
+        $categ = Categ::find($id);
+        $logFields['categoryId'] = $categ->name;
+        Userlog::create($logFields);
+
         Categ::where('id', $id)
             ->update(['archive' => true]);
 
@@ -54,6 +62,12 @@ class CategController extends Controller
         
         Categ::where('id', $id)
             ->update(['archive' => false]);
+
+        $logFields['user_id'] = auth()->user()->id;
+        $logFields['action_type'] = "UnarchiveC";
+        $categ = Categ::find($id);
+        $logFields['categoryId'] = $categ->name;
+        Userlog::create($logFields);
 
         return redirect('/categories')->with('message', 'Category archived successfully');
     }
@@ -85,6 +99,12 @@ class CategController extends Controller
             $formFields['description'] = $request->description;
         }
 
+        $logFields['user_id'] = auth()->user()->id;
+        $logFields['action_type'] = "CreateC";
+        $logFields['categoryId'] = $request->name;
+
+        Userlog::Create($logFields);
+
         Categ::create($formFields);
 
         return redirect('/categories')->with('message', 'Category created successfully');
@@ -115,6 +135,11 @@ class CategController extends Controller
         if($request->description) {
             $formFields['description'] = $request->description;
         }
+
+        $logFields['user_id'] = auth()->user()->id;
+        $logFields['action_type'] = "EditC";
+        $logFields['categoryId'] = $request->name;
+        Userlog::create($logFields);
 
         $categ->update($formFields);
 

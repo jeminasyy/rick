@@ -15,7 +15,7 @@
                         disabled
                     />
                     @error('FName')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
 
@@ -30,7 +30,7 @@
                         disabled
                     />
                     @error('LName')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
             </div>
@@ -47,7 +47,7 @@
                         disabled
                     />
                     @error('studNumber')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
 
@@ -62,7 +62,7 @@
                         disabled
                     />
                     @error('email')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
             </div>
@@ -83,7 +83,7 @@
                         <option value="4th Year">4th Year</option>
                     </select>
                     @error('year')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
         
@@ -103,7 +103,7 @@
                         <option value="Human Resource Management">Human Resource Management</option>
                     </select>
                     @error('department')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
             </div>
@@ -119,7 +119,7 @@
                         value="{{old('description')}}"
                     ></textarea>
                     @error('description')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
 
@@ -154,17 +154,33 @@
                                 @endif
                             @endforeach
                         </optgroup>
-                        <optgroup label="Others">
+                        <option value="others" style="font-weight: bold">Others</option>
+                        {{-- <optgroup label="Others">
                             @foreach ($categs as $categ)
                                 @if($categ['type'] == 'Others')
                                     <option value="{{$categ['id']}}">{{$categ['name']}}</option>
                                 @endif
                             @endforeach
-                        </optgroup>
+                        </optgroup> --}}
                         @endunless
                     </select>
                     @error('categ_id')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
+                    @enderror
+                </div>
+
+                <div class="form-group col-md-6" id="container">
+                    <label for="year">Please enter a category</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="others_categ"
+                        name="others_categ" 
+                        value="{{old('others_categ')}}"
+                        disabled
+                    />
+                    @error('others_categ')
+                        <p class="text-red-500 text-md mt-1">{{$message}}</p>
                     @enderror
                 </div>
             </div>

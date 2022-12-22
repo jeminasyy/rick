@@ -249,18 +249,22 @@ margin-bottom: 30px;
     width: 20em;
     display:inline-block;
     vertical-align: top;
+    padding-top: 15px;
 }
 
-.settings-container{
+/* .settings-container{
     margin: auto;
     
-}
+} */
 
-.settings-container ul u{
+.settings-container u{
     font-size: 2em;
     text-decoration: none;
     border-bottom: 1px solid black;
-    margin-left: 50px;
+    margin: 70px;
+    /* padding-top:90px; */
+    margin-bottom:30px;
+    /* align-items: center; */
     
 }
 
@@ -271,7 +275,7 @@ margin-bottom: 30px;
 
 .settings-container ul{
     margin-top: 2em;
-    margin-left: 0.5em;
+    margin: 0.5em;
     
      
 }

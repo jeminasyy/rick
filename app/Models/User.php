@@ -86,4 +86,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function notifications() {
         return $this->hasMany(Notification::class, 'user_id');
     }
+
+    // Relationship with Userlogs
+    public function userslogs() {
+        return $this->hasMany(Userlog::class, 'user_id');
+    }
 }

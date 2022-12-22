@@ -17,7 +17,9 @@
             <tr>
               <th scope="col">ID</th>
               <th scope="col">CATEGORY</th>
-              <th scope="col">REQUESTER</th>
+              <th scope="col">LAST NAME</th>
+              <th scope="col">FIRST NAME</th>
+              <th scope="col">EMAIL</th>
               <th scope="col">DESCRIPTION</th>
               <th scope="col">DATE</th>
               <th scope="col">STATUS</th>
@@ -30,13 +32,16 @@
             @foreach($tickets as $ticket)
               <tr>
                 <td>{{$ticket->id}}</td>
-                <td>{{$ticket->categ->name}}</td>
-                <td scope="row" style="word-break: break-all;">
-                  <b>{{$ticket->student->LName}}, {{$ticket->student->FName}}</b>
-                  <br>{{$ticket->student->email}}
-                </td>
-                <td>{{$ticket->description}}</td>
-                <td>{{$ticket->created_at}}</td>
+                @if ($ticket->categ->name == "Others")
+                  <td>{{$ticket->others_categ}}</td>
+                @else
+                  <td>{{$ticket->categ->name}}</td>
+                @endif
+                <td>{{$ticket->student->LName}}</td>
+                <td>{{$ticket->student->FName}}</td>
+                <td>{{$ticket->student->email}}</td>
+                <td style="word-break: break-all;">{{$ticket->description}}</td>
+                <td style="word-break: break-all;">{{$ticket->created_at}}</td>
                 @if ($ticket->status == "Pending")
                   <td>Ongoing</td>
                 @else

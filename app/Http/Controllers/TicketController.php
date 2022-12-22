@@ -11,7 +11,9 @@ use App\Models\Ticket;
 use App\Mail\VerifyNew;
 use App\Models\Setting;
 use App\Models\Student;
+use App\Models\Userlog;
 use App\Mail\VoidedTicket;
+use App\Models\Studentlog;
 use App\Mail\OngoingTicket;
 use Illuminate\Support\Str;
 use App\Mail\ResolvedTicket;
@@ -22,8 +24,8 @@ use App\Mail\NewTicketSubmitted;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Concerns\ToArray;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Concerns\ToArray;
 
 // use Barryvdh\DomPDF\PDF;
 
@@ -152,7 +154,7 @@ class TicketController extends Controller
     // Show submit ticket form
     public function create(Student $student){
         return view('admin.tickets.create', [
-            'categs' => Categ::where('archive', 0)->get(),
+            'categs' => Categ::where('archive', 0)->whereNot('name', "Others")->get(),
             'student' => $student
         ]);
     }
@@ -181,6 +183,17 @@ class TicketController extends Controller
             'department' => 'required',
             'year' => 'required'
         ]);
+
+        if ($request->categ_id == "others") {
+            $request->validate([
+                'others_categ' => 'required'
+            ]);
+            $others = Categ::where('name', "Others")->get();
+            // dd($others);
+            $formFields['categ_id'] = $others[0]->id;
+            // dd($formFields['categ_id']);
+            $formFields['others_categ'] = $request->others_categ;
+        }
 
         $formFields['student_id'] = (string)$student->id;
 
@@ -239,6 +252,10 @@ class TicketController extends Controller
             $userFields['newNotifs'] = $assignee->newNotifs + 1;
             $assignee->update($userFields);
 
+            $logFields['userId'] = $min_id;
+            $logFields['userEmail'] = $assignee->email;
+            $logFields['ticketId'] = $ticket->id;
+
         } else {
             $firstKey = array_key_first($users);
             $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->whereNot('status', 'Voided')->count(); //newline voided
@@ -269,9 +286,17 @@ class TicketController extends Controller
 
             $userFields['newNotifs'] = $assignee->newNotifs + 1;
             $assignee->update($userFields);
+
+            $logFields['userId'] = $min_id;
+            $logFields['userEmail'] = $assignee->email;
+            $logFields['ticketId'] = $ticket->id;
         }
 
         // dd($ticket->user->email);
+
+        $logFields['student_id'] = (string)$student->id;
+        $logFields['action_type'] = "New";
+        Studentlog::create($logFields);
 
         Mail::to($ticket->student->email)->send(new NewTicketSubmitted($ticket));
 
@@ -337,10 +362,12 @@ class TicketController extends Controller
         } else {
             $url = null;
         }
+        $timesReopened = Reopen::where('ticket_id', $id)->count();
         return view('admin.tickets.show', [
             'ticket' => $ticket,
             'reopen' => DB::table('reopens')->where('ticket_id', $id)->latest()->first(),
-            'url' => $url
+            'url' => $url,
+            'timesReopened' => $timesReopened
             // 'rating' => DB::table('ratings')->where('ticket_id', $id)->get(),
             // 'reopenratings' => DB::table('reopenratings')->where
         ]);
@@ -524,6 +551,8 @@ class TicketController extends Controller
     
             if ($request->categ_id) {
                 $formFields['categ_id'] = $request->categ_id;
+                $categ = Categ::find($request->categ_id);
+                $logFields['categoryId'] = $categ->name;
             }
     
             if ($request->user_id) {
@@ -539,6 +568,8 @@ class TicketController extends Controller
 
                 $userFields['newNotifs'] = $user->newNotifs + 1;
                 $user->update($userFields);
+
+                $logFields['userId'] = $request->user_id;
             } 
             else {
                 if ($ticket->status != "Ongoing" && $ticket->status != "Pending" && $ticket->status != "Resolved" && $ticket->status != "Voided") {
@@ -572,6 +603,8 @@ class TicketController extends Controller
                         }
                         $formFields['user_id'] = $min_id;
                         $notifFields['user_id'] = $min_id;
+
+                        $logFields['userId'] = $min_id;
                     } else {
                         $firstKey = array_key_first($users);
                         $min = DB::table('tickets')->where('user_id', $users[$firstKey]->user_id)->whereNot('status', 'Resolved')->count();
@@ -587,6 +620,7 @@ class TicketController extends Controller
                         // dd($min);
                         $formFields['user_id'] = $min_id;
                         $notifFields['user_id'] = $min_id;
+                        $logFields['userId'] = $min_id;
                     }
                 }
 
@@ -607,7 +641,13 @@ class TicketController extends Controller
             //     $user->update($userFields);
             // }
 
+            $logFields['user_id'] = auth()->user()->id;
+            $logFields['action_type'] = "TransferN";
+            $logFields['ticketId'] = $ticket->id;
+            Userlog::create($logFields);
+
             $ticket->update($formFields);
+            
             return redirect()->route('ticket', [$ticket]);
         }
         abort(403, 'Unauthorized Action');

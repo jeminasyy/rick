@@ -7,6 +7,11 @@
             </a>
             <p style="font-size: 17px; font-weight:bold">Ticket# {{$ticket->id}}</p>
             
+            {{-- <div class="ticketNav">
+                <a href="/mytickets">My Tickets</a>
+                <a href="/tickets" class="active">All Tickets</a>
+            </div> --}}
+
             @if (!$reopen)
                 @if ($ticket->user_id == auth()->id())
                     <button 
@@ -59,6 +64,11 @@
 
                 <p class="attribute">Assignee</p>
                 <p>{{$ticket->assignee}}</p>
+
+                {{-- @if ($ticket->response) --}}
+                    <p class="attribute">Times Reopened</p>
+                    <p>{{$timesReopened}}</p>
+                {{-- @endif --}}
             </div>
             
             <div class="ticket-right">
@@ -66,7 +76,12 @@
                 <p>{{$ticket->categ->type}}</p>
 
                 <p class="attribute">Category</p>
-                <p>{{$ticket->categ->name}}</p>
+                @if ($ticket->categ->name == "Others")
+                  <td>{{$ticket->others_categ}}</td>
+                @else
+                  <td>{{$ticket->categ->name}}</td>
+                @endif
+                {{-- <p>{{$ticket->categ->name}}</p> --}}
 
                 <p class="attribute">Description</p>
                 <p>{{$ticket->description}}</p>
@@ -166,6 +181,8 @@
                         <p class="attribute">Attached File</p>
                         <a href={{$url}} target="_blank">Open File <i class='bx bx-link-external'></i></a>
                     @endif
+
+
                 @endif
 
                 {{-- @if ($ticket->status == "Voided")

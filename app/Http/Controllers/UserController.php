@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Categ;
 use App\Models\Ticket;
+use App\Models\Userlog;
 use App\Models\Usercateg;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Str;
@@ -112,6 +113,12 @@ class UserController extends Controller
 
         // dd($formFields);
 
+        $logFields['user_id'] = auth()->user()->id;
+        $logFields['action_type'] = "CreateU";
+        $logFields['userId'] = $request->email;
+
+        Userlog::Create($logFields);
+
         $user = User::create($formFields);
 
         if ($request->categ_id != null) {
@@ -121,7 +128,7 @@ class UserController extends Controller
                 Usercateg::create($categFields);
             }
         }
-    
+
         Mail::to($user->email)->send(new CreateYourAccount($user));
 
         return redirect('/users')->with('message', 'User invitation created');
@@ -238,6 +245,11 @@ class UserController extends Controller
         }
 
         $user->update($formFields);
+
+        $logFields['user_id'] = auth()->user()->id;
+        $logFields['action_type'] = "EditU";
+        $logFields['userId'] = $user->email;
+        Userlog::create($logFields);
 
         return redirect('/users')->with('message', 'User updated successfully');
     }
@@ -466,6 +478,11 @@ class UserController extends Controller
                 // DB::table('reopens')->where('id', $reopens[$x]->id)->update(['user_id' => 2]);
             }
         }
+
+        $logFields['user_id'] = auth()->user()->id;
+        $logFields['action_type'] = "ArchiveU";
+        $logFields['userId'] = $user->email;
+        Userlog::create($logFields);
         
         $user->delete();
         // DB::table('users')->where('id', $user->id)->delete();
@@ -482,6 +499,13 @@ class UserController extends Controller
             ->where('id', $id)
             ->restore();
         // DB::table('users')->where('id', $user->id)->delete();
+
+        $logFields['user_id'] = auth()->user()->id;
+        $logFields['action_type'] = "UnarchiveU";
+        $user = User::find($id);
+        $logFields['userId'] = $user->email;
+        Userlog::create($logFields);
+
         return redirect('/users')->with('message', 'User restored successfully');
     }
 

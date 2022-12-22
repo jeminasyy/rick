@@ -54,4 +54,9 @@ class Student extends Model
     public function reopenrating() {
         return $this->hasMany(Reopenrating::class, 'student_id');
     }
+
+    // Relationship with Studentlogs
+    public function studentlog() {
+        return $this->hasMany(Studentlog::class, 'student_id');
+    }
 }
