@@ -59,6 +59,9 @@ A reason must be provided to reopen a ticket. By default, the reopened ticket wi
 ![image](https://user-images.githubusercontent.com/110912017/211823623-dc9fa85d-ba2b-493b-a738-a06aaa9cabdf.png)
 ![image](https://user-images.githubusercontent.com/110912017/211823704-857d2ff2-aff7-48e3-b990-d6f4d14e2d27.png)
 
+#### Login (FDO and Admin)
+![image](https://user-images.githubusercontent.com/110912017/211835821-8187b581-10ef-4920-80ce-dc7d7fe78987.png)
+
 #### View Tickets (FDO and Admin)
 ![image](https://user-images.githubusercontent.com/110912017/211826505-855e57f1-7698-48dd-a466-26e75ef97c8b.png)
 
@@ -76,7 +79,7 @@ Users can view the dashboard that contains the key performance metrics, summary 
 Admin users can download an Excel file of the report by clicking "Generate Report"
 ![image](https://user-images.githubusercontent.com/110912017/211828561-28174fea-b66a-424f-8cae-a73e1fde71cb.png)
 
-#### Change Password (Admin)
+#### Change Password (FDO and Admin)
 ![image](https://user-images.githubusercontent.com/110912017/211828795-f5abbcb4-b0c8-4367-bdc1-110040a3d588.png)
 
 #### View Users (Admin)
