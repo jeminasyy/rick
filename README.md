@@ -35,7 +35,7 @@ The following Service Request Management practices were implemented: <br />
 3. **System Notifications** Users are notified when a ticket has been assigned or transferred to them. <br />
 4. **Status.** There are 7 ticket status: (1)New, (2)Opened, (3)Ongoing, (4)Resolved, (5)Inactive, (6)Voided, and (7)Reopened
 5. **Ticket Prioritization.** To enable the assigned Front Desk Officer manage tickets based on urgency, the priority level of a ticket can be set as (1)High, (2)Medium, and (3)Low.
-6. **Transfer Tickets.** Miscategorized tickets can be transferred to another category and/or Front Desk Officer.
+6. **Transfer Tickets.** The assigned Front Desk Officer can transfer miscategorized tickets to another category and/or Front Desk Officer.
 
 ## Screenshots From the System
 
