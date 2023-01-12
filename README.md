@@ -1,6 +1,6 @@
 # Request. Inquiries. Concerns. Komersiyo (RICK) Ticketing System
 
-### Link to system: http://vast-headland-55467.herokuapp.com/
+### Click [**_here_**](http://vast-headland-55467.herokuapp.com/) to access deployed system
 
 ### Student Perspective
 To submit a ticket, you may use any of the Gmail accounts below:
@@ -25,9 +25,17 @@ When classes were shifted to remote learning, the college has been handling stud
 Instead, the faculty and staffs have to allocate their time to address these concerns. 
 Students are only updated once their concern has been fully addressed, thus lacking in interaction.
 ### Solution: 
-A web-based ticketing system that serves as a single point of contact, and enables the client to manage student requests, inquiries, and concerns in a centralized manner by applying ITIL 4 practices.
-Service Desk serves as a single point of contact for the students to submit their requests, inquiries, and concerns. Promotes engagement between our client and their students.
+A web-based ticketing system that serves as a single point of contact, and enables the client to manage student requests, inquiries, and concerns in a centralized manner by applying ITIL 4 practices. <br /><br />
+Service Desk serves as a single point of contact for the students to submit their requests, inquiries, and concerns. Students can submit or reopen tickets using the system. To promote engagement, students receive notifications through their email.
+<br /><br />
 Service Request Management is a set of processes applied to enable our client operate effectively in addressing student concerns, and improve the student's satisfaction during service request fulfillment. 
+The following Service Request Management practices were implemented: <br />
+1. **Ticket Management.** Tickets are automatically assigned by the system based on the category specified by the student. <br />
+2. **Ticket Categorization.** Ticket are categorized into requests, inquiries, or concerns.  <br />
+3. **System Notifications** Users are notified when a ticket has been assigned or transferred to them. <br />
+4. **Status.** There are 7 ticket status: (1)New, (2)Opened, (3)Ongoing, (4)Resolved, (5)Inactive, (6)Voided, and (7)Reopened
+5. **Ticket Prioritization.** To enable the assigned Front Desk Officer manage tickets based on urgency, the priority level of a ticket can be set as (1)High, (2)Medium, and (3)Low.
+6. **Transfer Tickets.** Miscategorized tickets can be transferred to another category and/or Front Desk Officer.
 
 ## Screenshots From the System
 
@@ -36,7 +44,7 @@ Service Desk that serves as the single point of contact for students to send the
 ![image](https://user-images.githubusercontent.com/110912017/211799405-f902bd95-2425-4112-8f4f-32b4da7c9ecf.png)
 
 Students may submit or reopen a ticket provided that: <br />
-1. They are using their UST email <br />
+1. They used their UST email <br />
 2. They have verified their email address with the provided verification code 
 ![image](https://user-images.githubusercontent.com/110912017/211825133-57eb5555-bad1-4c73-91aa-682f4864bf7d.png)
 ![image](https://user-images.githubusercontent.com/110912017/211824777-1ac89f74-6b7c-4733-8518-1a35b10ee456.png)
