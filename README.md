@@ -1,23 +1,5 @@
-# Request. Inquiries. Concerns. Komersiyo (RICK) Ticketing System
+# RICK Ticketing System Project Overview
 
-### Click [**_here_**](http://vast-headland-55467.herokuapp.com/) to access deployed system
-
-### Student Perspective
-To submit a ticket, you may use any of the Gmail accounts below:
-|        Name        |            Email           |   Password   |
-|--------------------|----------------------------|--------------|
-| Sebastian Ocampo|   socampo.capstone@gmail.com   | Capstone246~ |
-| Paz Cembrano | pcembrano.capstone@gmail.com | Capstone246~ |
-| Eleanor Rivera | erivera.capstone@gmail.com | Capstone246~ |
-
-### Front Desk Officer (FDO) and Admin Perspective
-Access the system using the following accounts:
-|        Role        |            Email           |   Password   |
-|--------------------|----------------------------|--------------|
-| Front Desk Officer (FDO) | socampo.capstone@gmail.com | Newpass1234~ |
-|       Admin        |   johnpdoe.246@gmail.com   | Newpass1234~ |
-
-## Project Overview
 ### Client: 
 University of Santo Tomas College of Commerce and Business Administration
 ### Problem: 
